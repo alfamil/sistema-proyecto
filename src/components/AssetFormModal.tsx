@@ -266,6 +266,9 @@ export const AssetFormModal: React.FC<AssetFormModalProps> = ({
               <span className="font-mono text-xs sm:text-sm font-bold px-2.5 py-0.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-200">
                 {formData.tag_pdvsa || 'Nuevo TAG'}
               </span>
+              <span className="font-mono text-xs font-semibold px-2 py-0.5 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200">
+                AMB-GEN-SGA-PM-002
+              </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
               Convergencia SUDEBIP / ISO 55001 / ISO 10012 / PDVSA MM-02-01-01

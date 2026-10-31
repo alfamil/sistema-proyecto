@@ -207,6 +207,9 @@ export const MaintenanceView: React.FC<MaintenanceViewProps> = ({
             <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
               ISO 55001 & ISO 10012
             </span>
+            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 font-mono">
+              AMB-GEN-SGA-FO-008 & FO-004
+            </span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
             Gestión Integral de Órdenes y Bitácora de Activos
