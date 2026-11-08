@@ -4,28 +4,47 @@
 
 @layer base {
   html {
-    font-size: 15px; /* Slightly larger base font */
+    font-size: 15px; /* Base font size */
+  }
+  html.dark {
+    color-scheme: dark;
   }
   body {
-    @apply bg-slate-100 text-slate-800 antialiased font-sans transition-colors duration-200;
+    @apply bg-slate-50 text-slate-800 antialiased font-sans transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100;
   }
 }
 
 /* Custom scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  @apply bg-slate-400 dark:bg-slate-600;
+}
+
+/* Print Styles for Hoja de Vida Integral */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+  }
+  .print-page {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
 }

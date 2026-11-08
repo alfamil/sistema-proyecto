@@ -37,5 +37,5 @@ __pycache__/
 *.pyc
 
 # Excel source files (large binary)
-herramienta_sga.xlsx
+*.xlsx
 

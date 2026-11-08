@@ -1,931 +1,577 @@
 {
   "metadata": {
-    "proyecto": "SGAF - Sistema de Gestión de Activos Físicos",
-    "institucion": "PDVSA INTEVEP - Gerencia de Ambiente",
+    "version": "2.0.0",
+    "sistema": "Sistema Integrado de Gestión de Activos Físicos (SIGAF)",
     "normas": [
       "ISO 55001:2024",
       "PDVSA MM-02-01-01",
-      "SUDEBIP LOBP",
-      "ISO 10012",
-      "ISO 31000"
+      "SUDEBIP/LOBP",
+      "ISO/IEC 17025:2017",
+      "ISO 10012:2003",
+      "LOPCYMAT"
     ],
-    "total_activos": 334,
-    "total_catalogo_sudebip": 228
+    "fecha_generacion": "2026-11-08T11:42:26.928027",
+    "total_activos": 340
   },
-  "catalogo_sudebip": [
-    {
-      "codigo": "18010-0001",
-      "tipo_equipo": "Agitadores"
-    },
-    {
-      "codigo": "18010-0002",
-      "tipo_equipo": "Alambiques"
-    },
-    {
-      "codigo": "18010-0003",
-      "tipo_equipo": "Alcalímetros"
-    },
-    {
-      "codigo": "18010-0004",
-      "tipo_equipo": "Alcoholmetros"
-    },
-    {
-      "codigo": "18010-0005",
-      "tipo_equipo": "Altímetros"
-    },
-    {
-      "codigo": "18010-0006",
-      "tipo_equipo": "Altoparlantes"
-    },
-    {
-      "codigo": "18010-0007",
-      "tipo_equipo": "Amperímetros"
-    },
-    {
-      "codigo": "18010-0008",
-      "tipo_equipo": "Ampliadores"
-    },
-    {
-      "codigo": "18010-0009",
-      "tipo_equipo": "Analizadores"
-    },
-    {
-      "codigo": "18010-0010",
-      "tipo_equipo": "Anemógrafos"
-    },
-    {
-      "codigo": "18010-0011",
-      "tipo_equipo": "Anemómetros"
-    },
-    {
-      "codigo": "18010-0012",
-      "tipo_equipo": "Aneroides (ver barómetros)"
-    },
-    {
-      "codigo": "18010-0013",
-      "tipo_equipo": "Aparatos de explotación geográ"
-    },
-    {
-      "codigo": "18010-0014",
-      "tipo_equipo": "Aparatos de reducción kjeldahl"
-    },
-    {
-      "codigo": "18010-0015",
-      "tipo_equipo": "Aparatos de reducción catalíti"
-    },
-    {
-      "codigo": "18010-0016",
-      "tipo_equipo": "Aparatos para colorear"
-    },
-    {
-      "codigo": "18010-0017",
-      "tipo_equipo": "Aparatos para destilar agua"
-    },
-    {
-      "codigo": "18010-0018",
-      "tipo_equipo": "Aparatos para electrólisis"
-    },
-    {
-      "codigo": "18010-0019",
-      "tipo_equipo": "Aparatos para interpretación d"
-    },
-    {
-      "codigo": "18010-0020",
-      "tipo_equipo": "Aparatos para la indeterminaci"
-    },
-    {
-      "codigo": "18010-0021",
-      "tipo_equipo": "Aparatos para pruebas de sedim"
-    },
-    {
-      "codigo": "18010-0022",
-      "tipo_equipo": "Arcos voltaicos"
-    },
-    {
-      "codigo": "18010-0023",
-      "tipo_equipo": "Areómetros (ver densímetros)"
-    },
-    {
-      "codigo": "18010-0024",
-      "tipo_equipo": "Autoclaves"
-    },
-    {
-      "codigo": "18010-0025",
-      "tipo_equipo": "Balanzas de laboratorio"
-    },
-    {
-      "codigo": "18010-0026",
-      "tipo_equipo": "Bancos ópticos"
-    },
-    {
-      "codigo": "18010-0027",
-      "tipo_equipo": "Baños de maría (no de uso clín"
-    },
-    {
-      "codigo": "18010-0028",
-      "tipo_equipo": "Baños para impregnación de par"
-    },
-    {
-      "codigo": "18010-0029",
-      "tipo_equipo": "Barómetros"
-    },
-    {
-      "codigo": "18010-0030",
-      "tipo_equipo": "Binóculos"
-    },
-    {
-      "codigo": "18010-0031",
-      "tipo_equipo": "Biofotocolorímetros"
-    },
-    {
-      "codigo": "18010-0032",
-      "tipo_equipo": "Bombas de laboratorio"
-    },
-    {
-      "codigo": "18010-0033",
-      "tipo_equipo": "Brújulas"
-    },
-    {
-      "codigo": "18010-0034",
-      "tipo_equipo": "Caleidoscopios"
-    },
-    {
-      "codigo": "18010-0035",
-      "tipo_equipo": "Calorímetros"
-    },
-    {
-      "codigo": "18010-0036",
-      "tipo_equipo": "Cámaras microfotográficas"
-    },
-    {
-      "codigo": "18010-0037",
-      "tipo_equipo": "Cámaras de recuento"
-    },
-    {
-      "codigo": "18010-0038",
-      "tipo_equipo": "Cámaras lúcidas"
-    },
-    {
-      "codigo": "18010-0039",
-      "tipo_equipo": "Cámaras fotográficas"
-    },
-    {
-      "codigo": "18010-0040",
-      "tipo_equipo": "Catetómetros"
-    },
-    {
-      "codigo": "18010-0041",
-      "tipo_equipo": "Carretes de ruhmkorff"
-    },
-    {
-      "codigo": "18010-0042",
-      "tipo_equipo": "Centrifugadores"
-    },
-    {
-      "codigo": "18010-0043",
-      "tipo_equipo": "Centrífugas"
-    },
-    {
-      "codigo": "18010-0044",
-      "tipo_equipo": "Círculos meridianos"
-    },
-    {
-      "codigo": "18010-0045",
-      "tipo_equipo": "Clicimetros"
-    },
-    {
-      "codigo": "18010-0046",
-      "tipo_equipo": "Colorímetros"
-    },
-    {
-      "codigo": "18010-0047",
-      "tipo_equipo": "Condensadores de campo oscuro"
-    },
-    {
-      "codigo": "18010-0048",
-      "tipo_equipo": "Contadores de rayos ionizados"
-    },
-    {
-      "codigo": "18010-0049",
-      "tipo_equipo": "Contadores geiger"
-    },
-    {
-      "codigo": "18010-0050",
-      "tipo_equipo": "Convertidores microfotográfico"
-    },
-    {
-      "codigo": "18010-0051",
-      "tipo_equipo": "Copiadores fotográficos"
-    },
-    {
-      "codigo": "18010-0052",
-      "tipo_equipo": "Cronómetros"
-    },
-    {
-      "codigo": "18010-0053",
-      "tipo_equipo": "Cubetas esmaltadas"
-    },
-    {
-      "codigo": "18010-0054",
-      "tipo_equipo": "Cuentahílos"
-    },
-    {
-      "codigo": "18010-0055",
-      "tipo_equipo": "Densímetros"
-    },
-    {
-      "codigo": "18010-0056",
-      "tipo_equipo": "Desecadores"
-    },
-    {
-      "codigo": "18010-0057",
-      "tipo_equipo": "Deshumecedores"
-    },
-    {
-      "codigo": "18010-0058",
-      "tipo_equipo": "Destiladores"
-    },
-    {
-      "codigo": "18010-0059",
-      "tipo_equipo": "Detectores de minas"
-    },
-    {
-      "codigo": "18010-0060",
-      "tipo_equipo": "Determinadores del carbono"
-    },
-    {
-      "codigo": "18010-0061",
-      "tipo_equipo": "Dializadores"
-    },
-    {
-      "codigo": "18010-0062",
-      "tipo_equipo": "Dicroscopios"
-    },
-    {
-      "codigo": "18010-0063",
-      "tipo_equipo": "Digestorios"
-    },
-    {
-      "codigo": "18010-0064",
-      "tipo_equipo": "Dinamómetros"
-    },
-    {
-      "codigo": "18010-0065",
-      "tipo_equipo": "Dispensadores de placas de vid"
-    },
-    {
-      "codigo": "18010-0066",
-      "tipo_equipo": "Eclímetros"
-    },
-    {
-      "codigo": "18010-0067",
-      "tipo_equipo": "Editoras para películas fotogr"
-    },
-    {
-      "codigo": "18010-0068",
-      "tipo_equipo": "Electroanalizadores"
-    },
-    {
-      "codigo": "18010-0069",
-      "tipo_equipo": "Electrodos de platino"
-    },
-    {
-      "codigo": "18010-0070",
-      "tipo_equipo": "Electróforos"
-    },
-    {
-      "codigo": "18010-0071",
-      "tipo_equipo": "Electrografos"
-    },
-    {
-      "codigo": "18010-0072",
-      "tipo_equipo": "Electroimanes"
-    },
-    {
-      "codigo": "18010-0073",
-      "tipo_equipo": "Electrómetros"
-    },
-    {
-      "codigo": "18010-0074",
-      "tipo_equipo": "Electrópodos"
-    },
-    {
-      "codigo": "18010-0075",
-      "tipo_equipo": "Electroscopios"
-    },
-    {
-      "codigo": "18010-0076",
-      "tipo_equipo": "Eliminadores de batería"
-    },
-    {
-      "codigo": "18010-0077",
-      "tipo_equipo": "Empacadoras de píldoras"
-    },
-    {
-      "codigo": "18010-0078",
-      "tipo_equipo": "Emulsificadores"
-    },
-    {
-      "codigo": "18010-0079",
-      "tipo_equipo": "Equipos de micro-combustión"
-    },
-    {
-      "codigo": "18010-0080",
-      "tipo_equipo": "Equipos de telemetración"
-    },
-    {
-      "codigo": "18010-0081",
-      "tipo_equipo": "Equipos de tratamiento al calo"
-    },
-    {
-      "codigo": "18010-0082",
-      "tipo_equipo": "Equipos fotoeléctricos"
-    },
-    {
-      "codigo": "18010-0083",
-      "tipo_equipo": "Escleroscopios"
-    },
-    {
-      "codigo": "18010-0084",
-      "tipo_equipo": "Escurridores"
-    },
-    {
-      "codigo": "18010-0085",
-      "tipo_equipo": "Esferómetros"
-    },
-    {
-      "codigo": "18010-0086",
-      "tipo_equipo": "Espectrofotómetros"
-    },
-    {
-      "codigo": "18010-0087",
-      "tipo_equipo": "Espectroscopios"
-    },
-    {
-      "codigo": "18010-0088",
-      "tipo_equipo": "Estereómetros"
-    },
-    {
-      "codigo": "18010-0089",
-      "tipo_equipo": "Estereoscopios"
-    },
-    {
-      "codigo": "18010-0090",
-      "tipo_equipo": "Estroboscopios"
-    },
-    {
-      "codigo": "18010-0091",
-      "tipo_equipo": "Estuches para accesorios fotog"
-    },
-    {
-      "codigo": "18010-0092",
-      "tipo_equipo": "Estufas de laboratorio"
-    },
-    {
-      "codigo": "18010-0093",
-      "tipo_equipo": "Eudiómetros"
-    },
-    {
-      "codigo": "18010-0094",
-      "tipo_equipo": "Evaporímetros"
-    },
-    {
-      "codigo": "18010-0095",
-      "tipo_equipo": "Extractores"
-    },
-    {
-      "codigo": "18010-0096",
-      "tipo_equipo": "Filmadoras"
-    },
-    {
-      "codigo": "18010-0097",
-      "tipo_equipo": "Filtros de laboratorio"
-    },
-    {
-      "codigo": "18010-0098",
-      "tipo_equipo": "Flash fotográficos"
-    },
-    {
-      "codigo": "18010-0099",
-      "tipo_equipo": "Flexómetros"
-    },
-    {
-      "codigo": "18010-0100",
-      "tipo_equipo": "Fluoroscopios"
-    },
-    {
-      "codigo": "18010-0101",
-      "tipo_equipo": "Fluxómetros"
-    },
-    {
-      "codigo": "18010-0102",
-      "tipo_equipo": "Fotómetros"
-    },
-    {
-      "codigo": "18010-0103",
-      "tipo_equipo": "Gabinetes de laboratorio"
-    },
-    {
-      "codigo": "18010-0104",
-      "tipo_equipo": "Gabinetes de fermentación"
-    },
-    {
-      "codigo": "18010-0105",
-      "tipo_equipo": "Galvanómetros"
-    },
-    {
-      "codigo": "18010-0106",
-      "tipo_equipo": "Gavetas para láminas microscóp"
-    },
-    {
-      "codigo": "18010-0107",
-      "tipo_equipo": "Generadores de señales"
-    },
-    {
-      "codigo": "18010-0108",
-      "tipo_equipo": "Giroscopios"
-    },
-    {
-      "codigo": "18010-0109",
-      "tipo_equipo": "Goniómetros"
-    },
-    {
-      "codigo": "18010-0110",
-      "tipo_equipo": "Grafómetros"
-    },
-    {
-      "codigo": "18010-0111",
-      "tipo_equipo": "Gramurios"
-    },
-    {
-      "codigo": "18010-0112",
-      "tipo_equipo": "Gravitómetros"
-    },
-    {
-      "codigo": "18010-0113",
-      "tipo_equipo": "Guarada-láminas (ver laminotec"
-    },
-    {
-      "codigo": "18010-0114",
-      "tipo_equipo": "Heliografos"
-    },
-    {
-      "codigo": "18010-0115",
-      "tipo_equipo": "Hemisferios de magdeburgo"
-    },
-    {
-      "codigo": "18010-0116",
-      "tipo_equipo": "Hidrogenadores catalíticos"
-    },
-    {
-      "codigo": "18010-0117",
-      "tipo_equipo": "Higrómetros"
-    },
-    {
-      "codigo": "18010-0118",
-      "tipo_equipo": "Higroscopios"
-    },
-    {
-      "codigo": "18010-0119",
-      "tipo_equipo": "Hipsómetros"
-    },
-    {
-      "codigo": "18010-0120",
-      "tipo_equipo": "Hornillos"
-    },
-    {
-      "codigo": "18010-0121",
-      "tipo_equipo": "Hornos de laboratorio"
-    },
-    {
-      "codigo": "18010-0122",
-      "tipo_equipo": "Hornos prensa al vaco"
-    },
-    {
-      "codigo": "18010-0123",
-      "tipo_equipo": "Incubadoras de laboratorio"
-    },
-    {
-      "codigo": "18010-0124",
-      "tipo_equipo": "Indicadores del punto de fusió"
-    },
-    {
-      "codigo": "18010-0125",
-      "tipo_equipo": "Inductores"
-    },
-    {
-      "codigo": "18010-0126",
-      "tipo_equipo": "Juegos de lentes en estuche"
-    },
-    {
-      "codigo": "18010-0127",
-      "tipo_equipo": "Juegos de pesas de laboratorio"
-    },
-    {
-      "codigo": "18010-0128",
-      "tipo_equipo": "Laboratorios químicos de campo"
-    },
-    {
-      "codigo": "18010-0129",
-      "tipo_equipo": "Laminotecas"
-    },
-    {
-      "codigo": "18010-0130",
-      "tipo_equipo": "Lámparas infrarrojas"
-    },
-    {
-      "codigo": "18010-0131",
-      "tipo_equipo": "Lámparas para microscopios"
-    },
-    {
-      "codigo": "18010-0133",
-      "tipo_equipo": "Lámparas ultravioletas"
-    },
-    {
-      "codigo": "18010-0134",
-      "tipo_equipo": "Largavistas"
-    },
-    {
-      "codigo": "18010-0135",
-      "tipo_equipo": "Lavadoras de pipetas"
-    },
-    {
-      "codigo": "18010-0136",
-      "tipo_equipo": "Lijadoras metalográficas"
-    },
-    {
-      "codigo": "18010-0137",
-      "tipo_equipo": "Lupas"
-    },
-    {
-      "codigo": "18010-0138",
-      "tipo_equipo": "Magnetómetros"
-    },
-    {
-      "codigo": "18010-0139",
-      "tipo_equipo": "Magnetos"
-    },
-    {
-      "codigo": "18010-0140",
-      "tipo_equipo": "Máquinas neumáticas"
-    },
-    {
-      "codigo": "18010-0141",
-      "tipo_equipo": "Máquinas para supositorios"
-    },
-    {
-      "codigo": "18010-0142",
-      "tipo_equipo": "Marcadores de películas"
-    },
-    {
-      "codigo": "18010-0143",
-      "tipo_equipo": "Mecheros bunsen"
-    },
-    {
-      "codigo": "18010-0144",
-      "tipo_equipo": "Megáfonos"
-    },
-    {
-      "codigo": "18010-0145",
-      "tipo_equipo": "Medidores de ácidos (ph)"
-    },
-    {
-      "codigo": "18010-0146",
-      "tipo_equipo": "Medidores de fluido"
-    },
-    {
-      "codigo": "18010-0147",
-      "tipo_equipo": "Mesas de laboratorio"
-    },
-    {
-      "codigo": "18010-0148",
-      "tipo_equipo": "Mezcladoras (laboratorio)"
-    },
-    {
-      "codigo": "18010-0149",
-      "tipo_equipo": "Microfilmadores"
-    },
-    {
-      "codigo": "18010-0150",
-      "tipo_equipo": "Microscopios"
-    },
-    {
-      "codigo": "18010-0151",
-      "tipo_equipo": "Micrótomos"
-    },
-    {
-      "codigo": "18010-0152",
-      "tipo_equipo": "Miras"
-    },
-    {
-      "codigo": "18010-0153",
-      "tipo_equipo": "Moldes para pruebas de compact"
-    },
-    {
-      "codigo": "18010-0154",
-      "tipo_equipo": "Moldes para supositorios"
-    },
-    {
-      "codigo": "18010-0155",
-      "tipo_equipo": "Molinos"
-    },
-    {
-      "codigo": "18010-0156",
-      "tipo_equipo": "Multímetros"
-    },
-    {
-      "codigo": "18010-0157",
-      "tipo_equipo": "Morteros"
-    },
-    {
-      "codigo": "18010-0158",
-      "tipo_equipo": "Muflas (ver hornos de laborato"
-    },
-    {
-      "codigo": "18010-0159",
-      "tipo_equipo": "Neveras de laboratorio"
-    },
-    {
-      "codigo": "18010-0160",
-      "tipo_equipo": "Niveles"
-    },
-    {
-      "codigo": "18010-0161",
-      "tipo_equipo": "Niveles de anteojo (amney)"
-    },
-    {
-      "codigo": "18010-0162",
-      "tipo_equipo": "Objetivos microscópicos"
-    },
-    {
-      "codigo": "18010-0163",
-      "tipo_equipo": "Octantes"
-    },
-    {
-      "codigo": "18010-0164",
-      "tipo_equipo": "Oculares"
-    },
-    {
-      "codigo": "18010-0165",
-      "tipo_equipo": "Ohmímetros"
-    },
-    {
-      "codigo": "18010-0166",
-      "tipo_equipo": "Oscilógrafos"
-    },
-    {
-      "codigo": "18010-0167",
-      "tipo_equipo": "Oscilómetros"
-    },
-    {
-      "codigo": "18010-0168",
-      "tipo_equipo": "Osciloscopios"
-    },
-    {
-      "codigo": "18010-0169",
-      "tipo_equipo": "Penetrómetros"
-    },
-    {
-      "codigo": "18010-0170",
-      "tipo_equipo": "Perforadores de corchos"
-    },
-    {
-      "codigo": "18010-0171",
-      "tipo_equipo": "Periscopios"
-    },
-    {
-      "codigo": "18010-0172",
-      "tipo_equipo": "Permeámetros"
-    },
-    {
-      "codigo": "18010-0173",
-      "tipo_equipo": "Pesahilos de precisión"
-    },
-    {
-      "codigo": "18010-0174",
-      "tipo_equipo": "Pipeteadores automáticos"
-    },
-    {
-      "codigo": "18010-0175",
-      "tipo_equipo": "Pipeteros"
-    },
-    {
-      "codigo": "18010-0176",
-      "tipo_equipo": "Pirómetros"
-    },
-    {
-      "codigo": "18010-0177",
-      "tipo_equipo": "Planchetas"
-    },
-    {
-      "codigo": "18010-0178",
-      "tipo_equipo": "Planímetros"
-    },
-    {
-      "codigo": "18010-0179",
-      "tipo_equipo": "Pluviómetros"
-    },
-    {
-      "codigo": "18010-0180",
-      "tipo_equipo": "Podómetros"
-    },
-    {
-      "codigo": "18010-0181",
-      "tipo_equipo": "Polarímetros"
-    },
-    {
-      "codigo": "18010-0182",
-      "tipo_equipo": "Polarizadores"
-    },
-    {
-      "codigo": "18010-0183",
-      "tipo_equipo": "Porta-láminas"
-    },
-    {
-      "codigo": "18010-0184",
-      "tipo_equipo": "Potenciómetros"
-    },
-    {
-      "codigo": "18010-0185",
-      "tipo_equipo": "Prensas metalográficas"
-    },
-    {
-      "codigo": "18010-0186",
-      "tipo_equipo": "Probadores de humedad"
-    },
-    {
-      "codigo": "18010-0187",
-      "tipo_equipo": "Probadores de consistencia de"
-    },
-    {
-      "codigo": "18010-0188",
-      "tipo_equipo": "Probadores de ductibilidad"
-    },
-    {
-      "codigo": "18010-0189",
-      "tipo_equipo": "Probadores del punto de flash"
-    },
-    {
-      "codigo": "18010-0190",
-      "tipo_equipo": "Probadores de resistencias"
-    },
-    {
-      "codigo": "18010-0191",
-      "tipo_equipo": "Probadores de tubos electrónic"
-    },
-    {
-      "codigo": "18010-0192",
-      "tipo_equipo": "Puentes de wheatstone"
-    },
-    {
-      "codigo": "18010-0193",
-      "tipo_equipo": "Pulidoras metalográficas"
-    },
-    {
-      "codigo": "18010-0194",
-      "tipo_equipo": "Radiadores acústicos"
-    },
-    {
-      "codigo": "18010-0195",
-      "tipo_equipo": "Radiadores de calor"
-    },
-    {
-      "codigo": "18010-0196",
-      "tipo_equipo": "Refractómetros"
-    },
-    {
-      "codigo": "18010-0197",
-      "tipo_equipo": "Registradores fotoeléctricos"
-    },
-    {
-      "codigo": "18010-0198",
-      "tipo_equipo": "Registradores minifn"
-    },
-    {
-      "codigo": "18010-0199",
-      "tipo_equipo": "Reglas de cálculo"
-    },
-    {
-      "codigo": "18010-0200",
-      "tipo_equipo": "Reguladores"
-    },
-    {
-      "codigo": "18010-0201",
-      "tipo_equipo": "Reóstatos"
-    },
-    {
-      "codigo": "18010-0202",
-      "tipo_equipo": "Sacarímetros"
-    },
-    {
-      "codigo": "18010-0203",
-      "tipo_equipo": "Scintilómetros"
-    },
-    {
-      "codigo": "18010-0204",
-      "tipo_equipo": "Secadores eléctricos"
-    },
-    {
-      "codigo": "18010-0205",
-      "tipo_equipo": "Serpentines"
-    },
-    {
-      "codigo": "18010-0206",
-      "tipo_equipo": "Sextantes"
-    },
-    {
-      "codigo": "18010-0207",
-      "tipo_equipo": "Sismógrafos"
-    },
-    {
-      "codigo": "18010-0208",
-      "tipo_equipo": "Sitómetros"
-    },
-    {
-      "codigo": "18010-0209",
-      "tipo_equipo": "Sonómetros"
-    },
-    {
-      "codigo": "18010-0210",
-      "tipo_equipo": "Soportes"
-    },
-    {
-      "codigo": "18010-0211",
-      "tipo_equipo": "Taquímetros"
-    },
-    {
-      "codigo": "18010-0212",
-      "tipo_equipo": "Telémetros"
-    },
-    {
-      "codigo": "18010-0213",
-      "tipo_equipo": "Telescopios"
-    },
-    {
-      "codigo": "18010-0214",
-      "tipo_equipo": "Tensiómetros"
-    },
-    {
-      "codigo": "18010-0215",
-      "tipo_equipo": "Teodolitos"
-    },
-    {
-      "codigo": "18010-0216",
-      "tipo_equipo": "Termógrafos"
-    },
-    {
-      "codigo": "18010-0217",
-      "tipo_equipo": "Termómetros"
-    },
-    {
-      "codigo": "18010-0218",
-      "tipo_equipo": "Termostatos"
-    },
-    {
-      "codigo": "18010-0219",
-      "tipo_equipo": "Torsiómetros"
-    },
-    {
-      "codigo": "18010-0220",
-      "tipo_equipo": "Tránsitos"
-    },
-    {
-      "codigo": "18010-0221",
-      "tipo_equipo": "Transportadores"
-    },
-    {
-      "codigo": "18010-0222",
-      "tipo_equipo": "Trazadores de señales"
-    },
-    {
-      "codigo": "18010-0223",
-      "tipo_equipo": "Trípodes"
-    },
-    {
-      "codigo": "18010-0224",
-      "tipo_equipo": "Trituradores -pulverizadores"
-    },
-    {
-      "codigo": "18010-0225",
-      "tipo_equipo": "Turbidmetros"
-    },
-    {
-      "codigo": "18010-0226",
-      "tipo_equipo": "Velocímetros"
-    },
-    {
-      "codigo": "18010-0227",
-      "tipo_equipo": "Vescocimetros"
-    },
-    {
-      "codigo": "18010-0228",
-      "tipo_equipo": "Voltímetros"
-    },
-    {
-      "codigo": "18990-0000",
-      "tipo_equipo": "Otros equipos científicos"
+  "usuarios": [
+    {
+      "id": "usr-admin-01",
+      "email": "admin@intevep.pdvsa.com",
+      "nombre_completo": "Ing. Carlos Mendoza (Admin)",
+      "rol": "admin",
+      "cargo": "Líder de Calidad y Coordinador SGA",
+      "laboratorio": "Gerencia de Ambiente (GAMB)",
+      "clave_demo": "Admin*2026"
+    },
+    {
+      "id": "usr-analista-01",
+      "email": "analista@intevep.pdvsa.com",
+      "nombre_completo": "Lcdo. Miguel Arismendi",
+      "rol": "analista",
+      "cargo": "Analista Especialista en Cromatografía",
+      "laboratorio": "Lab. de Cromatografía y Compuestos Orgánicos",
+      "clave_demo": "Analista*2026"
+    },
+    {
+      "id": "usr-mant-01",
+      "email": "mantenimiento@intevep.pdvsa.com",
+      "nombre_completo": "Ing. Klaus Weber",
+      "rol": "mantenimiento",
+      "cargo": "Especialista en Mantenimiento Instrumental",
+      "laboratorio": "Taller de Mantenimiento Especializado",
+      "clave_demo": "Mant*2026"
+    },
+    {
+      "id": "usr-sudebip-01",
+      "email": "sudebip@intevep.pdvsa.com",
+      "nombre_completo": "Lcda. Elena Rodríguez",
+      "rol": "sudebip",
+      "cargo": "Custodio Patrimonial de Bienes Públicos",
+      "laboratorio": "Gerencia de Finanzas y Control de Bienes",
+      "clave_demo": "Sudebip*2026"
+    },
+    {
+      "id": "usr-gerente-01",
+      "email": "gerente@intevep.pdvsa.com",
+      "nombre_completo": "Dr. Roberto Valenzuela",
+      "rol": "gerente",
+      "cargo": "Gerente de Ambiente INTEVEP S.A.",
+      "laboratorio": "Dirección Gerencial GAMB",
+      "clave_demo": "Gerente*2026"
     }
   ],
+  "permisos_roles": {
+    "admin": {
+      "dashboard": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "hoja_de_vida": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "inventario": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "calibraciones": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "mantenimiento": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "comprobaciones": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "deriva": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "sudebip": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "desempeno_fo017": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "cierre_brechas_fo030": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "actas_direccion_fo019": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "decisiones": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "catalogos_admin": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "usuarios_admin": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      }
+    },
+    "analista": {
+      "dashboard": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "hoja_de_vida": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "inventario": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "calibraciones": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "mantenimiento": {
+        "ver": true,
+        "crear": true,
+        "editar": false,
+        "eliminar": false
+      },
+      "comprobaciones": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "deriva": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "sudebip": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "desempeno_fo017": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "cierre_brechas_fo030": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "actas_direccion_fo019": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "decisiones": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "catalogos_admin": {
+        "ver": false,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "usuarios_admin": {
+        "ver": false,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      }
+    },
+    "mantenimiento": {
+      "dashboard": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "hoja_de_vida": {
+        "ver": true,
+        "crear": false,
+        "editar": true,
+        "eliminar": false
+      },
+      "inventario": {
+        "ver": true,
+        "crear": false,
+        "editar": true,
+        "eliminar": false
+      },
+      "calibraciones": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "mantenimiento": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "comprobaciones": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "deriva": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "sudebip": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "desempeno_fo017": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "cierre_brechas_fo030": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "actas_direccion_fo019": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "decisiones": {
+        "ver": true,
+        "crear": false,
+        "editar": true,
+        "eliminar": false
+      },
+      "catalogos_admin": {
+        "ver": false,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "usuarios_admin": {
+        "ver": false,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      }
+    },
+    "sudebip": {
+      "dashboard": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "hoja_de_vida": {
+        "ver": true,
+        "crear": false,
+        "editar": true,
+        "eliminar": false
+      },
+      "inventario": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "calibraciones": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "mantenimiento": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "comprobaciones": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "deriva": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "sudebip": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": true
+      },
+      "desempeno_fo017": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "cierre_brechas_fo030": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "actas_direccion_fo019": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "decisiones": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "catalogos_admin": {
+        "ver": false,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "usuarios_admin": {
+        "ver": false,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      }
+    },
+    "gerente": {
+      "dashboard": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "hoja_de_vida": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "inventario": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "calibraciones": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "mantenimiento": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "comprobaciones": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "deriva": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "sudebip": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "desempeno_fo017": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "cierre_brechas_fo030": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "actas_direccion_fo019": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "decisiones": {
+        "ver": true,
+        "crear": true,
+        "editar": true,
+        "eliminar": false
+      },
+      "catalogos_admin": {
+        "ver": true,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      },
+      "usuarios_admin": {
+        "ver": false,
+        "crear": false,
+        "editar": false,
+        "eliminar": false
+      }
+    }
+  },
+  "catalogos": {
+    "estatus_operativo": [
+      "Operativo",
+      "En Calibración",
+      "En Mantenimiento",
+      "Fuera de Servicio",
+      "En Espera de Repuestos",
+      "Desincorporado"
+    ],
+    "criticidad_pdvsa": [
+      "Clase A - Crítico (Impacto Mayor en Calidad/Seguridad)",
+      "Clase B - Importante (Impacto Moderado)",
+      "Clase C - Prescindible (Impacto Menor)"
+    ],
+    "tipos_mantenimiento": [
+      "Preventivo Planificado Sistemático",
+      "Correctivo Programado",
+      "Correctivo de Emergencia",
+      "Predictivo / Monitoreo",
+      "Calibración y Ajuste",
+      "Modificación / Actualización"
+    ],
+    "frecuencias_revision": [
+      "Semanal",
+      "Mensual",
+      "Trimestral",
+      "Semestral",
+      "Anual",
+      "Bianual",
+      "Por Evento / Verificación"
+    ],
+    "condicion_fisica_sudebip": [
+      "Excelente",
+      "Buena",
+      "Regular",
+      "Mala",
+      "Inoperativo"
+    ],
+    "catalogo_sudebip_categorias": [
+      "Equipos Científicos, de Medición y de Laboratorio (Cat. 2.04.02)",
+      "Maquinaria y Demás Equipos de Construcción, Campo e Industria (Cat. 2.04.01)",
+      "Equipos de Procesamiento de Datos y Computación (Cat. 2.04.05)",
+      "Mobiliario y Enseres de Oficina y Laboratorio (Cat. 2.04.04)",
+      "Vehículos y Equipos de Transporte Especializado (Cat. 2.04.03)"
+    ],
+    "dictamen_metrologico": [
+      "Conforme (Pasa)",
+      "Conforme con Restricciones",
+      "No Conforme (No Pasa / Requiere Ajuste)"
+    ],
+    "estatus_calibracion": [
+      "Vigente",
+      "Por Vencer (< 30 días)",
+      "Vencida",
+      "No Aplica"
+    ],
+    "tipos_movimiento_sudebip": [
+      "Incorporación Inicial por Compra",
+      "Asignación de Custodia a Responsable",
+      "Transferencia Interna entre Laboratorios",
+      "Salida Temporal para Calibración/Mantenimiento Externo",
+      "Reasignación de Custodia por Cambio de Personal",
+      "Desincorporación Definitiva por Obsolescencia o Inoperatividad"
+    ],
+    "laboratorios_unidades": [
+      "Lab. de Calidad de Aguas y Efluentes",
+      "Lab. de Análisis de Suelos y Sedimentos",
+      "Lab. de Monitoreo de Emisiones Atmosféricas",
+      "Lab. de Ecotoxicología y Bioensayos",
+      "Lab. de Hidrocarburos y Residuos Peligrosos",
+      "Gerencia de Ambiente - Dirección Técnica",
+      "Sede Central INTEVEP Los Teques",
+      "Química Ambiental",
+      "Desechos ( Tratabilidad de Desechos)",
+      "Efluentes (Tratabilidad de Efluentes)",
+      "Aire (Calidad de Aire)",
+      "Biotecnología",
+      "Ecotoxicología"
+    ]
+  },
   "activos": [
     {
       "num": "1",
@@ -11286,6 +10932,2382 @@
       "jerarquizacion": null,
       "obsolescencia": null,
       "decision": null
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "nombre": "Cromatógrafo de Gases con Espectrómetro de Masas (GC-MS)",
+      "fabricante": "Agilent Technologies Inc.",
+      "modelo": "8890 GC System / 5977B MSD Cuadrupolo",
+      "serial": "US19482014",
+      "filial": "PDVSA INTEVEP S.A.",
+      "sede": "Centro de Investigación y Apoyo Tecnológico (Los Teques)",
+      "gerencia": "Gerencia de Ambiente / Dpto. Tecnologías Ambientales",
+      "laboratorio": "Lab. de Calidad de Aguas y Efluentes (Sala 3B)",
+      "sistema": "Sistema Cromatográfico / Subsistema Inyección-MSD",
+      "custodio": "Dra. Elena Salazar (Jefe de Laboratorio)",
+      "categoria_criticidad": "Clase A - Crítico (Impacto Directo en Calidad y Ensayos)",
+      "estado_operativo": "Operativo",
+      "etapa_ciclo_vida": "Operación y Mantenimiento (Vida útil estimada: 10 años)",
+      "fecha_puesta_servicio": "2021-03-25",
+      "codigo_sudebip": "BP-INT-2021-00452",
+      "numero_etiqueta_qr": "BN-INT-88492",
+      "condicion_fisica": "Buena",
+      "costo_adquisicion_usd": 85000.0,
+      "clasificacion_sudebip": "Equipos Científicos, de Medición y Lab. (Cat. 2.04.02)",
+      "unidad_administradora": "Gerencia de Ambiente - INTEVEP",
+      "responsable_patrimonial": "Dr. Roberto Vargas (Gerente de Ambiente INTEVEP)",
+      "nro_orden_compra": "OC-INTEVEP-2021-089 / FAC-AGIL-9942",
+      "responsable_custodia": "Dra. Elena Salazar (Jefe de Lab. Ensayos Ambientales)",
+      "estatus_sigebi": "Registrado e Incorporado Conforme (Acta INT-2021-014)",
+      "rango_medicion": "1.6 a 1050 u (Resolución 0.1 u)",
+      "rango_temperatura": "Ambiente +4 °C hasta 450 °C (Rampa máx 120 °C/min)",
+      "limite_deteccion": "IDL < 5 fg Octafluoronaftaleno (OFN) m/z 272",
+      "mep": "Desviación masa ≤ ±0.10 u | Repetibilidad RT < 0.008 min",
+      "software_version": "OpenLab CDS ChemStation Rev. C.01.10 [Validado]",
+      "condiciones_ambientales": "Temp: 20 °C ± 2 °C | HR: 40% - 60% | He grado 5.0 (80 psi)",
+      "suministro_electrico": "220 VAC bifásico, 60 Hz / Respaldo UPS 10 kVA On-line",
+      "precinto_seguridad": "PDVSA-CAL-2026-01",
+      "frecuencia_calibracion": "Anual (Intervalo de Confirmación: 12 Meses)",
+      "frecuencia_comprobacion": "Mensual (ISO/IEC 17025 Cláusula 6.4.10)",
+      "riesgos_fisicos": "Gases comprimidos alta presión (Helio/H2 80 psi); Ruido bomba",
+      "epp_operacion": "Lentes de seguridad lateral, guantes nitrilo, bata antiestática",
+      "riesgos_quimicos": "Vapores de solventes orgánicos (Hexano, Diclorometano, Metanol)",
+      "epp_mantenimiento": "Mascarilla vapores orgánicos, guantes fluorados, pechera",
+      "riesgos_termicos": "Horno a 450 °C; Inyector a 300 °C; Alta tensión cuadrupolo",
+      "procedimiento_loto": "Aplica: SIHO-PDVSA-LOTO-08 (Desconexión eléctrica y purga)",
+      "dispositivos_seguridad": "Sensor de fuga de H2 con corte automático, extracción forzada",
+      "ubicacion_emergencia": "Ducha de seguridad y lavaojos a 5 m; Extintor CO2 a 3 m",
+      "estrategia_mantenimiento": "Preventivo Planificado Sistemático y Predictivo",
+      "frecuencia_mantenimiento": "Trimestral (Menor de Campo) y Anual (Mayor Integral)",
+      "codigo_plan_pdvsa": "PM-LAB-GCMS-TRIM / PM-LAB-GCMS-ANUAL",
+      "proveedor_tecnico": "Taller Mantenimiento Instrumental INTEVEP / Servicio Autorizado",
+      "vida_util_anos": 10.0,
+      "tasa_salvamento": 0.1
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-UVVIS-002",
+      "nombre": "Espectrofotómetro UV-Visible de Doble Haz",
+      "fabricante": "PerkinElmer Inc.",
+      "modelo": "Lambda 365+ Doble Haz",
+      "serial": "365N910283",
+      "filial": "PDVSA INTEVEP S.A.",
+      "sede": "Centro de Investigación y Apoyo Tecnológico (Los Teques)",
+      "gerencia": "Gerencia de Ambiente / Dpto. Tecnologías Ambientales",
+      "laboratorio": "Lab. de Fisicoquímica y Calidad de Aguas (Sala 2A)",
+      "sistema": "Sistema Espectrofotométrico / Subsistema Doble Haz UV-Vis",
+      "custodio": "Lic. Andrea Briceño (Especialista Fisicoquímica)",
+      "categoria_criticidad": "Clase B - Importante (Impacto Moderado en Ensayos)",
+      "estado_operativo": "Operativo",
+      "etapa_ciclo_vida": "Operación y Mantenimiento (Vida útil estimada: 8 años)",
+      "fecha_puesta_servicio": "2022-04-05",
+      "codigo_sudebip": "BP-INT-2022-00118",
+      "numero_etiqueta_qr": "BN-INT-89104",
+      "condicion_fisica": "Excelente",
+      "costo_adquisicion_usd": 22000.0,
+      "clasificacion_sudebip": "Equipos Científicos, de Medición y Lab. (Cat. 2.04.02)",
+      "unidad_administradora": "Gerencia de Ambiente - INTEVEP",
+      "responsable_patrimonial": "Dr. Roberto Vargas (Gerente de Ambiente INTEVEP)",
+      "nro_orden_compra": "OC-INTEVEP-2022-034 / FAC-PKI-8812",
+      "responsable_custodia": "Lic. Andrea Briceño (Custodio Operacional)",
+      "estatus_sigebi": "Registrado e Incorporado Conforme (Acta INT-2022-008)",
+      "rango_medicion": "190 a 1100 nm (Ancho de banda 0.5 a 5 nm variable)",
+      "rango_temperatura": "15 °C a 35 °C (Compartimento termostatizado Peltier)",
+      "limite_deteccion": "Fotometría: -3.0 a 3.0 Abs (Linealidad ±0.002 A)",
+      "mep": "Exactitud longitud onda ±0.1 nm | Fotométrica ±0.002 A",
+      "software_version": "UV Express Software v4.1 [Validado 21 CFR Part 11]",
+      "condiciones_ambientales": "Temp: 22 °C ± 2 °C | HR: 35% - 65% | Sin radiación directa",
+      "suministro_electrico": "120 VAC monofásico, 60 Hz / Respaldo UPS 3 kVA On-line",
+      "precinto_seguridad": "PDVSA-CAL-2026-04",
+      "frecuencia_calibracion": "Anual (Intervalo de Confirmación: 12 Meses)",
+      "frecuencia_comprobacion": "Mensual (ISO/IEC 17025 Cláusula 6.4.10)",
+      "riesgos_fisicos": "Radiación UV-C interna lámpara deuterio; Ruido bajo",
+      "epp_operacion": "Lentes con filtro UV lateral, guantes nitrilo, bata de algodón",
+      "riesgos_quimicos": "Soluciones estándar absorbancia, ácidos diluidos (HNO3, HCl)",
+      "epp_mantenimiento": "Guantes nitrilo alto grosor, gafas panorámicas, bata",
+      "riesgos_termicos": "Alta tensión de ignición lámpara deuterio; Fuente de calor",
+      "procedimiento_loto": "Aplica: SIHO-PDVSA-LOTO-04 (Desconexión eléctrica de red)",
+      "dispositivos_seguridad": "Obturador mecánico de haz UV, fusibles de sobrecorriente",
+      "ubicacion_emergencia": "Lavaojos de emergencia a 4 m; Extintor CO2 a 5 m",
+      "estrategia_mantenimiento": "Preventivo Planificado Sistemático",
+      "frecuencia_mantenimiento": "Semestral (Menor de Óptica) y Anual (Mayor Fotométrico)",
+      "codigo_plan_pdvsa": "PM-LAB-UVVIS-SEM / PM-LAB-UVVIS-ANUAL",
+      "proveedor_tecnico": "Taller de Electrónica INTEVEP / PerkinElmer Service",
+      "vida_util_anos": 8.0,
+      "tasa_salvamento": 0.1
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-AAS-003",
+      "nombre": "Espectrómetro de Absorción Atómica (AAS)",
+      "fabricante": "Thermo Scientific",
+      "modelo": "iCE 3500 Dual Flame & Furnace",
+      "serial": "AA3500F928",
+      "filial": "PDVSA INTEVEP S.A.",
+      "sede": "Centro de Investigación y Apoyo Tecnológico (Los Teques)",
+      "gerencia": "Gerencia de Ambiente / Dpto. Tecnologías Ambientales",
+      "laboratorio": "Lab. de Metales Pesados y Toxicología (Sala 1C)",
+      "sistema": "Sistema Espectrométrico / Subsistema Horno Grafito y Llama",
+      "custodio": "Ing. Reinaldo Peña (Especialista en Espectrometría)",
+      "categoria_criticidad": "Clase A - Crítico (Impacto Directo en Calidad y Ensayos)",
+      "estado_operativo": "Operativo",
+      "etapa_ciclo_vida": "Operación y Mantenimiento (Vida útil estimada: 10 años)",
+      "fecha_puesta_servicio": "2020-12-01",
+      "codigo_sudebip": "BP-INT-2020-00891",
+      "numero_etiqueta_qr": "BN-INT-87120",
+      "condicion_fisica": "Buena",
+      "costo_adquisicion_usd": 68000.0,
+      "clasificacion_sudebip": "Equipos Científicos, de Medición y Lab. (Cat. 2.04.02)",
+      "unidad_administradora": "Gerencia de Ambiente - INTEVEP",
+      "responsable_patrimonial": "Dr. Roberto Vargas (Gerente de Ambiente INTEVEP)",
+      "nro_orden_compra": "OC-INTEVEP-2020-112 / FAC-THRM-7731",
+      "responsable_custodia": "Ing. Reinaldo Peña (Custodio Operacional)",
+      "estatus_sigebi": "Registrado e Incorporado Conforme (Acta INT-2020-029)",
+      "rango_medicion": "180 a 900 nm (Horno grafito Zeemam / Llama aire-acetileno)",
+      "rango_temperatura": "Horno grafito hasta 3000 °C / Llama hasta 2300 °C",
+      "limite_deteccion": "Llama: mg/L (ppm) | Horno: µg/L (ppb) (ej. Pb < 0.1 µg/L)",
+      "mep": "Repetibilidad RSD < 0.5% | Desviación longitud onda ±0.2 nm",
+      "software_version": "SOLAAR Software Package v11.02 [Validado]",
+      "condiciones_ambientales": "Temp: 20 °C ± 2 °C | Extracción forzada localizada 500 m³/h",
+      "suministro_electrico": "220 VAC bifásico, 60 Hz / Respaldo UPS 8 kVA On-line",
+      "precinto_seguridad": "PDVSA-CAL-2026-07",
+      "frecuencia_calibracion": "Anual (Intervalo de Confirmación: 12 Meses)",
+      "frecuencia_comprobacion": "Bimensual (ISO/IEC 17025 Cláusula 6.4.10)",
+      "riesgos_fisicos": "Llama abierta acetileno / N2O; Cilindros gas alta presión",
+      "epp_operacion": "Pantalla facial completa, lentes tono 3, guantes térmicos",
+      "riesgos_quimicos": "Patrones certificados metales pesados (Pb, Cd, As, Hg en HNO3)",
+      "epp_mantenimiento": "Mascarilla vapores ácidos, guantes neopreno, delantal",
+      "riesgos_termicos": "Temperatura de atomización 3000 °C; Alta corriente eléctrica",
+      "procedimiento_loto": "Aplica: SIHO-PDVSA-LOTO-12 (Cierre de gases y purga)",
+      "dispositivos_seguridad": "Sensor óptico de llama, válvula automática corte gas combustible",
+      "ubicacion_emergencia": "Ducha de seguridad a 3 m; Extintores PQS y CO2 a 2 m",
+      "estrategia_mantenimiento": "Preventivo Planificado Sistemático y Predictivo",
+      "frecuencia_mantenimiento": "Semestral (Quemador y Lentes) y Anual (Horno y Óptica)",
+      "codigo_plan_pdvsa": "PM-LAB-AAS-SEM / PM-LAB-AAS-ANUAL",
+      "proveedor_tecnico": "Servicio Especializado Thermo Fisher / INTEVEP",
+      "vida_util_anos": 10.0,
+      "tasa_salvamento": 0.1
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-BAL-004",
+      "nombre": "Balanza Analítica de Precisión 0.1 mg",
+      "fabricante": "Mettler Toledo",
+      "modelo": "XPR205 Analytical Balance",
+      "serial": "B928174023",
+      "filial": "PDVSA INTEVEP S.A.",
+      "sede": "Centro de Investigación y Apoyo Tecnológico (Los Teques)",
+      "gerencia": "Gerencia de Ambiente / Dpto. Tecnologías Ambientales",
+      "laboratorio": "Lab. de Fisicoquímica y Preparación de Muestras (Sala 2B)",
+      "sistema": "Sistema Gravimétrico / Subsistema Pesaje Micro-Analítico",
+      "custodio": "Metr. Sonia Rivas (Metrólogo de Masa)",
+      "categoria_criticidad": "Clase A - Crítico (Impacto Directo en Calidad y Ensayos)",
+      "estado_operativo": "Operativo",
+      "etapa_ciclo_vida": "Operación y Mantenimiento (Vida útil estimada: 8 años)",
+      "fecha_puesta_servicio": "2023-05-02",
+      "codigo_sudebip": "BP-INT-2023-00034",
+      "numero_etiqueta_qr": "BN-INT-90412",
+      "condicion_fisica": "Excelente",
+      "costo_adquisicion_usd": 12500.0,
+      "clasificacion_sudebip": "Equipos Científicos, de Medición y Lab. (Cat. 2.04.02)",
+      "unidad_administradora": "Gerencia de Ambiente - INTEVEP",
+      "responsable_patrimonial": "Dr. Roberto Vargas (Gerente de Ambiente INTEVEP)",
+      "nro_orden_compra": "OC-INTEVEP-2023-019 / FAC-MT-4401",
+      "responsable_custodia": "Metr. Sonia Rivas (Custodio Operacional)",
+      "estatus_sigebi": "Registrado e Incorporado Conforme (Acta INT-2023-005)",
+      "rango_medicion": "0.1 mg a 220 g (Legibilidad d = 0.01 mg / 0.1 mg)",
+      "rango_temperatura": "10 °C a 30 °C (Ajuste automático proFACT por temperatura)",
+      "limite_deteccion": "Carga mínima 1 mg (Repetibilidad s = 0.015 mg)",
+      "mep": "Excentricidad: ± 0.10 mg | No linealidad: ± 0.15 mg",
+      "software_version": "LabX Balance Software v14 [Integrado a LIMS]",
+      "condiciones_ambientales": "Mesa antivibratoria granito | Temp: 20 °C ± 1 °C | HR: 45%-55%",
+      "suministro_electrico": "120 VAC estabilizado, 60 Hz / Respaldo UPS 1.5 kVA",
+      "precinto_seguridad": "PDVSA-CAL-2026-11",
+      "frecuencia_calibracion": "Semestral (Intervalo de Confirmación: 6 Meses)",
+      "frecuencia_comprobacion": "Semanal con pesas patrón clase E2 (ISO 17025 Cl. 6.4.10)",
+      "riesgos_fisicos": "Fatiga visual en pesadas repetitivas; Electricidad estática",
+      "epp_operacion": "Pinzas punta carbón, guantes nitrilo sin polvo, bata",
+      "riesgos_quimicos": "Reactivos analíticos de alta pureza, sales de referencia",
+      "epp_mantenimiento": "Mascarilla N95 para polvos tóxicos, guantes nitrilo",
+      "riesgos_termicos": "Electricidad estática en muestras; Fuente baja tensión",
+      "procedimiento_loto": "Desconexión de adaptador AC y seguro mecánico de platillo",
+      "dispositivos_seguridad": "Puertas cortavientos motorizadas antiestáticas, celda sellada",
+      "ubicacion_emergencia": "Botiquín primeros auxilios a 5 m; Lavaojos a 6 m",
+      "estrategia_mantenimiento": "Mantenimiento Preventivo y Limpieza Metrológica",
+      "frecuencia_mantenimiento": "Semestral (Calibración y Ajuste de Cuchillas)",
+      "codigo_plan_pdvsa": "PM-LAB-BAL-SEM",
+      "proveedor_tecnico": "Laboratorio de Masas SENCAMER / Metrólogo INTEVEP",
+      "vida_util_anos": 8.0,
+      "tasa_salvamento": 0.05
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-TOC-005",
+      "nombre": "Analizador de Carbono Orgánico Total (TOC)",
+      "fabricante": "Shimadzu Corporation",
+      "modelo": "TOC-L CPH Combustión Catalítica 680 °C",
+      "serial": "H543209812",
+      "filial": "PDVSA INTEVEP S.A.",
+      "sede": "Centro de Investigación y Apoyo Tecnológico (Los Teques)",
+      "gerencia": "Gerencia de Ambiente / Dpto. Tecnologías Ambientales",
+      "laboratorio": "Lab. de Efluentes y Calidad de Agua (Sala 3A)",
+      "sistema": "Sistema de Combustión Catalítica / Subsistema Detección NDIR",
+      "custodio": "Lic. Andrea Briceño (Especialista Ambiental)",
+      "categoria_criticidad": "Clase B - Importante (Impacto Moderado en Ensayos)",
+      "estado_operativo": "Operativo",
+      "etapa_ciclo_vida": "Operación y Mantenimiento (Vida útil estimada: 8 años)",
+      "fecha_puesta_servicio": "2022-09-01",
+      "codigo_sudebip": "BP-INT-2022-00572",
+      "numero_etiqueta_qr": "BN-INT-89871",
+      "condicion_fisica": "Buena",
+      "costo_adquisicion_usd": 34000.0,
+      "clasificacion_sudebip": "Equipos Científicos, de Medición y Lab. (Cat. 2.04.02)",
+      "unidad_administradora": "Gerencia de Ambiente - INTEVEP",
+      "responsable_patrimonial": "Dr. Roberto Vargas (Gerente de Ambiente INTEVEP)",
+      "nro_orden_compra": "OC-INTEVEP-2022-088 / FAC-SHM-6190",
+      "responsable_custodia": "Lic. Andrea Briceño (Custodio Operacional)",
+      "estatus_sigebi": "Registrado e Incorporado Conforme (Acta INT-2022-021)",
+      "rango_medicion": "4 µg/L a 30,000 mg/L (TC, IC, TOC, NPOC, POC)",
+      "rango_temperatura": "Horno de combustión catalítica a 680 °C constante",
+      "limite_deteccion": "Límite de detección 4 µg/L TC (Sensor NDIR miniaturizado)",
+      "mep": "Repetibilidad CV < 1.5% | Desviación masa < 2%",
+      "software_version": "TOC-Control L Software v1.07 [Validado]",
+      "condiciones_ambientales": "Temp: 20 °C - 25 °C | Flujo aire sintético libre de CO2 (80 psi)",
+      "suministro_electrico": "220 VAC bifásico, 60 Hz / Respaldo UPS 5 kVA On-line",
+      "precinto_seguridad": "PDVSA-CAL-2026-15",
+      "frecuencia_calibracion": "Anual (Intervalo de Confirmación: 12 Meses)",
+      "frecuencia_comprobacion": "Mensual con ftalato ácido de potasio (ISO 17025 Cl. 6.4.10)",
+      "riesgos_fisicos": "Horno de combustión a 680 °C; Presión de líneas de gas",
+      "epp_operacion": "Gafas de seguridad, guantes de nitrilo, bata antiestática",
+      "riesgos_quimicos": "Ácido clorhídrico 2M (descarbonatación IC), patrones carbono",
+      "epp_mantenimiento": "Guantes para ácidos fuertes, pantalla facial, pechera",
+      "riesgos_termicos": "Calentador cerámico de combustión 680 °C; Alta temperatura",
+      "procedimiento_loto": "Aplica: SIHO-PDVSA-LOTO-06 (Desconexión y enfriamiento)",
+      "dispositivos_seguridad": "Alarma de sobrecalentamiento, presostato de gas portador",
+      "ubicacion_emergencia": "Ducha de seguridad a 4 m; Extintor CO2 a 3 m",
+      "estrategia_mantenimiento": "Preventivo Planificado Sistemático",
+      "frecuencia_mantenimiento": "Semestral (Catalizador y Tubo Cuarzo) y Anual (NDIR)",
+      "codigo_plan_pdvsa": "PM-LAB-TOC-SEM / PM-LAB-TOC-ANUAL",
+      "proveedor_tecnico": "Shimadzu Venezuela / Taller de Mantenimiento INTEVEP",
+      "vida_util_anos": 8.0,
+      "tasa_salvamento": 0.1
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-PH-006",
+      "nombre": "Medidor Multiparámetro de Mesa (pH/Cond/OD)",
+      "fabricante": "Thermo Fisher Scientific / Orion",
+      "modelo": "Star A215 Multiparámetro",
+      "serial": "OR77210945",
+      "filial": "PDVSA INTEVEP S.A.",
+      "sede": "Centro de Investigación y Apoyo Tecnológico (Los Teques)",
+      "gerencia": "Gerencia de Ambiente / Dpto. Tecnologías Ambientales",
+      "laboratorio": "Lab. de Monitoreo Ambiental Rápido (Sala 1A)",
+      "sistema": "Sistema Electroquímico / Subsistema Potenciométrico y Conductimétrico",
+      "custodio": "Téc. Marcos Rivas (Analista de Campo)",
+      "categoria_criticidad": "Clase C - Prescindible (Impacto Menor en Ensayos)",
+      "estado_operativo": "Operativo",
+      "etapa_ciclo_vida": "Operación y Mantenimiento (Vida útil estimada: 5 años)",
+      "fecha_puesta_servicio": "2023-09-20",
+      "codigo_sudebip": "BP-INT-2023-00201",
+      "numero_etiqueta_qr": "BN-INT-91045",
+      "condicion_fisica": "Buena",
+      "costo_adquisicion_usd": 4800.0,
+      "clasificacion_sudebip": "Equipos Científicos, de Medición y Lab. (Cat. 2.04.02)",
+      "unidad_administradora": "Gerencia de Ambiente - INTEVEP",
+      "responsable_patrimonial": "Dr. Roberto Vargas (Gerente de Ambiente INTEVEP)",
+      "nro_orden_compra": "OC-INTEVEP-2023-104 / FAC-ORION-1289",
+      "responsable_custodia": "Téc. Marcos Rivas (Custodio Operacional)",
+      "estatus_sigebi": "Registrado e Incorporado Conforme (Acta INT-2023-018)",
+      "rango_medicion": "pH: -2.000 a 20.000 | Cond: 0.001 µS/cm a 3000 mS/cm | Temp: -5 a 105 °C",
+      "rango_temperatura": "5 °C a 45 °C (Compensación automática de temperatura ATC)",
+      "limite_deteccion": "Resolución pH: 0.001 / Cond: 0.01 µS / Temp: 0.1 °C",
+      "mep": "Exactitud pH: ±0.002 pH | Conductividad: ±0.5% lectura",
+      "software_version": "Orion Star Navigator Communications Software v2.0",
+      "condiciones_ambientales": "Temp ambiente: 18 °C a 25 °C | Humedad relativa < 80%",
+      "suministro_electrico": "Adaptador universal 110-240 VAC / Baterías de respaldo AA",
+      "precinto_seguridad": "PDVSA-CAL-2026-19",
+      "frecuencia_calibracion": "Semestral (Intervalo de Confirmación: 6 Meses)",
+      "frecuencia_comprobacion": "Diaria antes de cada serie analítica (ISO 17025 Cl. 6.4.10)",
+      "riesgos_fisicos": "Rotura accidental de electrodo de vidrio con bulbo frágil",
+      "epp_operacion": "Gafas de protección lateral, guantes nitrilo, bata de tela",
+      "riesgos_quimicos": "Soluciones tampón buffer (pH 4.01, 7.00, 10.01), electrolito KCl 3M",
+      "epp_mantenimiento": "Guantes de nitrilo, lentes de seguridad, toallas secantes",
+      "riesgos_termicos": "Mínimo riesgo eléctrico (Baja tensión 9 VDC)",
+      "procedimiento_loto": "Desconexión directa del adaptador de corriente AC",
+      "dispositivos_seguridad": "Brazo electrodo contrapesado con tope amortiguador",
+      "ubicacion_emergencia": "Botiquín primeros auxilios a 8 m; Extintor ABC a 6 m",
+      "estrategia_mantenimiento": "Mantenimiento Predictivo / Reemplazo Preventivo de Sensores",
+      "frecuencia_mantenimiento": "Anual (Verificación Electrónica y Reemplazo de Electrodo)",
+      "codigo_plan_pdvsa": "PM-LAB-PH-ANUAL",
+      "proveedor_tecnico": "Taller de Instrumentación INTEVEP",
+      "vida_util_anos": 5.0,
+      "tasa_salvamento": 0.05
+    }
+  ],
+  "catalogo_sudebip": [
+    {
+      "codigo": "18010-0001",
+      "tipo_equipo": "Agitadores"
+    },
+    {
+      "codigo": "18010-0002",
+      "tipo_equipo": "Alambiques"
+    },
+    {
+      "codigo": "18010-0003",
+      "tipo_equipo": "Alcalímetros"
+    },
+    {
+      "codigo": "18010-0004",
+      "tipo_equipo": "Alcoholmetros"
+    },
+    {
+      "codigo": "18010-0005",
+      "tipo_equipo": "Altímetros"
+    },
+    {
+      "codigo": "18010-0006",
+      "tipo_equipo": "Altoparlantes"
+    },
+    {
+      "codigo": "18010-0007",
+      "tipo_equipo": "Amperímetros"
+    },
+    {
+      "codigo": "18010-0008",
+      "tipo_equipo": "Ampliadores"
+    },
+    {
+      "codigo": "18010-0009",
+      "tipo_equipo": "Analizadores"
+    },
+    {
+      "codigo": "18010-0010",
+      "tipo_equipo": "Anemógrafos"
+    },
+    {
+      "codigo": "18010-0011",
+      "tipo_equipo": "Anemómetros"
+    },
+    {
+      "codigo": "18010-0012",
+      "tipo_equipo": "Aneroides (ver barómetros)"
+    },
+    {
+      "codigo": "18010-0013",
+      "tipo_equipo": "Aparatos de explotación geográ"
+    },
+    {
+      "codigo": "18010-0014",
+      "tipo_equipo": "Aparatos de reducción kjeldahl"
+    },
+    {
+      "codigo": "18010-0015",
+      "tipo_equipo": "Aparatos de reducción catalíti"
+    },
+    {
+      "codigo": "18010-0016",
+      "tipo_equipo": "Aparatos para colorear"
+    },
+    {
+      "codigo": "18010-0017",
+      "tipo_equipo": "Aparatos para destilar agua"
+    },
+    {
+      "codigo": "18010-0018",
+      "tipo_equipo": "Aparatos para electrólisis"
+    },
+    {
+      "codigo": "18010-0019",
+      "tipo_equipo": "Aparatos para interpretación d"
+    },
+    {
+      "codigo": "18010-0020",
+      "tipo_equipo": "Aparatos para la indeterminaci"
+    },
+    {
+      "codigo": "18010-0021",
+      "tipo_equipo": "Aparatos para pruebas de sedim"
+    },
+    {
+      "codigo": "18010-0022",
+      "tipo_equipo": "Arcos voltaicos"
+    },
+    {
+      "codigo": "18010-0023",
+      "tipo_equipo": "Areómetros (ver densímetros)"
+    },
+    {
+      "codigo": "18010-0024",
+      "tipo_equipo": "Autoclaves"
+    },
+    {
+      "codigo": "18010-0025",
+      "tipo_equipo": "Balanzas de laboratorio"
+    },
+    {
+      "codigo": "18010-0026",
+      "tipo_equipo": "Bancos ópticos"
+    },
+    {
+      "codigo": "18010-0027",
+      "tipo_equipo": "Baños de maría (no de uso clín"
+    },
+    {
+      "codigo": "18010-0028",
+      "tipo_equipo": "Baños para impregnación de par"
+    },
+    {
+      "codigo": "18010-0029",
+      "tipo_equipo": "Barómetros"
+    },
+    {
+      "codigo": "18010-0030",
+      "tipo_equipo": "Binóculos"
+    },
+    {
+      "codigo": "18010-0031",
+      "tipo_equipo": "Biofotocolorímetros"
+    },
+    {
+      "codigo": "18010-0032",
+      "tipo_equipo": "Bombas de laboratorio"
+    },
+    {
+      "codigo": "18010-0033",
+      "tipo_equipo": "Brújulas"
+    },
+    {
+      "codigo": "18010-0034",
+      "tipo_equipo": "Caleidoscopios"
+    },
+    {
+      "codigo": "18010-0035",
+      "tipo_equipo": "Calorímetros"
+    },
+    {
+      "codigo": "18010-0036",
+      "tipo_equipo": "Cámaras microfotográficas"
+    },
+    {
+      "codigo": "18010-0037",
+      "tipo_equipo": "Cámaras de recuento"
+    },
+    {
+      "codigo": "18010-0038",
+      "tipo_equipo": "Cámaras lúcidas"
+    },
+    {
+      "codigo": "18010-0039",
+      "tipo_equipo": "Cámaras fotográficas"
+    },
+    {
+      "codigo": "18010-0040",
+      "tipo_equipo": "Catetómetros"
+    },
+    {
+      "codigo": "18010-0041",
+      "tipo_equipo": "Carretes de ruhmkorff"
+    },
+    {
+      "codigo": "18010-0042",
+      "tipo_equipo": "Centrifugadores"
+    },
+    {
+      "codigo": "18010-0043",
+      "tipo_equipo": "Centrífugas"
+    },
+    {
+      "codigo": "18010-0044",
+      "tipo_equipo": "Círculos meridianos"
+    },
+    {
+      "codigo": "18010-0045",
+      "tipo_equipo": "Clicimetros"
+    },
+    {
+      "codigo": "18010-0046",
+      "tipo_equipo": "Colorímetros"
+    },
+    {
+      "codigo": "18010-0047",
+      "tipo_equipo": "Condensadores de campo oscuro"
+    },
+    {
+      "codigo": "18010-0048",
+      "tipo_equipo": "Contadores de rayos ionizados"
+    },
+    {
+      "codigo": "18010-0049",
+      "tipo_equipo": "Contadores geiger"
+    },
+    {
+      "codigo": "18010-0050",
+      "tipo_equipo": "Convertidores microfotográfico"
+    },
+    {
+      "codigo": "18010-0051",
+      "tipo_equipo": "Copiadores fotográficos"
+    },
+    {
+      "codigo": "18010-0052",
+      "tipo_equipo": "Cronómetros"
+    },
+    {
+      "codigo": "18010-0053",
+      "tipo_equipo": "Cubetas esmaltadas"
+    },
+    {
+      "codigo": "18010-0054",
+      "tipo_equipo": "Cuentahílos"
+    },
+    {
+      "codigo": "18010-0055",
+      "tipo_equipo": "Densímetros"
+    },
+    {
+      "codigo": "18010-0056",
+      "tipo_equipo": "Desecadores"
+    },
+    {
+      "codigo": "18010-0057",
+      "tipo_equipo": "Deshumecedores"
+    },
+    {
+      "codigo": "18010-0058",
+      "tipo_equipo": "Destiladores"
+    },
+    {
+      "codigo": "18010-0059",
+      "tipo_equipo": "Detectores de minas"
+    },
+    {
+      "codigo": "18010-0060",
+      "tipo_equipo": "Determinadores del carbono"
+    },
+    {
+      "codigo": "18010-0061",
+      "tipo_equipo": "Dializadores"
+    },
+    {
+      "codigo": "18010-0062",
+      "tipo_equipo": "Dicroscopios"
+    },
+    {
+      "codigo": "18010-0063",
+      "tipo_equipo": "Digestorios"
+    },
+    {
+      "codigo": "18010-0064",
+      "tipo_equipo": "Dinamómetros"
+    },
+    {
+      "codigo": "18010-0065",
+      "tipo_equipo": "Dispensadores de placas de vid"
+    },
+    {
+      "codigo": "18010-0066",
+      "tipo_equipo": "Eclímetros"
+    },
+    {
+      "codigo": "18010-0067",
+      "tipo_equipo": "Editoras para películas fotogr"
+    },
+    {
+      "codigo": "18010-0068",
+      "tipo_equipo": "Electroanalizadores"
+    },
+    {
+      "codigo": "18010-0069",
+      "tipo_equipo": "Electrodos de platino"
+    },
+    {
+      "codigo": "18010-0070",
+      "tipo_equipo": "Electróforos"
+    },
+    {
+      "codigo": "18010-0071",
+      "tipo_equipo": "Electrografos"
+    },
+    {
+      "codigo": "18010-0072",
+      "tipo_equipo": "Electroimanes"
+    },
+    {
+      "codigo": "18010-0073",
+      "tipo_equipo": "Electrómetros"
+    },
+    {
+      "codigo": "18010-0074",
+      "tipo_equipo": "Electrópodos"
+    },
+    {
+      "codigo": "18010-0075",
+      "tipo_equipo": "Electroscopios"
+    },
+    {
+      "codigo": "18010-0076",
+      "tipo_equipo": "Eliminadores de batería"
+    },
+    {
+      "codigo": "18010-0077",
+      "tipo_equipo": "Empacadoras de píldoras"
+    },
+    {
+      "codigo": "18010-0078",
+      "tipo_equipo": "Emulsificadores"
+    },
+    {
+      "codigo": "18010-0079",
+      "tipo_equipo": "Equipos de micro-combustión"
+    },
+    {
+      "codigo": "18010-0080",
+      "tipo_equipo": "Equipos de telemetración"
+    },
+    {
+      "codigo": "18010-0081",
+      "tipo_equipo": "Equipos de tratamiento al calo"
+    },
+    {
+      "codigo": "18010-0082",
+      "tipo_equipo": "Equipos fotoeléctricos"
+    },
+    {
+      "codigo": "18010-0083",
+      "tipo_equipo": "Escleroscopios"
+    },
+    {
+      "codigo": "18010-0084",
+      "tipo_equipo": "Escurridores"
+    },
+    {
+      "codigo": "18010-0085",
+      "tipo_equipo": "Esferómetros"
+    },
+    {
+      "codigo": "18010-0086",
+      "tipo_equipo": "Espectrofotómetros"
+    },
+    {
+      "codigo": "18010-0087",
+      "tipo_equipo": "Espectroscopios"
+    },
+    {
+      "codigo": "18010-0088",
+      "tipo_equipo": "Estereómetros"
+    },
+    {
+      "codigo": "18010-0089",
+      "tipo_equipo": "Estereoscopios"
+    },
+    {
+      "codigo": "18010-0090",
+      "tipo_equipo": "Estroboscopios"
+    },
+    {
+      "codigo": "18010-0091",
+      "tipo_equipo": "Estuches para accesorios fotog"
+    },
+    {
+      "codigo": "18010-0092",
+      "tipo_equipo": "Estufas de laboratorio"
+    },
+    {
+      "codigo": "18010-0093",
+      "tipo_equipo": "Eudiómetros"
+    },
+    {
+      "codigo": "18010-0094",
+      "tipo_equipo": "Evaporímetros"
+    },
+    {
+      "codigo": "18010-0095",
+      "tipo_equipo": "Extractores"
+    },
+    {
+      "codigo": "18010-0096",
+      "tipo_equipo": "Filmadoras"
+    },
+    {
+      "codigo": "18010-0097",
+      "tipo_equipo": "Filtros de laboratorio"
+    },
+    {
+      "codigo": "18010-0098",
+      "tipo_equipo": "Flash fotográficos"
+    },
+    {
+      "codigo": "18010-0099",
+      "tipo_equipo": "Flexómetros"
+    },
+    {
+      "codigo": "18010-0100",
+      "tipo_equipo": "Fluoroscopios"
+    },
+    {
+      "codigo": "18010-0101",
+      "tipo_equipo": "Fluxómetros"
+    },
+    {
+      "codigo": "18010-0102",
+      "tipo_equipo": "Fotómetros"
+    },
+    {
+      "codigo": "18010-0103",
+      "tipo_equipo": "Gabinetes de laboratorio"
+    },
+    {
+      "codigo": "18010-0104",
+      "tipo_equipo": "Gabinetes de fermentación"
+    },
+    {
+      "codigo": "18010-0105",
+      "tipo_equipo": "Galvanómetros"
+    },
+    {
+      "codigo": "18010-0106",
+      "tipo_equipo": "Gavetas para láminas microscóp"
+    },
+    {
+      "codigo": "18010-0107",
+      "tipo_equipo": "Generadores de señales"
+    },
+    {
+      "codigo": "18010-0108",
+      "tipo_equipo": "Giroscopios"
+    },
+    {
+      "codigo": "18010-0109",
+      "tipo_equipo": "Goniómetros"
+    },
+    {
+      "codigo": "18010-0110",
+      "tipo_equipo": "Grafómetros"
+    },
+    {
+      "codigo": "18010-0111",
+      "tipo_equipo": "Gramurios"
+    },
+    {
+      "codigo": "18010-0112",
+      "tipo_equipo": "Gravitómetros"
+    },
+    {
+      "codigo": "18010-0113",
+      "tipo_equipo": "Guarada-láminas (ver laminotec"
+    },
+    {
+      "codigo": "18010-0114",
+      "tipo_equipo": "Heliografos"
+    },
+    {
+      "codigo": "18010-0115",
+      "tipo_equipo": "Hemisferios de magdeburgo"
+    },
+    {
+      "codigo": "18010-0116",
+      "tipo_equipo": "Hidrogenadores catalíticos"
+    },
+    {
+      "codigo": "18010-0117",
+      "tipo_equipo": "Higrómetros"
+    },
+    {
+      "codigo": "18010-0118",
+      "tipo_equipo": "Higroscopios"
+    },
+    {
+      "codigo": "18010-0119",
+      "tipo_equipo": "Hipsómetros"
+    },
+    {
+      "codigo": "18010-0120",
+      "tipo_equipo": "Hornillos"
+    },
+    {
+      "codigo": "18010-0121",
+      "tipo_equipo": "Hornos de laboratorio"
+    },
+    {
+      "codigo": "18010-0122",
+      "tipo_equipo": "Hornos prensa al vaco"
+    },
+    {
+      "codigo": "18010-0123",
+      "tipo_equipo": "Incubadoras de laboratorio"
+    },
+    {
+      "codigo": "18010-0124",
+      "tipo_equipo": "Indicadores del punto de fusió"
+    },
+    {
+      "codigo": "18010-0125",
+      "tipo_equipo": "Inductores"
+    },
+    {
+      "codigo": "18010-0126",
+      "tipo_equipo": "Juegos de lentes en estuche"
+    },
+    {
+      "codigo": "18010-0127",
+      "tipo_equipo": "Juegos de pesas de laboratorio"
+    },
+    {
+      "codigo": "18010-0128",
+      "tipo_equipo": "Laboratorios químicos de campo"
+    },
+    {
+      "codigo": "18010-0129",
+      "tipo_equipo": "Laminotecas"
+    },
+    {
+      "codigo": "18010-0130",
+      "tipo_equipo": "Lámparas infrarrojas"
+    },
+    {
+      "codigo": "18010-0131",
+      "tipo_equipo": "Lámparas para microscopios"
+    },
+    {
+      "codigo": "18010-0133",
+      "tipo_equipo": "Lámparas ultravioletas"
+    },
+    {
+      "codigo": "18010-0134",
+      "tipo_equipo": "Largavistas"
+    },
+    {
+      "codigo": "18010-0135",
+      "tipo_equipo": "Lavadoras de pipetas"
+    },
+    {
+      "codigo": "18010-0136",
+      "tipo_equipo": "Lijadoras metalográficas"
+    },
+    {
+      "codigo": "18010-0137",
+      "tipo_equipo": "Lupas"
+    },
+    {
+      "codigo": "18010-0138",
+      "tipo_equipo": "Magnetómetros"
+    },
+    {
+      "codigo": "18010-0139",
+      "tipo_equipo": "Magnetos"
+    },
+    {
+      "codigo": "18010-0140",
+      "tipo_equipo": "Máquinas neumáticas"
+    },
+    {
+      "codigo": "18010-0141",
+      "tipo_equipo": "Máquinas para supositorios"
+    },
+    {
+      "codigo": "18010-0142",
+      "tipo_equipo": "Marcadores de películas"
+    },
+    {
+      "codigo": "18010-0143",
+      "tipo_equipo": "Mecheros bunsen"
+    },
+    {
+      "codigo": "18010-0144",
+      "tipo_equipo": "Megáfonos"
+    },
+    {
+      "codigo": "18010-0145",
+      "tipo_equipo": "Medidores de ácidos (ph)"
+    },
+    {
+      "codigo": "18010-0146",
+      "tipo_equipo": "Medidores de fluido"
+    },
+    {
+      "codigo": "18010-0147",
+      "tipo_equipo": "Mesas de laboratorio"
+    },
+    {
+      "codigo": "18010-0148",
+      "tipo_equipo": "Mezcladoras (laboratorio)"
+    },
+    {
+      "codigo": "18010-0149",
+      "tipo_equipo": "Microfilmadores"
+    },
+    {
+      "codigo": "18010-0150",
+      "tipo_equipo": "Microscopios"
+    },
+    {
+      "codigo": "18010-0151",
+      "tipo_equipo": "Micrótomos"
+    },
+    {
+      "codigo": "18010-0152",
+      "tipo_equipo": "Miras"
+    },
+    {
+      "codigo": "18010-0153",
+      "tipo_equipo": "Moldes para pruebas de compact"
+    },
+    {
+      "codigo": "18010-0154",
+      "tipo_equipo": "Moldes para supositorios"
+    },
+    {
+      "codigo": "18010-0155",
+      "tipo_equipo": "Molinos"
+    },
+    {
+      "codigo": "18010-0156",
+      "tipo_equipo": "Multímetros"
+    },
+    {
+      "codigo": "18010-0157",
+      "tipo_equipo": "Morteros"
+    },
+    {
+      "codigo": "18010-0158",
+      "tipo_equipo": "Muflas (ver hornos de laborato"
+    },
+    {
+      "codigo": "18010-0159",
+      "tipo_equipo": "Neveras de laboratorio"
+    },
+    {
+      "codigo": "18010-0160",
+      "tipo_equipo": "Niveles"
+    },
+    {
+      "codigo": "18010-0161",
+      "tipo_equipo": "Niveles de anteojo (amney)"
+    },
+    {
+      "codigo": "18010-0162",
+      "tipo_equipo": "Objetivos microscópicos"
+    },
+    {
+      "codigo": "18010-0163",
+      "tipo_equipo": "Octantes"
+    },
+    {
+      "codigo": "18010-0164",
+      "tipo_equipo": "Oculares"
+    },
+    {
+      "codigo": "18010-0165",
+      "tipo_equipo": "Ohmímetros"
+    },
+    {
+      "codigo": "18010-0166",
+      "tipo_equipo": "Oscilógrafos"
+    },
+    {
+      "codigo": "18010-0167",
+      "tipo_equipo": "Oscilómetros"
+    },
+    {
+      "codigo": "18010-0168",
+      "tipo_equipo": "Osciloscopios"
+    },
+    {
+      "codigo": "18010-0169",
+      "tipo_equipo": "Penetrómetros"
+    },
+    {
+      "codigo": "18010-0170",
+      "tipo_equipo": "Perforadores de corchos"
+    },
+    {
+      "codigo": "18010-0171",
+      "tipo_equipo": "Periscopios"
+    },
+    {
+      "codigo": "18010-0172",
+      "tipo_equipo": "Permeámetros"
+    },
+    {
+      "codigo": "18010-0173",
+      "tipo_equipo": "Pesahilos de precisión"
+    },
+    {
+      "codigo": "18010-0174",
+      "tipo_equipo": "Pipeteadores automáticos"
+    },
+    {
+      "codigo": "18010-0175",
+      "tipo_equipo": "Pipeteros"
+    },
+    {
+      "codigo": "18010-0176",
+      "tipo_equipo": "Pirómetros"
+    },
+    {
+      "codigo": "18010-0177",
+      "tipo_equipo": "Planchetas"
+    },
+    {
+      "codigo": "18010-0178",
+      "tipo_equipo": "Planímetros"
+    },
+    {
+      "codigo": "18010-0179",
+      "tipo_equipo": "Pluviómetros"
+    },
+    {
+      "codigo": "18010-0180",
+      "tipo_equipo": "Podómetros"
+    },
+    {
+      "codigo": "18010-0181",
+      "tipo_equipo": "Polarímetros"
+    },
+    {
+      "codigo": "18010-0182",
+      "tipo_equipo": "Polarizadores"
+    },
+    {
+      "codigo": "18010-0183",
+      "tipo_equipo": "Porta-láminas"
+    },
+    {
+      "codigo": "18010-0184",
+      "tipo_equipo": "Potenciómetros"
+    },
+    {
+      "codigo": "18010-0185",
+      "tipo_equipo": "Prensas metalográficas"
+    },
+    {
+      "codigo": "18010-0186",
+      "tipo_equipo": "Probadores de humedad"
+    },
+    {
+      "codigo": "18010-0187",
+      "tipo_equipo": "Probadores de consistencia de"
+    },
+    {
+      "codigo": "18010-0188",
+      "tipo_equipo": "Probadores de ductibilidad"
+    },
+    {
+      "codigo": "18010-0189",
+      "tipo_equipo": "Probadores del punto de flash"
+    },
+    {
+      "codigo": "18010-0190",
+      "tipo_equipo": "Probadores de resistencias"
+    },
+    {
+      "codigo": "18010-0191",
+      "tipo_equipo": "Probadores de tubos electrónic"
+    },
+    {
+      "codigo": "18010-0192",
+      "tipo_equipo": "Puentes de wheatstone"
+    },
+    {
+      "codigo": "18010-0193",
+      "tipo_equipo": "Pulidoras metalográficas"
+    },
+    {
+      "codigo": "18010-0194",
+      "tipo_equipo": "Radiadores acústicos"
+    },
+    {
+      "codigo": "18010-0195",
+      "tipo_equipo": "Radiadores de calor"
+    },
+    {
+      "codigo": "18010-0196",
+      "tipo_equipo": "Refractómetros"
+    },
+    {
+      "codigo": "18010-0197",
+      "tipo_equipo": "Registradores fotoeléctricos"
+    },
+    {
+      "codigo": "18010-0198",
+      "tipo_equipo": "Registradores minifn"
+    },
+    {
+      "codigo": "18010-0199",
+      "tipo_equipo": "Reglas de cálculo"
+    },
+    {
+      "codigo": "18010-0200",
+      "tipo_equipo": "Reguladores"
+    },
+    {
+      "codigo": "18010-0201",
+      "tipo_equipo": "Reóstatos"
+    },
+    {
+      "codigo": "18010-0202",
+      "tipo_equipo": "Sacarímetros"
+    },
+    {
+      "codigo": "18010-0203",
+      "tipo_equipo": "Scintilómetros"
+    },
+    {
+      "codigo": "18010-0204",
+      "tipo_equipo": "Secadores eléctricos"
+    },
+    {
+      "codigo": "18010-0205",
+      "tipo_equipo": "Serpentines"
+    },
+    {
+      "codigo": "18010-0206",
+      "tipo_equipo": "Sextantes"
+    },
+    {
+      "codigo": "18010-0207",
+      "tipo_equipo": "Sismógrafos"
+    },
+    {
+      "codigo": "18010-0208",
+      "tipo_equipo": "Sitómetros"
+    },
+    {
+      "codigo": "18010-0209",
+      "tipo_equipo": "Sonómetros"
+    },
+    {
+      "codigo": "18010-0210",
+      "tipo_equipo": "Soportes"
+    },
+    {
+      "codigo": "18010-0211",
+      "tipo_equipo": "Taquímetros"
+    },
+    {
+      "codigo": "18010-0212",
+      "tipo_equipo": "Telémetros"
+    },
+    {
+      "codigo": "18010-0213",
+      "tipo_equipo": "Telescopios"
+    },
+    {
+      "codigo": "18010-0214",
+      "tipo_equipo": "Tensiómetros"
+    },
+    {
+      "codigo": "18010-0215",
+      "tipo_equipo": "Teodolitos"
+    },
+    {
+      "codigo": "18010-0216",
+      "tipo_equipo": "Termógrafos"
+    },
+    {
+      "codigo": "18010-0217",
+      "tipo_equipo": "Termómetros"
+    },
+    {
+      "codigo": "18010-0218",
+      "tipo_equipo": "Termostatos"
+    },
+    {
+      "codigo": "18010-0219",
+      "tipo_equipo": "Torsiómetros"
+    },
+    {
+      "codigo": "18010-0220",
+      "tipo_equipo": "Tránsitos"
+    },
+    {
+      "codigo": "18010-0221",
+      "tipo_equipo": "Transportadores"
+    },
+    {
+      "codigo": "18010-0222",
+      "tipo_equipo": "Trazadores de señales"
+    },
+    {
+      "codigo": "18010-0223",
+      "tipo_equipo": "Trípodes"
+    },
+    {
+      "codigo": "18010-0224",
+      "tipo_equipo": "Trituradores -pulverizadores"
+    },
+    {
+      "codigo": "18010-0225",
+      "tipo_equipo": "Turbidmetros"
+    },
+    {
+      "codigo": "18010-0226",
+      "tipo_equipo": "Velocímetros"
+    },
+    {
+      "codigo": "18010-0227",
+      "tipo_equipo": "Vescocimetros"
+    },
+    {
+      "codigo": "18010-0228",
+      "tipo_equipo": "Voltímetros"
+    },
+    {
+      "codigo": "18990-0000",
+      "tipo_equipo": "Otros equipos científicos"
+    }
+  ],
+  "calibraciones": [
+    {
+      "id_calibracion": "CAL-2026-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "nro_certificado": "CERT-MET-2026-884",
+      "fecha_calibracion": "2026-06-15",
+      "fecha_vencimiento": "2027-06-15",
+      "dias_restantes": 223,
+      "estatus_metrologico": "VIGENTE",
+      "entidad_acreditada": "SENCAMER / Lab. Metrología Acreditado ISO 17025",
+      "patron_utilizado": "Escala de Masa Cuadrupolo (m/z) y Temp. Horno",
+      "desviacion_observada": "+0.03 u / +0.3 °C",
+      "incertidumbre_u": "U = ± 0.05 u (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.10 u / ± 1.0 °C",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2026-01",
+      "metrologo_responsable": "Ing. Carlos Mendoza (Metrólogo Sr.)",
+      "observaciones": "Confirmación metrológica satisfactoria. Precinto de seguridad colocado. Apto para ensayos de efluentes."
+    },
+    {
+      "id_calibracion": "CAL-2025-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "nro_certificado": "CERT-MET-2025-612",
+      "fecha_calibracion": "2025-06-10",
+      "fecha_vencimiento": "2026-06-10",
+      "dias_restantes": -147,
+      "estatus_metrologico": "VENCIDA",
+      "entidad_acreditada": "SENCAMER / Lab. Metrología Acreditado ISO 17025",
+      "patron_utilizado": "Escala de Masa Cuadrupolo (m/z) y Temp. Horno",
+      "desviacion_observada": "-0.04 u / +0.4 °C",
+      "incertidumbre_u": "U = ± 0.05 u (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.10 u / ± 1.0 °C",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2025-04",
+      "metrologo_responsable": "Ing. Carlos Mendoza (Metrólogo Sr.)",
+      "observaciones": "Calibración reglamentaria. Ajuste leve de ganancia del detector EM. Conforme."
+    },
+    {
+      "id_calibracion": "CAL-2024-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "nro_certificado": "CERT-MET-2024-409",
+      "fecha_calibracion": "2024-06-12",
+      "fecha_vencimiento": "2025-06-12",
+      "dias_restantes": -510,
+      "estatus_metrologico": "VENCIDA",
+      "entidad_acreditada": "Agilent Technologies Metrology Lab",
+      "patron_utilizado": "Escala de Masa Cuadrupolo (m/z) y Temp. Horno",
+      "desviacion_observada": "+0.02 u / +0.2 °C",
+      "incertidumbre_u": "U = ± 0.05 u (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.10 u / ± 1.0 °C",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2024-02",
+      "metrologo_responsable": "Ing. Reinaldo Peña (Especialista Metrología)",
+      "observaciones": "Calibración periódica satisfactoria sin desviaciones. Trazabilidad NIST."
+    },
+    {
+      "id_calibracion": "CAL-2023-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "nro_certificado": "CERT-MET-2023-288",
+      "fecha_calibracion": "2023-06-15",
+      "fecha_vencimiento": "2024-06-15",
+      "dias_restantes": -872,
+      "estatus_metrologico": "VENCIDA",
+      "entidad_acreditada": "SENCAMER / Agilent Technologies",
+      "patron_utilizado": "Escala de Masa Cuadrupolo (m/z) y Temp. Horno",
+      "desviacion_observada": "+0.03 u / -0.3 °C",
+      "incertidumbre_u": "U = ± 0.05 u (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.10 u / ± 1.0 °C",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2023-01",
+      "metrologo_responsable": "Ing. Carlos Mendoza (Metrólogo Sr.)",
+      "observaciones": "Calibración anual completada tras mantenimiento mayor preventivo."
+    },
+    {
+      "id_calibracion": "CAL-2021-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "nro_certificado": "CERT-MET-2021-098",
+      "fecha_calibracion": "2021-03-25",
+      "fecha_vencimiento": "2022-03-25",
+      "dias_restantes": -1685,
+      "estatus_metrologico": "VENCIDA",
+      "entidad_acreditada": "Agilent Technologies Factory / SENCAMER",
+      "patron_utilizado": "Calificación Inicial de Instalación y Operación (IQ/OQ/PQ)",
+      "desviacion_observada": "0.00 u / +0.1 °C",
+      "incertidumbre_u": "U = ± 0.04 u (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.10 u / ± 1.0 °C",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2021-01",
+      "metrologo_responsable": "Ing. Klaus Weber (Servicio Autorizado)",
+      "observaciones": "Puesta en marcha y calificación inicial satisfactoria según protocolo IQ/OQ/PQ."
+    },
+    {
+      "id_calibracion": "CAL-2026-002",
+      "tag_pdvsa": "AMB-LAB-UVVIS-002",
+      "nro_certificado": "CERT-MET-2026-902",
+      "fecha_calibracion": "2026-05-10",
+      "fecha_vencimiento": "2027-05-10",
+      "dias_restantes": 187,
+      "estatus_metrologico": "VIGENTE",
+      "entidad_acreditada": "SENCAMER / Lab. Metrología Acreditado ISO 17025",
+      "patron_utilizado": "Exactitud Longitud de Onda y Fotometría UV-Vis",
+      "desviacion_observada": "+0.001 A / +0.05 nm",
+      "incertidumbre_u": "U = ± 0.002 A (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.003 A / ± 0.1 nm",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2026-04",
+      "metrologo_responsable": "Ing. Carlos Mendoza (Metrólogo Sr.)",
+      "observaciones": "Calibración anual conforme con filtros certificados de óxido de holmio y densidad óptica neutral."
+    },
+    {
+      "id_calibracion": "CAL-2026-003",
+      "tag_pdvsa": "AMB-LAB-AAS-003",
+      "nro_certificado": "CERT-MET-2026-915",
+      "fecha_calibracion": "2026-04-18",
+      "fecha_vencimiento": "2027-04-18",
+      "dias_restantes": 165,
+      "estatus_metrologico": "VIGENTE",
+      "entidad_acreditada": "Thermo Scientific / SENCAMER Acreditado",
+      "patron_utilizado": "Absorbancia en Llama y Temperatura Horno Grafito",
+      "desviacion_observada": "-0.002 A / +1.2 °C",
+      "incertidumbre_u": "U = ± 0.004 A (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.005 A / ± 2.0 °C",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2026-07",
+      "metrologo_responsable": "Ing. Reinaldo Peña (Especialista Metrología)",
+      "observaciones": "Verificación de linealidad fotométrica y control de temperatura de atomización conformes."
+    },
+    {
+      "id_calibracion": "CAL-2026-004",
+      "tag_pdvsa": "AMB-LAB-BAL-004",
+      "nro_certificado": "CERT-MET-2026-930",
+      "fecha_calibracion": "2026-07-20",
+      "fecha_vencimiento": "2027-01-20",
+      "dias_restantes": 77,
+      "estatus_metrologico": "VIGENTE",
+      "entidad_acreditada": "SENCAMER Lab. Nacional de Metrología (Masa)",
+      "patron_utilizado": "Carga, Excentricidad y Repetibilidad (Pesas Clase E2)",
+      "desviacion_observada": "+0.02 mg",
+      "incertidumbre_u": "U = ± 0.03 mg (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.10 mg",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2026-11",
+      "metrologo_responsable": "Metr. Sonia Rivas (Metrólogo Sr.)",
+      "observaciones": "Calibración semestral conforme. Clase de exactitud I (Especial). Errores dentro de tolerancias."
+    },
+    {
+      "id_calibracion": "CAL-2026-005",
+      "tag_pdvsa": "AMB-LAB-TOC-005",
+      "nro_certificado": "CERT-MET-2026-942",
+      "fecha_calibracion": "2026-08-15",
+      "fecha_vencimiento": "2027-08-15",
+      "dias_restantes": 284,
+      "estatus_metrologico": "VIGENTE",
+      "entidad_acreditada": "Shimadzu Metrology / SENCAMER Acreditado",
+      "patron_utilizado": "Concentración Carbono Total (TC/IC) Detector NDIR",
+      "desviacion_observada": "+0.08 mg/L",
+      "incertidumbre_u": "U = ± 0.12 mg/L (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.20 mg/L",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2026-15",
+      "metrologo_responsable": "Ing. Carlos Mendoza (Metrólogo Sr.)",
+      "observaciones": "Calibración del sistema NDIR y linealidad de combustión catalítica a 680 °C satisfactorias."
+    },
+    {
+      "id_calibracion": "CAL-2026-006",
+      "tag_pdvsa": "AMB-LAB-PH-006",
+      "nro_certificado": "CERT-MET-2026-955",
+      "fecha_calibracion": "2026-09-01",
+      "fecha_vencimiento": "2027-03-01",
+      "dias_restantes": 117,
+      "estatus_metrologico": "VIGENTE",
+      "entidad_acreditada": "SENCAMER / Laboratorio de Metrología INTEVEP",
+      "patron_utilizado": "Potencial de Celda (pH) y Conductividad Electrolítica",
+      "desviacion_observada": "+0.005 pH / +0.2 µS/cm",
+      "incertidumbre_u": "U = ± 0.010 pH (k=2, 95%)",
+      "mep_tolerancia": "MEP: ± 0.020 pH / ± 0.5%",
+      "dictamen": "Conforme (Pasa)",
+      "precinto_colocado": "PDVSA-CAL-2026-19",
+      "metrologo_responsable": "Lic. Andrea Briceño (Especialista)",
+      "observaciones": "Calibración electroquímica con tampones certificados trazables NIST. Pendiente electrodo 99.4%."
+    }
+  ],
+  "mantenimientos": [
+    {
+      "nro_ot": "OT-PDVSA-2026-018",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "tipo_mantenimiento": "Preventivo Planificado Sistemático",
+      "codigo_plan_pdvsa": "PM-LAB-GCMS-TRIM",
+      "fecha_inicio": "2026-09-10",
+      "fecha_cierre": "2026-09-11",
+      "descripcion": "Mantenimiento preventivo trimestral: Limpieza de puerto inyector Split/Splitless, reemplazo de septa e inserto ultra inerte, verificación de estanqueidad de helio y prueba de fugas electrónicas.",
+      "repuestos_reemplazados": "Septa de silicona alta temperatura, Ultra Inert Split Liner con lana desactivada, sello de oro base inyector",
+      "horas_hombre": 12.0,
+      "costo_total_usd": 480.0,
+      "responsable_ejecucion": "Téc. Marcos Rivas (INTEVEP Mant.)",
+      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
+      "requiere_recalibracion": false,
+      "estatus_ot": "Cerrada / Completada",
+      "aprobado_por": "Dra. Elena Salazar",
+      "proximo_mantenimiento": "2026-12-11"
+    },
+    {
+      "nro_ot": "OT-PDVSA-2026-009",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "tipo_mantenimiento": "Preventivo Planificado Sistemático",
+      "codigo_plan_pdvsa": "PM-LAB-GCMS-ANUAL",
+      "fecha_inicio": "2026-06-12",
+      "fecha_cierre": "2026-06-14",
+      "descripcion": "Mantenimiento anual mayor: Desmontaje y limpieza de fuente de iones EI, cambio de aceite de bomba rotatoria de previo vacío, reemplazo de trampas de gases y ajuste de espectrómetro MSD.",
+      "repuestos_reemplazados": "Aceite sintético para bomba Edwards, kit universal trampas de He/O2, filamento EI tungsteno, empaquetaduras de oro",
+      "horas_hombre": 28.0,
+      "costo_total_usd": 2150.0,
+      "responsable_ejecucion": "Ing. Carlos Mendoza / Agilent Tech",
+      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
+      "requiere_recalibracion": true,
+      "estatus_ot": "Cerrada / Completada",
+      "aprobado_por": "Dra. Elena Salazar",
+      "proximo_mantenimiento": "2027-06-14"
+    },
+    {
+      "nro_ot": "OT-PDVSA-2026-004",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "tipo_mantenimiento": "Preventivo Planificado Sistemático",
+      "codigo_plan_pdvsa": "PM-LAB-GCMS-TRIM",
+      "fecha_inicio": "2026-03-20",
+      "fecha_cierre": "2026-03-21",
+      "descripcion": "Mantenimiento trimestral: Reemplazo preventivo de septa, limpieza ultrasónica de liner, ajuste de flujo de gas portador EPC y prueba de línea base con autotune de verificación.",
+      "repuestos_reemplazados": "Septa de silicona desgasificada, O-ring de fluoroelastómero inyector",
+      "horas_hombre": 10.0,
+      "costo_total_usd": 420.0,
+      "responsable_ejecucion": "Téc. Marcos Rivas (INTEVEP Mant.)",
+      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
+      "requiere_recalibracion": false,
+      "estatus_ot": "Cerrada / Completada",
+      "aprobado_por": "Dra. Elena Salazar",
+      "proximo_mantenimiento": "2026-06-21"
+    },
+    {
+      "nro_ot": "OT-PDVSA-2025-045",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "tipo_mantenimiento": "Correctivo Programado",
+      "codigo_plan_pdvsa": "CORR-LAB-GCMS-01",
+      "fecha_inicio": "2025-11-15",
+      "fecha_cierre": "2025-11-16",
+      "descripcion": "Reemplazo de filamento 1 por advertencia de emisión de electrones baja. Ajuste de voltaje de lentes de enfoque y verificación de espectro PFTBA. Sin daño a muestras.",
+      "repuestos_reemplazados": "Filamento MSD Agilent G7005-60061 original, sellos de vacío Viton",
+      "horas_hombre": 8.0,
+      "costo_total_usd": 650.0,
+      "responsable_ejecucion": "Ing. Reinaldo Peña (Especialista)",
+      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
+      "requiere_recalibracion": false,
+      "estatus_ot": "Cerrada / Completada",
+      "aprobado_por": "Dra. Elena Salazar",
+      "proximo_mantenimiento": "2026-02-16"
+    },
+    {
+      "nro_ot": "OT-PDVSA-2026-022",
+      "tag_pdvsa": "AMB-LAB-UVVIS-002",
+      "tipo_mantenimiento": "Preventivo Planificado Sistemático",
+      "codigo_plan_pdvsa": "PM-LAB-UVVIS-SEM",
+      "fecha_inicio": "2026-08-14",
+      "fecha_cierre": "2026-08-15",
+      "descripcion": "Mantenimiento preventivo semestral: Limpieza óptica de espejos, verificación alineación lámpara deuterio y prueba de estabilidad de línea base fotométrica.",
+      "repuestos_reemplazados": "Lámpara de deuterio de repuesto, desecante óptico de sílice",
+      "horas_hombre": 8.0,
+      "costo_total_usd": 320.0,
+      "responsable_ejecucion": "Téc. Marcos Rivas (INTEVEP Mant.)",
+      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
+      "requiere_recalibracion": false,
+      "estatus_ot": "Cerrada / Completada",
+      "aprobado_por": "Dra. Elena Salazar",
+      "proximo_mantenimiento": "2027-02-15"
+    },
+    {
+      "nro_ot": "OT-PDVSA-2026-015",
+      "tag_pdvsa": "AMB-LAB-AAS-003",
+      "tipo_mantenimiento": "Preventivo Planificado Sistemático",
+      "codigo_plan_pdvsa": "PM-LAB-AAS-SEM",
+      "fecha_inicio": "2026-07-10",
+      "fecha_cierre": "2026-07-12",
+      "descripcion": "Mantenimiento semestral: Limpieza de cámara de nebulización y quemador de titanio, reemplazo de tubos de grafito con plataforma L'vov y calibración de flujo de gases.",
+      "repuestos_reemplazados": "Tubo grafito pirolítico, O-rings de teflón para nebulizador",
+      "horas_hombre": 14.0,
+      "costo_total_usd": 890.0,
+      "responsable_ejecucion": "Ing. Carlos Mendoza / Thermo Service",
+      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
+      "requiere_recalibracion": false,
+      "estatus_ot": "Cerrada / Completada",
+      "aprobado_por": "Dra. Elena Salazar",
+      "proximo_mantenimiento": "2027-01-12"
+    },
+    {
+      "nro_ot": "OT-PDVSA-2026-011",
+      "tag_pdvsa": "AMB-LAB-BAL-004",
+      "tipo_mantenimiento": "Preventivo y Limpieza Metrológica",
+      "codigo_plan_pdvsa": "PM-LAB-BAL-SEM",
+      "fecha_inicio": "2026-06-05",
+      "fecha_cierre": "2026-06-05",
+      "descripcion": "Limpieza exhaustiva de platillo de carga, cortavientos de vidrio y calibración interna automatizada proFACT por variación de temperatura.",
+      "repuestos_reemplazados": "Pincel antiestático, paños ópticos sin pelusa",
+      "horas_hombre": 4.0,
+      "costo_total_usd": 150.0,
+      "responsable_ejecucion": "Metr. Sonia Rivas (Metrólogo Sr.)",
+      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
+      "requiere_recalibracion": false,
+      "estatus_ot": "Cerrada / Completada",
+      "aprobado_por": "Dra. Elena Salazar",
+      "proximo_mantenimiento": "2026-12-05"
+    },
+    {
+      "nro_ot": "OT-PDVSA-2026-019",
+      "tag_pdvsa": "AMB-LAB-TOC-005",
+      "tipo_mantenimiento": "Preventivo Planificado Sistemático",
+      "codigo_plan_pdvsa": "PM-LAB-TOC-SEM",
+      "fecha_inicio": "2026-09-18",
+      "fecha_cierre": "2026-09-19",
+      "descripcion": "Regeneración de catalizador de platino, cambio de tubo de combustión de cuarzo y purga de trampas de halógenos y humedad.",
+      "repuestos_reemplazados": "Tubo de combustión cuarzo, empaque catalizador Pt, lana cuarzo",
+      "horas_hombre": 10.0,
+      "costo_total_usd": 540.0,
+      "responsable_ejecucion": "Téc. Marcos Rivas (INTEVEP Mant.)",
+      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
+      "requiere_recalibracion": false,
+      "estatus_ot": "Cerrada / Completada",
+      "aprobado_por": "Dra. Elena Salazar",
+      "proximo_mantenimiento": "2027-03-19"
+    },
+    {
+      "nro_ot": "OT-PDVSA-2026-008",
+      "tag_pdvsa": "AMB-LAB-PH-006",
+      "tipo_mantenimiento": "Preventivo y Sustitución de Sensores",
+      "codigo_plan_pdvsa": "PM-LAB-PH-ANUAL",
+      "fecha_inicio": "2026-05-22",
+      "fecha_cierre": "2026-05-22",
+      "descripcion": "Reacondicionamiento de unión cerámica de electrodo ROSS Ultra, recarga de solución electrolito 3M KCl y verificación de pendiente operacional.",
+      "repuestos_reemplazados": "Solución de llenado Orion 810007, juego tampones pH",
+      "horas_hombre": 3.0,
+      "costo_total_usd": 95.0,
+      "responsable_ejecucion": "Lic. Andrea Briceño (Especialista)",
+      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
+      "requiere_recalibracion": false,
+      "estatus_ot": "Cerrada / Completada",
+      "aprobado_por": "Dra. Elena Salazar",
+      "proximo_mantenimiento": "2027-05-22"
+    }
+  ],
+  "comprobaciones": [
+    {
+      "id_comprobacion": "CI-2026-010",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_verificacion": "2026-10-02",
+      "parametro_verificado": "Sintonización MSD Autotune (Relación Abundancia Masa m/z 502/69 %)",
+      "patron_referencia": "Estándar de Calibración PFTBA (Perfluorotributilamina trazable NIST)",
+      "limite_min": 0.8,
+      "limite_max": 5.0,
+      "valor_experimental": 2.45,
+      "dictamen_auto": "CONFORME (PASA)",
+      "desviacion_observada": "-0.45",
+      "rotulado_operativo": "ETIQUETA VERDE - EN SERVICIO",
+      "analista_responsable": "Lic. Andrea Briceño",
+      "observaciones": "Perfil de masas y resolución de picos conformes. Equipo apto para ensayos de hidrocarburos aromáticos policíclicos (PAHs)."
+    },
+    {
+      "id_comprobacion": "CI-2026-009",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_verificacion": "2026-09-05",
+      "parametro_verificado": "Repetibilidad de Tiempo de Retención RT - Pico Fenantreno (min)",
+      "patron_referencia": "Estándar de Calibración de Hidrocarburos EPA 8270 (10 ppm)",
+      "limite_min": 12.44,
+      "limite_max": 12.52,
+      "valor_experimental": 12.48,
+      "dictamen_auto": "CONFORME (PASA)",
+      "desviacion_observada": "0",
+      "rotulado_operativo": "ETIQUETA VERDE - EN SERVICIO",
+      "analista_responsable": "Lic. Andrea Briceño",
+      "observaciones": "Desviación estándar de tiempos de retención < 0.005 min. Excelente estabilidad de flujo."
+    },
+    {
+      "id_comprobacion": "CI-2026-008",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_verificacion": "2026-08-03",
+      "parametro_verificado": "Sensibilidad / Relación Señal-Ruido S/N (OFN m/z 272)",
+      "patron_referencia": "Solución de Verificación Octafluoronaftaleno (1 pg/µL)",
+      "limite_min": 1500.0,
+      "limite_max": 9999.0,
+      "valor_experimental": 3820.0,
+      "dictamen_auto": "CONFORME (PASA)",
+      "desviacion_observada": "-1929.5",
+      "rotulado_operativo": "ETIQUETA VERDE - EN SERVICIO",
+      "analista_responsable": "Ing. Reinaldo Peña",
+      "observaciones": "Relación S/N supera ampliamente el umbral mínimo normado (1500:1). Línea base estable."
+    },
+    {
+      "id_comprobacion": "CI-2026-007",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_verificacion": "2026-07-02",
+      "parametro_verificado": "Estabilidad de Línea Base y Hermeticidad (Flujo He ml/min)",
+      "patron_referencia": "Línea de Helio Alta Pureza 99.999% con sensor electrónico EPC",
+      "limite_min": 1.15,
+      "limite_max": 1.25,
+      "valor_experimental": 1.2,
+      "dictamen_auto": "CONFORME (PASA)",
+      "desviacion_observada": "0",
+      "rotulado_operativo": "ETIQUETA VERDE - EN SERVICIO",
+      "analista_responsable": "Lic. Andrea Briceño",
+      "observaciones": "Prueba de fuga de helio satisfactoria. Presión en columna estable a 14.5 psi. Vacío MSD en 3.2 x 10^-5 Torr."
+    },
+    {
+      "id_comprobacion": "CI-2026-011",
+      "tag_pdvsa": "AMB-LAB-UVVIS-002",
+      "fecha_verificacion": "2026-10-05",
+      "parametro_verificado": "Verificación de Exactitud Fotométrica y Longitud de Onda (Filtro Óxido de Holmio 361 nm)",
+      "patron_referencia": "Filtro Patrón Trazable NIST SRM 2034",
+      "limite_min": 360.8,
+      "limite_max": 361.2,
+      "valor_experimental": 361.02,
+      "dictamen_auto": "CONFORME (PASA)",
+      "desviacion_observada": "0.02",
+      "rotulado_operativo": "ETIQUETA VERDE - EN SERVICIO",
+      "analista_responsable": "Lic. Andrea Briceño",
+      "observaciones": "Filtro de óxido de holmio conforme. Desviación dentro de tolerancias metrológicas normadas."
+    },
+    {
+      "id_comprobacion": "CI-2026-012",
+      "tag_pdvsa": "AMB-LAB-AAS-003",
+      "fecha_verificacion": "2026-09-28",
+      "parametro_verificado": "Sensibilidad y Absorbancia Cobre 5 ppm en Llama Aire-Acetileno",
+      "patron_referencia": "Estándar de Calibración Cu 1000 ppm NIST",
+      "limite_min": 0.45,
+      "limite_max": 0.55,
+      "valor_experimental": 0.505,
+      "dictamen_auto": "CONFORME (PASA)",
+      "desviacion_observada": "5.0000000000000001E-3",
+      "rotulado_operativo": "ETIQUETA VERDE - EN SERVICIO",
+      "analista_responsable": "Ing. Reinaldo Peña",
+      "observaciones": "Absorbancia y estabilidad de llama conformes. Sistema listo para análisis de aguas y efluentes."
+    },
+    {
+      "id_comprobacion": "CI-2026-013",
+      "tag_pdvsa": "AMB-LAB-BAL-004",
+      "fecha_verificacion": "2026-10-14",
+      "parametro_verificado": "Verificación de Repetibilidad y Carga con Pesa Patrón 100 g Clase E2",
+      "patron_referencia": "Juego de Pesas Trazables OIML Clase E2 NIST",
+      "limite_min": 99.9998,
+      "limite_max": 100.0002,
+      "valor_experimental": 100.0,
+      "dictamen_auto": "CONFORME (PASA)",
+      "desviacion_observada": "0",
+      "rotulado_operativo": "ETIQUETA VERDE - EN SERVICIO",
+      "analista_responsable": "Metr. Sonia Rivas",
+      "observaciones": "Repetibilidad s < 0.015 mg. Balanza apta para formulación analítica de alta precisión."
+    },
+    {
+      "id_comprobacion": "CI-2026-014",
+      "tag_pdvsa": "AMB-LAB-TOC-005",
+      "fecha_verificacion": "2026-10-08",
+      "parametro_verificado": "Control de Verificación Estándar Carbono Total TC 10.0 mg/L",
+      "patron_referencia": "Ftalato de Potasio Trazable NIST SRM",
+      "limite_min": 9.7,
+      "limite_max": 10.3,
+      "valor_experimental": 9.95,
+      "dictamen_auto": "CONFORME (PASA)",
+      "desviacion_observada": "-0.05",
+      "rotulado_operativo": "ETIQUETA VERDE - EN SERVICIO",
+      "analista_responsable": "Lic. Andrea Briceño",
+      "observaciones": "Recuperación del 99.5%. Línea base estable. Equipo liberado para ensayos ambientales."
+    },
+    {
+      "id_comprobacion": "CI-2026-015",
+      "tag_pdvsa": "AMB-LAB-PH-006",
+      "fecha_verificacion": "2026-10-18",
+      "parametro_verificado": "Pendiente de Calibración Slope y Lectura Tampón pH 7.00",
+      "patron_referencia": "Soluciones Tampón Certificadas pH 4.01, 7.00, 10.01 NIST",
+      "limite_min": 6.98,
+      "limite_max": 7.02,
+      "valor_experimental": 7.01,
+      "dictamen_auto": "CONFORME (PASA)",
+      "desviacion_observada": "0.01",
+      "rotulado_operativo": "ETIQUETA VERDE - EN SERVICIO",
+      "analista_responsable": "Lic. Andrea Briceño",
+      "observaciones": "Pendiente electrodo 99.2%. Equipo listo para mediciones rápidas in-situ."
+    }
+  ],
+  "depreciaciones": [
+    {
+      "tag_pdvsa": "PDVSA INTEVEP • GERENCIA DE AMBIENTE | SISTEMA DE CONTROL DE BIENES PÚBLICOS (LOBP / SUDEBIP / SIGEBI)",
+      "codigo_sigebi": "",
+      "denominacion": "",
+      "fecha_incorporacion": null,
+      "costo_adquisicion_usd": 0.0,
+      "tasa_salvamento": 0.0,
+      "valor_residual_salvamento": 0.0,
+      "base_depreciable_usd": 0.0,
+      "vida_util_anos": 0.0,
+      "meses_uso": 0,
+      "depreciacion_mensual_usd": 0.0,
+      "depreciacion_acumulada_usd": 0.0,
+      "valor_neto_libros_usd": 0.0
+    },
+    {
+      "tag_pdvsa": "SISTEMA INTEGRADO DE CONTROL PATRIMONIAL Y DEPRECIACIÓN FINANCIERA SUDEBIP (LOBP / SIGEBI)",
+      "codigo_sigebi": "",
+      "denominacion": "",
+      "fecha_incorporacion": null,
+      "costo_adquisicion_usd": 0.0,
+      "tasa_salvamento": 0.0,
+      "valor_residual_salvamento": 0.0,
+      "base_depreciable_usd": 0.0,
+      "vida_util_anos": 0.0,
+      "meses_uso": 0,
+      "depreciacion_mensual_usd": 0.0,
+      "depreciacion_acumulada_usd": 0.0,
+      "valor_neto_libros_usd": 0.0
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "codigo_sigebi": "BP-INT-2021-00452",
+      "denominacion": "Cromatógrafo de Gases con Espectrómetro de Masas (GC-MS)",
+      "fecha_incorporacion": "2021-01-15",
+      "costo_adquisicion_usd": 85000.0,
+      "tasa_salvamento": 0.1,
+      "valor_residual_salvamento": 8500.0,
+      "base_depreciable_usd": 76500.0,
+      "vida_util_anos": 10.0,
+      "meses_uso": 69,
+      "depreciacion_mensual_usd": 637.5,
+      "depreciacion_acumulada_usd": 43987.5,
+      "valor_neto_libros_usd": 41012.5
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-UVVIS-002",
+      "codigo_sigebi": "BP-INT-2022-00118",
+      "denominacion": "Espectrofotómetro UV-Visible de Doble Haz",
+      "fecha_incorporacion": "2022-03-10",
+      "costo_adquisicion_usd": 22000.0,
+      "tasa_salvamento": 0.1,
+      "valor_residual_salvamento": 2200.0,
+      "base_depreciable_usd": 19800.0,
+      "vida_util_anos": 8.0,
+      "meses_uso": 55,
+      "depreciacion_mensual_usd": 206.25,
+      "depreciacion_acumulada_usd": 11343.75,
+      "valor_neto_libros_usd": 10656.25
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-AAS-003",
+      "codigo_sigebi": "BP-INT-2020-00891",
+      "denominacion": "Espectrómetro de Absorción Atómica (AAS)",
+      "fecha_incorporacion": "2020-11-05",
+      "costo_adquisicion_usd": 68000.0,
+      "tasa_salvamento": 0.1,
+      "valor_residual_salvamento": 6800.0,
+      "base_depreciable_usd": 61200.0,
+      "vida_util_anos": 10.0,
+      "meses_uso": 71,
+      "depreciacion_mensual_usd": 510.0,
+      "depreciacion_acumulada_usd": 36210.0,
+      "valor_neto_libros_usd": 31790.0
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-BAL-004",
+      "codigo_sigebi": "BP-INT-2023-00034",
+      "denominacion": "Balanza Analítica de Precisión 0.1 mg",
+      "fecha_incorporacion": "2023-04-20",
+      "costo_adquisicion_usd": 12500.0,
+      "tasa_salvamento": 0.05,
+      "valor_residual_salvamento": 625.0,
+      "base_depreciable_usd": 11875.0,
+      "vida_util_anos": 8.0,
+      "meses_uso": 42,
+      "depreciacion_mensual_usd": 123.69791666666667,
+      "depreciacion_acumulada_usd": 5195.3125,
+      "valor_neto_libros_usd": 7304.6875
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-TOC-005",
+      "codigo_sigebi": "BP-INT-2022-00572",
+      "denominacion": "Analizador de Carbono Orgánico Total (TOC)",
+      "fecha_incorporacion": "2022-08-14",
+      "costo_adquisicion_usd": 34000.0,
+      "tasa_salvamento": 0.1,
+      "valor_residual_salvamento": 3400.0,
+      "base_depreciable_usd": 30600.0,
+      "vida_util_anos": 8.0,
+      "meses_uso": 50,
+      "depreciacion_mensual_usd": 318.75,
+      "depreciacion_acumulada_usd": 15937.5,
+      "valor_neto_libros_usd": 18062.5
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-PH-006",
+      "codigo_sigebi": "BP-INT-2023-00201",
+      "denominacion": "Medidor Multiparámetro de Mesa (pH/Cond/OD)",
+      "fecha_incorporacion": "2023-09-12",
+      "costo_adquisicion_usd": 4800.0,
+      "tasa_salvamento": 0.05,
+      "valor_residual_salvamento": 240.0,
+      "base_depreciable_usd": 4560.0,
+      "vida_util_anos": 5.0,
+      "meses_uso": 37,
+      "depreciacion_mensual_usd": 76.0,
+      "depreciacion_acumulada_usd": 2812.0,
+      "valor_neto_libros_usd": 1988.0
+    }
+  ],
+  "movimientos_sudebip": [
+    {
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "nro_acta": "ACTA-SUDEBIP-2021-014",
+      "fecha_movimiento": "2021-03-15",
+      "tipo_movimiento": "Incorporación Inicial por Compra",
+      "unidad_emisora": "Gerencia de Finanzas y Procura INTEVEP",
+      "unidad_receptora": "Gerencia de Ambiente - Dpto. Tecnologías Ambientales",
+      "responsable_entrega": "Lic. Martín Gómez (Gerente Procura)",
+      "responsable_receptor": "Dr. Roberto Vargas (Gerente de Ambiente)",
+      "nro_autorizacion": "PROV-SUDEBIP-2021-0841",
+      "condicion_fisica": "Excelente",
+      "motivo": "Adquisición para fortalecimiento de capacidades analíticas de efluentes y COVs",
+      "estatus_sigebi": "Registrado e Incorporado Conforme",
+      "observaciones": "Bien verificado físicamente, etiquetado con código QR y placa de aluminio."
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "nro_acta": "ACTA-SUDEBIP-2021-022",
+      "fecha_movimiento": "2021-03-25",
+      "tipo_movimiento": "Asignación de Custodia a Responsable",
+      "unidad_emisora": "Gerencia de Ambiente (Dirección)",
+      "unidad_receptora": "Lab. de Calidad de Aguas y Efluentes (Sala 3B)",
+      "responsable_entrega": "Dr. Roberto Vargas (Gerente de Ambiente)",
+      "responsable_receptor": "Dra. Elena Salazar (Jefe de Laboratorio)",
+      "nro_autorizacion": "ASIG-INT-AMB-2021-003",
+      "condicion_fisica": "Excelente",
+      "motivo": "Asignación de custodia técnica y operacional para ensayos ambientales normados",
+      "estatus_sigebi": "Registrado e Incorporado Conforme",
+      "observaciones": "Firma de caución de responsabilidad y acta de custodia de acuerdo a la LOBP."
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "nro_acta": "ACTA-SUDEBIP-2023-089",
+      "fecha_movimiento": "2023-01-16",
+      "tipo_movimiento": "Salida Temporal para Calibración/Mantenimiento Externo",
+      "unidad_emisora": "Lab. de Calidad de Aguas y Efluentes (Sala 3B)",
+      "unidad_receptora": "Taller Especializado Agilent Technologies / SENCAMER",
+      "responsable_entrega": "Dra. Elena Salazar (Jefe de Laboratorio)",
+      "responsable_receptor": "Ing. Klaus Weber (Servicio Autorizado)",
+      "nro_autorizacion": "PASE-SALIDA-INT-2023-012",
+      "condicion_fisica": "Buena",
+      "motivo": "Mantenimiento mayor y verificación metrológica del módulo de masa cuadrupolo",
+      "estatus_sigebi": "Retornado y Reincorporado Conforme",
+      "observaciones": "Reingreso a planta el 2023-01-22 con precinto de seguridad intacto y certificado conforme."
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-UVVIS-002",
+      "nro_acta": "ACTA-SUDEBIP-2022-008",
+      "fecha_movimiento": "2022-04-05",
+      "tipo_movimiento": "Incorporación Inicial por Compra",
+      "unidad_emisora": "Gerencia de Finanzas y Procura INTEVEP",
+      "unidad_receptora": "Lab. de Fisicoquímica y Calidad de Aguas (Sala 2A)",
+      "responsable_entrega": "Lic. Martín Gómez (Gerente Procura)",
+      "responsable_receptor": "Lic. Andrea Briceño (Custodio)",
+      "nro_autorizacion": "PROV-SUDEBIP-2022-0192",
+      "condicion_fisica": "Excelente",
+      "motivo": "Equipamiento analítico para determinación de transmitancia en efluentes",
+      "estatus_sigebi": "Registrado e Incorporado Conforme",
+      "observaciones": "Placa de Bien Nacional BN-INT-89104 colocada."
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-AAS-003",
+      "nro_acta": "ACTA-SUDEBIP-2020-029",
+      "fecha_movimiento": "2020-12-01",
+      "tipo_movimiento": "Incorporación Inicial por Compra",
+      "unidad_emisora": "Gerencia de Finanzas y Procura INTEVEP",
+      "unidad_receptora": "Lab. de Metales Pesados y Toxicología (Sala 1C)",
+      "responsable_entrega": "Lic. Martín Gómez (Gerente Procura)",
+      "responsable_receptor": "Ing. Reinaldo Peña (Custodio)",
+      "nro_autorizacion": "PROV-SUDEBIP-2020-0544",
+      "condicion_fisica": "Buena",
+      "motivo": "Monitoreo ambiental de metales pesados en cuencas operacionales",
+      "estatus_sigebi": "Registrado e Incorporado Conforme",
+      "observaciones": "Placa de Bien Nacional BN-INT-87120 colocada."
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-BAL-004",
+      "nro_acta": "ACTA-SUDEBIP-2023-005",
+      "fecha_movimiento": "2023-05-02",
+      "tipo_movimiento": "Incorporación Inicial por Compra",
+      "unidad_emisora": "Gerencia de Finanzas y Procura INTEVEP",
+      "unidad_receptora": "Lab. de Fisicoquímica y Preparación de Muestras (Sala 2B)",
+      "responsable_entrega": "Lic. Martín Gómez (Gerente Procura)",
+      "responsable_receptor": "Metr. Sonia Rivas (Custodio)",
+      "nro_autorizacion": "PROV-SUDEBIP-2023-0088",
+      "condicion_fisica": "Excelente",
+      "motivo": "Balanza analítica para preparación gravimétrica de disoluciones estándar",
+      "estatus_sigebi": "Registrado e Incorporado Conforme",
+      "observaciones": "Placa de Bien Nacional BN-INT-90412 colocada."
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-TOC-005",
+      "nro_acta": "ACTA-SUDEBIP-2022-021",
+      "fecha_movimiento": "2022-09-01",
+      "tipo_movimiento": "Incorporación Inicial por Compra",
+      "unidad_emisora": "Gerencia de Finanzas y Procura INTEVEP",
+      "unidad_receptora": "Lab. de Efluentes y Calidad de Agua (Sala 3A)",
+      "responsable_entrega": "Lic. Martín Gómez (Gerente Procura)",
+      "responsable_receptor": "Lic. Andrea Briceño (Custodio)",
+      "nro_autorizacion": "PROV-SUDEBIP-2022-0312",
+      "condicion_fisica": "Buena",
+      "motivo": "Determinación analítica de carbono orgánico total en aguas industriales",
+      "estatus_sigebi": "Registrado e Incorporado Conforme",
+      "observaciones": "Placa de Bien Nacional BN-INT-89871 colocada."
+    },
+    {
+      "tag_pdvsa": "AMB-LAB-PH-006",
+      "nro_acta": "ACTA-SUDEBIP-2023-018",
+      "fecha_movimiento": "2023-09-20",
+      "tipo_movimiento": "Incorporación Inicial por Compra",
+      "unidad_emisora": "Gerencia de Finanzas y Procura INTEVEP",
+      "unidad_receptora": "Lab. de Monitoreo Ambiental Rápido (Sala 1A)",
+      "responsable_entrega": "Lic. Martín Gómez (Gerente Procura)",
+      "responsable_receptor": "Téc. Marcos Rivas (Custodio)",
+      "nro_autorizacion": "PROV-SUDEBIP-2023-0245",
+      "condicion_fisica": "Buena",
+      "motivo": "Monitoreo expedito multiparámetro en campo y pruebas preliminares",
+      "estatus_sigebi": "Registrado e Incorporado Conforme",
+      "observaciones": "Placa de Bien Nacional BN-INT-91045 colocada."
+    }
+  ],
+  "kpis_sga_fo017": [
+    {
+      "numero": 334,
+      "indicador": "",
+      "dimension": "67",
+      "formula": "",
+      "meta": "0.82099999999999995",
+      "frecuencia": "",
+      "responsable": "0.91200000000000003",
+      "valor_real_q3": 0.0,
+      "valor_real_texto": ""
+    },
+    {
+      "numero": 1,
+      "indicador": "Índice de Equipos Codificados e Inventariados",
+      "dimension": "Transición",
+      "formula": "NEIE / NTE * 100",
+      "meta": "1",
+      "frecuencia": "Semestral",
+      "responsable": "Resp. Laboratorio",
+      "valor_real_q3": 0.946,
+      "valor_real_texto": "0.94599999999999995"
+    },
+    {
+      "numero": 2,
+      "indicador": "Hojas de Vida Habilitadas (CHVH)",
+      "dimension": "Transición",
+      "formula": "HVA / TEL * 100",
+      "meta": "1",
+      "frecuencia": "Mensual",
+      "responsable": "Resp. Laboratorio",
+      "valor_real_q3": 0.92,
+      "valor_real_texto": "0.92"
+    },
+    {
+      "numero": 3,
+      "indicador": "Cumplimiento Procedimental del SGA",
+      "dimension": "Transición",
+      "formula": "PEA / TPP * 100",
+      "meta": ">= 90.0%",
+      "frecuencia": "Trimestral",
+      "responsable": "Coord. SGA",
+      "valor_real_q3": 0.95,
+      "valor_real_texto": "0.95"
+    },
+    {
+      "numero": 4,
+      "indicador": "Disponibilidad Analítica de Equipos Críticos (DA)",
+      "dimension": "Operativa",
+      "formula": "NES / NTE * 100",
+      "meta": ">= 75.0%",
+      "frecuencia": "Trimestral",
+      "responsable": "Coord. SGA / Resp. Lab",
+      "valor_real_q3": 0.821,
+      "valor_real_texto": "0.82099999999999995"
+    },
+    {
+      "numero": 5,
+      "indicador": "Obsolescencia Promedio Portafolio Vital (Iobs)",
+      "dimension": "Sostenibilidad",
+      "formula": "(1/67) * SUM(Iobs_i)",
+      "meta": "<= 40.0%",
+      "frecuencia": "Semestral",
+      "responsable": "Comité Gestión Activos",
+      "valor_real_q3": 0.365,
+      "valor_real_texto": "0.36499999999999999"
+    },
+    {
+      "numero": 6,
+      "indicador": "Cumplimiento Plan Calibración y Mantenimiento (PCCMP)",
+      "dimension": "Operativa",
+      "formula": "MCE / MCP * 100",
+      "meta": ">= 75.0%",
+      "frecuencia": "Semestral",
+      "responsable": "Resp. Laboratorio",
+      "valor_real_q3": 0.784,
+      "valor_real_texto": "0.78400000000000003"
+    },
+    {
+      "numero": 7,
+      "indicador": "Conciliación Patrimonial Tripartita (SUDEBIP/SAP)",
+      "dimension": "Legal",
+      "formula": "ACEI / TEI * 100",
+      "meta": "1",
+      "frecuencia": "Anual",
+      "responsable": "Resp. Lab / Custodio",
+      "valor_real_q3": 0.912,
+      "valor_real_texto": "0.91200000000000003"
+    },
+    {
+      "numero": 8,
+      "indicador": "Cumplimiento Metas del PEGA (PC PEGA)",
+      "dimension": "Transición",
+      "formula": "Pond. PEGA / TMPEGA",
+      "meta": ">= 85.0%",
+      "frecuencia": "Semestral/Anual",
+      "responsable": "Gerente AMB / Coord SGA",
+      "valor_real_q3": 0.885,
+      "valor_real_texto": "0.88500000000000001"
+    },
+    {
+      "numero": 9,
+      "indicador": "Nivel de Madurez Organizacional IAM",
+      "dimension": "Madurez",
+      "formula": "Escala HDIM-CL (0 - 5)",
+      "meta": ">= 1.0 (Consciente)",
+      "frecuencia": "Anual",
+      "responsable": "Comité Gestión Activos",
+      "valor_real_q3": 1.2,
+      "valor_real_texto": "1.2 (Consciente)"
+    },
+    {
+      "numero": 1,
+      "indicador": "Lab. Fisicoquímica y Calidad de Aguas",
+      "dimension": "72",
+      "formula": "14",
+      "meta": "0.85199999999999998",
+      "frecuencia": "0.92500000000000004",
+      "responsable": "0.88",
+      "valor_real_q3": 0.0,
+      "valor_real_texto": "No"
+    },
+    {
+      "numero": 2,
+      "indicador": "Lab. de Cromatografía y Compuestos Orgánicos",
+      "dimension": "58",
+      "formula": "16",
+      "meta": "0.79500000000000004",
+      "frecuencia": "0.81",
+      "responsable": "0.75",
+      "valor_real_q3": 0.0,
+      "valor_real_texto": "No"
+    },
+    {
+      "numero": 3,
+      "indicador": "Lab. de Metales Pesados y Toxicología",
+      "dimension": "46",
+      "formula": "11",
+      "meta": "0.76800000000000002",
+      "frecuencia": "0.73",
+      "responsable": "0.71",
+      "valor_real_q3": 0.0,
+      "valor_real_texto": "Sí (Calibración)"
+    },
+    {
+      "numero": 4,
+      "indicador": "Lab. de Calidad de Aire y Emisiones",
+      "dimension": "52",
+      "formula": "9",
+      "meta": "0.84",
+      "frecuencia": "0.89",
+      "responsable": "0.82",
+      "valor_real_q3": 0.0,
+      "valor_real_texto": "No"
+    },
+    {
+      "numero": 5,
+      "indicador": "Lab. de Suelos y Lodos de Perforación",
+      "dimension": "65",
+      "formula": "10",
+      "meta": "0.86499999999999999",
+      "frecuencia": "0.9",
+      "responsable": "0.87",
+      "valor_real_q3": 0.0,
+      "valor_real_texto": "No"
+    },
+    {
+      "numero": 6,
+      "indicador": "Lab. de Ecotoxicología y Bioensayos",
+      "dimension": "41",
+      "formula": "7",
+      "meta": "0.81",
+      "frecuencia": "0.85",
+      "responsable": "0.8",
+      "valor_real_q3": 0.0,
+      "valor_real_texto": "No"
+    }
+  ],
+  "deriva_fo018": [
+    {
+      "nro_reg": 1,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-01-15",
+      "analista": "Lcdo. M. Arismendi",
+      "temperatura_c": 21.2,
+      "humedad_hr": 0.48,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 50.32,
+      "sesgo_absoluto": 0.3200000000000003,
+      "consumo_ltm_pct": 12.800000000000011
+    },
+    {
+      "nro_reg": 2,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-02-02",
+      "analista": "Lcdo. M. Arismendi",
+      "temperatura_c": 21.5,
+      "humedad_hr": 0.47,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 50.48,
+      "sesgo_absoluto": 0.4799999999999969,
+      "consumo_ltm_pct": 19.199999999999875
+    },
+    {
+      "nro_reg": 3,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-02-16",
+      "analista": "Ing. R. Morales",
+      "temperatura_c": 21.0,
+      "humedad_hr": 0.5,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 50.65,
+      "sesgo_absoluto": 0.6499999999999986,
+      "consumo_ltm_pct": 25.999999999999947
+    },
+    {
+      "nro_reg": 4,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-03-02",
+      "analista": "Ing. R. Morales",
+      "temperatura_c": 22.1,
+      "humedad_hr": 0.52,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 50.88,
+      "sesgo_absoluto": 0.8800000000000026,
+      "consumo_ltm_pct": 35.2000000000001
+    },
+    {
+      "nro_reg": 5,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-03-18",
+      "analista": "Lcdo. M. Arismendi",
+      "temperatura_c": 21.8,
+      "humedad_hr": 0.49,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 51.15,
+      "sesgo_absoluto": 1.1499999999999986,
+      "consumo_ltm_pct": 45.99999999999994
+    },
+    {
+      "nro_reg": 6,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-04-06",
+      "analista": "Lcdo. M. Arismendi",
+      "temperatura_c": 22.4,
+      "humedad_hr": 0.53,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 51.42,
+      "sesgo_absoluto": 1.4200000000000017,
+      "consumo_ltm_pct": 56.800000000000075
+    },
+    {
+      "nro_reg": 7,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-04-20",
+      "analista": "Ing. R. Morales",
+      "temperatura_c": 21.9,
+      "humedad_hr": 0.51,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 51.68,
+      "sesgo_absoluto": 1.6799999999999997,
+      "consumo_ltm_pct": 67.19999999999999
+    },
+    {
+      "nro_reg": 8,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-05-05",
+      "analista": "Ing. R. Morales",
+      "temperatura_c": 22.0,
+      "humedad_hr": 0.48,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 51.85,
+      "sesgo_absoluto": 1.8500000000000014,
+      "consumo_ltm_pct": 74.00000000000006
+    },
+    {
+      "nro_reg": 9,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-05-20",
+      "analista": "Lcdo. M. Arismendi",
+      "temperatura_c": 22.3,
+      "humedad_hr": 0.5,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 52.08,
+      "sesgo_absoluto": 2.0799999999999983,
+      "consumo_ltm_pct": 83.19999999999993
+    },
+    {
+      "nro_reg": 10,
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
+      "fecha_medicion": "2026-06-05",
+      "analista": "Lcdo. M. Arismendi",
+      "temperatura_c": 21.4,
+      "humedad_hr": 0.46,
+      "valor_nominal_ppm": 50.0,
+      "valor_medido_ppm": 50.25,
+      "sesgo_absoluto": 0.25,
+      "consumo_ltm_pct": 10.0
+    }
+  ],
+  "acuerdos_fo019": [
+    {
+      "codigo": "D-01",
+      "requisito_iso": "Cl. 8.1 / 6.2 - Obsolescencia",
+      "acuerdo_adoptado": "Aprobación partida CAPEX modernización módulos analíticos en GC-MS",
+      "responsable": "Dr. R. Valenzuela / Ing. C. Mendoza",
+      "fecha_limite": "2027-03-31",
+      "recursos_aprobados": "$28,500 USD",
+      "mecanismo_verificacion": "Orden de Compra SAP y Recepción Técnica"
+    },
+    {
+      "codigo": "D-02",
+      "requisito_iso": "Cl. 7.1.5 - Seguimiento Metrológico",
+      "acuerdo_adoptado": "Contratación calibración acreditada ISO 17025 para 25 patrones vitales",
+      "responsable": "Ing. C. Mendoza / Lcdo. M. Arismendi",
+      "fecha_limite": "2026-12-15",
+      "recursos_aprobados": "$14,200 USD",
+      "mecanismo_verificacion": "Certificados de Calibración con Incertidumbre"
+    },
+    {
+      "codigo": "D-03",
+      "requisito_iso": "Cl. 7.5 - Información SUDEBIP",
+      "acuerdo_adoptado": "Jornada intensiva para rotulado de chapas y conciliación SAP al 100%",
+      "responsable": "Lcda. E. Rodríguez / Custodios Lab",
+      "fecha_limite": "2026-11-30",
+      "recursos_aprobados": "120 HH ($3,500)",
+      "mecanismo_verificacion": "Acta de Conciliación Física/Digital SUDEBIP"
+    },
+    {
+      "codigo": "D-04",
+      "requisito_iso": "Cl. 9.1 - Seguimiento Digital",
+      "acuerdo_adoptado": "Implementación software HIGA para cálculo automatizado de indicadores SGA",
+      "responsable": "Ing. Carlos Mendoza (Coord. SGA)",
+      "fecha_limite": "2027-01-15",
+      "recursos_aprobados": "$5,000 USD",
+      "mecanismo_verificacion": "Dashboard Operativo y Reportes Automatizados"
+    },
+    {
+      "codigo": "D-05",
+      "requisito_iso": "Cl. 9.2 - Auditoría y Madurez IAM",
+      "acuerdo_adoptado": "Simulacro de auditoría interna hacia Nivel 2 IAM con herramienta HDIM-CL",
+      "responsable": "Comité de Gestión de Activos",
+      "fecha_limite": "2027-02-28",
+      "recursos_aprobados": "$2,000 USD / 40 HH",
+      "mecanismo_verificacion": "Informe de Evaluación HDIM-CL Nivel 2"
+    }
+  ],
+  "brechas_fo030": [
+    {
+      "numero": 7,
+      "cod_brecha": "",
+      "origen_brecha": "",
+      "clausula_iso": "2",
+      "laboratorio": "",
+      "descripcion": "",
+      "tipo_accion": "4",
+      "causa_raiz_5p": ""
+    },
+    {
+      "numero": 1,
+      "cod_brecha": "PCB-2026-01",
+      "origen_brecha": "Auditoría Interna HDIM-CL",
+      "clausula_iso": "Cl. 7.5 Info. Documentada",
+      "laboratorio": "Todos los Laboratorios",
+      "descripcion": "Hojas de Vida habilitadas en 92.0%; restan 27 expedientes de equipos por digitalizar.",
+      "tipo_accion": "Mejora Continua (Cl. 10.1)",
+      "causa_raiz_5p": "Falta de plantilla unificada digital en la nube institucional."
+    },
+    {
+      "numero": 2,
+      "cod_brecha": "PCB-2026-02",
+      "origen_brecha": "Alerta Predictiva Cl. 10.3",
+      "clausula_iso": "Cl. 10.3 Acción Predictiva",
+      "laboratorio": "Lab. Cromatografía",
+      "descripcion": "Consumo de 83.2% de LTM en GC-MS (AMB-LAB-GCMS-001) detectado en medición quincenal.",
+      "tipo_accion": "Predictiva (Cl. 10.3)",
+      "causa_raiz_5p": "Contaminación acumulativa por inyección de matrices de crudo diluido."
+    },
+    {
+      "numero": 3,
+      "cod_brecha": "PCB-2026-03",
+      "origen_brecha": "Conciliación SUDEBIP / KPI-7",
+      "clausula_iso": "Cl. 7.5 / Legal LOBP",
+      "laboratorio": "GAMB Consolidado",
+      "descripcion": "18 activos con discrepancias físicas de chapa vs registro en SAP PM (Conciliación 91.2%).",
+      "tipo_accion": "Correctiva (Cl. 10.2)",
+      "causa_raiz_5p": "Movilización física de equipos sin acta formal de traspaso patrimonial."
+    },
+    {
+      "numero": 4,
+      "cod_brecha": "PCB-2026-04",
+      "origen_brecha": "Desviación KPI Metales Pesados",
+      "clausula_iso": "Cl. 8.1 Control Operacional",
+      "laboratorio": "Lab. Metales Pesados",
+      "descripcion": "Calibraciones vigentes en 73.0% y disponibilidad 76.8% en espectrómetro de absorción atómica.",
+      "tipo_accion": "Correctiva (Cl. 10.2)",
+      "causa_raiz_5p": "Agotamiento de patrones de Pb/Cd/Ni y demora en importación de repuestos."
+    },
+    {
+      "numero": 5,
+      "cod_brecha": "PCB-2026-05",
+      "origen_brecha": "Revisión Directiva FO-019",
+      "clausula_iso": "Cl. 9.1 Seguimiento y Medición",
+      "laboratorio": "Coordinación SGA",
+      "descripcion": "Cálculo de indicadores trimestrales mediante plantillas aisladas con riesgo de desactualización.",
+      "tipo_accion": "Mejora Continua (Cl. 10.1)",
+      "causa_raiz_5p": "Ausencia de software unificado de gestión de activos en la GAMB."
+    },
+    {
+      "numero": 6,
+      "cod_brecha": "PCB-2026-06",
+      "origen_brecha": "Auditoría Interna IAM",
+      "clausula_iso": "Cl. 7.2 Competencia Técnica",
+      "laboratorio": "Todos los Laboratorios",
+      "descripcion": "Personal técnico analista junior requiere estandarizar cálculo de deriva y manejo del formato FO-018.",
+      "tipo_accion": "Mejora Continua (Cl. 10.1)",
+      "causa_raiz_5p": "Incorporación de nuevo personal sin inducción formal en metrología ISO 17025."
+    },
+    {
+      "numero": 7,
+      "cod_brecha": "PCB-2026-07",
+      "origen_brecha": "Índice de Obsolescencia (Iobs)",
+      "clausula_iso": "Cl. 6.2 Planificación Activos",
+      "laboratorio": "Lab. Cromatografía",
+      "descripcion": "4 módulos analíticos vitales con Iobs > 75% alcanzando límite de soporte por fabricante Agilent.",
+      "tipo_accion": "Predictiva (Cl. 10.3)",
+      "causa_raiz_5p": "Obsolescencia tecnológica tras 12 años de servicio continuo en crudos pesados."
     }
   ]
 }

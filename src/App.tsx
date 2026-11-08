@@ -1,321 +1,535 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
+import { Sidebar, ActiveTabType } from './components/Sidebar';
+import { LoginModal } from './components/LoginModal';
 import { DashboardView } from './components/DashboardView';
+import { HojaVidaIntegralView } from './components/HojaVidaIntegralView';
 import { InventoryView } from './components/InventoryView';
-import { StrategicDecisionsView } from './components/StrategicDecisionsView';
 import { MaintenanceView } from './components/MaintenanceView';
+import { StrategicDecisionsView } from './components/StrategicDecisionsView';
+import { DerivaMetrologicaView } from './components/DerivaMetrologicaView';
+import { SudebipPatrimonioView } from './components/SudebipPatrimonioView';
+import { GobiernoSGAView } from './components/GobiernoSGAView';
+import { AdminConfigView } from './components/AdminConfigView';
 import { AssetFormModal } from './components/AssetFormModal';
 import { EvaluationWizardModal } from './components/EvaluationWizardModal';
 import { SupabaseModal } from './components/SupabaseModal';
-import { ActivoFisico, SudebipItem, HistorialFalla, UserRole } from './types';
+import { 
+  ActivoFisico, SudebipItem, HistorialFalla, UserRole, 
+  UsuarioSistema, PermisosPorRol, CalibracionMetrologica, 
+  MantenimientoPDVSA, ComprobacionIntermedia, DerivaMetrologicaLectura, 
+  DepreciacionPatrimonial, ActaMovimientoSudebip, KpiSGA, 
+  AcuerdoDireccion, CierreBrecha 
+} from './types';
 import { supabase, isSupabaseConfigured } from './lib/supabase';
 import initialData from '../sga_data.json';
+import { Database, Bell, Shield, UserCircle } from 'lucide-react';
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<'dashboard' | 'inventory' | 'decisions' | 'maintenance'>('dashboard');
-  const [userRole, setUserRole] = useState<UserRole>('analista');
-  const [isWizardOpen, setIsWizardOpen] = useState(false);
+  // Navigation & User State
+  const [activeTab, setActiveTab] = useState<ActiveTabType>('dashboard');
+  const [targetHojaVidaTag, setTargetHojaVidaTag] = useState<string>('');
 
+  // Dark Mode State
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    return localStorage.getItem('sgaf_theme') === 'dark';
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('sgaf_theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('sgaf_theme', 'light');
+    }
+  }, [darkMode]);
+
+  // Auth & Session State
+  const defaultUser = (initialData as any)?.usuarios?.[0] || {
+    id: 'usr-admin-01',
+    email: 'admin@intevep.pdvsa.com',
+    nombre_completo: 'Ing. Carlos Mendoza (Admin)',
+    rol: 'admin',
+    cargo: 'Líder de Calidad y Coordinador SGA',
+    laboratorio: 'Gerencia de Ambiente (GAMB)'
+  };
+
+  const [currentUser, setCurrentUser] = useState<UsuarioSistema | null>(() => {
+    const saved = localStorage.getItem('sgaf_user_session');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    return defaultUser;
+  });
+
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  // Dynamic Catalogs & Permissions
+  const [catalogos, setCatalogos] = useState<Record<string, string[]>>(
+    (initialData as any)?.catalogos || {}
+  );
+
+  const [permisos, setPermisos] = useState<PermisosPorRol>(
+    (initialData as any)?.permisos_roles || {}
+  );
+
+  // Core Data
   const [activos, setActivos] = useState<ActivoFisico[]>(() => {
     const cached = localStorage.getItem('sgaf_activos_data');
     if (cached) {
       try {
         const parsed = JSON.parse(cached);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
-        }
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       } catch (e) {
-        console.error('Error parsing cached data', e);
+        console.error('Error parsing cached activos', e);
       }
     }
     return (initialData as any)?.activos || [];
   });
 
   const [catalogoSudebip, setCatalogoSudebip] = useState<SudebipItem[]>(
-    (initialData as any).catalogo_sudebip || []
+    (initialData as any)?.catalogo_sudebip || []
   );
 
+  const [calibraciones, setCalibraciones] = useState<CalibracionMetrologica[]>(
+    (initialData as any)?.calibraciones || []
+  );
+
+  const [mantenimientos, setMantenimientos] = useState<MantenimientoPDVSA[]>(
+    (initialData as any)?.mantenimientos || []
+  );
+
+  const [comprobaciones, setComprobaciones] = useState<ComprobacionIntermedia[]>(
+    (initialData as any)?.comprobaciones || []
+  );
+
+  const [depreciaciones, setDepreciaciones] = useState<DepreciacionPatrimonial[]>(
+    (initialData as any)?.depreciaciones || []
+  );
+
+  const [movimientosSudebip, setMovimientosSudebip] = useState<ActaMovimientoSudebip[]>(
+    (initialData as any)?.movimientos_sudebip || []
+  );
+
+  const [derivaLecturas, setDerivaLecturas] = useState<DerivaMetrologicaLectura[]>(
+    (initialData as any)?.deriva_fo018 || []
+  );
+
+  const [kpisSga, setKpisSga] = useState<KpiSGA[]>(
+    (initialData as any)?.kpis_sga_fo017 || []
+  );
+
+  const [acuerdosDireccion, setAcuerdosDireccion] = useState<AcuerdoDireccion[]>(
+    (initialData as any)?.acuerdos_fo019 || []
+  );
+
+  const [brechasSga, setBrechasSga] = useState<CierreBrecha[]>(
+    (initialData as any)?.brechas_fo030 || []
+  );
+
+  // Modals & UI State
   const [selectedActivo, setSelectedActivo] = useState<ActivoFisico | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isWizardOpen, setIsWizardOpen] = useState(false);
   const [isSupabaseModalOpen, setIsSupabaseModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
-  // Sync with Supabase if configured
+  // Sync with Supabase on start if available
   useEffect(() => {
     if (!isSupabaseConfigured || !supabase) return;
 
-    const fetchFromSupabase = async () => {
-      setIsLoading(true);
+    const fetchSupabaseData = async () => {
       try {
-        const { data, error } = await supabase
-          .from('activos')
-          .select(`
-            *,
-            jerarquizacion:jerarquizacion_criticidad(*),
-            obsolescencia:evaluacion_obsolescencia(*),
-            decision:decisiones_estrategicas(*),
-            historial_fallas(*)
-          `)
-          .order('num', { ascending: true });
-
-        if (error) {
-          console.error('Error fetching from Supabase:', error);
-        } else if (data && data.length > 0) {
-          const formatted = data.map((item: any) => ({
-            ...item,
-            jerarquizacion: Array.isArray(item.jerarquizacion) ? item.jerarquizacion[0] : item.jerarquizacion,
-            obsolescencia: Array.isArray(item.obsolescencia) ? item.obsolescencia[0] : item.obsolescencia,
-            decision: Array.isArray(item.decision) ? item.decision[0] : item.decision,
-            historial_fallas: item.historial_fallas || []
-          }));
-          setActivos(formatted);
-          localStorage.setItem('sgaf_activos_data', JSON.stringify(formatted));
+        const { data: actData } = await supabase.from('activos').select('*').limit(350);
+        if (actData && actData.length > 0) {
+          setActivos(actData);
+          localStorage.setItem('sgaf_activos_data', JSON.stringify(actData));
         }
+
+        const { data: calData } = await supabase.from('calibraciones_metrologicas').select('*');
+        if (calData && calData.length > 0) setCalibraciones(calData);
+
+        const { data: mantData } = await supabase.from('mantenimientos_pdvsa').select('*');
+        if (mantData && mantData.length > 0) setMantenimientos(mantData);
+
+        const { data: ciData } = await supabase.from('comprobaciones_intermedias').select('*');
+        if (ciData && ciData.length > 0) setComprobaciones(ciData);
+
+        const { data: kpiData } = await supabase.from('desempeno_sga_fo017').select('*');
+        if (kpiData && kpiData.length > 0) setKpisSga(kpiData);
+
+        const { data: brechaData } = await supabase.from('cierre_brechas_fo030').select('*');
+        if (brechaData && brechaData.length > 0) setBrechasSga(brechaData);
       } catch (err) {
-        console.error('Supabase exception:', err);
-      } finally {
-        setIsLoading(false);
+        console.warn('Supabase offline or table missing, using local dataset', err);
       }
     };
 
-    fetchFromSupabase();
+    fetchSupabaseData();
   }, []);
 
-  // Save asset (either in Supabase or local state)
-  const handleSaveActivo = async (updated: ActivoFisico) => {
-    const index = activos.findIndex(a => a.tag_pdvsa === updated.tag_pdvsa);
-    let newActivos: ActivoFisico[];
-    if (index >= 0) {
-      newActivos = [...activos];
-      newActivos[index] = updated;
-    } else {
-      newActivos = [updated, ...activos];
-    }
-
-    setActivos(newActivos);
-    localStorage.setItem('sgaf_activos_data', JSON.stringify(newActivos));
-
-    // Update in Supabase if configured
-    if (isSupabaseConfigured && supabase) {
-      try {
-        const { data: actData, error: actErr } = await supabase
-          .from('activos')
-          .upsert({
-            tag_pdvsa: updated.tag_pdvsa,
-            codigo_sudebip: updated.codigo_sudebip,
-            codigo_sap: updated.codigo_sap,
-            nombre: updated.nombre,
-            marca: updated.marca,
-            modelo: updated.modelo,
-            serial: updated.serial,
-            laboratorio: updated.laboratorio,
-            criticidad_analista: updated.criticidad_analista,
-            tipo_equipo: updated.tipo_equipo,
-            pareto_20: updated.pareto_20,
-            estado_operativo: updated.estado_operativo,
-            rango_medicion: updated.rango_medicion,
-            resolucion: updated.resolucion,
-            frecuencia_calibracion: updated.frecuencia_calibracion,
-            fecha_ultima_calibracion: updated.fecha_ultima_calibracion || null,
-            fecha_proxima_calibracion: updated.fecha_proxima_calibracion || null
-          }, { onConflict: 'tag_pdvsa' })
-          .select('id')
-          .single();
-
-        if (actErr) {
-          console.error('Error saving to Supabase:', actErr);
-        } else if (actData?.id) {
-          const actId = actData.id;
-
-          if (updated.jerarquizacion) {
-            await supabase.from('jerarquizacion_criticidad').upsert({
-              activo_id: actId,
-              tag_pdvsa: updated.tag_pdvsa,
-              ff: updated.jerarquizacion.ff,
-              io: updated.jerarquizacion.io,
-              fo: updated.jerarquizacion.fo,
-              cm: updated.jerarquizacion.cm,
-              sha: updated.jerarquizacion.sha,
-              consecuencia: updated.jerarquizacion.consecuencia,
-              ic: updated.jerarquizacion.ic,
-              categoria_criticidad: updated.jerarquizacion.categoria_criticidad,
-              estatus_seleccion: updated.jerarquizacion.estatus_seleccion,
-              criterio_accion: updated.jerarquizacion.criterio_accion
-            });
-          }
-
-          if (updated.obsolescencia) {
-            await supabase.from('evaluacion_obsolescencia').upsert({
-              activo_id: actId,
-              tag_pdvsa: updated.tag_pdvsa,
-              eol: updated.obsolescencia.eol,
-              rep: updated.obsolescencia.rep,
-              met: updated.obsolescencia.met,
-              ant: updated.obsolescencia.ant,
-              suma_puntos: updated.obsolescencia.suma_puntos,
-              iobs: updated.obsolescencia.iobs,
-              estatus_obsolescencia: updated.obsolescencia.estatus_obsolescencia
-            });
-          }
-
-          if (updated.decision) {
-            await supabase.from('decisiones_estrategicas').upsert({
-              activo_id: actId,
-              tag_pdvsa: updated.tag_pdvsa,
-              nivel_riesgo: updated.nivel_riesgo,
-              resultado_cruce: updated.resultado_cruce,
-              decision_sugerida_riesgo: updated.decision.decision_sugerida_riesgo,
-              decision_estrategica_final: updated.decision.decision_estrategica_final,
-              responsable_de: updated.decision.responsable_de,
-              fecha_estimada_de: updated.decision.fecha_de || null,
-              decision_operativa: updated.decision.decision_operativa,
-              responsable_do: updated.decision.responsable_do,
-              fecha_estimada_do: updated.decision.fecha_do || null
-            });
-          }
-        }
-      } catch (err) {
-        console.error('Error in Supabase upsert:', err);
-      }
-    }
+  // Handlers
+  const handleLoginSuccess = (user: UsuarioSistema) => {
+    setCurrentUser(user);
+    localStorage.setItem('sgaf_user_session', JSON.stringify(user));
+    setIsLoginModalOpen(false);
   };
 
-  // Update fallas / maintenance orders for an asset
-  const handleUpdateActivoFallas = async (tag_pdvsa: string, fallas: HistorialFalla[]) => {
-    const updated = activos.map(a => {
-      if (a.tag_pdvsa === tag_pdvsa) {
-        return { ...a, historial_fallas: fallas };
-      }
-      return a;
-    });
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem('sgaf_user_session');
+    setIsLoginModalOpen(true);
+  };
 
+  const handleSaveActivo = async (saved: ActivoFisico) => {
+    const updated = activos.map(a => a.tag_pdvsa === saved.tag_pdvsa ? saved : a);
+    if (!activos.some(a => a.tag_pdvsa === saved.tag_pdvsa)) {
+      updated.unshift(saved);
+    }
     setActivos(updated);
     localStorage.setItem('sgaf_activos_data', JSON.stringify(updated));
+    setIsFormOpen(false);
+    setIsWizardOpen(false);
 
-    if (isSupabaseConfigured && supabase) {
-      const target = activos.find(a => a.tag_pdvsa === tag_pdvsa);
-      if (target?.id) {
-        try {
-          await supabase.from('historial_fallas').delete().eq('tag_pdvsa', tag_pdvsa);
-          if (fallas.length > 0) {
-            const records = fallas.map(f => ({
-              activo_id: target.id,
-              tag_pdvsa,
-              fecha_evento: f.fecha_evento,
-              tipo_evento: f.tipo_evento,
-              descripcion: f.descripcion,
-              tiempo_fuera_servicio_horas: f.tiempo_fuera_servicio_horas,
-              costo_reparacion: f.costo_reparacion || 0,
-              tecnico_responsable: f.tecnico_responsable || '',
-              impacto_operacional: f.impacto_operacional || '',
-              accion_tomada: f.accion_tomada || ''
-            }));
-            await supabase.from('historial_fallas').insert(records);
-          }
-        } catch (err) {
-          console.error('Error syncing fallas with Supabase:', err);
-        }
+    // Save to Supabase if configured
+    if (supabase) {
+      try {
+        await supabase.from('activos').upsert([saved]);
+      } catch (e) {
+        console.error('Error syncing asset to Supabase', e);
       }
     }
   };
 
-  const handleOpenDetail = (activo: ActivoFisico) => {
-    setSelectedActivo(activo);
-    setIsFormOpen(true);
+  const handleGoToHojaVida = (tag: string) => {
+    setTargetHojaVidaTag(tag);
+    setActiveTab('hoja_de_vida');
   };
 
-  const handleOpenCreate = () => {
-    setSelectedActivo(null);
-    setIsFormOpen(true);
-  };
+  // Calibraciones vencidas count for sidebar badge
+  const alertasVencidasCount = calibraciones.filter(c => c.estatus_metrologico === 'VENCIDA' || c.dias_restantes < 0).length;
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-800 flex flex-col font-sans transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col md:flex-row transition-colors">
       
-      {/* Top Navbar */}
-      <Navbar
-        currentTab={currentTab}
-        setCurrentTab={setCurrentTab}
-        onOpenSupabaseModal={() => setIsSupabaseModalOpen(true)}
-        onOpenWizard={() => setIsWizardOpen(true)}
-        totalActivos={activos.length}
-        userRole={userRole}
-        setUserRole={setUserRole}
+      {/* 1. SIDEBAR LATERAL IZQUIERDO */}
+      <Sidebar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        currentUser={currentUser}
+        permisos={permisos}
+        onLogout={handleLogout}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        alertasCount={alertasVencidasCount}
       />
 
-      {/* Main Container */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        {currentTab === 'dashboard' && (
-          <DashboardView
-            activos={activos}
-            onSelectActivo={handleOpenDetail}
-            onGoToDecisions={() => setCurrentTab('decisions')}
-            onOpenWizard={() => setIsWizardOpen(true)}
-            onFilterByCriticidad={(nivel) => {
-              setCurrentTab('inventory');
-            }}
-            onFilterByObsolescencia={(nivel) => {
-              setCurrentTab('inventory');
-            }}
-          />
-        )}
+      {/* 2. CONTENIDO PRINCIPAL */}
+      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+        
+        {/* Top Floating App Bar */}
+        <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 py-3.5 flex items-center justify-between sticky top-0 z-30 flex-shrink-0">
+          <div className="flex items-center space-x-3">
+            <span className="font-mono text-xs font-black px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+              {currentUser?.laboratorio || 'Gerencia de Ambiente'}
+            </span>
+          </div>
 
-        {currentTab === 'inventory' && (
-          <InventoryView
-            activos={activos}
-            onSelectActivo={handleOpenDetail}
-            onCreateActivo={handleOpenCreate}
-          />
-        )}
+          <div className="flex items-center space-x-3">
+            {/* Supabase Status Button */}
+            <button
+              onClick={() => setIsSupabaseModalOpen(true)}
+              className={`flex items-center space-x-2 text-xs font-bold px-3 py-1.5 rounded-xl border transition-all ${
+                isSupabaseConfigured
+                  ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-300'
+                  : 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border-amber-300'
+              }`}
+            >
+              <Database className="w-3.5 h-3.5" />
+              <span>{isSupabaseConfigured ? 'Supabase Nube Conectado' : 'Modo Local (Configurar Supabase)'}</span>
+            </button>
 
-        {currentTab === 'decisions' && (
-          <StrategicDecisionsView
-            activos={activos}
-            onSelectActivo={handleOpenDetail}
-          />
-        )}
+            {/* User Switch Profile Button */}
+            <button
+              onClick={() => setIsLoginModalOpen(true)}
+              className="flex items-center space-x-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700"
+            >
+              <UserCircle className="w-4 h-4" />
+              <span>Cambiar Perfil</span>
+            </button>
+          </div>
+        </header>
 
-        {currentTab === 'maintenance' && (
-          <MaintenanceView
-            activos={activos}
-            onUpdateActivoFallas={handleUpdateActivoFallas}
-          />
-        )}
-      </main>
+        {/* Dynamic Screen View */}
+        <main className="p-4 sm:p-8 flex-1 max-w-7xl w-full mx-auto">
+          
+          {/* PANTALLA 1: DASHBOARD & ALERTAS */}
+          {activeTab === 'dashboard' && (
+            <DashboardView
+              activos={activos}
+              calibraciones={calibraciones}
+              mantenimientos={mantenimientos}
+              derivaLecturas={derivaLecturas}
+              onSelectActivo={(a) => {
+                setSelectedActivo(a);
+                setIsFormOpen(true);
+              }}
+              onGoToHojaVida={handleGoToHojaVida}
+              onGoToDecisions={() => setActiveTab('decisiones')}
+              onOpenWizard={() => setIsWizardOpen(true)}
+            />
+          )}
 
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-5 px-6 text-center text-xs sm:text-sm text-slate-500 font-medium">
-        <p className="text-slate-700 font-bold">
-          SGAF • Sistema Integrado de Gestión de Activos Físicos | Gerencia de Ambiente - PDVSA INTEVEP
-        </p>
-        <p className="text-xs text-slate-500 mt-1">
-          En cumplimiento con ISO 55001:2024, ISO 31000, ISO 10012, SUDEBIP y Normas PDVSA MM-01-01-07 / MM-02-01-01.
-        </p>
-      </footer>
+          {/* PANTALLA 2: HOJA DE VIDA INTEGRAL */}
+          {activeTab === 'hoja_de_vida' && (
+            <HojaVidaIntegralView
+              activos={activos}
+              calibraciones={calibraciones}
+              mantenimientos={mantenimientos}
+              comprobaciones={comprobaciones}
+              depreciaciones={depreciaciones}
+              initialTag={targetHojaVidaTag}
+            />
+          )}
 
-      {/* Evaluation Wizard Modal (Paso a Paso UX) */}
-      <EvaluationWizardModal
-        isOpen={isWizardOpen}
-        onClose={() => setIsWizardOpen(false)}
-        activos={activos}
-        onSaveActivo={handleSaveActivo}
-        userRole={userRole}
+          {/* PANTALLA 3: INVENTARIO GENERAL */}
+          {activeTab === 'inventario' && (
+            <InventoryView
+              activos={activos}
+              catalogoSudebip={catalogoSudebip}
+              onSelectActivo={(a) => {
+                setSelectedActivo(a);
+                setIsFormOpen(true);
+              }}
+              onOpenNewModal={() => {
+                setSelectedActivo(null);
+                setIsFormOpen(true);
+              }}
+            />
+          )}
+
+          {/* PANTALLA 4: CALIBRACIÓN METROLÓGICA (ISO 10012) */}
+          {activeTab === 'calibraciones' && (
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+              <div className="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                  <h3 className="text-xl font-black text-slate-900 dark:text-white">
+                    Historial de Calibraciones y Trazabilidad Metrológica (ISO 10012)
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Control de certificados, incertidumbre (U), entidad acreditada y error máximo permisible
+                  </p>
+                </div>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 font-bold uppercase text-[11px] tracking-wider border-b border-slate-200 dark:border-slate-800">
+                    <tr>
+                      <th className="py-3 px-4">TAG</th>
+                      <th className="py-3 px-4">N° Certificado</th>
+                      <th className="py-3 px-4">Fecha Calibración</th>
+                      <th className="py-3 px-4">Vencimiento</th>
+                      <th className="py-3 px-4">Días Restantes</th>
+                      <th className="py-3 px-4">Entidad Acreditada</th>
+                      <th className="py-3 px-4">Incertidumbre</th>
+                      <th className="py-3 px-4">Dictamen</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                    {calibraciones.map((c) => (
+                      <tr key={c.id_calibracion} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                        <td className="py-3.5 px-4 font-mono font-bold text-blue-600 dark:text-blue-400">{c.tag_pdvsa}</td>
+                        <td className="py-3.5 px-4 font-mono font-bold text-slate-900 dark:text-white">{c.nro_certificado}</td>
+                        <td className="py-3.5 px-4 font-mono text-xs text-slate-600 dark:text-slate-400">{c.fecha_calibracion}</td>
+                        <td className="py-3.5 px-4 font-mono text-xs text-slate-600 dark:text-slate-400">{c.fecha_vencimiento}</td>
+                        <td className="py-3.5 px-4 font-mono font-bold">
+                          <span className={c.dias_restantes < 0 ? 'text-rose-600' : (c.dias_restantes <= 30 ? 'text-amber-600' : 'text-emerald-600')}>
+                            {c.dias_restantes} días
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400">{c.entidad_acreditada}</td>
+                        <td className="py-3.5 px-4 font-mono text-xs text-slate-800 dark:text-slate-200">{c.incertidumbre_u}</td>
+                        <td className="py-3.5 px-4">
+                          <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200">
+                            {c.dictamen}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* PANTALLA 5: MANTENIMIENTO & OTS */}
+          {activeTab === 'mantenimiento' && (
+            <MaintenanceView
+              activos={activos}
+              onUpdateActivoFallas={(tag, fallas) => {
+                const updated = activos.map(a => a.tag_pdvsa === tag ? { ...a, historial_fallas: fallas } : a);
+                setActivos(updated);
+                localStorage.setItem('sgaf_activos_data', JSON.stringify(updated));
+              }}
+            />
+          )}
+
+          {/* PANTALLA 6: COMPROBACIONES INTERMEDIAS */}
+          {activeTab === 'comprobaciones' && (
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+              <div className="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                  <h3 className="text-xl font-black text-slate-900 dark:text-white">
+                    Comprobaciones Intermedias de Instrumental (ISO/IEC 17025 Cl. 6.4.10)
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Aseguramiento metrológico periódico contra patrones trazables NIST / SENCAMER
+                  </p>
+                </div>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 font-bold uppercase text-[11px] tracking-wider border-b border-slate-200 dark:border-slate-800">
+                    <tr>
+                      <th className="py-3 px-4">ID</th>
+                      <th className="py-3 px-4">TAG</th>
+                      <th className="py-3 px-4">Fecha</th>
+                      <th className="py-3 px-4">Parámetro Verificado</th>
+                      <th className="py-3 px-4">Patrón Referencia</th>
+                      <th className="py-3 px-4">Rango Aceptable</th>
+                      <th className="py-3 px-4">Valor Medido</th>
+                      <th className="py-3 px-4">Dictamen</th>
+                      <th className="py-3 px-4">Rótulo Operativo</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                    {comprobaciones.map((ci) => (
+                      <tr key={ci.id_comprobacion} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                        <td className="py-3.5 px-4 font-mono font-bold text-slate-900 dark:text-white">{ci.id_comprobacion}</td>
+                        <td className="py-3.5 px-4 font-mono font-bold text-blue-600 dark:text-blue-400">{ci.tag_pdvsa}</td>
+                        <td className="py-3.5 px-4 font-mono text-xs text-slate-600 dark:text-slate-400">{ci.fecha_verificacion}</td>
+                        <td className="py-3.5 px-4 font-medium text-slate-800 dark:text-slate-200 max-w-xs">{ci.parametro_verificado}</td>
+                        <td className="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400 max-w-xs">{ci.patron_referencia}</td>
+                        <td className="py-3.5 px-4 font-mono text-xs text-slate-700 dark:text-slate-300">[{ci.limite_min} - {ci.limite_max}]</td>
+                        <td className="py-3.5 px-4 font-mono font-black text-indigo-600 dark:text-indigo-400">{ci.valor_experimental}</td>
+                        <td className="py-3.5 px-4">
+                          <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300">
+                            {ci.dictamen_auto}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200">
+                            {ci.rotulado_operativo}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* PANTALLA 7: CONTROL DE DERIVA (FO-018) */}
+          {activeTab === 'deriva' && (
+            <DerivaMetrologicaView
+              lecturas={derivaLecturas}
+              onAddLectura={(newLect) => {
+                setDerivaLecturas([...derivaLecturas, newLect]);
+              }}
+            />
+          )}
+
+          {/* PANTALLA 8: BIENES PÚBLICOS SUDEBIP */}
+          {activeTab === 'sudebip' && (
+            <SudebipPatrimonioView
+              depreciaciones={depreciaciones}
+              movimientos={movimientosSudebip}
+              activos={activos}
+              onAddMovimiento={(newMov) => {
+                setMovimientosSudebip([newMov, ...movimientosSudebip]);
+              }}
+            />
+          )}
+
+          {/* PANTALLA 9: CRITICIDAD & DECISIONES ESTRATÉGICAS */}
+          {activeTab === 'decisiones' && (
+            <StrategicDecisionsView
+              activos={activos}
+              onSelectActivo={(a) => {
+                setSelectedActivo(a);
+                setIsFormOpen(true);
+              }}
+            />
+          )}
+
+          {/* PANTALLA 10: GOBIERNO DEL SGA (MACRO) */}
+          {activeTab === 'gobierno_sga' && (
+            <GobiernoSGAView
+              kpis={kpisSga}
+              acuerdos={acuerdosDireccion}
+              brechas={brechasSga}
+            />
+          )}
+
+          {/* PANTALLA 11: CONFIGURACIÓN & ROLES */}
+          {activeTab === 'admin_config' && (
+            <AdminConfigView
+              catalogos={catalogos}
+              onUpdateCatalogos={(newCats) => {
+                setCatalogos(newCats);
+              }}
+              permisos={permisos}
+              onUpdatePermisos={(newPerms) => {
+                setPermisos(newPerms);
+              }}
+            />
+          )}
+
+        </main>
+      </div>
+
+      {/* MODAL DE LOGIN */}
+      <LoginModal
+        usuarios={(initialData as any)?.usuarios || [defaultUser]}
+        onLoginSuccess={handleLoginSuccess}
+        isOpen={isLoginModalOpen}
       />
 
-      {/* Full Asset Detail/Form Modal */}
-      <AssetFormModal
-        isOpen={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-        activo={selectedActivo}
-        onSave={handleSaveActivo}
-        catalogoSudebip={catalogoSudebip}
-      />
+      {/* MODAL WIZARD EVALUACIÓN PASO A PASO */}
+      {isWizardOpen && (
+        <EvaluationWizardModal
+          isOpen={isWizardOpen}
+          onClose={() => setIsWizardOpen(false)}
+          onSave={handleSaveActivo}
+          activosDisponibles={activos}
+          catalogoSudebip={catalogoSudebip}
+        />
+      )}
 
-      {/* Supabase Connection Modal */}
-      <SupabaseModal
-        isOpen={isSupabaseModalOpen}
-        onClose={() => setIsSupabaseModalOpen(false)}
-      />
+      {/* MODAL FICHA TÉCNICA DEL ACTIVO */}
+      {isFormOpen && (
+        <AssetFormModal
+          activo={selectedActivo}
+          catalogoSudebip={catalogoSudebip}
+          isOpen={isFormOpen}
+          onClose={() => setIsFormOpen(false)}
+          onSave={handleSaveActivo}
+        />
+      )}
+
+      {/* MODAL CONFIGURACIÓN SUPABASE */}
+      {isSupabaseModalOpen && (
+        <SupabaseModal
+          isOpen={isSupabaseModalOpen}
+          onClose={() => setIsSupabaseModalOpen(false)}
+        />
+      )}
 
     </div>
   );
