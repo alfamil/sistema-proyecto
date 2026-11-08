@@ -251,3 +251,4 @@ export const GobiernoSGAView: React.FC<GobiernoSGAViewProps> = ({
     </div>
   );
 };
+

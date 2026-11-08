@@ -8,11 +8,13 @@ import { ActivoFisico } from '../types';
 interface StrategicDecisionsViewProps {
   activos: ActivoFisico[];
   onSelectActivo: (activo: ActivoFisico) => void;
+  onGoToHojaVida?: (tag: string) => void;
 }
 
 export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
   activos,
-  onSelectActivo
+  onSelectActivo,
+  onGoToHojaVida
 }) => {
   const [filterCruce, setFilterCruce] = useState<string>('ALL');
   const [searchTerm, setSearchTerm] = useState('');
@@ -283,12 +285,24 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
                       }`}>
                         {cruce}
                       </span>
-                      <button
-                        onClick={() => onSelectActivo(asset)}
-                        className="px-4 py-1.5 bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 text-xs sm:text-sm rounded-xl transition-colors font-bold border border-slate-200"
-                      >
-                        Ver Ficha
-                      </button>
+                      <div className="flex items-center space-x-1.5">
+                        {onGoToHojaVida && (
+                          <button
+                            onClick={() => onGoToHojaVida(asset.tag_pdvsa)}
+                            className="px-3 py-1.5 bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-700 text-xs sm:text-sm rounded-xl transition-colors font-bold border border-indigo-200"
+                            title="Ver Hoja de Vida Completa (AMB-GEN-SGA-PM-002)"
+                          >
+                            Hoja de Vida
+                          </button>
+                        )}
+                        <button
+                          onClick={() => onSelectActivo(asset)}
+                          className="px-3 py-1.5 bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 text-xs sm:text-sm rounded-xl transition-colors font-bold border border-slate-200"
+                          title="Editar Evaluación y Decisión SAMP"
+                        >
+                          Editar
+                        </button>
+                      </div>
                     </div>
                   </div>
 

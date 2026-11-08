@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { 
   Search, Plus, Filter, Download, ExternalLink, 
-  AlertTriangle, ShieldCheck, Wrench, ChevronLeft, ChevronRight, CheckCircle2
+  AlertTriangle, ShieldCheck, Wrench, ChevronLeft, ChevronRight, CheckCircle2,
+  FileSpreadsheet, Edit3
 } from 'lucide-react';
 import { ActivoFisico } from '../types';
 
@@ -9,12 +10,14 @@ interface InventoryViewProps {
   activos: ActivoFisico[];
   onSelectActivo: (activo: ActivoFisico) => void;
   onCreateActivo: () => void;
+  onGoToHojaVida?: (tag: string) => void;
 }
 
 export const InventoryView: React.FC<InventoryViewProps> = ({
   activos,
   onSelectActivo,
-  onCreateActivo
+  onCreateActivo,
+  onGoToHojaVida
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLab, setSelectedLab] = useState('ALL');
@@ -304,15 +307,32 @@ export const InventoryView: React.FC<InventoryViewProps> = ({
                       </td>
 
                       <td className="py-4 px-4 text-right whitespace-nowrap">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onSelectActivo(asset);
-                          }}
-                          className="px-3.5 py-1.5 text-xs sm:text-sm bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white rounded-xl transition-colors font-bold border border-blue-200 hover:border-transparent"
-                        >
-                          Ver Ficha
-                        </button>
+                        <div className="flex items-center justify-end space-x-1.5">
+                          {onGoToHojaVida && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onGoToHojaVida(asset.tag_pdvsa);
+                              }}
+                              className="px-2.5 py-1.5 text-xs bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white rounded-xl transition-colors font-bold border border-indigo-200 hover:border-transparent flex items-center space-x-1 shadow-sm"
+                              title="Ver Expediente Completo e Imprimir Hoja de Vida (AMB-GEN-SGA-PM-002)"
+                            >
+                              <FileSpreadsheet className="w-3.5 h-3.5" />
+                              <span>Hoja de Vida</span>
+                            </button>
+                          )}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onSelectActivo(asset);
+                            }}
+                            className="px-2.5 py-1.5 text-xs bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white rounded-xl transition-colors font-bold border border-blue-200 hover:border-transparent flex items-center space-x-1 shadow-sm"
+                            title="Editar Datos Técnicos y Evaluaciones"
+                          >
+                            <Edit3 className="w-3.5 h-3.5" />
+                            <span>Editar</span>
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );

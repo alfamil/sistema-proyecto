@@ -374,3 +374,4 @@ export const SudebipPatrimonioView: React.FC<SudebipPatrimonioViewProps> = ({
     </div>
   );
 };
+

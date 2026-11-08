@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { 
   FileSpreadsheet, Printer, ShieldCheck, AlertTriangle, CheckCircle2, 
   Search, Building2, Wrench, Activity, Scale, AlertOctagon, HeartHandshake,
-  QrCode, FileCheck2, Cpu, Calendar, Download, RefreshCw
+  QrCode, FileCheck2, Cpu, Calendar, Download, RefreshCw, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { ActivoFisico, CalibracionMetrologica, MantenimientoPDVSA, ComprobacionIntermedia, DepreciacionPatrimonial } from '../types';
 
@@ -26,10 +26,46 @@ export const HojaVidaIntegralView: React.FC<HojaVidaIntegralViewProps> = ({
   const [selectedTag, setSelectedTag] = useState<string>(initialTag || activos[0]?.tag_pdvsa || '');
   const [searchFilter, setSearchFilter] = useState('');
 
+  // Synchronize when initialTag prop changes externally
+  React.useEffect(() => {
+    if (initialTag) {
+      setSelectedTag(initialTag);
+    }
+  }, [initialTag]);
+
   // Selected asset object
+  const currentIndex = useMemo(() => {
+    const idx = activos.findIndex(a => a.tag_pdvsa === selectedTag);
+    return idx >= 0 ? idx : 0;
+  }, [activos, selectedTag]);
+
   const asset = useMemo(() => {
     return activos.find(a => a.tag_pdvsa === selectedTag) || activos[0];
   }, [activos, selectedTag]);
+
+  // Filtered dropdown options
+  const filteredAssets = useMemo(() => {
+    if (!searchFilter.trim()) return activos;
+    const s = searchFilter.toLowerCase();
+    return activos.filter(a => 
+      a.tag_pdvsa.toLowerCase().includes(s) || 
+      a.nombre.toLowerCase().includes(s) ||
+      (a.serial && a.serial.toLowerCase().includes(s)) ||
+      (a.laboratorio && a.laboratorio.toLowerCase().includes(s))
+    );
+  }, [activos, searchFilter]);
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setSelectedTag(activos[currentIndex - 1].tag_pdvsa);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < activos.length - 1) {
+      setSelectedTag(activos[currentIndex + 1].tag_pdvsa);
+    }
+  };
 
   // Asset's related calibrations
   const assetCalibrations = useMemo(() => {
@@ -92,17 +128,52 @@ export const HojaVidaIntegralView: React.FC<HojaVidaIntegralViewProps> = ({
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          {/* Asset Selector */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+          {/* Quick Prev / Next Asset Navigation */}
+          <div className="flex items-center space-x-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+            <button
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+              title="Activo Anterior"
+              className="p-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <span className="text-xs font-mono font-bold px-2 text-slate-600 dark:text-slate-400">
+              {currentIndex + 1} / {activos.length}
+            </span>
+            <button
+              onClick={handleNext}
+              disabled={currentIndex >= activos.length - 1}
+              title="Activo Siguiente"
+              className="p-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Quick Filter Search */}
+          <div className="relative">
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input
+              type="text"
+              value={searchFilter}
+              onChange={e => setSearchFilter(e.target.value)}
+              placeholder="Buscar por TAG o Nombre..."
+              className="w-full sm:w-44 pl-9 pr-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+
+          {/* Asset Dropdown Selector */}
           <div className="relative min-w-[280px]">
             <select
               value={selectedTag}
               onChange={e => setSelectedTag(e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
             >
-              {activos.map(a => (
+              {filteredAssets.map(a => (
                 <option key={a.tag_pdvsa} value={a.tag_pdvsa}>
-                  {a.tag_pdvsa} • {a.nombre.slice(0, 35)}
+                  {a.tag_pdvsa} • {a.nombre.slice(0, 32)}
                 </option>
               ))}
             </select>
@@ -489,3 +560,4 @@ export const HojaVidaIntegralView: React.FC<HojaVidaIntegralViewProps> = ({
     </div>
   );
 };
+

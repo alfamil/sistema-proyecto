@@ -299,15 +299,15 @@ export default function App() {
           {activeTab === 'inventario' && (
             <InventoryView
               activos={activos}
-              catalogoSudebip={catalogoSudebip}
               onSelectActivo={(a) => {
                 setSelectedActivo(a);
                 setIsFormOpen(true);
               }}
-              onOpenNewModal={() => {
+              onCreateActivo={() => {
                 setSelectedActivo(null);
                 setIsFormOpen(true);
               }}
+              onGoToHojaVida={handleGoToHojaVida}
             />
           )}
 
@@ -465,6 +465,7 @@ export default function App() {
                 setSelectedActivo(a);
                 setIsFormOpen(true);
               }}
+              onGoToHojaVida={handleGoToHojaVida}
             />
           )}
 

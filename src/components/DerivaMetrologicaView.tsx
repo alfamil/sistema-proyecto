@@ -370,3 +370,4 @@ export const DerivaMetrologicaView: React.FC<DerivaMetrologicaViewProps> = ({
     </div>
   );
 };
+

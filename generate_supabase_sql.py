@@ -487,3 +487,4 @@ with open('supabase_upgrade_seed.sql', 'w', encoding='utf-8') as f:
     f.write('\n'.join(seed_lines))
 
 print('Generated supabase_upgrade_seed.sql')
+
