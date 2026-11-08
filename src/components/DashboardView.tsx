@@ -77,32 +77,35 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
     const critB = activos.filter(a => (a.categoria_criticidad || '').includes('Nivel B') || (a.categoria_criticidad || '').includes('Clase B')).length;
     const critC = activos.filter(a => (a.categoria_criticidad || '').includes('Nivel C') || (a.categoria_criticidad || '').includes('Clase C')).length;
     const operativos = activos.filter(a => (a.estado_operativo || 'Operativo') === 'Operativo').length;
-    const disponibilidadPct = total > 0 ? ((operativos / total) * 100).toFixed(1) : '82.1';
+    const disponibilidadPct = total > 0 ? ((operativos / total) * 100).toFixed(1) : '0.0';
 
     return {
       total,
-      critA: critA || 14,
-      critB: critB || 17,
-      critC: critC || 24,
-      operativos,
+      critA: total > 0 ? critA : 0,
+      critB: total > 0 ? critB : 0,
+      critC: total > 0 ? critC : 0,
+      operativos: total > 0 ? operativos : 0,
       disponibilidadPct
     };
   }, [activos]);
 
   // Chart 1: Availability by Laboratory (Bar Chart)
-  const labData = [
+  const labData = kpis.total > 0 ? [
     { lab: 'Cromatografía', disp: 82.1, meta: 75.0 },
     { lab: 'Aguas y Efluentes', disp: 86.4, meta: 75.0 },
     { lab: 'Metales Pesados', disp: 76.8, meta: 75.0 },
     { lab: 'Fisicoquímica', disp: 89.0, meta: 75.0 },
     { lab: 'Toxicología', disp: 78.5, meta: 75.0 }
-  ];
+  ] : [];
 
   // Chart 2: Calibration Status (Donut Chart)
-  const calDonutData = [
-    { name: 'Vigentes (Conformes)', value: alertas.vigentes.length || 6, color: '#10b981' },
-    { name: 'Por Vencer (< 30 días)', value: alertas.porVencer.length || 2, color: '#f59e0b' },
-    { name: 'Vencidas (En Riesgo)', value: alertas.vencidas.length || 2, color: '#ef4444' }
+  const totalCal = alertas.vigentes.length + alertas.porVencer.length + alertas.vencidas.length;
+  const calDonutData = totalCal > 0 ? [
+    { name: 'Vigentes (Conformes)', value: alertas.vigentes.length, color: '#10b981' },
+    { name: 'Por Vencer (< 30 días)', value: alertas.porVencer.length, color: '#f59e0b' },
+    { name: 'Vencidas (En Riesgo)', value: alertas.vencidas.length, color: '#ef4444' }
+  ] : [
+    { name: 'Sin registros', value: 1, color: '#94a3b8' }
   ];
 
   return (
@@ -123,7 +126,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             Centro de Control & Gestión de Activos Físicos
           </h2>
           <p className="text-sm sm:text-base text-blue-100 mt-1 max-w-2xl font-normal">
-            Monitoreo en tiempo real de 340 activos, alertas preventivas de calibración metrológica y plan estratégico de mantenimiento.
+            {kpis.total > 0
+              ? `Monitoreo en tiempo real de ${kpis.total} activos, alertas preventivas de calibración metrológica y plan estratégico de mantenimiento.`
+              : 'El sistema se encuentra depurado y listo para recibir el inventario oficial de activos físicos de la Gerencia de Ambiente.'}
           </p>
         </div>
 

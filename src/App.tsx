@@ -22,7 +22,7 @@ import {
 } from './types';
 import { supabase, isSupabaseConfigured } from './lib/supabase';
 import initialData from '../sga_data.json';
-import { Database, Bell, Shield, UserCircle } from 'lucide-react';
+import { Database, Bell, Shield, UserCircle, Trash2 } from 'lucide-react';
 
 export default function App() {
   // Navigation & User State
@@ -79,6 +79,10 @@ export default function App() {
 
   // Core Data
   const [activos, setActivos] = useState<ActivoFisico[]>(() => {
+    if ((initialData as any)?.metadata?.estado === 'DEPURADO_ESPERANDO_NUEVA_DATA') {
+      localStorage.removeItem('sgaf_activos_data');
+      return [];
+    }
     const cached = localStorage.getItem('sgaf_activos_data');
     if (cached) {
       try {
@@ -209,6 +213,23 @@ export default function App() {
     setActiveTab('hoja_de_vida');
   };
 
+  const handlePurgeAllData = () => {
+    if (window.confirm('¿Desea depurar y vaciar todos los datos de prueba? Esta acción vaciará el inventario local para dejar el sistema listo para recibir el nuevo archivo oficial.')) {
+      localStorage.removeItem('sgaf_activos_data');
+      setActivos([]);
+      setCalibraciones([]);
+      setMantenimientos([]);
+      setComprobaciones([]);
+      setDepreciaciones([]);
+      setMovimientosSudebip([]);
+      setDerivaLecturas([]);
+      setKpisSga([]);
+      setAcuerdosDireccion([]);
+      setBrechasSga([]);
+      alert('Sistema depurado correctamente. Todos los datos de prueba han sido eliminados.');
+    }
+  };
+
   // Calibraciones vencidas count for sidebar badge
   const alertasVencidasCount = calibraciones.filter(c => c.estatus_metrologico === 'VENCIDA' || c.dias_restantes < 0).length;
 
@@ -228,10 +249,10 @@ export default function App() {
       />
 
       {/* 2. CONTENIDO PRINCIPAL */}
-      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto print:h-auto print:overflow-visible">
         
         {/* Top Floating App Bar */}
-        <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 py-3.5 flex items-center justify-between sticky top-0 z-30 flex-shrink-0">
+        <header className="no-print print:hidden bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 py-3.5 flex items-center justify-between sticky top-0 z-30 flex-shrink-0">
           <div className="flex items-center space-x-3">
             <span className="font-mono text-xs font-black px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
               {currentUser?.laboratorio || 'Gerencia de Ambiente'}
@@ -259,6 +280,16 @@ export default function App() {
             >
               <UserCircle className="w-4 h-4" />
               <span>Cambiar Perfil</span>
+            </button>
+
+            {/* Purge Test Data Button */}
+            <button
+              onClick={handlePurgeAllData}
+              title="Depurar y vaciar datos de prueba locales"
+              className="flex items-center space-x-1.5 text-xs font-bold text-rose-700 dark:text-rose-300 hover:text-white hover:bg-rose-600 bg-rose-50 dark:bg-rose-950 px-3 py-1.5 rounded-xl border border-rose-200 dark:border-rose-800 transition-colors"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+              <span>Vaciar Datos</span>
             </button>
           </div>
         </header>
@@ -292,6 +323,7 @@ export default function App() {
               comprobaciones={comprobaciones}
               depreciaciones={depreciaciones}
               initialTag={targetHojaVidaTag}
+              currentUser={currentUser}
             />
           )}
 
