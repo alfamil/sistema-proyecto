@@ -222,104 +222,181 @@ export const HojaVidaIntegralView: React.FC<HojaVidaIntegralViewProps> = ({
                 No se encontraron activos que coincidan con la búsqueda "{searchTerm}".
               </div>
             ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm">
-                  <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 font-bold uppercase text-xs tracking-wider border-b border-slate-200 dark:border-slate-800">
-                    <tr>
-                      <th className="py-4 px-6">Identificación (TAG / SUDEBIP)</th>
-                      <th className="py-4 px-6">Nombre del Activo / Equipo</th>
-                      <th className="py-4 px-6">Laboratorio Perteneciente</th>
-                      <th className="py-4 px-6">Estado & Criticidad</th>
-                      <th className="py-4 px-6 text-right">Acciones Disponibles</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
-                    {paginatedAssets.map((a) => {
-                      const isPareto = a.pareto_20;
-                      const crit = a.categoria_criticidad || '';
-                      return (
-                        <tr 
-                          key={a.tag_pdvsa} 
-                          className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors"
-                        >
-                          <td className="py-4 px-6">
-                            <div className="font-mono font-bold text-sm text-blue-700 dark:text-blue-400">
+              <>
+                {/* 1. VISTA MÓVIL: TARJETAS RESPONSIVAS (block md:hidden) */}
+                <div className="block md:hidden divide-y divide-slate-100 dark:divide-slate-800">
+                  {paginatedAssets.map((a) => {
+                    const isPareto = a.pareto_20;
+                    return (
+                      <div key={a.tag_pdvsa} className="p-4 space-y-3 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <span className="font-mono font-bold text-sm text-blue-700 dark:text-blue-400">
                               {a.tag_pdvsa}
-                            </div>
-                            <div className="text-xs font-mono text-emerald-700 dark:text-emerald-400 mt-0.5">
-                              SUDEBIP: {a.codigo_sudebip || 'Sin Asignar'}
-                            </div>
-                            {a.codigo_sap && a.codigo_sap !== 'Sin Información' && (
-                              <div className="text-[11px] font-mono text-slate-500 mt-0.5">
-                                SAP: {a.codigo_sap}
-                              </div>
-                            )}
-                          </td>
-
-                          <td className="py-4 px-6">
-                            <div className="font-bold text-slate-900 dark:text-white text-sm sm:text-base">
-                              {a.nombre}
-                            </div>
-                            <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-normal">
-                              {a.marca} {a.modelo && `• Mod: ${a.modelo}`} {a.serial && a.serial !== 'Sin Información' && `• S/N: ${a.serial}`}
-                            </div>
-                          </td>
-
-                          <td className="py-4 px-6 text-slate-700 dark:text-slate-300 font-semibold text-xs sm:text-sm">
-                            {a.laboratorio}
-                          </td>
-
-                          <td className="py-4 px-6 whitespace-nowrap">
-                            <div className="space-y-1">
-                              <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold ${
-                                (a.estado_operativo || 'Operativo') === 'Operativo'
-                                  ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300'
-                                  : 'bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 border border-rose-300'
-                              }`}>
-                                {a.estado_operativo || 'Operativo'}
+                            </span>
+                            <div className="flex items-center space-x-1.5 mt-0.5 flex-wrap gap-y-1">
+                              <span className="text-[11px] font-mono font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+                                SUDEBIP: {a.codigo_sudebip || 'S/C'}
                               </span>
-                              {isPareto && (
-                                <div>
-                                  <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200">
-                                    ★ Vital Pareto 20%
-                                  </span>
-                                </div>
+                              {a.codigo_sap && a.codigo_sap !== 'Sin Información' && (
+                                <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">
+                                  SAP: {a.codigo_sap}
+                                </span>
                               )}
                             </div>
-                          </td>
+                          </div>
 
-                          <td className="py-4 px-6 text-right whitespace-nowrap">
-                            <div className="flex items-center justify-end space-x-2">
-                              {/* Boton 1: Ver Hoja de Vida */}
-                              <button
-                                onClick={() => {
-                                  setSelectedTag(a.tag_pdvsa);
-                                  setViewMode('detail');
-                                }}
-                                className="px-3.5 py-2 text-xs sm:text-sm bg-blue-50 dark:bg-blue-950 hover:bg-blue-600 hover:text-white text-blue-700 dark:text-blue-300 rounded-xl transition-all font-bold border border-blue-200 dark:border-blue-800 flex items-center space-x-1.5 shadow-sm"
-                                title="Abrir expediente completo de la Hoja de Vida"
-                              >
-                                <Eye className="w-4 h-4" />
-                                <span>Ver Hoja de Vida</span>
-                              </button>
+                          <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                            <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
+                              (a.estado_operativo || 'Operativo') === 'Operativo'
+                                ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300'
+                                : 'bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 border border-rose-300'
+                            }`}>
+                              {a.estado_operativo || 'Operativo'}
+                            </span>
+                            {isPareto && (
+                              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200">
+                                ★ Pareto
+                              </span>
+                            )}
+                          </div>
+                        </div>
 
-                              {/* Boton 2: Imprimir PDF Carta */}
-                              <button
-                                onClick={() => handleDirectPrint(a.tag_pdvsa)}
-                                className="px-3.5 py-2 text-xs sm:text-sm bg-slate-100 dark:bg-slate-800 hover:bg-indigo-600 hover:text-white text-slate-700 dark:text-slate-300 rounded-xl transition-all font-bold border border-slate-300 dark:border-slate-700 flex items-center space-x-1.5 shadow-sm"
-                                title="Generar impresión oficial en formato Carta"
-                              >
-                                <Printer className="w-4 h-4" />
-                                <span>Imprimir PDF</span>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900 dark:text-white text-base leading-snug">
+                            {a.nombre}
+                          </h4>
+                          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                            {a.laboratorio} • {a.marca || 'N/D'} {a.modelo ? `• Mod: ${a.modelo}` : ''}
+                          </p>
+                        </div>
+
+                        {/* Botones de acción táctiles para celular */}
+                        <div className="grid grid-cols-2 gap-2 pt-1">
+                          <button
+                            onClick={() => {
+                              setSelectedTag(a.tag_pdvsa);
+                              setViewMode('detail');
+                            }}
+                            className="w-full py-2.5 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs flex items-center justify-center space-x-1.5 shadow-sm min-h-[44px] transition-colors"
+                          >
+                            <Eye className="w-4 h-4" />
+                            <span>Ver Hoja Vida</span>
+                          </button>
+
+                          <button
+                            onClick={() => handleDirectPrint(a.tag_pdvsa)}
+                            className="w-full py-2.5 px-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-bold text-xs flex items-center justify-center space-x-1.5 border border-slate-200 dark:border-slate-700 min-h-[44px] transition-colors"
+                          >
+                            <Printer className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+                            <span>Imprimir PDF</span>
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* 2. VISTA ESCRITORIO: TABLA COMPLETA (hidden md:block) */}
+                <div className="hidden md:block overflow-x-auto">
+                  <table className="w-full text-left text-sm">
+                    <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 font-bold uppercase text-xs tracking-wider border-b border-slate-200 dark:border-slate-800">
+                      <tr>
+                        <th className="py-4 px-6">Identificación (TAG / SUDEBIP)</th>
+                        <th className="py-4 px-6">Nombre del Activo / Equipo</th>
+                        <th className="py-4 px-6">Laboratorio Perteneciente</th>
+                        <th className="py-4 px-6">Estado & Criticidad</th>
+                        <th className="py-4 px-6 text-right">Acciones Disponibles</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
+                      {paginatedAssets.map((a) => {
+                        const isPareto = a.pareto_20;
+                        const crit = a.categoria_criticidad || '';
+                        return (
+                          <tr 
+                            key={a.tag_pdvsa} 
+                            className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors"
+                          >
+                            <td className="py-4 px-6">
+                              <div className="font-mono font-bold text-sm text-blue-700 dark:text-blue-400">
+                                {a.tag_pdvsa}
+                              </div>
+                              <div className="text-xs font-mono text-emerald-700 dark:text-emerald-400 mt-0.5">
+                                SUDEBIP: {a.codigo_sudebip || 'Sin Asignar'}
+                              </div>
+                              {a.codigo_sap && a.codigo_sap !== 'Sin Información' && (
+                                <div className="text-[11px] font-mono text-slate-500 mt-0.5">
+                                  SAP: {a.codigo_sap}
+                                </div>
+                              )}
+                            </td>
+
+                            <td className="py-4 px-6">
+                              <div className="font-bold text-slate-900 dark:text-white text-sm sm:text-base">
+                                {a.nombre}
+                              </div>
+                              <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-normal">
+                                {a.marca} {a.modelo && `• Mod: ${a.modelo}`} {a.serial && a.serial !== 'Sin Información' && `• S/N: ${a.serial}`}
+                              </div>
+                            </td>
+
+                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300 font-semibold text-xs sm:text-sm">
+                              {a.laboratorio}
+                            </td>
+
+                            <td className="py-4 px-6 whitespace-nowrap">
+                              <div className="space-y-1">
+                                <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold ${
+                                  (a.estado_operativo || 'Operativo') === 'Operativo'
+                                    ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300'
+                                    : 'bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 border border-rose-300'
+                                }`}>
+                                  {a.estado_operativo || 'Operativo'}
+                                </span>
+                                {isPareto && (
+                                  <div>
+                                    <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200">
+                                      ★ Vital Pareto 20%
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                            </td>
+
+                            <td className="py-4 px-6 text-right whitespace-nowrap">
+                              <div className="flex items-center justify-end space-x-2">
+                                {/* Boton 1: Ver Hoja de Vida */}
+                                <button
+                                  onClick={() => {
+                                    setSelectedTag(a.tag_pdvsa);
+                                    setViewMode('detail');
+                                  }}
+                                  className="px-3.5 py-2 text-xs sm:text-sm bg-blue-50 dark:bg-blue-950 hover:bg-blue-600 hover:text-white text-blue-700 dark:text-blue-300 rounded-xl transition-all font-bold border border-blue-200 dark:border-blue-800 flex items-center space-x-1.5 shadow-sm"
+                                  title="Abrir expediente completo de la Hoja de Vida"
+                                >
+                                  <Eye className="w-4 h-4" />
+                                  <span>Ver Hoja de Vida</span>
+                                </button>
+
+                                {/* Boton 2: Imprimir PDF Carta */}
+                                <button
+                                  onClick={() => handleDirectPrint(a.tag_pdvsa)}
+                                  className="px-3.5 py-2 text-xs sm:text-sm bg-slate-100 dark:bg-slate-800 hover:bg-indigo-600 hover:text-white text-slate-700 dark:text-slate-300 rounded-xl transition-all font-bold border border-slate-300 dark:border-slate-700 flex items-center space-x-1.5 shadow-sm"
+                                  title="Generar impresión oficial en formato Carta"
+                                >
+                                  <Printer className="w-4 h-4" />
+                                  <span>Imprimir PDF</span>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             )}
 
             {/* Pagination Controls */}

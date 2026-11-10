@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   LayoutDashboard, FileSpreadsheet, Layers, ShieldCheck, Wrench, 
   CheckCircle2, TrendingDown, Building2, Target, Award, Settings, 
-  LogOut, Sun, Moon, ChevronRight, UserCircle
+  LogOut, Sun, Moon, ChevronRight, UserCircle, X
 } from 'lucide-react';
 import { UsuarioSistema, UserRole, PermisosPorRol } from '../types';
 
@@ -28,6 +28,8 @@ interface SidebarProps {
   darkMode: boolean;
   setDarkMode: (val: boolean) => void;
   alertasCount: number;
+  isOpenMobile?: boolean;
+  onCloseMobile?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -38,7 +40,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onLogout,
   darkMode,
   setDarkMode,
-  alertasCount
+  alertasCount,
+  isOpenMobile = false,
+  onCloseMobile
 }) => {
   const userRole = (currentUser?.rol || 'analista') as UserRole;
   const userPerms = permisos[userRole] || {};
@@ -65,7 +69,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {
           id: 'inventario',
           label: 'Inventario General',
-          subLabel: '340 Equipos GAMB',
+          subLabel: '335 Equipos GAMB',
           icon: Layers,
           permKey: 'inventario'
         }
@@ -98,45 +102,45 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {
           id: 'deriva',
           label: 'Control de Deriva (FO-018)',
-          subLabel: 'Acción Predictiva Cl. 10.3',
+          subLabel: 'AMB-GEN-SGA-FO-018',
           icon: TrendingDown,
           permKey: 'deriva'
         }
       ]
     },
     {
-      title: 'PATRIMONIO & GOBIERNO SGA',
+      title: 'CONTROL PATRIMONIAL & ESTRATEGIA',
       items: [
         {
           id: 'sudebip',
           label: 'Bienes Públicos SUDEBIP',
-          subLabel: 'Depreciación & Actas LOBP',
+          subLabel: 'Depreciación & Actas',
           icon: Building2,
           permKey: 'sudebip'
         },
         {
           id: 'decisiones',
           label: 'Criticidad & Decisiones',
-          subLabel: 'CAPEX / OPEX / Overhaul',
+          subLabel: 'SAMP / ISO 55001',
           icon: Target,
           permKey: 'decisiones'
         },
         {
           id: 'gobierno_sga',
-          label: 'Gobierno del SGA (Macro)',
+          label: 'Gobierno SGA (Macro)',
           subLabel: 'FO-017 / FO-019 / FO-030',
           icon: Award,
-          permKey: 'desempeno_fo017'
+          permKey: 'gobierno_sga'
         }
       ]
     },
     {
-      title: 'CONFIGURACIÓN DEL SISTEMA',
+      title: 'SISTEMA & ADMINISTRACIÓN',
       items: [
         {
           id: 'admin_config',
-          label: 'Parámetros & Roles',
-          subLabel: 'Catálogos & Matriz RBAC',
+          label: 'Configuración & Roles',
+          subLabel: 'Catálogos y Permisos',
           icon: Settings,
           permKey: 'catalogos_admin'
         }
@@ -144,11 +148,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
     }
   ];
 
-  return (
-    <aside className="no-print print:hidden w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col h-screen sticky top-0 transition-colors z-40 select-none shadow-sm flex-shrink-0">
-      
+  const handleSelectTab = (id: ActiveTabType) => {
+    setActiveTab(id);
+    if (onCloseMobile) {
+      onCloseMobile();
+    }
+  };
+
+  const renderContent = (isMobile: boolean = false) => (
+    <div className="flex flex-col h-full bg-white dark:bg-slate-900">
       {/* Brand Header */}
-      <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+      <div className="p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between flex-shrink-0">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white shadow-md font-black tracking-wider text-lg">
             SGA
@@ -166,20 +176,32 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </div>
 
-        {/* Theme Toggle Button */}
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          title={darkMode ? 'Cambiar a Tema Claro' : 'Cambiar a Tema Oscuro'}
-          className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-        >
-          {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center space-x-1">
+          {/* Theme Toggle Button */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            title={darkMode ? 'Cambiar a Tema Claro' : 'Cambiar a Tema Oscuro'}
+            className="p-2.5 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          >
+            {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
+          </button>
+
+          {/* Close button for mobile drawer */}
+          {isMobile && (
+            <button
+              onClick={onCloseMobile}
+              className="p-2.5 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              title="Cerrar menú"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Navigation Menu */}
       <div className="flex-1 overflow-y-auto px-3 py-4 space-y-6">
         {menuSections.map((section, sIdx) => {
-          // Filter items based on permissions
           const visibleItems = section.items.filter(item => {
             const perm = userPerms[item.permKey];
             return perm ? perm.ver : true;
@@ -189,7 +211,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           return (
             <div key={sIdx} className="space-y-1">
-              <h4 className="px-3 text-[11px] font-bold tracking-wider uppercase text-slate-600 dark:text-slate-300">
+              <h4 className="px-3 text-[11px] font-bold tracking-wider uppercase text-slate-500 dark:text-slate-400">
                 {section.title}
               </h4>
               <div className="space-y-1 pt-1">
@@ -200,21 +222,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   return (
                     <button
                       key={item.id}
-                      onClick={() => setActiveTab(item.id as ActiveTabType)}
-                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-all group ${
+                      onClick={() => handleSelectTab(item.id as ActiveTabType)}
+                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-all group min-h-[44px] ${
                         isActive 
                           ? 'bg-blue-600 text-white font-bold shadow-sm shadow-blue-500/20' 
                           : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60 font-medium'
                       }`}
                     >
                       <div className="flex items-center space-x-3 min-w-0">
-                        <Icon className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white'}`} />
+                        <Icon className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`} />
                         <div className="min-w-0">
                           <p className="text-sm truncate leading-tight">
                             {item.label}
                           </p>
                           {item.subLabel && (
-                            <p className={`text-[11px] truncate leading-tight font-normal ${isActive ? 'text-blue-100' : 'text-slate-600 dark:text-slate-300'}`}>
+                            <p className={`text-[11px] truncate leading-tight font-normal ${isActive ? 'text-blue-100' : 'text-slate-500 dark:text-slate-400'}`}>
                               {item.subLabel}
                             </p>
                           )}
@@ -236,7 +258,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </div>
 
       {/* User Session Footer */}
-      <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+      <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex-shrink-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3 min-w-0">
             <div className="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 font-bold flex-shrink-0">
@@ -255,14 +277,43 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <button
             onClick={onLogout}
             title="Cerrar Sesión"
-            className="p-2 rounded-xl text-slate-600 hover:text-rose-600 dark:text-slate-300 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors ml-2 flex-shrink-0"
+            className="p-2 rounded-xl text-slate-600 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors ml-2 flex-shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center"
           >
             <LogOut className="w-4 h-4" />
           </button>
         </div>
       </div>
+    </div>
+  );
 
-    </aside>
+  return (
+    <>
+      {/* 1. DESKTOP PERMANENT SIDEBAR (Visible only on md screens and up) */}
+      <aside className="no-print print:hidden hidden md:flex w-72 border-r border-slate-200 dark:border-slate-800 flex-col h-screen sticky top-0 transition-colors z-40 select-none shadow-sm flex-shrink-0">
+        {renderContent(false)}
+      </aside>
+
+      {/* 2. MOBILE SLIDE-OVER DRAWER (Visible when isOpenMobile is true) */}
+      <div 
+        className={`no-print print:hidden fixed inset-0 z-50 md:hidden transition-all duration-300 ${
+          isOpenMobile ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Backdrop overlay */}
+        <div 
+          className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity"
+          onClick={onCloseMobile}
+        />
+
+        {/* Drawer slide-in panel */}
+        <aside 
+          className={`fixed inset-y-0 left-0 w-80 max-w-[85vw] bg-white dark:bg-slate-900 shadow-2xl flex flex-col z-50 transform transition-transform duration-300 ease-in-out border-r border-slate-200 dark:border-slate-800 ${
+            isOpenMobile ? 'translate-x-0' : '-translate-x-full'
+          }`}
+        >
+          {renderContent(true)}
+        </aside>
+      </div>
+    </>
   );
 };
-

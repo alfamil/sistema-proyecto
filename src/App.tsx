@@ -22,11 +22,12 @@ import {
 } from './types';
 import { supabase, isSupabaseConfigured } from './lib/supabase';
 import initialData from '../sga_data.json';
-import { Database, Bell, Shield, UserCircle, Trash2 } from 'lucide-react';
+import { Database, Bell, Shield, UserCircle, Trash2, Menu, LayoutDashboard, FileSpreadsheet, Layers, Target, MoreHorizontal } from 'lucide-react';
 
 export default function App() {
   // Navigation & User State
   const [activeTab, setActiveTab] = useState<ActiveTabType>('dashboard');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [targetHojaVidaTag, setTargetHojaVidaTag] = useState<string>('');
 
   // Dark Mode State
@@ -236,7 +237,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col md:flex-row transition-colors">
       
-      {/* 1. SIDEBAR LATERAL IZQUIERDO */}
+      {/* 1. SIDEBAR LATERAL IZQUIERDO & MOBILE DRAWER */}
       <Sidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -246,56 +247,78 @@ export default function App() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         alertasCount={alertasVencidasCount}
+        isOpenMobile={isMobileMenuOpen}
+        onCloseMobile={() => setIsMobileMenuOpen(false)}
       />
 
       {/* 2. CONTENIDO PRINCIPAL */}
       <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto print:h-auto print:overflow-visible">
         
         {/* Top Floating App Bar */}
-        <header className="no-print print:hidden bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 py-3.5 flex items-center justify-between sticky top-0 z-30 flex-shrink-0">
-          <div className="flex items-center space-x-3">
-            <span className="font-mono text-xs font-black px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+        <header className="no-print print:hidden bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-3 sm:px-6 py-3 flex items-center justify-between sticky top-0 z-30 flex-shrink-0">
+          <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
+            {/* Hamburger Button on Mobile */}
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="p-2 -ml-1 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
+              aria-label="Abrir menú de navegación"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+
+            {/* Mobile Brand Name */}
+            <div className="flex items-center space-x-1.5 md:hidden">
+              <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white font-black text-xs shadow-sm">
+                SGA
+              </div>
+              <span className="font-extrabold text-sm text-slate-900 dark:text-white">SIGAF</span>
+            </div>
+
+            <span className="hidden sm:inline-block font-mono text-xs font-black px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 truncate max-w-[200px] md:max-w-none">
               {currentUser?.laboratorio || 'Gerencia de Ambiente'}
             </span>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-1.5 sm:space-x-3">
             {/* Supabase Status Button */}
             <button
               onClick={() => setIsSupabaseModalOpen(true)}
-              className={`flex items-center space-x-2 text-xs font-bold px-3 py-1.5 rounded-xl border transition-all ${
+              title={isSupabaseConfigured ? 'Supabase Nube Conectado' : 'Modo Local (Configurar Supabase)'}
+              className={`flex items-center space-x-1.5 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-xl border transition-all min-h-[36px] ${
                 isSupabaseConfigured
                   ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-300'
                   : 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border-amber-300'
               }`}
             >
-              <Database className="w-3.5 h-3.5" />
-              <span>{isSupabaseConfigured ? 'Supabase Nube Conectado' : 'Modo Local (Configurar Supabase)'}</span>
+              <Database className="w-3.5 h-3.5 flex-shrink-0" />
+              <span className="hidden sm:inline">{isSupabaseConfigured ? 'Supabase Nube' : 'Modo Local'}</span>
+              <span className={`w-2 h-2 rounded-full sm:hidden ${isSupabaseConfigured ? 'bg-emerald-500' : 'bg-amber-500'}`} />
             </button>
 
             {/* User Switch Profile Button */}
             <button
               onClick={() => setIsLoginModalOpen(true)}
-              className="flex items-center space-x-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700"
+              className="flex items-center space-x-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 px-2.5 sm:px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 min-h-[36px]"
+              title="Cambiar Perfil de Usuario"
             >
-              <UserCircle className="w-4 h-4" />
-              <span>Cambiar Perfil</span>
+              <UserCircle className="w-4 h-4 flex-shrink-0" />
+              <span className="hidden sm:inline">Perfil</span>
             </button>
 
             {/* Purge Test Data Button */}
             <button
               onClick={handlePurgeAllData}
               title="Depurar y vaciar datos de prueba locales"
-              className="flex items-center space-x-1.5 text-xs font-bold text-rose-700 dark:text-rose-300 hover:text-white hover:bg-rose-600 bg-rose-50 dark:bg-rose-950 px-3 py-1.5 rounded-xl border border-rose-200 dark:border-rose-800 transition-colors"
+              className="flex items-center space-x-1.5 text-xs font-bold text-rose-700 dark:text-rose-300 hover:text-white hover:bg-rose-600 bg-rose-50 dark:bg-rose-950 p-2 sm:px-3 sm:py-1.5 rounded-xl border border-rose-200 dark:border-rose-800 transition-colors min-h-[36px]"
             >
-              <Trash2 className="w-3.5 h-3.5" />
-              <span>Vaciar Datos</span>
+              <Trash2 className="w-3.5 h-3.5 flex-shrink-0" />
+              <span className="hidden sm:inline">Vaciar</span>
             </button>
           </div>
         </header>
 
         {/* Dynamic Screen View */}
-        <main className="p-4 sm:p-8 flex-1 max-w-7xl w-full mx-auto">
+        <main className="p-3 sm:p-8 pb-24 md:pb-8 flex-1 max-w-7xl w-full mx-auto">
           
           {/* PANTALLA 1: DASHBOARD & ALERTAS */}
           {activeTab === 'dashboard' && (
@@ -525,6 +548,69 @@ export default function App() {
           )}
 
         </main>
+
+        {/* 3. MOBILE BOTTOM NAVIGATION BAR */}
+        <nav 
+          className="no-print print:hidden fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 px-2 py-1.5 flex items-center justify-around shadow-lg"
+          style={{ paddingBottom: 'max(0.375rem, env(safe-area-inset-bottom))' }}
+        >
+          <button
+            onClick={() => setActiveTab('dashboard')}
+            className={`flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-colors min-w-[56px] min-h-[44px] ${
+              activeTab === 'dashboard'
+                ? 'text-blue-600 dark:text-blue-400 font-bold'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            <LayoutDashboard className="w-5 h-5" />
+            <span className="text-[10px] mt-0.5 leading-none">Inicio</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('hoja_de_vida')}
+            className={`flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-colors min-w-[56px] min-h-[44px] ${
+              activeTab === 'hoja_de_vida'
+                ? 'text-blue-600 dark:text-blue-400 font-bold'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            <FileSpreadsheet className="w-5 h-5" />
+            <span className="text-[10px] mt-0.5 leading-none">Hoja Vida</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('inventario')}
+            className={`flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-colors min-w-[56px] min-h-[44px] ${
+              activeTab === 'inventario'
+                ? 'text-blue-600 dark:text-blue-400 font-bold'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            <Layers className="w-5 h-5" />
+            <span className="text-[10px] mt-0.5 leading-none">Equipos</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('decisiones')}
+            className={`flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-colors min-w-[56px] min-h-[44px] ${
+              activeTab === 'decisiones'
+                ? 'text-blue-600 dark:text-blue-400 font-bold'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            <Target className="w-5 h-5" />
+            <span className="text-[10px] mt-0.5 leading-none">Decisiones</span>
+          </button>
+
+          <button
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors min-w-[56px] min-h-[44px]"
+            aria-label="Abrir menú completo"
+          >
+            <MoreHorizontal className="w-5 h-5" />
+            <span className="text-[10px] mt-0.5 leading-none">Más...</span>
+          </button>
+        </nav>
       </div>
 
       {/* MODAL DE LOGIN */}

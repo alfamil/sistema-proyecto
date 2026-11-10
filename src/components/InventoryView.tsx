@@ -192,9 +192,122 @@ export const InventoryView: React.FC<InventoryViewProps> = ({
         </div>
       </div>
 
-      {/* Asset Table - High Contrast Light Theme */}
+      {/* Asset Table / Cards - High Contrast Light Theme */}
       <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-        <div className="overflow-x-auto">
+        
+        {/* VISTA MÓVIL: TARJETAS RESPONSIVAS (block lg:hidden) */}
+        <div className="block lg:hidden divide-y divide-slate-100">
+          {paginatedActivos.length === 0 ? (
+            <div className="py-12 px-4 text-center text-slate-400 text-sm">
+              No se encontraron activos con los filtros seleccionados.
+            </div>
+          ) : (
+            paginatedActivos.map((asset, idx) => {
+              const isPareto = asset.pareto_20;
+              const crit = asset.categoria_criticidad || '';
+              const obs = asset.estatus_obsolescencia || '';
+
+              return (
+                <div 
+                  key={asset.id || asset.tag_pdvsa || idx}
+                  className="p-4 space-y-3 hover:bg-slate-50 transition-colors"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <span className="font-mono font-bold text-sm text-blue-700">
+                        {asset.tag_pdvsa}
+                      </span>
+                      <div className="flex items-center space-x-1.5 mt-0.5 flex-wrap gap-y-1">
+                        <span className="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                          SUDEBIP: {asset.codigo_sudebip || 'S/C'}
+                        </span>
+                        {asset.codigo_sap && asset.codigo_sap !== 'Sin Información' && (
+                          <span className="text-[10px] font-mono text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded">
+                            SAP: {asset.codigo_sap}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                      {isPareto && (
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                          ★ Pareto 20%
+                        </span>
+                      )}
+                      <span className="font-mono text-xs text-slate-400">
+                        N° {asset.num || (currentPage - 1) * itemsPerPage + idx + 1}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-base leading-snug">
+                      {asset.nombre}
+                    </h4>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      {asset.laboratorio} • {asset.marca || 'N/D'} {asset.modelo ? `• Mod: ${asset.modelo}` : ''}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-1.5 text-xs">
+                    {crit.includes('Nivel A') ? (
+                      <span className="px-2.5 py-0.5 rounded-full font-bold bg-red-100 text-red-800 border border-red-300">
+                        Clase A (Crítico)
+                      </span>
+                    ) : crit.includes('Nivel B') ? (
+                      <span className="px-2.5 py-0.5 rounded-full font-bold bg-amber-100 text-amber-800 border border-amber-300">
+                        Clase B (Semicrítico)
+                      </span>
+                    ) : crit.includes('Nivel C') ? (
+                      <span className="px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                        Clase C (No Crítico)
+                      </span>
+                    ) : null}
+
+                    {obs.includes('Crítica') ? (
+                      <span className="px-2.5 py-0.5 rounded-full font-bold bg-red-100 text-red-800 border border-red-300">
+                        Iobs Crítico ({asset.iobs}%)
+                      </span>
+                    ) : obs.includes('Media') ? (
+                      <span className="px-2.5 py-0.5 rounded-full font-bold bg-orange-100 text-orange-800 border border-orange-300">
+                        Iobs Medio ({asset.iobs}%)
+                      </span>
+                    ) : obs.includes('Baja') ? (
+                      <span className="px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                        Iobs Bajo ({asset.iobs}%)
+                      </span>
+                    ) : null}
+                  </div>
+
+                  {/* Botones de acción táctiles para celular */}
+                  <div className="grid grid-cols-2 gap-2 pt-1">
+                    {onGoToHojaVida && (
+                      <button
+                        onClick={() => onGoToHojaVida(asset.tag_pdvsa)}
+                        className="w-full py-2.5 px-3 bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white rounded-xl font-bold text-xs flex items-center justify-center space-x-1.5 border border-indigo-200 min-h-[44px] transition-colors"
+                      >
+                        <FileSpreadsheet className="w-4 h-4" />
+                        <span>Hoja de Vida</span>
+                      </button>
+                    )}
+
+                    <button
+                      onClick={() => onSelectActivo(asset)}
+                      className="w-full py-2.5 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs flex items-center justify-center space-x-1.5 shadow-sm min-h-[44px] transition-colors"
+                    >
+                      <Edit3 className="w-4 h-4" />
+                      <span>Ficha Técnica</span>
+                    </button>
+                  </div>
+                </div>
+              );
+            })
+          )}
+        </div>
+
+        {/* VISTA ESCRITORIO: TABLA COMPLETA (hidden lg:block) */}
+        <div className="hidden lg:block overflow-x-auto">
           <table className="w-full text-left text-sm sm:text-base border-collapse">
             <thead>
               <tr className="bg-slate-50 text-slate-600 uppercase tracking-wider text-xs sm:text-sm border-b border-slate-200">

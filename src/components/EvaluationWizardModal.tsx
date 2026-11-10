@@ -153,28 +153,29 @@ export const EvaluationWizardModal: React.FC<EvaluationWizardModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto">
-      <div className="bg-white border border-slate-200 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm p-0 sm:p-4 overflow-y-auto">
+      <div className="bg-white border border-slate-200 w-full max-w-3xl rounded-t-3xl sm:rounded-2xl shadow-2xl overflow-hidden my-0 sm:my-8 animate-in fade-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200 flex flex-col max-h-[94vh] sm:max-h-[92vh]">
         
         {/* Wizard Header */}
-        <div className="px-6 py-5 bg-slate-50 border-b border-slate-200 flex justify-between items-center flex-shrink-0">
-          <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-blue-100 text-blue-700 rounded-xl">
-              <Sparkles className="w-6 h-6" />
+        <div className="px-4 sm:px-6 py-4 sm:py-5 bg-slate-50 border-b border-slate-200 flex justify-between items-center flex-shrink-0">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-2 sm:p-2.5 bg-blue-100 text-blue-700 rounded-xl flex-shrink-0">
+              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <h3 className="text-xl font-black text-slate-900">
-                Asistente de Evaluación Guiada (Paso a Paso)
+              <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-tight">
+                Asistente de Evaluación Guiada
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 font-medium">
-                Metodología oficial de evaluación: PDVSA MM-02-01-01 & ISO 55001:2024
+                Metodología: PDVSA MM-02-01-01 & ISO 55001:2024
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+            className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center -mr-1"
+            title="Cerrar ventana"
           >
             <X className="w-6 h-6" />
           </button>

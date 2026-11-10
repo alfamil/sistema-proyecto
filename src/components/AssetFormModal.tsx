@@ -253,38 +253,39 @@ export const AssetFormModal: React.FC<AssetFormModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto">
-      <div className="bg-white border border-slate-200 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm p-0 sm:p-4 overflow-y-auto">
+      <div className="bg-white border border-slate-200 w-full max-w-4xl rounded-t-3xl sm:rounded-2xl shadow-2xl overflow-hidden my-0 sm:my-8 animate-in fade-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200 flex flex-col max-h-[94vh] sm:max-h-[90vh]">
         
         {/* Modal Header - Light Theme High Contrast */}
-        <div className="px-6 py-5 bg-slate-50 border-b border-slate-200 flex justify-between items-center flex-shrink-0">
+        <div className="px-4 sm:px-6 py-4 sm:py-5 bg-slate-50 border-b border-slate-200 flex justify-between items-center flex-shrink-0">
           <div>
-            <div className="flex items-center space-x-2.5 flex-wrap gap-y-1">
-              <h3 className="font-extrabold text-xl text-slate-900">
+            <div className="flex items-center space-x-2 sm:space-x-2.5 flex-wrap gap-y-1">
+              <h3 className="font-extrabold text-lg sm:text-xl text-slate-900">
                 {activo ? 'Ficha Técnica del Activo' : 'Registro de Nuevo Activo'}
               </h3>
-              <span className="font-mono text-xs sm:text-sm font-bold px-2.5 py-0.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-200">
+              <span className="font-mono text-xs sm:text-sm font-bold px-2 sm:px-2.5 py-0.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-200">
                 {formData.tag_pdvsa || 'Nuevo TAG'}
               </span>
-              <span className="font-mono text-xs font-semibold px-2 py-0.5 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200">
+              <span className="hidden sm:inline-block font-mono text-xs font-semibold px-2 py-0.5 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200">
                 AMB-GEN-SGA-PM-002
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
+            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 sm:mt-1 font-medium">
               Convergencia SUDEBIP / ISO 55001 / ISO 10012 / PDVSA MM-02-01-01
             </p>
           </div>
 
           <button 
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-700 p-2 rounded-lg hover:bg-slate-100 transition-colors"
+            className="text-slate-400 hover:text-slate-700 p-2 rounded-xl hover:bg-slate-100 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center -mr-1"
+            title="Cerrar ventana"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Modal Navigation Tabs - Responsive pill tabs with larger fonts */}
-        <div className="flex border-b border-slate-200 bg-slate-50/50 px-6 gap-2 overflow-x-auto flex-shrink-0 py-2">
+        <div className="flex border-b border-slate-200 bg-slate-50/50 px-3 sm:px-6 gap-1.5 sm:gap-2 overflow-x-auto flex-shrink-0 py-2 scrollbar-none">
           <button
             type="button"
             onClick={() => setActiveTab('general')}
@@ -1025,18 +1026,18 @@ export const AssetFormModal: React.FC<AssetFormModalProps> = ({
           )}
 
           {/* Modal Actions */}
-          <div className="pt-4 border-t border-slate-200 flex justify-between items-center flex-shrink-0">
+          <div className="pt-4 border-t border-slate-200 flex flex-col-reverse sm:flex-row justify-between items-center gap-2 flex-shrink-0">
             <button
               type="button"
               onClick={onClose}
-              className="px-5 py-2.5 text-sm sm:text-base bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl transition-colors"
+              className="w-full sm:w-auto px-5 py-3 text-sm sm:text-base bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl transition-colors min-h-[44px]"
             >
               Cancelar
             </button>
 
             <button
               type="submit"
-              className="px-7 py-2.5 text-sm sm:text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md flex items-center transition-colors"
+              className="w-full sm:w-auto px-7 py-3 text-sm sm:text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md flex items-center justify-center transition-colors min-h-[44px]"
             >
               <Save className="w-5 h-5 mr-2" />
               Guardar Expediente del Activo
