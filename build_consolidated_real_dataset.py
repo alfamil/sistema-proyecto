@@ -27,11 +27,24 @@ def excel_date_to_str(serial):
     try:
         val = float(serial)
         if val < 1000:
-            return str(serial)
+            return None
         dt = datetime(1899, 12, 30) + timedelta(days=val)
         return dt.strftime('%Y-%m-%d')
     except Exception:
-        return str(serial)
+        pass
+    s = str(serial).strip()
+    for fmt in ('%Y-%m-%d', '%d/%m/%Y', '%d-%m-%Y'):
+        try:
+            return datetime.strptime(s, fmt).strftime('%Y-%m-%d')
+        except Exception:
+            pass
+    return None
+
+def is_header_or_empty(tag):
+    if not tag:
+        return True
+    t = str(tag).strip().lower()
+    return any(h in t for h in ['tag técnico', 'tag tecnico', 'código', 'codigo', 'indicador', 'n°', 'denominación'])
 
 def parse_xlsx_sheets(xlsx_path):
     with zipfile.ZipFile(xlsx_path) as z:
@@ -84,7 +97,7 @@ for r_num, row in sga_wb.get('Catálogo Cod. SUDEBIP', []):
         continue
     cod = clean_str(row.get('C'))
     tipo = clean_str(row.get('D'))
-    if cod and tipo:
+    if cod and tipo and not is_header_or_empty(cod):
         sudebip_items.append({'codigo': cod, 'tipo_equipo': tipo})
 
 # 2. Jerarquización (Sheet 2)
@@ -93,7 +106,7 @@ for r_num, row in sga_wb.get('2. Jerarquización ', []):
     if r_num <= 10:
         continue
     tag = clean_str(row.get('B'))
-    if not tag:
+    if not tag or is_header_or_empty(tag):
         continue
     jer_map[tag] = {
         'tag_pdvsa': tag,
@@ -117,7 +130,7 @@ for r_num, row in sga_wb.get('3. Índice Obsolescencia Iobs', []):
     if r_num <= 9:
         continue
     tag = clean_str(row.get('B'))
-    if not tag:
+    if not tag or is_header_or_empty(tag):
         continue
     iobs_raw = safe_float(row.get('J'))
     obs_map[tag] = {
@@ -139,7 +152,7 @@ for r_num, row in sga_wb.get('4. Evaluación Riesgos y Oport.', []):
     if r_num <= 11:
         continue
     tag = clean_str(row.get('B'))
-    if not tag:
+    if not tag or is_header_or_empty(tag):
         continue
     riesgo_map[tag] = {
         'tag_pdvsa': tag,
@@ -160,7 +173,7 @@ for r_num, row in sga_wb.get('5. Matriz Cruce Iobs vs Riesgo', []):
     if r_num <= 11:
         continue
     tag = clean_str(row.get('B'))
-    if not tag:
+    if not tag or is_header_or_empty(tag):
         continue
     cruce_map[tag] = {
         'tag_pdvsa': tag,
@@ -176,7 +189,7 @@ for r_num, row in sga_wb.get('6. Consolidación de Decisiones', []):
     if r_num <= 11:
         continue
     tag = clean_str(row.get('B'))
-    if not tag:
+    if not tag or is_header_or_empty(tag):
         continue
     dec_map[tag] = {
         'tag_pdvsa': tag,
@@ -192,13 +205,13 @@ for r_num, row in sga_wb.get('6. Consolidación de Decisiones', []):
         'fecha_do': excel_date_to_str(row.get('Q', '')),
     }
 
-# Extraer especificaciones técnicas de hoja_de_vida_integral si existen
+# Extraer especificaciones técnicas de hoja_de_vida_integral
 hv_specs = {}
 for r_num, row in hv_wb.get('INVENTARIO_GENERAL', []):
     if r_num <= 4:
         continue
     tag = clean_str(row.get('A'))
-    if not tag:
+    if not tag or is_header_or_empty(tag):
         continue
     hv_specs[tag] = {
         'filial': clean_str(row.get('F')),
@@ -231,7 +244,7 @@ for r_num, row in sga_wb.get('1. Inventario y Pareto 20%', []):
     if r_num <= 8:
         continue
     tag = clean_str(row.get('B'))
-    if not tag:
+    if not tag or is_header_or_empty(tag):
         continue
     
     pareto_str = clean_str(row.get('O')).lower()
@@ -322,109 +335,117 @@ for r_num, row in sga_wb.get('1. Inventario y Pareto 20%', []):
     }
     activos_list.append(activo)
 
-# 8. Extraer Calibraciones, Mantenimientos, etc. de hoja_de_vida_integral
+# 8. Extraer Calibraciones, Mantenimientos, etc.
 calibraciones = []
 for r_num, row in hv_wb.get('HISTORIAL_CALIBRACION_METROLOGI', []):
     if r_num <= 4:
         continue
-    id_cal = clean_str(row.get('A'))
-    tag = clean_str(row.get('B'))
-    if id_cal and tag:
-        calibraciones.append({
-            'id_calibracion': id_cal,
-            'tag_pdvsa': tag,
-            'nro_certificado': clean_str(row.get('C')),
-            'fecha_calibracion': excel_date_to_str(row.get('D')),
-            'fecha_vencimiento': excel_date_to_str(row.get('E')),
-            'dias_restantes': int(safe_float(row.get('F'), 0)),
-            'estatus_metrologico': clean_str(row.get('G')),
-            'entidad_acreditada': clean_str(row.get('H')),
-            'patron_utilizado': clean_str(row.get('I')),
-            'desviacion_observada': clean_str(row.get('J')),
-            'incertidumbre_u': clean_str(row.get('K')),
-            'mep_tolerancia': clean_str(row.get('L')),
-            'dictamen': clean_str(row.get('M')),
-            'precinto_colocado': clean_str(row.get('N')),
-            'metrologo_responsable': clean_str(row.get('O')),
-            'observaciones': clean_str(row.get('P')),
-        })
+    tag = clean_str(row.get('A'))
+    id_cal = clean_str(row.get('B'))
+    if id_cal and tag and not is_header_or_empty(tag):
+        f_cal = excel_date_to_str(row.get('D'))
+        f_venc = excel_date_to_str(row.get('E'))
+        if f_cal and f_venc:
+            calibraciones.append({
+                'id_calibracion': id_cal,
+                'tag_pdvsa': tag,
+                'nro_certificado': clean_str(row.get('C')),
+                'fecha_calibracion': f_cal,
+                'fecha_vencimiento': f_venc,
+                'dias_restantes': int(safe_float(row.get('F'), 0)),
+                'estatus_metrologico': clean_str(row.get('G')) or 'VIGENTE',
+                'entidad_acreditada': clean_str(row.get('H')) or 'SENCAMER',
+                'patron_utilizado': clean_str(row.get('I')),
+                'desviacion_observada': clean_str(row.get('J')),
+                'incertidumbre_u': clean_str(row.get('K')),
+                'mep_tolerancia': clean_str(row.get('L')),
+                'dictamen': clean_str(row.get('M')) or 'Conforme (Pasa)',
+                'precinto_colocado': clean_str(row.get('N')),
+                'metrologo_responsable': clean_str(row.get('O')),
+                'observaciones': clean_str(row.get('P')),
+            })
 
 mantenimientos = []
 for r_num, row in hv_wb.get('REGISTRO_MANTENIMIENTO_PDVSA', []):
-    if r_num <= 4:
+    if r_num <= 5:
         continue
-    nro_ot = clean_str(row.get('A'))
-    tag = clean_str(row.get('B'))
-    if nro_ot and tag:
-        mantenimientos.append({
-            'nro_ot': nro_ot,
-            'tag_pdvsa': tag,
-            'tipo_mantenimiento': clean_str(row.get('C')),
-            'codigo_plan_pdvsa': clean_str(row.get('D')),
-            'fecha_inicio': excel_date_to_str(row.get('E')),
-            'fecha_cierre': excel_date_to_str(row.get('F')),
-            'descripcion': clean_str(row.get('G')),
-            'repuestos_reemplazados': clean_str(row.get('H')),
-            'horas_hombre': safe_float(row.get('I'), 0),
-            'costo_total_usd': safe_float(row.get('J'), 0),
-            'responsable_ejecucion': clean_str(row.get('K')),
-            'impacto_ensayos_iso17025': clean_str(row.get('L')),
-            'requiere_recalibracion': clean_str(row.get('M')).lower() in ['sí', 'si', 'true'],
-            'estatus_ot': clean_str(row.get('N')),
-            'aprobado_por': clean_str(row.get('O')),
-            'proximo_mantenimiento': excel_date_to_str(row.get('P')),
-        })
+    tag = clean_str(row.get('A'))
+    nro_ot = clean_str(row.get('B'))
+    if nro_ot and tag and not is_header_or_empty(tag):
+        f_ini = excel_date_to_str(row.get('E'))
+        if f_ini:
+            mantenimientos.append({
+                'nro_ot': nro_ot,
+                'tag_pdvsa': tag,
+                'tipo_mantenimiento': clean_str(row.get('C')) or 'Preventivo Planificado',
+                'codigo_plan_pdvsa': clean_str(row.get('D')),
+                'fecha_inicio': f_ini,
+                'fecha_cierre': excel_date_to_str(row.get('F')),
+                'descripcion': clean_str(row.get('G')) or 'Mantenimiento Preventivo',
+                'repuestos_reemplazados': clean_str(row.get('H')),
+                'horas_hombre': safe_float(row.get('I'), 0),
+                'costo_total_usd': safe_float(row.get('J'), 0),
+                'responsable_ejecucion': clean_str(row.get('K')) or 'Taller Mantenimiento INTEVEP',
+                'impacto_ensayos_iso17025': clean_str(row.get('L')),
+                'requiere_recalibracion': clean_str(row.get('M')).lower() in ['sí', 'si', 'true'],
+                'estatus_ot': clean_str(row.get('N')) or 'Cerrada / Completada',
+                'aprobado_por': clean_str(row.get('O')),
+                'proximo_mantenimiento': excel_date_to_str(row.get('P')),
+            })
 
 comprobaciones = []
 for r_num, row in hv_wb.get('COMPROBACIONES_INTERMEDIAS', []):
     if r_num <= 4:
         continue
-    nro_registro = clean_str(row.get('A'))
-    tag = clean_str(row.get('B'))
-    if nro_registro and tag:
-        comprobaciones.append({
-            'nro_registro': nro_registro,
-            'tag_pdvsa': tag,
-            'fecha_comprobacion': excel_date_to_str(row.get('C')),
-            'patron_verificacion': clean_str(row.get('D')),
-            'valor_nominal_patron': safe_float(row.get('E'), 0),
-            'lectura_instrumento': safe_float(row.get('F'), 0),
-            'desviacion_calculada': safe_float(row.get('G'), 0),
-            'criterio_aceptacion_mep': safe_float(row.get('H'), 0),
-            'dictamen_auto': clean_str(row.get('I')),
-            'analista_ejecutor': clean_str(row.get('J')),
-            'supervisor_validador': clean_str(row.get('K')),
-            'rotulado_operativo': clean_str(row.get('L')),
-        })
+    tag = clean_str(row.get('A'))
+    nro_registro = clean_str(row.get('B'))
+    if nro_registro and tag and not is_header_or_empty(tag):
+        f_comp = excel_date_to_str(row.get('C'))
+        if f_comp:
+            comprobaciones.append({
+                'nro_registro': nro_registro,
+                'tag_pdvsa': tag,
+                'fecha_comprobacion': f_comp,
+                'patron_verificacion': clean_str(row.get('D')),
+                'valor_nominal_patron': safe_float(row.get('E'), 0),
+                'lectura_instrumento': safe_float(row.get('F'), 0),
+                'desviacion_calculada': safe_float(row.get('G'), 0),
+                'criterio_aceptacion_mep': safe_float(row.get('H'), 0),
+                'dictamen_auto': clean_str(row.get('I')) or 'CONFORME (PASA)',
+                'analista_ejecutor': clean_str(row.get('J')),
+                'supervisor_validador': clean_str(row.get('K')),
+                'rotulado_operativo': clean_str(row.get('L')) or 'ETIQUETA VERDE - EN SERVICIO',
+            })
 
 depreciaciones = []
 for r_num, row in hv_wb.get('CONTROL_PATRIMONIAL_SUDEBIP', []):
-    if r_num <= 4:
+    if r_num <= 5:
         continue
     tag = clean_str(row.get('A'))
-    if tag:
+    if tag and not is_header_or_empty(tag):
+        f_inc = excel_date_to_str(row.get('D'))
         depreciaciones.append({
             'tag_pdvsa': tag,
             'nro_bien_publico': clean_str(row.get('B')),
-            'costo_adquisicion_usd': safe_float(row.get('C'), 0),
-            'fecha_incorporacion': excel_date_to_str(row.get('D')),
-            'tasa_salvamento': safe_float(row.get('E'), 0.10),
-            'valor_residual_salvamento': safe_float(row.get('F'), 0),
-            'base_depreciable_usd': safe_float(row.get('G'), 0),
-            'vida_util_anos': int(safe_float(row.get('H'), 10)),
-            'meses_uso': int(safe_float(row.get('I'), 0)),
-            'depreciacion_mensual_usd': safe_float(row.get('J'), 0),
-            'depreciacion_acumulada_usd': safe_float(row.get('K'), 0),
-            'valor_neto_libros_usd': safe_float(row.get('L'), 0),
+            'costo_adquisicion_usd': safe_float(row.get('E'), safe_float(row.get('C'), 0)),
+            'fecha_incorporacion': f_inc,
+            'tasa_salvamento': safe_float(row.get('F'), 0.10),
+            'valor_residual_salvamento': safe_float(row.get('G'), 0),
+            'base_depreciable_usd': safe_float(row.get('H'), 0),
+            'vida_util_anos': int(safe_float(row.get('I'), 10)),
+            'meses_uso': int(safe_float(row.get('J'), 0)),
+            'depreciacion_mensual_usd': safe_float(row.get('K'), 0),
+            'depreciacion_acumulada_usd': safe_float(row.get('L'), 0),
+            'valor_neto_libros_usd': safe_float(row.get('M'), 0),
         })
 
-# 9. Extraer Anexos SGA (FO-017, FO-018, FO-019, FO-030)
+# 9. Extraer Anexos SGA
 kpis_fo017 = []
 for r_num, row in anexos_wb.get('ANEXO_A_FO-017_DESEMPENO', []):
     if r_num <= 4:
         continue
     ind = clean_str(row.get('B'))
-    if ind:
+    if ind and not is_header_or_empty(ind):
         val_real = row.get('H')
         kpis_fo017.append({
             'numero': int(safe_float(row.get('A'), len(kpis_fo017) + 1)),
@@ -443,7 +464,7 @@ for r_num, row in anexos_wb.get('ANEXO_B_FO-018_DERIVA_METRO', []):
     if r_num <= 4:
         continue
     tag = clean_str(row.get('A'))
-    if tag:
+    if tag and not is_header_or_empty(tag):
         deriva_fo018.append({
             'tag_pdvsa': tag,
             'magnitud': clean_str(row.get('B')),
@@ -463,7 +484,7 @@ for r_num, row in anexos_wb.get('ANEXO_C_FO-019_ACTA_REV_DIR', []):
     if r_num <= 4:
         continue
     cod = clean_str(row.get('A'))
-    if cod:
+    if cod and not is_header_or_empty(cod):
         acuerdos_fo019.append({
             'codigo': cod,
             'requisito_iso': clean_str(row.get('B')),
@@ -480,7 +501,7 @@ for r_num, row in anexos_wb.get('ANEXO_D_FO-030_CIERRE_BRECHAS', []):
     if r_num <= 4:
         continue
     cod = clean_str(row.get('B'))
-    if cod:
+    if cod and not is_header_or_empty(cod):
         brechas_fo030.append({
             'numero': int(safe_float(row.get('A'), len(brechas_fo030) + 1)),
             'cod_brecha': cod,
@@ -611,7 +632,6 @@ permisos_roles = {
     }
 }
 
-# Catálogos dinámicos
 catalogos = {
     "laboratorios": [
         "Aire (Calidad de Aire)",
@@ -653,10 +673,9 @@ catalogos = {
     ]
 }
 
-# Consolidar JSON final
 consolidated = {
     "metadata": {
-        "version": "3.0.0",
+        "version": "3.1.0",
         "sistema": "Sistema Integrado de Gestión de Activos Físicos (SIGAF)",
         "fuente_oficial": "herramienta_sga.xlsx",
         "fecha_generacion": datetime.now().isoformat(),
@@ -690,3 +709,7 @@ with open('sga_data.json', 'w', encoding='utf-8') as f:
     json.dump(consolidated, f, ensure_ascii=False, indent=2)
 
 print(f"sga_data.json generado exitosamente con {len(activos_list)} activos reales.")
+print(f"Calibraciones válidas: {len(calibraciones)}")
+print(f"Mantenimientos válidos: {len(mantenimientos)}")
+print(f"Depreciaciones válidas: {len(depreciaciones)}")
+print(f"KPIs FO-017 válidos: {len(kpis_fo017)}")

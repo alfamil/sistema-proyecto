@@ -453,3 +453,4 @@ with open('supabase_real_data_import.sql', 'w', encoding='utf-8') as f:
     f.write('\n'.join(sql_lines))
 
 print("supabase_real_data_import.sql generado exitosamente.")
+

@@ -158,7 +158,11 @@ export default function App() {
         const { data: ciData } = await supabase.from('comprobaciones_intermedias').select('*');
         if (ciData && ciData.length > 0) setComprobaciones(ciData);
 
-        const { data: kpiData } = await supabase.from('desempeno_sga_fo017').select('*');
+        let { data: kpiData } = await supabase.from('kpis_sga_fo017').select('*');
+        if (!kpiData || kpiData.length === 0) {
+          const res = await supabase.from('desempeno_sga_fo017').select('*');
+          kpiData = res.data;
+        }
         if (kpiData && kpiData.length > 0) setKpisSga(kpiData);
 
         const { data: brechaData } = await supabase.from('cierre_brechas_fo030').select('*');

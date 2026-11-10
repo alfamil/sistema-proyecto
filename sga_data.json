@@ -1,19 +1,19 @@
 {
   "metadata": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "sistema": "Sistema Integrado de Gestión de Activos Físicos (SIGAF)",
     "fuente_oficial": "herramienta_sga.xlsx",
-    "fecha_generacion": "2026-11-09T21:42:39.572989",
+    "fecha_generacion": "2026-11-09T23:15:01.407942",
     "total_activos": 335,
     "total_pareto_20": 67,
     "total_sudebip": 228,
     "total_calibraciones": 10,
-    "total_mantenimientos": 9,
+    "total_mantenimientos": 8,
     "total_comprobaciones": 9,
-    "total_kpis": 38,
+    "total_kpis": 35,
     "total_deriva": 0,
     "total_acuerdos": 0,
-    "total_brechas": 23
+    "total_brechas": 21
   },
   "usuarios": [
     {
@@ -20189,8 +20189,8 @@
   ],
   "calibraciones": [
     {
-      "id_calibracion": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "CAL-2026-001",
+      "id_calibracion": "CAL-2026-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "nro_certificado": "CERT-MET-2026-884",
       "fecha_calibracion": "2026-06-15",
       "fecha_vencimiento": "2027-06-15",
@@ -20207,8 +20207,8 @@
       "observaciones": "Confirmación metrológica satisfactoria. Precinto de seguridad colocado. Apto para ensayos de efluentes."
     },
     {
-      "id_calibracion": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "CAL-2025-001",
+      "id_calibracion": "CAL-2025-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "nro_certificado": "CERT-MET-2025-612",
       "fecha_calibracion": "2025-06-10",
       "fecha_vencimiento": "2026-06-10",
@@ -20225,8 +20225,8 @@
       "observaciones": "Calibración reglamentaria. Ajuste leve de ganancia del detector EM. Conforme."
     },
     {
-      "id_calibracion": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "CAL-2024-001",
+      "id_calibracion": "CAL-2024-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "nro_certificado": "CERT-MET-2024-409",
       "fecha_calibracion": "2024-06-12",
       "fecha_vencimiento": "2025-06-12",
@@ -20243,8 +20243,8 @@
       "observaciones": "Calibración periódica satisfactoria sin desviaciones. Trazabilidad NIST."
     },
     {
-      "id_calibracion": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "CAL-2023-001",
+      "id_calibracion": "CAL-2023-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "nro_certificado": "CERT-MET-2023-288",
       "fecha_calibracion": "2023-06-15",
       "fecha_vencimiento": "2024-06-15",
@@ -20261,8 +20261,8 @@
       "observaciones": "Calibración anual completada tras mantenimiento mayor preventivo."
     },
     {
-      "id_calibracion": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "CAL-2021-001",
+      "id_calibracion": "CAL-2021-001",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "nro_certificado": "CERT-MET-2021-098",
       "fecha_calibracion": "2021-03-25",
       "fecha_vencimiento": "2022-03-25",
@@ -20279,8 +20279,8 @@
       "observaciones": "Puesta en marcha y calificación inicial satisfactoria según protocolo IQ/OQ/PQ."
     },
     {
-      "id_calibracion": "AMB-LAB-UVVIS-002",
-      "tag_pdvsa": "CAL-2026-002",
+      "id_calibracion": "CAL-2026-002",
+      "tag_pdvsa": "AMB-LAB-UVVIS-002",
       "nro_certificado": "CERT-MET-2026-902",
       "fecha_calibracion": "2026-05-10",
       "fecha_vencimiento": "2027-05-10",
@@ -20297,8 +20297,8 @@
       "observaciones": "Calibración anual conforme con filtros certificados de óxido de holmio y densidad óptica neutral."
     },
     {
-      "id_calibracion": "AMB-LAB-AAS-003",
-      "tag_pdvsa": "CAL-2026-003",
+      "id_calibracion": "CAL-2026-003",
+      "tag_pdvsa": "AMB-LAB-AAS-003",
       "nro_certificado": "CERT-MET-2026-915",
       "fecha_calibracion": "2026-04-18",
       "fecha_vencimiento": "2027-04-18",
@@ -20315,8 +20315,8 @@
       "observaciones": "Verificación de linealidad fotométrica y control de temperatura de atomización conformes."
     },
     {
-      "id_calibracion": "AMB-LAB-BAL-004",
-      "tag_pdvsa": "CAL-2026-004",
+      "id_calibracion": "CAL-2026-004",
+      "tag_pdvsa": "AMB-LAB-BAL-004",
       "nro_certificado": "CERT-MET-2026-930",
       "fecha_calibracion": "2026-07-20",
       "fecha_vencimiento": "2027-01-20",
@@ -20333,8 +20333,8 @@
       "observaciones": "Calibración semestral conforme. Clase de exactitud I (Especial). Errores dentro de tolerancias."
     },
     {
-      "id_calibracion": "AMB-LAB-TOC-005",
-      "tag_pdvsa": "CAL-2026-005",
+      "id_calibracion": "CAL-2026-005",
+      "tag_pdvsa": "AMB-LAB-TOC-005",
       "nro_certificado": "CERT-MET-2026-942",
       "fecha_calibracion": "2026-08-15",
       "fecha_vencimiento": "2027-08-15",
@@ -20351,8 +20351,8 @@
       "observaciones": "Calibración del sistema NDIR y linealidad de combustión catalítica a 680 °C satisfactorias."
     },
     {
-      "id_calibracion": "AMB-LAB-PH-006",
-      "tag_pdvsa": "CAL-2026-006",
+      "id_calibracion": "CAL-2026-006",
+      "tag_pdvsa": "AMB-LAB-PH-006",
       "nro_certificado": "CERT-MET-2026-955",
       "fecha_calibracion": "2026-09-01",
       "fecha_vencimiento": "2027-03-01",
@@ -20371,26 +20371,8 @@
   ],
   "mantenimientos": [
     {
-      "nro_ot": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "OT-PDVSA-2026-018",
-      "tipo_mantenimiento": "Preventivo Planificado Sistemático",
-      "codigo_plan_pdvsa": "PM-LAB-GCMS-TRIM",
-      "fecha_inicio": "2026-09-10",
-      "fecha_cierre": "2026-09-11",
-      "descripcion": "Mantenimiento preventivo trimestral: Limpieza de puerto inyector Split/Splitless, reemplazo de septa e inserto ultra inerte, verificación de estanqueidad de helio y prueba de fugas electrónicas.",
-      "repuestos_reemplazados": "Septa de silicona alta temperatura, Ultra Inert Split Liner con lana desactivada, sello de oro base inyector",
-      "horas_hombre": 12.0,
-      "costo_total_usd": 480.0,
-      "responsable_ejecucion": "Téc. Marcos Rivas (INTEVEP Mant.)",
-      "impacto_ensayos_iso17025": "Sin Impacto (Ensayos Previos Válidos)",
-      "requiere_recalibracion": false,
-      "estatus_ot": "Cerrada / Completada",
-      "aprobado_por": "Dra. Elena Salazar",
-      "proximo_mantenimiento": "2026-12-11"
-    },
-    {
-      "nro_ot": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "OT-PDVSA-2026-009",
+      "nro_ot": "OT-PDVSA-2026-009",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "tipo_mantenimiento": "Preventivo Planificado Sistemático",
       "codigo_plan_pdvsa": "PM-LAB-GCMS-ANUAL",
       "fecha_inicio": "2026-06-12",
@@ -20407,8 +20389,8 @@
       "proximo_mantenimiento": "2027-06-14"
     },
     {
-      "nro_ot": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "OT-PDVSA-2026-004",
+      "nro_ot": "OT-PDVSA-2026-004",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "tipo_mantenimiento": "Preventivo Planificado Sistemático",
       "codigo_plan_pdvsa": "PM-LAB-GCMS-TRIM",
       "fecha_inicio": "2026-03-20",
@@ -20425,8 +20407,8 @@
       "proximo_mantenimiento": "2026-06-21"
     },
     {
-      "nro_ot": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "OT-PDVSA-2025-045",
+      "nro_ot": "OT-PDVSA-2025-045",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "tipo_mantenimiento": "Correctivo Programado",
       "codigo_plan_pdvsa": "CORR-LAB-GCMS-01",
       "fecha_inicio": "2025-11-15",
@@ -20443,8 +20425,8 @@
       "proximo_mantenimiento": "2026-02-16"
     },
     {
-      "nro_ot": "AMB-LAB-UVVIS-002",
-      "tag_pdvsa": "OT-PDVSA-2026-022",
+      "nro_ot": "OT-PDVSA-2026-022",
+      "tag_pdvsa": "AMB-LAB-UVVIS-002",
       "tipo_mantenimiento": "Preventivo Planificado Sistemático",
       "codigo_plan_pdvsa": "PM-LAB-UVVIS-SEM",
       "fecha_inicio": "2026-08-14",
@@ -20461,8 +20443,8 @@
       "proximo_mantenimiento": "2027-02-15"
     },
     {
-      "nro_ot": "AMB-LAB-AAS-003",
-      "tag_pdvsa": "OT-PDVSA-2026-015",
+      "nro_ot": "OT-PDVSA-2026-015",
+      "tag_pdvsa": "AMB-LAB-AAS-003",
       "tipo_mantenimiento": "Preventivo Planificado Sistemático",
       "codigo_plan_pdvsa": "PM-LAB-AAS-SEM",
       "fecha_inicio": "2026-07-10",
@@ -20479,8 +20461,8 @@
       "proximo_mantenimiento": "2027-01-12"
     },
     {
-      "nro_ot": "AMB-LAB-BAL-004",
-      "tag_pdvsa": "OT-PDVSA-2026-011",
+      "nro_ot": "OT-PDVSA-2026-011",
+      "tag_pdvsa": "AMB-LAB-BAL-004",
       "tipo_mantenimiento": "Preventivo y Limpieza Metrológica",
       "codigo_plan_pdvsa": "PM-LAB-BAL-SEM",
       "fecha_inicio": "2026-06-05",
@@ -20497,8 +20479,8 @@
       "proximo_mantenimiento": "2026-12-05"
     },
     {
-      "nro_ot": "AMB-LAB-TOC-005",
-      "tag_pdvsa": "OT-PDVSA-2026-019",
+      "nro_ot": "OT-PDVSA-2026-019",
+      "tag_pdvsa": "AMB-LAB-TOC-005",
       "tipo_mantenimiento": "Preventivo Planificado Sistemático",
       "codigo_plan_pdvsa": "PM-LAB-TOC-SEM",
       "fecha_inicio": "2026-09-18",
@@ -20515,8 +20497,8 @@
       "proximo_mantenimiento": "2027-03-19"
     },
     {
-      "nro_ot": "AMB-LAB-PH-006",
-      "tag_pdvsa": "OT-PDVSA-2026-008",
+      "nro_ot": "OT-PDVSA-2026-008",
+      "tag_pdvsa": "AMB-LAB-PH-006",
       "tipo_mantenimiento": "Preventivo y Sustitución de Sensores",
       "codigo_plan_pdvsa": "PM-LAB-PH-ANUAL",
       "fecha_inicio": "2026-05-22",
@@ -20535,8 +20517,8 @@
   ],
   "comprobaciones": [
     {
-      "nro_registro": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "CI-2026-010",
+      "nro_registro": "CI-2026-010",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "fecha_comprobacion": "2026-10-02",
       "patron_verificacion": "Sintonización MSD Autotune (Relación Abundancia Masa m/z 502/69 %)",
       "valor_nominal_patron": 0,
@@ -20549,8 +20531,8 @@
       "rotulado_operativo": "Lic. Andrea Briceño"
     },
     {
-      "nro_registro": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "CI-2026-009",
+      "nro_registro": "CI-2026-009",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "fecha_comprobacion": "2026-09-05",
       "patron_verificacion": "Repetibilidad de Tiempo de Retención RT - Pico Fenantreno (min)",
       "valor_nominal_patron": 0,
@@ -20563,8 +20545,8 @@
       "rotulado_operativo": "Lic. Andrea Briceño"
     },
     {
-      "nro_registro": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "CI-2026-008",
+      "nro_registro": "CI-2026-008",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "fecha_comprobacion": "2026-08-03",
       "patron_verificacion": "Sensibilidad / Relación Señal-Ruido S/N (OFN m/z 272)",
       "valor_nominal_patron": 0,
@@ -20577,8 +20559,8 @@
       "rotulado_operativo": "Ing. Reinaldo Peña"
     },
     {
-      "nro_registro": "AMB-LAB-GCMS-001",
-      "tag_pdvsa": "CI-2026-007",
+      "nro_registro": "CI-2026-007",
+      "tag_pdvsa": "AMB-LAB-GCMS-001",
       "fecha_comprobacion": "2026-07-02",
       "patron_verificacion": "Estabilidad de Línea Base y Hermeticidad (Flujo He ml/min)",
       "valor_nominal_patron": 0,
@@ -20591,8 +20573,8 @@
       "rotulado_operativo": "Lic. Andrea Briceño"
     },
     {
-      "nro_registro": "AMB-LAB-UVVIS-002",
-      "tag_pdvsa": "CI-2026-011",
+      "nro_registro": "CI-2026-011",
+      "tag_pdvsa": "AMB-LAB-UVVIS-002",
       "fecha_comprobacion": "2026-10-05",
       "patron_verificacion": "Verificación de Exactitud Fotométrica y Longitud de Onda (Filtro Óxido de Holmio 361 nm)",
       "valor_nominal_patron": 0,
@@ -20605,8 +20587,8 @@
       "rotulado_operativo": "Lic. Andrea Briceño"
     },
     {
-      "nro_registro": "AMB-LAB-AAS-003",
-      "tag_pdvsa": "CI-2026-012",
+      "nro_registro": "CI-2026-012",
+      "tag_pdvsa": "AMB-LAB-AAS-003",
       "fecha_comprobacion": "2026-09-28",
       "patron_verificacion": "Sensibilidad y Absorbancia Cobre 5 ppm en Llama Aire-Acetileno",
       "valor_nominal_patron": 0,
@@ -20619,8 +20601,8 @@
       "rotulado_operativo": "Ing. Reinaldo Peña"
     },
     {
-      "nro_registro": "AMB-LAB-BAL-004",
-      "tag_pdvsa": "CI-2026-013",
+      "nro_registro": "CI-2026-013",
+      "tag_pdvsa": "AMB-LAB-BAL-004",
       "fecha_comprobacion": "2026-10-14",
       "patron_verificacion": "Verificación de Repetibilidad y Carga con Pesa Patrón 100 g Clase E2",
       "valor_nominal_patron": 0,
@@ -20633,8 +20615,8 @@
       "rotulado_operativo": "Metr. Sonia Rivas"
     },
     {
-      "nro_registro": "AMB-LAB-TOC-005",
-      "tag_pdvsa": "CI-2026-014",
+      "nro_registro": "CI-2026-014",
+      "tag_pdvsa": "AMB-LAB-TOC-005",
       "fecha_comprobacion": "2026-10-08",
       "patron_verificacion": "Control de Verificación Estándar Carbono Total TC 10.0 mg/L",
       "valor_nominal_patron": 0,
@@ -20647,8 +20629,8 @@
       "rotulado_operativo": "Lic. Andrea Briceño"
     },
     {
-      "nro_registro": "AMB-LAB-PH-006",
-      "tag_pdvsa": "CI-2026-015",
+      "nro_registro": "CI-2026-015",
+      "tag_pdvsa": "AMB-LAB-PH-006",
       "fecha_comprobacion": "2026-10-18",
       "patron_verificacion": "Pendiente de Calibración Slope y Lectura Tampón pH 7.00",
       "valor_nominal_patron": 0,
@@ -20663,102 +20645,88 @@
   ],
   "depreciaciones": [
     {
-      "tag_pdvsa": "Tag Técnico PDVSA",
-      "nro_bien_publico": "Código Patrimonial SIGEBI",
-      "costo_adquisicion_usd": 0,
-      "fecha_incorporacion": "Fecha de Incorporación",
-      "tasa_salvamento": 0.1,
-      "valor_residual_salvamento": 0,
-      "base_depreciable_usd": 0,
-      "vida_util_anos": 10,
-      "meses_uso": 0,
-      "depreciacion_mensual_usd": 0,
-      "depreciacion_acumulada_usd": 0,
-      "valor_neto_libros_usd": 0
-    },
-    {
       "tag_pdvsa": "AMB-LAB-GCMS-001",
       "nro_bien_publico": "BP-INT-2021-00452",
-      "costo_adquisicion_usd": 0,
+      "costo_adquisicion_usd": 85000.0,
       "fecha_incorporacion": "2021-01-15",
-      "tasa_salvamento": 85000.0,
-      "valor_residual_salvamento": 0.1,
-      "base_depreciable_usd": 8500.0,
-      "vida_util_anos": 76500,
-      "meses_uso": 10,
-      "depreciacion_mensual_usd": 69.0,
-      "depreciacion_acumulada_usd": 637.5,
-      "valor_neto_libros_usd": 43987.5
+      "tasa_salvamento": 0.1,
+      "valor_residual_salvamento": 8500.0,
+      "base_depreciable_usd": 76500.0,
+      "vida_util_anos": 10,
+      "meses_uso": 69,
+      "depreciacion_mensual_usd": 637.5,
+      "depreciacion_acumulada_usd": 43987.5,
+      "valor_neto_libros_usd": 41012.5
     },
     {
       "tag_pdvsa": "AMB-LAB-UVVIS-002",
       "nro_bien_publico": "BP-INT-2022-00118",
-      "costo_adquisicion_usd": 0,
+      "costo_adquisicion_usd": 22000.0,
       "fecha_incorporacion": "2022-03-10",
-      "tasa_salvamento": 22000.0,
-      "valor_residual_salvamento": 0.1,
-      "base_depreciable_usd": 2200.0,
-      "vida_util_anos": 19800,
-      "meses_uso": 8,
-      "depreciacion_mensual_usd": 55.0,
-      "depreciacion_acumulada_usd": 206.25,
-      "valor_neto_libros_usd": 11343.75
+      "tasa_salvamento": 0.1,
+      "valor_residual_salvamento": 2200.0,
+      "base_depreciable_usd": 19800.0,
+      "vida_util_anos": 8,
+      "meses_uso": 55,
+      "depreciacion_mensual_usd": 206.25,
+      "depreciacion_acumulada_usd": 11343.75,
+      "valor_neto_libros_usd": 10656.25
     },
     {
       "tag_pdvsa": "AMB-LAB-AAS-003",
       "nro_bien_publico": "BP-INT-2020-00891",
-      "costo_adquisicion_usd": 0,
+      "costo_adquisicion_usd": 68000.0,
       "fecha_incorporacion": "2020-11-05",
-      "tasa_salvamento": 68000.0,
-      "valor_residual_salvamento": 0.1,
-      "base_depreciable_usd": 6800.0,
-      "vida_util_anos": 61200,
-      "meses_uso": 10,
-      "depreciacion_mensual_usd": 71.0,
-      "depreciacion_acumulada_usd": 510.0,
-      "valor_neto_libros_usd": 36210.0
+      "tasa_salvamento": 0.1,
+      "valor_residual_salvamento": 6800.0,
+      "base_depreciable_usd": 61200.0,
+      "vida_util_anos": 10,
+      "meses_uso": 71,
+      "depreciacion_mensual_usd": 510.0,
+      "depreciacion_acumulada_usd": 36210.0,
+      "valor_neto_libros_usd": 31790.0
     },
     {
       "tag_pdvsa": "AMB-LAB-BAL-004",
       "nro_bien_publico": "BP-INT-2023-00034",
-      "costo_adquisicion_usd": 0,
+      "costo_adquisicion_usd": 12500.0,
       "fecha_incorporacion": "2023-04-20",
-      "tasa_salvamento": 12500.0,
-      "valor_residual_salvamento": 0.05,
-      "base_depreciable_usd": 625.0,
-      "vida_util_anos": 11875,
-      "meses_uso": 8,
-      "depreciacion_mensual_usd": 42.0,
-      "depreciacion_acumulada_usd": 123.69791666666667,
-      "valor_neto_libros_usd": 5195.3125
+      "tasa_salvamento": 0.05,
+      "valor_residual_salvamento": 625.0,
+      "base_depreciable_usd": 11875.0,
+      "vida_util_anos": 8,
+      "meses_uso": 42,
+      "depreciacion_mensual_usd": 123.69791666666667,
+      "depreciacion_acumulada_usd": 5195.3125,
+      "valor_neto_libros_usd": 7304.6875
     },
     {
       "tag_pdvsa": "AMB-LAB-TOC-005",
       "nro_bien_publico": "BP-INT-2022-00572",
-      "costo_adquisicion_usd": 0,
+      "costo_adquisicion_usd": 34000.0,
       "fecha_incorporacion": "2022-08-14",
-      "tasa_salvamento": 34000.0,
-      "valor_residual_salvamento": 0.1,
-      "base_depreciable_usd": 3400.0,
-      "vida_util_anos": 30600,
-      "meses_uso": 8,
-      "depreciacion_mensual_usd": 50.0,
-      "depreciacion_acumulada_usd": 318.75,
-      "valor_neto_libros_usd": 15937.5
+      "tasa_salvamento": 0.1,
+      "valor_residual_salvamento": 3400.0,
+      "base_depreciable_usd": 30600.0,
+      "vida_util_anos": 8,
+      "meses_uso": 50,
+      "depreciacion_mensual_usd": 318.75,
+      "depreciacion_acumulada_usd": 15937.5,
+      "valor_neto_libros_usd": 18062.5
     },
     {
       "tag_pdvsa": "AMB-LAB-PH-006",
       "nro_bien_publico": "BP-INT-2023-00201",
-      "costo_adquisicion_usd": 0,
+      "costo_adquisicion_usd": 4800.0,
       "fecha_incorporacion": "2023-09-12",
-      "tasa_salvamento": 4800.0,
-      "valor_residual_salvamento": 0.05,
-      "base_depreciable_usd": 240.0,
-      "vida_util_anos": 4560,
-      "meses_uso": 5,
-      "depreciacion_mensual_usd": 37.0,
-      "depreciacion_acumulada_usd": 76.0,
-      "valor_neto_libros_usd": 2812.0
+      "tasa_salvamento": 0.05,
+      "valor_residual_salvamento": 240.0,
+      "base_depreciable_usd": 4560.0,
+      "vida_util_anos": 5,
+      "meses_uso": 37,
+      "depreciacion_mensual_usd": 76.0,
+      "depreciacion_acumulada_usd": 2812.0,
+      "valor_neto_libros_usd": 1988.0
     },
     {
       "tag_pdvsa": "TABLA 5B: HISTORIAL DE MOVIMIENTOS, TRANSFERENCIAS Y ASIGNACIONES PATRIMONIALES (SUDEBIP / LOBP)",
@@ -20775,24 +20743,10 @@
       "valor_neto_libros_usd": 0
     },
     {
-      "tag_pdvsa": "Tag Técnico PDVSA",
-      "nro_bien_publico": "N° Acta Movimiento",
-      "costo_adquisicion_usd": 0,
-      "fecha_incorporacion": "Tipo de Movimiento SUDEBIP",
-      "tasa_salvamento": 0.1,
-      "valor_residual_salvamento": 0,
-      "base_depreciable_usd": 0,
-      "vida_util_anos": 10,
-      "meses_uso": 0,
-      "depreciacion_mensual_usd": 0,
-      "depreciacion_acumulada_usd": 0,
-      "valor_neto_libros_usd": 0
-    },
-    {
       "tag_pdvsa": "AMB-LAB-GCMS-001",
       "nro_bien_publico": "ACTA-SUDEBIP-2021-014",
       "costo_adquisicion_usd": 44270.0,
-      "fecha_incorporacion": "Incorporación Inicial por Compra",
+      "fecha_incorporacion": null,
       "tasa_salvamento": 0.1,
       "valor_residual_salvamento": 0,
       "base_depreciable_usd": 0,
@@ -20806,7 +20760,7 @@
       "tag_pdvsa": "AMB-LAB-GCMS-001",
       "nro_bien_publico": "ACTA-SUDEBIP-2021-022",
       "costo_adquisicion_usd": 44280.0,
-      "fecha_incorporacion": "Asignación de Custodia a Responsable",
+      "fecha_incorporacion": null,
       "tasa_salvamento": 0.1,
       "valor_residual_salvamento": 0,
       "base_depreciable_usd": 0,
@@ -20820,7 +20774,7 @@
       "tag_pdvsa": "AMB-LAB-GCMS-001",
       "nro_bien_publico": "ACTA-SUDEBIP-2023-089",
       "costo_adquisicion_usd": 44942.0,
-      "fecha_incorporacion": "Salida Temporal para Calibración/Mantenimiento Externo",
+      "fecha_incorporacion": null,
       "tasa_salvamento": 0.1,
       "valor_residual_salvamento": 0,
       "base_depreciable_usd": 0,
@@ -20834,7 +20788,7 @@
       "tag_pdvsa": "AMB-LAB-UVVIS-002",
       "nro_bien_publico": "ACTA-SUDEBIP-2022-008",
       "costo_adquisicion_usd": 44656.0,
-      "fecha_incorporacion": "Incorporación Inicial por Compra",
+      "fecha_incorporacion": null,
       "tasa_salvamento": 0.1,
       "valor_residual_salvamento": 0,
       "base_depreciable_usd": 0,
@@ -20848,7 +20802,7 @@
       "tag_pdvsa": "AMB-LAB-AAS-003",
       "nro_bien_publico": "ACTA-SUDEBIP-2020-029",
       "costo_adquisicion_usd": 44166.0,
-      "fecha_incorporacion": "Incorporación Inicial por Compra",
+      "fecha_incorporacion": null,
       "tasa_salvamento": 0.1,
       "valor_residual_salvamento": 0,
       "base_depreciable_usd": 0,
@@ -20862,7 +20816,7 @@
       "tag_pdvsa": "AMB-LAB-BAL-004",
       "nro_bien_publico": "ACTA-SUDEBIP-2023-005",
       "costo_adquisicion_usd": 45048.0,
-      "fecha_incorporacion": "Incorporación Inicial por Compra",
+      "fecha_incorporacion": null,
       "tasa_salvamento": 0.1,
       "valor_residual_salvamento": 0,
       "base_depreciable_usd": 0,
@@ -20876,7 +20830,7 @@
       "tag_pdvsa": "AMB-LAB-TOC-005",
       "nro_bien_publico": "ACTA-SUDEBIP-2022-021",
       "costo_adquisicion_usd": 44805.0,
-      "fecha_incorporacion": "Incorporación Inicial por Compra",
+      "fecha_incorporacion": null,
       "tasa_salvamento": 0.1,
       "valor_residual_salvamento": 0,
       "base_depreciable_usd": 0,
@@ -20890,7 +20844,7 @@
       "tag_pdvsa": "AMB-LAB-PH-006",
       "nro_bien_publico": "ACTA-SUDEBIP-2023-018",
       "costo_adquisicion_usd": 45189.0,
-      "fecha_incorporacion": "Incorporación Inicial por Compra",
+      "fecha_incorporacion": null,
       "tasa_salvamento": 0.1,
       "valor_residual_salvamento": 0,
       "base_depreciable_usd": 0,
@@ -21014,28 +20968,6 @@
     },
     {
       "numero": 11,
-      "indicador": "TABLERO DE CONTROL - 9 INDICADORES CLAVE DE DESEMPEÑO DEL SGA (AMB-GEN-SGA-PG-005)",
-      "dimension": "",
-      "formula": "",
-      "meta": "",
-      "frecuencia": "",
-      "responsable": "",
-      "valor_real_q3": 0,
-      "valor_real_texto": ""
-    },
-    {
-      "numero": 12,
-      "indicador": "N°",
-      "dimension": "Indicador Clave de Desempeño (KPI)",
-      "formula": "Dimensión",
-      "meta": "Fórmula de Cálculo",
-      "frecuencia": "Meta",
-      "responsable": "Frecuencia",
-      "valor_real_q3": 0,
-      "valor_real_texto": "Responsable"
-    },
-    {
-      "numero": 13,
       "indicador": "1",
       "dimension": "Índice de Equipos Codificados e Inventariados",
       "formula": "Transición",
@@ -21046,7 +20978,7 @@
       "valor_real_texto": "Resp. Laboratorio"
     },
     {
-      "numero": 14,
+      "numero": 12,
       "indicador": "2",
       "dimension": "Hojas de Vida Habilitadas (CHVH)",
       "formula": "Transición",
@@ -21057,7 +20989,7 @@
       "valor_real_texto": "Resp. Laboratorio"
     },
     {
-      "numero": 15,
+      "numero": 13,
       "indicador": "3",
       "dimension": "Cumplimiento Procedimental del SGA",
       "formula": "Transición",
@@ -21068,7 +21000,7 @@
       "valor_real_texto": "Coord. SGA"
     },
     {
-      "numero": 16,
+      "numero": 14,
       "indicador": "4",
       "dimension": "Disponibilidad Analítica de Equipos Críticos (DA)",
       "formula": "Operativa",
@@ -21079,7 +21011,7 @@
       "valor_real_texto": "Coord. SGA / Resp. Lab"
     },
     {
-      "numero": 17,
+      "numero": 15,
       "indicador": "5",
       "dimension": "Obsolescencia Promedio Portafolio Vital (Iobs)",
       "formula": "Sostenibilidad",
@@ -21090,7 +21022,7 @@
       "valor_real_texto": "Comité Gestión Activos"
     },
     {
-      "numero": 18,
+      "numero": 16,
       "indicador": "6",
       "dimension": "Cumplimiento Plan Calibración y Mantenimiento (PCCMP)",
       "formula": "Operativa",
@@ -21101,7 +21033,7 @@
       "valor_real_texto": "Resp. Laboratorio"
     },
     {
-      "numero": 19,
+      "numero": 17,
       "indicador": "7",
       "dimension": "Conciliación Patrimonial Tripartita (SUDEBIP/SAP)",
       "formula": "Legal",
@@ -21112,7 +21044,7 @@
       "valor_real_texto": "Resp. Lab / Custodio"
     },
     {
-      "numero": 20,
+      "numero": 18,
       "indicador": "8",
       "dimension": "Cumplimiento Metas del PEGA (PC PEGA)",
       "formula": "Transición",
@@ -21123,7 +21055,7 @@
       "valor_real_texto": "Gerente AMB / Coord SGA"
     },
     {
-      "numero": 21,
+      "numero": 19,
       "indicador": "9",
       "dimension": "Nivel de Madurez Organizacional IAM",
       "formula": "Madurez",
@@ -21134,7 +21066,7 @@
       "valor_real_texto": "Comité Gestión Activos"
     },
     {
-      "numero": 22,
+      "numero": 20,
       "indicador": "RESUMEN",
       "dimension": "Eficacia Global del Sistema de Gestión de Activos",
       "formula": "Global",
@@ -21145,7 +21077,7 @@
       "valor_real_texto": "Gerente de Ambiente"
     },
     {
-      "numero": 23,
+      "numero": 21,
       "indicador": "EVALUACIÓN DEL DESEMPEÑO ANALÍTICO POR LABORATORIO DE ENSAYO (SEDE EL TAMBOR)",
       "dimension": "",
       "formula": "",
@@ -21156,18 +21088,7 @@
       "valor_real_texto": ""
     },
     {
-      "numero": 24,
-      "indicador": "N°",
-      "dimension": "Laboratorio de Ensayo (GAMB)",
-      "formula": "N° Equipos",
-      "meta": "Equipos Críticos (Cat A)",
-      "frecuencia": "Disponibilidad Analítica (%)",
-      "responsable": "Calibración Vigente (%)",
-      "valor_real_q3": 0,
-      "valor_real_texto": "Mantenimiento al Día (%)"
-    },
-    {
-      "numero": 25,
+      "numero": 22,
       "indicador": "1",
       "dimension": "Lab. Fisicoquímica y Calidad de Aguas",
       "formula": "72",
@@ -21178,7 +21099,7 @@
       "valor_real_texto": "0.88"
     },
     {
-      "numero": 26,
+      "numero": 23,
       "indicador": "2",
       "dimension": "Lab. de Cromatografía y Compuestos Orgánicos",
       "formula": "58",
@@ -21189,7 +21110,7 @@
       "valor_real_texto": "0.75"
     },
     {
-      "numero": 27,
+      "numero": 24,
       "indicador": "3",
       "dimension": "Lab. de Metales Pesados y Toxicología",
       "formula": "46",
@@ -21200,7 +21121,7 @@
       "valor_real_texto": "0.71"
     },
     {
-      "numero": 28,
+      "numero": 25,
       "indicador": "4",
       "dimension": "Lab. de Calidad de Aire y Emisiones",
       "formula": "52",
@@ -21211,7 +21132,7 @@
       "valor_real_texto": "0.82"
     },
     {
-      "numero": 29,
+      "numero": 26,
       "indicador": "5",
       "dimension": "Lab. de Suelos y Lodos de Perforación",
       "formula": "65",
@@ -21222,7 +21143,7 @@
       "valor_real_texto": "0.87"
     },
     {
-      "numero": 30,
+      "numero": 27,
       "indicador": "6",
       "dimension": "Lab. de Ecotoxicología y Bioensayos",
       "formula": "41",
@@ -21233,7 +21154,7 @@
       "valor_real_texto": "0.8"
     },
     {
-      "numero": 31,
+      "numero": 28,
       "indicador": "TOTAL",
       "dimension": "Consolidado Gerencia de Ambiente",
       "formula": "334",
@@ -21244,7 +21165,7 @@
       "valor_real_texto": "0.80499999999999983"
     },
     {
-      "numero": 32,
+      "numero": 29,
       "indicador": "ANÁLISIS TÉCNICO DE DESVIACIONES, JUSTIFICACIONES Y ACCIONES INMEDIATAS",
       "dimension": "",
       "formula": "",
@@ -21255,7 +21176,7 @@
       "valor_real_texto": ""
     },
     {
-      "numero": 33,
+      "numero": 30,
       "indicador": "1. Conciliación Patrimonial SUDEBIP (91.2%) y Codificación (94.6%): Existen 18 equipos con discrepancias físicas de chapa vs número en SAP PM. Se activó la acción correctiva PCB-2026-03 del Plan de Cierre de Brechas (FO-030) con plazo perentorio a 60 días para completar el 100%.",
       "dimension": "",
       "formula": "",
@@ -21266,7 +21187,7 @@
       "valor_real_texto": ""
     },
     {
-      "numero": 34,
+      "numero": 31,
       "indicador": "2. Lab. de Metales Pesados (Calibración 73.0% y Mantenimiento 71.0%): Retraso en suministro de estándares certificados para ICP-OES. Se autorizó la adquisición prioritaria mediante caja chica técnica y ajuste de curva predictiva según FO-018 para no comprometer los resultados analíticos oficiales.",
       "dimension": "",
       "formula": "",
@@ -21277,7 +21198,7 @@
       "valor_real_texto": ""
     },
     {
-      "numero": 35,
+      "numero": 32,
       "indicador": "RESPONSABILIDAD Y FIRMAS DE APROBACIÓN INSTITUCIONAL",
       "dimension": "",
       "formula": "",
@@ -21288,7 +21209,7 @@
       "valor_real_texto": ""
     },
     {
-      "numero": 36,
+      "numero": 33,
       "indicador": "Elaborado por:",
       "dimension": "",
       "formula": "",
@@ -21299,7 +21220,7 @@
       "valor_real_texto": "Aprobado por:"
     },
     {
-      "numero": 37,
+      "numero": 34,
       "indicador": "Ing. Carlos Mendoza (Coordinador SGA - GAMB)",
       "dimension": "",
       "formula": "",
@@ -21310,7 +21231,7 @@
       "valor_real_texto": "Dr. Roberto Valenzuela (Gerente de Ambiente INTEVEP)"
     },
     {
-      "numero": 38,
+      "numero": 35,
       "indicador": "Firma / Fecha: 15/10/2026",
       "dimension": "",
       "formula": "",
@@ -21359,17 +21280,6 @@
     },
     {
       "numero": 4,
-      "cod_brecha": "Código del Plan:",
-      "origen_brecha": "PCB-GAMB-2026-Q4",
-      "clausula_iso": "Fecha Aprobación:",
-      "laboratorio": "46325",
-      "descripcion": "Horizonte Madurez:",
-      "tipo_accion": "Transición IAM Nivel 0 (19.1%) a Nivel 1 (Consciente) y Nivel 2",
-      "causa_raiz_5p": "",
-      "estatus": "Alcance:"
-    },
-    {
-      "numero": 5,
       "cod_brecha": "Responsable SGA:",
       "origen_brecha": "Ing. Carlos Mendoza",
       "clausula_iso": "Aprobador:",
@@ -21380,7 +21290,7 @@
       "estatus": "Herramienta:"
     },
     {
-      "numero": 6,
+      "numero": 5,
       "cod_brecha": "TOTAL ACCIONES",
       "origen_brecha": "",
       "clausula_iso": "",
@@ -21391,7 +21301,7 @@
       "estatus": "En Proceso"
     },
     {
-      "numero": 7,
+      "numero": 6,
       "cod_brecha": "7",
       "origen_brecha": "",
       "clausula_iso": "",
@@ -21402,7 +21312,7 @@
       "estatus": "En Proceso"
     },
     {
-      "numero": 8,
+      "numero": 7,
       "cod_brecha": "7 Brechas Prioritarias",
       "origen_brecha": "",
       "clausula_iso": "",
@@ -21413,7 +21323,7 @@
       "estatus": "En Proceso"
     },
     {
-      "numero": 9,
+      "numero": 8,
       "cod_brecha": "MATRIZ OPERATIVA DE CIERRE DE BRECHAS Y PLANES DE ACCIÓN (ISO 55001 CL. 10.1, 10.2, 10.3)",
       "origen_brecha": "",
       "clausula_iso": "",
@@ -21424,18 +21334,7 @@
       "estatus": "En Proceso"
     },
     {
-      "numero": 10,
-      "cod_brecha": "N°",
-      "origen_brecha": "Cód. Brecha",
-      "clausula_iso": "Origen de Brecha",
-      "laboratorio": "Cláusula ISO",
-      "descripcion": "Laboratorio / Proceso",
-      "tipo_accion": "Descripción del Hallazgo / No Conformidad",
-      "causa_raiz_5p": "Tipo Acción",
-      "estatus": "Causa Raíz (5 Porqués)"
-    },
-    {
-      "numero": 11,
+      "numero": 9,
       "cod_brecha": "1",
       "origen_brecha": "PCB-2026-01",
       "clausula_iso": "Auditoría Interna HDIM-CL",
@@ -21446,7 +21345,7 @@
       "estatus": "Falta de plantilla unificada digital en la nube institucional."
     },
     {
-      "numero": 12,
+      "numero": 10,
       "cod_brecha": "2",
       "origen_brecha": "PCB-2026-02",
       "clausula_iso": "Alerta Predictiva Cl. 10.3",
@@ -21457,7 +21356,7 @@
       "estatus": "Contaminación acumulativa por inyección de matrices de crudo diluido."
     },
     {
-      "numero": 13,
+      "numero": 11,
       "cod_brecha": "3",
       "origen_brecha": "PCB-2026-03",
       "clausula_iso": "Conciliación SUDEBIP / KPI-7",
@@ -21468,7 +21367,7 @@
       "estatus": "Movilización física de equipos sin acta formal de traspaso patrimonial."
     },
     {
-      "numero": 14,
+      "numero": 12,
       "cod_brecha": "4",
       "origen_brecha": "PCB-2026-04",
       "clausula_iso": "Desviación KPI Metales Pesados",
@@ -21479,7 +21378,7 @@
       "estatus": "Agotamiento de patrones de Pb/Cd/Ni y demora en importación de repuestos."
     },
     {
-      "numero": 15,
+      "numero": 13,
       "cod_brecha": "5",
       "origen_brecha": "PCB-2026-05",
       "clausula_iso": "Revisión Directiva FO-019",
@@ -21490,7 +21389,7 @@
       "estatus": "Ausencia de software unificado de gestión de activos en la GAMB."
     },
     {
-      "numero": 16,
+      "numero": 14,
       "cod_brecha": "6",
       "origen_brecha": "PCB-2026-06",
       "clausula_iso": "Auditoría Interna IAM",
@@ -21501,7 +21400,7 @@
       "estatus": "Incorporación de nuevo personal sin inducción formal en metrología ISO 17025."
     },
     {
-      "numero": 17,
+      "numero": 15,
       "cod_brecha": "7",
       "origen_brecha": "PCB-2026-07",
       "clausula_iso": "Índice de Obsolescencia (Iobs)",
@@ -21512,7 +21411,7 @@
       "estatus": "Obsolescencia tecnológica tras 12 años de servicio continuo en crudos pesados."
     },
     {
-      "numero": 18,
+      "numero": 16,
       "cod_brecha": "TOTAL",
       "origen_brecha": "7 Brechas Gestionadas",
       "clausula_iso": "Consolidado GAMB",
@@ -21523,7 +21422,7 @@
       "estatus": "Causas Raíz Identificadas"
     },
     {
-      "numero": 19,
+      "numero": 17,
       "cod_brecha": "RESPONSABILIDAD DE CIERRE, SEGUIMIENTO Y APROBACIÓN INSTITUCIONAL",
       "origen_brecha": "",
       "clausula_iso": "",
@@ -21534,7 +21433,7 @@
       "estatus": "En Proceso"
     },
     {
-      "numero": 20,
+      "numero": 18,
       "cod_brecha": "Responsable de Seguimiento y Eficacia:",
       "origen_brecha": "",
       "clausula_iso": "",
@@ -21545,7 +21444,7 @@
       "estatus": "En Proceso"
     },
     {
-      "numero": 21,
+      "numero": 19,
       "cod_brecha": "Ing. Yajaira Gómez (Comité de Gestión de Activos)",
       "origen_brecha": "",
       "clausula_iso": "",
@@ -21556,7 +21455,7 @@
       "estatus": "En Proceso"
     },
     {
-      "numero": 22,
+      "numero": 20,
       "cod_brecha": "Firma / Verificación: 30/10/2026",
       "origen_brecha": "",
       "clausula_iso": "",
@@ -21567,7 +21466,7 @@
       "estatus": "En Proceso"
     },
     {
-      "numero": 23,
+      "numero": 21,
       "cod_brecha": "Próxima Revisión Mensual de Avance de Brechas y Cierre de Acciones: 30 de Noviembre de 2026.",
       "origen_brecha": "",
       "clausula_iso": "",

@@ -6807,7 +6807,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'CAL-2026-001', 'CERT-MET-2026-884',
+    'CAL-2026-001', 'AMB-LAB-GCMS-001', 'CERT-MET-2026-884',
     '2026-06-15', '2027-06-15', 223,
     'VIGENTE', 'SENCAMER / Lab. Metrología Acreditado ISO 17025', 'Escala de Masa Cuadrupolo (m/z) y Temp. Horno',
     '+0.03 u / +0.3 °C', 'U = ± 0.05 u (k=2, 95%)', 'MEP: ± 0.10 u / ± 1.0 °C',
@@ -6819,7 +6819,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'CAL-2025-001', 'CERT-MET-2025-612',
+    'CAL-2025-001', 'AMB-LAB-GCMS-001', 'CERT-MET-2025-612',
     '2025-06-10', '2026-06-10', -147,
     'VENCIDA', 'SENCAMER / Lab. Metrología Acreditado ISO 17025', 'Escala de Masa Cuadrupolo (m/z) y Temp. Horno',
     '-0.04 u / +0.4 °C', 'U = ± 0.05 u (k=2, 95%)', 'MEP: ± 0.10 u / ± 1.0 °C',
@@ -6831,7 +6831,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'CAL-2024-001', 'CERT-MET-2024-409',
+    'CAL-2024-001', 'AMB-LAB-GCMS-001', 'CERT-MET-2024-409',
     '2024-06-12', '2025-06-12', -510,
     'VENCIDA', 'Agilent Technologies Metrology Lab', 'Escala de Masa Cuadrupolo (m/z) y Temp. Horno',
     '+0.02 u / +0.2 °C', 'U = ± 0.05 u (k=2, 95%)', 'MEP: ± 0.10 u / ± 1.0 °C',
@@ -6843,7 +6843,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'CAL-2023-001', 'CERT-MET-2023-288',
+    'CAL-2023-001', 'AMB-LAB-GCMS-001', 'CERT-MET-2023-288',
     '2023-06-15', '2024-06-15', -872,
     'VENCIDA', 'SENCAMER / Agilent Technologies', 'Escala de Masa Cuadrupolo (m/z) y Temp. Horno',
     '+0.03 u / -0.3 °C', 'U = ± 0.05 u (k=2, 95%)', 'MEP: ± 0.10 u / ± 1.0 °C',
@@ -6855,7 +6855,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'CAL-2021-001', 'CERT-MET-2021-098',
+    'CAL-2021-001', 'AMB-LAB-GCMS-001', 'CERT-MET-2021-098',
     '2021-03-25', '2022-03-25', -1685,
     'VENCIDA', 'Agilent Technologies Factory / SENCAMER', 'Calificación Inicial de Instalación y Operación (IQ/OQ/PQ)',
     '0.00 u / +0.1 °C', 'U = ± 0.04 u (k=2, 95%)', 'MEP: ± 0.10 u / ± 1.0 °C',
@@ -6867,7 +6867,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-UVVIS-002', 'CAL-2026-002', 'CERT-MET-2026-902',
+    'CAL-2026-002', 'AMB-LAB-UVVIS-002', 'CERT-MET-2026-902',
     '2026-05-10', '2027-05-10', 187,
     'VIGENTE', 'SENCAMER / Lab. Metrología Acreditado ISO 17025', 'Exactitud Longitud de Onda y Fotometría UV-Vis',
     '+0.001 A / +0.05 nm', 'U = ± 0.002 A (k=2, 95%)', 'MEP: ± 0.003 A / ± 0.1 nm',
@@ -6879,7 +6879,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-AAS-003', 'CAL-2026-003', 'CERT-MET-2026-915',
+    'CAL-2026-003', 'AMB-LAB-AAS-003', 'CERT-MET-2026-915',
     '2026-04-18', '2027-04-18', 165,
     'VIGENTE', 'Thermo Scientific / SENCAMER Acreditado', 'Absorbancia en Llama y Temperatura Horno Grafito',
     '-0.002 A / +1.2 °C', 'U = ± 0.004 A (k=2, 95%)', 'MEP: ± 0.005 A / ± 2.0 °C',
@@ -6891,7 +6891,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-BAL-004', 'CAL-2026-004', 'CERT-MET-2026-930',
+    'CAL-2026-004', 'AMB-LAB-BAL-004', 'CERT-MET-2026-930',
     '2026-07-20', '2027-01-20', 77,
     'VIGENTE', 'SENCAMER Lab. Nacional de Metrología (Masa)', 'Carga, Excentricidad y Repetibilidad (Pesas Clase E2)',
     '+0.02 mg', 'U = ± 0.03 mg (k=2, 95%)', 'MEP: ± 0.10 mg',
@@ -6903,7 +6903,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-TOC-005', 'CAL-2026-005', 'CERT-MET-2026-942',
+    'CAL-2026-005', 'AMB-LAB-TOC-005', 'CERT-MET-2026-942',
     '2026-08-15', '2027-08-15', 284,
     'VIGENTE', 'Shimadzu Metrology / SENCAMER Acreditado', 'Concentración Carbono Total (TC/IC) Detector NDIR',
     '+0.08 mg/L', 'U = ± 0.12 mg/L (k=2, 95%)', 'MEP: ± 0.20 mg/L',
@@ -6915,7 +6915,7 @@ INSERT INTO calibraciones_metrologicas (
     estatus_metrologico, entidad_acreditada, patron_utilizado, desviacion_observada, incertidumbre_u,
     mep_tolerancia, dictamen, precinto_colocado, metrologo_responsable, observaciones
 ) VALUES (
-    'AMB-LAB-PH-006', 'CAL-2026-006', 'CERT-MET-2026-955',
+    'CAL-2026-006', 'AMB-LAB-PH-006', 'CERT-MET-2026-955',
     '2026-09-01', '2027-03-01', 117,
     'VIGENTE', 'SENCAMER / Laboratorio de Metrología INTEVEP', 'Potencial de Celda (pH) y Conductividad Electrolítica',
     '+0.005 pH / +0.2 µS/cm', 'U = ± 0.010 pH (k=2, 95%)', 'MEP: ± 0.020 pH / ± 0.5%',
@@ -6930,19 +6930,7 @@ INSERT INTO mantenimientos_pdvsa (
     repuestos_reemplazados, horas_hombre, costo_total_usd, responsable_ejecucion, impacto_ensayos_iso17025,
     requiere_recalibracion, estatus_ot, aprobado_por, proximo_mantenimiento
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'OT-PDVSA-2026-018', 'Preventivo Planificado Sistemático',
-    'PM-LAB-GCMS-TRIM', '2026-09-10', '2026-09-11',
-    'Mantenimiento preventivo trimestral: Limpieza de puerto inyector Split/Splitless, reemplazo de septa e inserto ultra inerte, verificación de estanqueidad de helio y prueba de fugas electrónicas.', 'Septa de silicona alta temperatura, Ultra Inert Split Liner con lana desactivada, sello de oro base inyector', 12.0,
-    480.0, 'Téc. Marcos Rivas (INTEVEP Mant.)', 'Sin Impacto (Ensayos Previos Válidos)',
-    FALSE, 'Cerrada / Completada', 'Dra. Elena Salazar',
-    '2026-12-11'
-);
-INSERT INTO mantenimientos_pdvsa (
-    nro_ot, tag_pdvsa, tipo_mantenimiento, codigo_plan_pdvsa, fecha_inicio, fecha_cierre, descripcion,
-    repuestos_reemplazados, horas_hombre, costo_total_usd, responsable_ejecucion, impacto_ensayos_iso17025,
-    requiere_recalibracion, estatus_ot, aprobado_por, proximo_mantenimiento
-) VALUES (
-    'AMB-LAB-GCMS-001', 'OT-PDVSA-2026-009', 'Preventivo Planificado Sistemático',
+    'OT-PDVSA-2026-009', 'AMB-LAB-GCMS-001', 'Preventivo Planificado Sistemático',
     'PM-LAB-GCMS-ANUAL', '2026-06-12', '2026-06-14',
     'Mantenimiento anual mayor: Desmontaje y limpieza de fuente de iones EI, cambio de aceite de bomba rotatoria de previo vacío, reemplazo de trampas de gases y ajuste de espectrómetro MSD.', 'Aceite sintético para bomba Edwards, kit universal trampas de He/O2, filamento EI tungsteno, empaquetaduras de oro', 28.0,
     2150.0, 'Ing. Carlos Mendoza / Agilent Tech', 'Sin Impacto (Ensayos Previos Válidos)',
@@ -6954,7 +6942,7 @@ INSERT INTO mantenimientos_pdvsa (
     repuestos_reemplazados, horas_hombre, costo_total_usd, responsable_ejecucion, impacto_ensayos_iso17025,
     requiere_recalibracion, estatus_ot, aprobado_por, proximo_mantenimiento
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'OT-PDVSA-2026-004', 'Preventivo Planificado Sistemático',
+    'OT-PDVSA-2026-004', 'AMB-LAB-GCMS-001', 'Preventivo Planificado Sistemático',
     'PM-LAB-GCMS-TRIM', '2026-03-20', '2026-03-21',
     'Mantenimiento trimestral: Reemplazo preventivo de septa, limpieza ultrasónica de liner, ajuste de flujo de gas portador EPC y prueba de línea base con autotune de verificación.', 'Septa de silicona desgasificada, O-ring de fluoroelastómero inyector', 10.0,
     420.0, 'Téc. Marcos Rivas (INTEVEP Mant.)', 'Sin Impacto (Ensayos Previos Válidos)',
@@ -6966,7 +6954,7 @@ INSERT INTO mantenimientos_pdvsa (
     repuestos_reemplazados, horas_hombre, costo_total_usd, responsable_ejecucion, impacto_ensayos_iso17025,
     requiere_recalibracion, estatus_ot, aprobado_por, proximo_mantenimiento
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'OT-PDVSA-2025-045', 'Correctivo Programado',
+    'OT-PDVSA-2025-045', 'AMB-LAB-GCMS-001', 'Correctivo Programado',
     'CORR-LAB-GCMS-01', '2025-11-15', '2025-11-16',
     'Reemplazo de filamento 1 por advertencia de emisión de electrones baja. Ajuste de voltaje de lentes de enfoque y verificación de espectro PFTBA. Sin daño a muestras.', 'Filamento MSD Agilent G7005-60061 original, sellos de vacío Viton', 8.0,
     650.0, 'Ing. Reinaldo Peña (Especialista)', 'Sin Impacto (Ensayos Previos Válidos)',
@@ -6978,7 +6966,7 @@ INSERT INTO mantenimientos_pdvsa (
     repuestos_reemplazados, horas_hombre, costo_total_usd, responsable_ejecucion, impacto_ensayos_iso17025,
     requiere_recalibracion, estatus_ot, aprobado_por, proximo_mantenimiento
 ) VALUES (
-    'AMB-LAB-UVVIS-002', 'OT-PDVSA-2026-022', 'Preventivo Planificado Sistemático',
+    'OT-PDVSA-2026-022', 'AMB-LAB-UVVIS-002', 'Preventivo Planificado Sistemático',
     'PM-LAB-UVVIS-SEM', '2026-08-14', '2026-08-15',
     'Mantenimiento preventivo semestral: Limpieza óptica de espejos, verificación alineación lámpara deuterio y prueba de estabilidad de línea base fotométrica.', 'Lámpara de deuterio de repuesto, desecante óptico de sílice', 8.0,
     320.0, 'Téc. Marcos Rivas (INTEVEP Mant.)', 'Sin Impacto (Ensayos Previos Válidos)',
@@ -6990,7 +6978,7 @@ INSERT INTO mantenimientos_pdvsa (
     repuestos_reemplazados, horas_hombre, costo_total_usd, responsable_ejecucion, impacto_ensayos_iso17025,
     requiere_recalibracion, estatus_ot, aprobado_por, proximo_mantenimiento
 ) VALUES (
-    'AMB-LAB-AAS-003', 'OT-PDVSA-2026-015', 'Preventivo Planificado Sistemático',
+    'OT-PDVSA-2026-015', 'AMB-LAB-AAS-003', 'Preventivo Planificado Sistemático',
     'PM-LAB-AAS-SEM', '2026-07-10', '2026-07-12',
     'Mantenimiento semestral: Limpieza de cámara de nebulización y quemador de titanio, reemplazo de tubos de grafito con plataforma L''vov y calibración de flujo de gases.', 'Tubo grafito pirolítico, O-rings de teflón para nebulizador', 14.0,
     890.0, 'Ing. Carlos Mendoza / Thermo Service', 'Sin Impacto (Ensayos Previos Válidos)',
@@ -7002,7 +6990,7 @@ INSERT INTO mantenimientos_pdvsa (
     repuestos_reemplazados, horas_hombre, costo_total_usd, responsable_ejecucion, impacto_ensayos_iso17025,
     requiere_recalibracion, estatus_ot, aprobado_por, proximo_mantenimiento
 ) VALUES (
-    'AMB-LAB-BAL-004', 'OT-PDVSA-2026-011', 'Preventivo y Limpieza Metrológica',
+    'OT-PDVSA-2026-011', 'AMB-LAB-BAL-004', 'Preventivo y Limpieza Metrológica',
     'PM-LAB-BAL-SEM', '2026-06-05', '2026-06-05',
     'Limpieza exhaustiva de platillo de carga, cortavientos de vidrio y calibración interna automatizada proFACT por variación de temperatura.', 'Pincel antiestático, paños ópticos sin pelusa', 4.0,
     150.0, 'Metr. Sonia Rivas (Metrólogo Sr.)', 'Sin Impacto (Ensayos Previos Válidos)',
@@ -7014,7 +7002,7 @@ INSERT INTO mantenimientos_pdvsa (
     repuestos_reemplazados, horas_hombre, costo_total_usd, responsable_ejecucion, impacto_ensayos_iso17025,
     requiere_recalibracion, estatus_ot, aprobado_por, proximo_mantenimiento
 ) VALUES (
-    'AMB-LAB-TOC-005', 'OT-PDVSA-2026-019', 'Preventivo Planificado Sistemático',
+    'OT-PDVSA-2026-019', 'AMB-LAB-TOC-005', 'Preventivo Planificado Sistemático',
     'PM-LAB-TOC-SEM', '2026-09-18', '2026-09-19',
     'Regeneración de catalizador de platino, cambio de tubo de combustión de cuarzo y purga de trampas de halógenos y humedad.', 'Tubo de combustión cuarzo, empaque catalizador Pt, lana cuarzo', 10.0,
     540.0, 'Téc. Marcos Rivas (INTEVEP Mant.)', 'Sin Impacto (Ensayos Previos Válidos)',
@@ -7026,7 +7014,7 @@ INSERT INTO mantenimientos_pdvsa (
     repuestos_reemplazados, horas_hombre, costo_total_usd, responsable_ejecucion, impacto_ensayos_iso17025,
     requiere_recalibracion, estatus_ot, aprobado_por, proximo_mantenimiento
 ) VALUES (
-    'AMB-LAB-PH-006', 'OT-PDVSA-2026-008', 'Preventivo y Sustitución de Sensores',
+    'OT-PDVSA-2026-008', 'AMB-LAB-PH-006', 'Preventivo y Sustitución de Sensores',
     'PM-LAB-PH-ANUAL', '2026-05-22', '2026-05-22',
     'Reacondicionamiento de unión cerámica de electrodo ROSS Ultra, recarga de solución electrolito 3M KCl y verificación de pendiente operacional.', 'Solución de llenado Orion 810007, juego tampones pH', 3.0,
     95.0, 'Lic. Andrea Briceño (Especialista)', 'Sin Impacto (Ensayos Previos Válidos)',
@@ -7040,7 +7028,7 @@ INSERT INTO comprobaciones_intermedias (
     nro_registro, tag_pdvsa, fecha_comprobacion, patron_verificacion, valor_nominal_patron, lectura_instrumento,
     desviacion_calculada, criterio_aceptacion_mep, dictamen_auto, analista_ejecutor, supervisor_validador, rotulado_operativo
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'CI-2026-010', '2026-10-02',
+    'CI-2026-010', 'AMB-LAB-GCMS-001', '2026-10-02',
     'Sintonización MSD Autotune (Relación Abundancia Masa m/z 502/69 %)', 0, 0.8,
     5.0, 2.45, 'CONFORME (PASA)',
     '-0.45', 'ETIQUETA VERDE - EN SERVICIO', 'Lic. Andrea Briceño'
@@ -7049,7 +7037,7 @@ INSERT INTO comprobaciones_intermedias (
     nro_registro, tag_pdvsa, fecha_comprobacion, patron_verificacion, valor_nominal_patron, lectura_instrumento,
     desviacion_calculada, criterio_aceptacion_mep, dictamen_auto, analista_ejecutor, supervisor_validador, rotulado_operativo
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'CI-2026-009', '2026-09-05',
+    'CI-2026-009', 'AMB-LAB-GCMS-001', '2026-09-05',
     'Repetibilidad de Tiempo de Retención RT - Pico Fenantreno (min)', 0, 12.44,
     12.52, 12.48, 'CONFORME (PASA)',
     '0', 'ETIQUETA VERDE - EN SERVICIO', 'Lic. Andrea Briceño'
@@ -7058,7 +7046,7 @@ INSERT INTO comprobaciones_intermedias (
     nro_registro, tag_pdvsa, fecha_comprobacion, patron_verificacion, valor_nominal_patron, lectura_instrumento,
     desviacion_calculada, criterio_aceptacion_mep, dictamen_auto, analista_ejecutor, supervisor_validador, rotulado_operativo
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'CI-2026-008', '2026-08-03',
+    'CI-2026-008', 'AMB-LAB-GCMS-001', '2026-08-03',
     'Sensibilidad / Relación Señal-Ruido S/N (OFN m/z 272)', 0, 1500.0,
     9999.0, 3820.0, 'CONFORME (PASA)',
     '-1929.5', 'ETIQUETA VERDE - EN SERVICIO', 'Ing. Reinaldo Peña'
@@ -7067,7 +7055,7 @@ INSERT INTO comprobaciones_intermedias (
     nro_registro, tag_pdvsa, fecha_comprobacion, patron_verificacion, valor_nominal_patron, lectura_instrumento,
     desviacion_calculada, criterio_aceptacion_mep, dictamen_auto, analista_ejecutor, supervisor_validador, rotulado_operativo
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'CI-2026-007', '2026-07-02',
+    'CI-2026-007', 'AMB-LAB-GCMS-001', '2026-07-02',
     'Estabilidad de Línea Base y Hermeticidad (Flujo He ml/min)', 0, 1.15,
     1.25, 1.2, 'CONFORME (PASA)',
     '0', 'ETIQUETA VERDE - EN SERVICIO', 'Lic. Andrea Briceño'
@@ -7076,7 +7064,7 @@ INSERT INTO comprobaciones_intermedias (
     nro_registro, tag_pdvsa, fecha_comprobacion, patron_verificacion, valor_nominal_patron, lectura_instrumento,
     desviacion_calculada, criterio_aceptacion_mep, dictamen_auto, analista_ejecutor, supervisor_validador, rotulado_operativo
 ) VALUES (
-    'AMB-LAB-UVVIS-002', 'CI-2026-011', '2026-10-05',
+    'CI-2026-011', 'AMB-LAB-UVVIS-002', '2026-10-05',
     'Verificación de Exactitud Fotométrica y Longitud de Onda (Filtro Óxido de Holmio 361 nm)', 0, 360.8,
     361.2, 361.02, 'CONFORME (PASA)',
     '0.02', 'ETIQUETA VERDE - EN SERVICIO', 'Lic. Andrea Briceño'
@@ -7085,7 +7073,7 @@ INSERT INTO comprobaciones_intermedias (
     nro_registro, tag_pdvsa, fecha_comprobacion, patron_verificacion, valor_nominal_patron, lectura_instrumento,
     desviacion_calculada, criterio_aceptacion_mep, dictamen_auto, analista_ejecutor, supervisor_validador, rotulado_operativo
 ) VALUES (
-    'AMB-LAB-AAS-003', 'CI-2026-012', '2026-09-28',
+    'CI-2026-012', 'AMB-LAB-AAS-003', '2026-09-28',
     'Sensibilidad y Absorbancia Cobre 5 ppm en Llama Aire-Acetileno', 0, 0.45,
     0.55, 0.505, 'CONFORME (PASA)',
     '5.0000000000000001E-3', 'ETIQUETA VERDE - EN SERVICIO', 'Ing. Reinaldo Peña'
@@ -7094,7 +7082,7 @@ INSERT INTO comprobaciones_intermedias (
     nro_registro, tag_pdvsa, fecha_comprobacion, patron_verificacion, valor_nominal_patron, lectura_instrumento,
     desviacion_calculada, criterio_aceptacion_mep, dictamen_auto, analista_ejecutor, supervisor_validador, rotulado_operativo
 ) VALUES (
-    'AMB-LAB-BAL-004', 'CI-2026-013', '2026-10-14',
+    'CI-2026-013', 'AMB-LAB-BAL-004', '2026-10-14',
     'Verificación de Repetibilidad y Carga con Pesa Patrón 100 g Clase E2', 0, 99.9998,
     100.0002, 100.0, 'CONFORME (PASA)',
     '0', 'ETIQUETA VERDE - EN SERVICIO', 'Metr. Sonia Rivas'
@@ -7103,7 +7091,7 @@ INSERT INTO comprobaciones_intermedias (
     nro_registro, tag_pdvsa, fecha_comprobacion, patron_verificacion, valor_nominal_patron, lectura_instrumento,
     desviacion_calculada, criterio_aceptacion_mep, dictamen_auto, analista_ejecutor, supervisor_validador, rotulado_operativo
 ) VALUES (
-    'AMB-LAB-TOC-005', 'CI-2026-014', '2026-10-08',
+    'CI-2026-014', 'AMB-LAB-TOC-005', '2026-10-08',
     'Control de Verificación Estándar Carbono Total TC 10.0 mg/L', 0, 9.7,
     10.3, 9.95, 'CONFORME (PASA)',
     '-0.05', 'ETIQUETA VERDE - EN SERVICIO', 'Lic. Andrea Briceño'
@@ -7112,7 +7100,7 @@ INSERT INTO comprobaciones_intermedias (
     nro_registro, tag_pdvsa, fecha_comprobacion, patron_verificacion, valor_nominal_patron, lectura_instrumento,
     desviacion_calculada, criterio_aceptacion_mep, dictamen_auto, analista_ejecutor, supervisor_validador, rotulado_operativo
 ) VALUES (
-    'AMB-LAB-PH-006', 'CI-2026-015', '2026-10-18',
+    'CI-2026-015', 'AMB-LAB-PH-006', '2026-10-18',
     'Pendiente de Calibración Slope y Lectura Tampón pH 7.00', 0, 6.98,
     7.02, 7.01, 'CONFORME (PASA)',
     '0.01', 'ETIQUETA VERDE - EN SERVICIO', 'Lic. Andrea Briceño'
@@ -7128,70 +7116,60 @@ INSERT INTO depreciacion_patrimonial (
     valor_residual_salvamento, base_depreciable_usd, vida_util_anos, meses_uso,
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
-    'Tag Técnico PDVSA', 'Código Patrimonial SIGEBI', 0,
-    'Fecha de Incorporación', 0.1, 0,
-    0, 10, 0,
-    0, 0, 0
+    'AMB-LAB-GCMS-001', 'BP-INT-2021-00452', 85000.0,
+    '2021-01-15', 0.1, 8500.0,
+    76500.0, 10, 69,
+    637.5, 43987.5, 41012.5
 );
 INSERT INTO depreciacion_patrimonial (
     tag_pdvsa, nro_bien_publico, costo_adquisicion_usd, fecha_incorporacion, tasa_salvamento,
     valor_residual_salvamento, base_depreciable_usd, vida_util_anos, meses_uso,
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
-    'AMB-LAB-GCMS-001', 'BP-INT-2021-00452', 0,
-    '2021-01-15', 85000.0, 0.1,
-    8500.0, 76500, 10,
-    69.0, 637.5, 43987.5
+    'AMB-LAB-UVVIS-002', 'BP-INT-2022-00118', 22000.0,
+    '2022-03-10', 0.1, 2200.0,
+    19800.0, 8, 55,
+    206.25, 11343.75, 10656.25
 );
 INSERT INTO depreciacion_patrimonial (
     tag_pdvsa, nro_bien_publico, costo_adquisicion_usd, fecha_incorporacion, tasa_salvamento,
     valor_residual_salvamento, base_depreciable_usd, vida_util_anos, meses_uso,
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
-    'AMB-LAB-UVVIS-002', 'BP-INT-2022-00118', 0,
-    '2022-03-10', 22000.0, 0.1,
-    2200.0, 19800, 8,
-    55.0, 206.25, 11343.75
+    'AMB-LAB-AAS-003', 'BP-INT-2020-00891', 68000.0,
+    '2020-11-05', 0.1, 6800.0,
+    61200.0, 10, 71,
+    510.0, 36210.0, 31790.0
 );
 INSERT INTO depreciacion_patrimonial (
     tag_pdvsa, nro_bien_publico, costo_adquisicion_usd, fecha_incorporacion, tasa_salvamento,
     valor_residual_salvamento, base_depreciable_usd, vida_util_anos, meses_uso,
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
-    'AMB-LAB-AAS-003', 'BP-INT-2020-00891', 0,
-    '2020-11-05', 68000.0, 0.1,
-    6800.0, 61200, 10,
-    71.0, 510.0, 36210.0
+    'AMB-LAB-BAL-004', 'BP-INT-2023-00034', 12500.0,
+    '2023-04-20', 0.05, 625.0,
+    11875.0, 8, 42,
+    123.69791666666667, 5195.3125, 7304.6875
 );
 INSERT INTO depreciacion_patrimonial (
     tag_pdvsa, nro_bien_publico, costo_adquisicion_usd, fecha_incorporacion, tasa_salvamento,
     valor_residual_salvamento, base_depreciable_usd, vida_util_anos, meses_uso,
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
-    'AMB-LAB-BAL-004', 'BP-INT-2023-00034', 0,
-    '2023-04-20', 12500.0, 0.05,
-    625.0, 11875, 8,
-    42.0, 123.69791666666667, 5195.3125
+    'AMB-LAB-TOC-005', 'BP-INT-2022-00572', 34000.0,
+    '2022-08-14', 0.1, 3400.0,
+    30600.0, 8, 50,
+    318.75, 15937.5, 18062.5
 );
 INSERT INTO depreciacion_patrimonial (
     tag_pdvsa, nro_bien_publico, costo_adquisicion_usd, fecha_incorporacion, tasa_salvamento,
     valor_residual_salvamento, base_depreciable_usd, vida_util_anos, meses_uso,
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
-    'AMB-LAB-TOC-005', 'BP-INT-2022-00572', 0,
-    '2022-08-14', 34000.0, 0.1,
-    3400.0, 30600, 8,
-    50.0, 318.75, 15937.5
-);
-INSERT INTO depreciacion_patrimonial (
-    tag_pdvsa, nro_bien_publico, costo_adquisicion_usd, fecha_incorporacion, tasa_salvamento,
-    valor_residual_salvamento, base_depreciable_usd, vida_util_anos, meses_uso,
-    depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
-) VALUES (
-    'AMB-LAB-PH-006', 'BP-INT-2023-00201', 0,
-    '2023-09-12', 4800.0, 0.05,
-    240.0, 4560, 5,
-    37.0, 76.0, 2812.0
+    'AMB-LAB-PH-006', 'BP-INT-2023-00201', 4800.0,
+    '2023-09-12', 0.05, 240.0,
+    4560.0, 5, 37,
+    76.0, 2812.0, 1988.0
 );
 INSERT INTO depreciacion_patrimonial (
     tag_pdvsa, nro_bien_publico, costo_adquisicion_usd, fecha_incorporacion, tasa_salvamento,
@@ -7208,18 +7186,8 @@ INSERT INTO depreciacion_patrimonial (
     valor_residual_salvamento, base_depreciable_usd, vida_util_anos, meses_uso,
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
-    'Tag Técnico PDVSA', 'N° Acta Movimiento', 0,
-    'Tipo de Movimiento SUDEBIP', 0.1, 0,
-    0, 10, 0,
-    0, 0, 0
-);
-INSERT INTO depreciacion_patrimonial (
-    tag_pdvsa, nro_bien_publico, costo_adquisicion_usd, fecha_incorporacion, tasa_salvamento,
-    valor_residual_salvamento, base_depreciable_usd, vida_util_anos, meses_uso,
-    depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
-) VALUES (
     'AMB-LAB-GCMS-001', 'ACTA-SUDEBIP-2021-014', 44270.0,
-    'Incorporación Inicial por Compra', 0.1, 0,
+    NULL, 0.1, 0,
     0, 10, 0,
     0, 0, 0
 );
@@ -7229,7 +7197,7 @@ INSERT INTO depreciacion_patrimonial (
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
     'AMB-LAB-GCMS-001', 'ACTA-SUDEBIP-2021-022', 44280.0,
-    'Asignación de Custodia a Responsable', 0.1, 0,
+    NULL, 0.1, 0,
     0, 10, 0,
     0, 0, 0
 );
@@ -7239,7 +7207,7 @@ INSERT INTO depreciacion_patrimonial (
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
     'AMB-LAB-GCMS-001', 'ACTA-SUDEBIP-2023-089', 44942.0,
-    'Salida Temporal para Calibración/Mantenimiento Externo', 0.1, 0,
+    NULL, 0.1, 0,
     0, 10, 0,
     0, 0, 0
 );
@@ -7249,7 +7217,7 @@ INSERT INTO depreciacion_patrimonial (
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
     'AMB-LAB-UVVIS-002', 'ACTA-SUDEBIP-2022-008', 44656.0,
-    'Incorporación Inicial por Compra', 0.1, 0,
+    NULL, 0.1, 0,
     0, 10, 0,
     0, 0, 0
 );
@@ -7259,7 +7227,7 @@ INSERT INTO depreciacion_patrimonial (
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
     'AMB-LAB-AAS-003', 'ACTA-SUDEBIP-2020-029', 44166.0,
-    'Incorporación Inicial por Compra', 0.1, 0,
+    NULL, 0.1, 0,
     0, 10, 0,
     0, 0, 0
 );
@@ -7269,7 +7237,7 @@ INSERT INTO depreciacion_patrimonial (
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
     'AMB-LAB-BAL-004', 'ACTA-SUDEBIP-2023-005', 45048.0,
-    'Incorporación Inicial por Compra', 0.1, 0,
+    NULL, 0.1, 0,
     0, 10, 0,
     0, 0, 0
 );
@@ -7279,7 +7247,7 @@ INSERT INTO depreciacion_patrimonial (
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
     'AMB-LAB-TOC-005', 'ACTA-SUDEBIP-2022-021', 44805.0,
-    'Incorporación Inicial por Compra', 0.1, 0,
+    NULL, 0.1, 0,
     0, 10, 0,
     0, 0, 0
 );
@@ -7289,7 +7257,7 @@ INSERT INTO depreciacion_patrimonial (
     depreciacion_mensual_usd, depreciacion_acumulada_usd, valor_neto_libros_usd
 ) VALUES (
     'AMB-LAB-PH-006', 'ACTA-SUDEBIP-2023-018', 45189.0,
-    'Incorporación Inicial por Compra', 0.1, 0,
+    NULL, 0.1, 0,
     0, 10, 0,
     0, 0, 0
 );
@@ -7369,196 +7337,175 @@ INSERT INTO kpis_sga_fo017 (
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    11, 'TABLERO DE CONTROL - 9 INDICADORES CLAVE DE DESEMPEÑO DEL SGA (AMB-GEN-SGA-PG-005)', '',
-    '', '', '',
-    '', 0, ''
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    12, 'N°', 'Indicador Clave de Desempeño (KPI)',
-    'Dimensión', 'Fórmula de Cálculo', 'Meta',
-    'Frecuencia', 0, 'Responsable'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    13, '1', 'Índice de Equipos Codificados e Inventariados',
+    11, '1', 'Índice de Equipos Codificados e Inventariados',
     'Transición', 'NEIE / NTE * 100', '1',
     'Semestral', 0, 'Resp. Laboratorio'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    14, '2', 'Hojas de Vida Habilitadas (CHVH)',
+    12, '2', 'Hojas de Vida Habilitadas (CHVH)',
     'Transición', 'HVA / TEL * 100', '1',
     'Mensual', 0, 'Resp. Laboratorio'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    15, '3', 'Cumplimiento Procedimental del SGA',
+    13, '3', 'Cumplimiento Procedimental del SGA',
     'Transición', 'PEA / TPP * 100', '>= 90.0%',
     'Trimestral', 0, 'Coord. SGA'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    16, '4', 'Disponibilidad Analítica de Equipos Críticos (DA)',
+    14, '4', 'Disponibilidad Analítica de Equipos Críticos (DA)',
     'Operativa', 'NES / NTE * 100', '>= 75.0%',
     'Trimestral', 0, 'Coord. SGA / Resp. Lab'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    17, '5', 'Obsolescencia Promedio Portafolio Vital (Iobs)',
+    15, '5', 'Obsolescencia Promedio Portafolio Vital (Iobs)',
     'Sostenibilidad', '(1/67) * SUM(Iobs_i)', '<= 40.0%',
     'Semestral', 0, 'Comité Gestión Activos'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    18, '6', 'Cumplimiento Plan Calibración y Mantenimiento (PCCMP)',
+    16, '6', 'Cumplimiento Plan Calibración y Mantenimiento (PCCMP)',
     'Operativa', 'MCE / MCP * 100', '>= 75.0%',
     'Semestral', 0, 'Resp. Laboratorio'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    19, '7', 'Conciliación Patrimonial Tripartita (SUDEBIP/SAP)',
+    17, '7', 'Conciliación Patrimonial Tripartita (SUDEBIP/SAP)',
     'Legal', 'ACEI / TEI * 100', '1',
     'Anual', 0, 'Resp. Lab / Custodio'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    20, '8', 'Cumplimiento Metas del PEGA (PC PEGA)',
+    18, '8', 'Cumplimiento Metas del PEGA (PC PEGA)',
     'Transición', 'Pond. PEGA / TMPEGA', '>= 85.0%',
     'Semestral/Anual', 0, 'Gerente AMB / Coord SGA'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    21, '9', 'Nivel de Madurez Organizacional IAM',
+    19, '9', 'Nivel de Madurez Organizacional IAM',
     'Madurez', 'Escala HDIM-CL (0 - 5)', '>= 1.0 (Consciente)',
     'Anual', 0, 'Comité Gestión Activos'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    22, 'RESUMEN', 'Eficacia Global del Sistema de Gestión de Activos',
+    20, 'RESUMEN', 'Eficacia Global del Sistema de Gestión de Activos',
     'Global', 'KPIs Conformes / Total', '>= 80.0%',
     'Trimestral', 0, 'Gerente de Ambiente'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    23, 'EVALUACIÓN DEL DESEMPEÑO ANALÍTICO POR LABORATORIO DE ENSAYO (SEDE EL TAMBOR)', '',
+    21, 'EVALUACIÓN DEL DESEMPEÑO ANALÍTICO POR LABORATORIO DE ENSAYO (SEDE EL TAMBOR)', '',
     '', '', '',
     '', 0, ''
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    24, 'N°', 'Laboratorio de Ensayo (GAMB)',
-    'N° Equipos', 'Equipos Críticos (Cat A)', 'Disponibilidad Analítica (%)',
-    'Calibración Vigente (%)', 0, 'Mantenimiento al Día (%)'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    25, '1', 'Lab. Fisicoquímica y Calidad de Aguas',
+    22, '1', 'Lab. Fisicoquímica y Calidad de Aguas',
     '72', '14', '0.85199999999999998',
     '0.92500000000000004', 0.88, '0.88'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    26, '2', 'Lab. de Cromatografía y Compuestos Orgánicos',
+    23, '2', 'Lab. de Cromatografía y Compuestos Orgánicos',
     '58', '16', '0.79500000000000004',
     '0.81', 0.75, '0.75'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    27, '3', 'Lab. de Metales Pesados y Toxicología',
+    24, '3', 'Lab. de Metales Pesados y Toxicología',
     '46', '11', '0.76800000000000002',
     '0.73', 0.71, '0.71'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    28, '4', 'Lab. de Calidad de Aire y Emisiones',
+    25, '4', 'Lab. de Calidad de Aire y Emisiones',
     '52', '9', '0.84',
     '0.89', 0.82, '0.82'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    29, '5', 'Lab. de Suelos y Lodos de Perforación',
+    26, '5', 'Lab. de Suelos y Lodos de Perforación',
     '65', '10', '0.86499999999999999',
     '0.9', 0.87, '0.87'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    30, '6', 'Lab. de Ecotoxicología y Bioensayos',
+    27, '6', 'Lab. de Ecotoxicología y Bioensayos',
     '41', '7', '0.81',
     '0.85', 0.8, '0.8'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    31, 'TOTAL', 'Consolidado Gerencia de Ambiente',
+    28, 'TOTAL', 'Consolidado Gerencia de Ambiente',
     '334', '67', '0.82166666666666666',
     '0.85083333333333322', 0.8049999999999998, '0.80499999999999983'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    32, 'ANÁLISIS TÉCNICO DE DESVIACIONES, JUSTIFICACIONES Y ACCIONES INMEDIATAS', '',
+    29, 'ANÁLISIS TÉCNICO DE DESVIACIONES, JUSTIFICACIONES Y ACCIONES INMEDIATAS', '',
     '', '', '',
     '', 0, ''
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    33, '1. Conciliación Patrimonial SUDEBIP (91.2%) y Codificación (94.6%): Existen 18 equipos con discrepancias físicas de chapa vs número en SAP PM. Se activó la acción correctiva PCB-2026-03 del Plan de Cierre de Brechas (FO-030) con plazo perentorio a 60 días para completar el 100%.', '',
+    30, '1. Conciliación Patrimonial SUDEBIP (91.2%) y Codificación (94.6%): Existen 18 equipos con discrepancias físicas de chapa vs número en SAP PM. Se activó la acción correctiva PCB-2026-03 del Plan de Cierre de Brechas (FO-030) con plazo perentorio a 60 días para completar el 100%.', '',
     '', '', '',
     '', 0, ''
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    34, '2. Lab. de Metales Pesados (Calibración 73.0% y Mantenimiento 71.0%): Retraso en suministro de estándares certificados para ICP-OES. Se autorizó la adquisición prioritaria mediante caja chica técnica y ajuste de curva predictiva según FO-018 para no comprometer los resultados analíticos oficiales.', '',
+    31, '2. Lab. de Metales Pesados (Calibración 73.0% y Mantenimiento 71.0%): Retraso en suministro de estándares certificados para ICP-OES. Se autorizó la adquisición prioritaria mediante caja chica técnica y ajuste de curva predictiva según FO-018 para no comprometer los resultados analíticos oficiales.', '',
     '', '', '',
     '', 0, ''
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    35, 'RESPONSABILIDAD Y FIRMAS DE APROBACIÓN INSTITUCIONAL', '',
+    32, 'RESPONSABILIDAD Y FIRMAS DE APROBACIÓN INSTITUCIONAL', '',
     '', '', '',
     '', 0, ''
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    36, 'Elaborado por:', '',
+    33, 'Elaborado por:', '',
     '', 'Revisado por:', '',
     '', 0, 'Aprobado por:'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    37, 'Ing. Carlos Mendoza (Coordinador SGA - GAMB)', '',
+    34, 'Ing. Carlos Mendoza (Coordinador SGA - GAMB)', '',
     '', 'Comité Técnico Colegiado de Gestión de Activos', '',
     '', 0, 'Dr. Roberto Valenzuela (Gerente de Ambiente INTEVEP)'
 );
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
 ) VALUES (
-    38, 'Firma / Fecha: 15/10/2026', '',
+    35, 'Firma / Fecha: 15/10/2026', '',
     '', 'Firma / Fecha: 18/10/2026', '',
     '', 0, 'Firma / Fecha: 20/10/2026'
 );

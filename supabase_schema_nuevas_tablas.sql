@@ -513,3 +513,4 @@ CREATE POLICY "Permitir lectura catalogos" ON catalogos_parametros FOR ALL USING
 
 -- Confirmación de ejecución exitosa
 SELECT 'ESTRUCTURA DE TABLAS CREADA Y ACTUALIZADA EXITOSAMENTE' AS resultado;
+
