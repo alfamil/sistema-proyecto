@@ -35,3 +35,4 @@ SELECT
 -- RESULTADO ESPERADO: Todos los contadores deben retornar 0.
 -- La base de datos queda lista para la importación del nuevo archivo.
 -- =========================================================================
+

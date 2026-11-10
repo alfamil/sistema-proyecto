@@ -79,15 +79,11 @@ export default function App() {
 
   // Core Data
   const [activos, setActivos] = useState<ActivoFisico[]>(() => {
-    if ((initialData as any)?.metadata?.estado === 'DEPURADO_ESPERANDO_NUEVA_DATA') {
-      localStorage.removeItem('sgaf_activos_data');
-      return [];
-    }
     const cached = localStorage.getItem('sgaf_activos_data');
     if (cached) {
       try {
         const parsed = JSON.parse(cached);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed) && parsed.length >= 300) return parsed;
       } catch (e) {
         console.error('Error parsing cached activos', e);
       }

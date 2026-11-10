@@ -40,3 +40,4 @@ with open('sga_data.json', 'w', encoding='utf-8') as f:
     json.dump(clean_data, f, ensure_ascii=False, indent=2)
 
 print("sga_data.json has been purged successfully!")
+
