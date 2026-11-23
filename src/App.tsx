@@ -535,6 +535,7 @@ export default function App() {
                 setSelectedActivo(a);
                 setIsFormOpen(true);
               }}
+              onSaveActivo={handleSaveActivo}
               onGoToHojaVida={handleGoToHojaVida}
             />
           )}

@@ -194,6 +194,10 @@ export const CATALOGO_DECISIONES_OPERATIVAS = [
 export interface RecomendacionIAExperta {
   decisionEstrategica: typeof CATALOGO_DECISIONES_ESTRATEGICAS[number];
   decisionOperativa: typeof CATALOGO_DECISIONES_OPERATIVAS[number];
+  tituloAmigable: string;
+  explicacionSencilla: string;
+  motivoClave: string;
+  beneficioEsperado: string;
   justificacionTecnica: string;
   prioridad: 'Inmediata (30 días)' | 'Alta (90 días)' | 'Media (180 días)' | 'Rutinaria (360 días)';
   plazoMeses: number;
@@ -205,7 +209,7 @@ export interface RecomendacionIAExperta {
 /**
  * 8. Motor Asesor Experto e Inteligencia de Decisiones ISO 55001 & PDVSA MM-02-01-01
  * Evalúa el vector multidimensional del activo (IC, Iobs, Riesgo, Deriva, Operatividad)
- * y emite una recomendación técnica estandarizada y justificada.
+ * y emite una recomendación técnica estandarizada y justificada en tono pedagógico y cercano.
  */
 export function getAsesorInteligenteDecision(activo: any): RecomendacionIAExperta {
   const ic = Number(activo.ic || activo.jerarquizacion?.ic || 0);
@@ -218,6 +222,10 @@ export function getAsesorInteligenteDecision(activo: any): RecomendacionIAExpert
     return {
       decisionEstrategica: 'Reemplazo Inmediato (Inversión CAPEX)',
       decisionOperativa: 'Aprovisionamiento Prioritario de Repuestos Críticos',
+      tituloAmigable: 'Sustituir el equipo con urgencia mediante inversión de capital (CAPEX)',
+      motivoClave: 'Equipo indispensable para los ensayos pero tecnológicamente agotado y sin repuestos comerciales.',
+      explicacionSencilla: `Este equipo es vital para la operación del laboratorio (Criticidad de ${ic} pts), pero lamentablemente presenta un nivel de desgaste u obsolescencia severo (${iobs}%). El fabricante ya no suministra partes originales y repararlo continuamente cuesta más que adquirir una unidad moderna. Si se paraliza, afectará de inmediato los análisis oficiales de INTEVEP.`,
+      beneficioEsperado: 'Evitarás la paralización de ensayos críticos, asegurarás el cumplimiento ambiental y eliminarás gastos continuos en reparaciones de emergencia.',
       justificacionTecnica: `El activo presenta un Nivel de Criticidad Crítico (IC=${ic}) con Obsolescencia Crítica (Iobs=${iobs}%). Conforme a ISO 55001 Cl. 6.2 y PDVSA MM-02-01-01, este equipo genera un riesgo no tolerable para la continuidad de los ensayos analíticos de la Gerencia de Ambiente, requiriendo sustitución inmediata en el plan CAPEX.`,
       prioridad: 'Inmediata (30 días)',
       plazoMeses: 3,
@@ -236,6 +244,10 @@ export function getAsesorInteligenteDecision(activo: any): RecomendacionIAExpert
     return {
       decisionEstrategica: 'Mantenimiento Mayor Overhaul',
       decisionOperativa: 'Plan de Mantenimiento Preventivo Riguroso',
+      tituloAmigable: 'Hacerle un mantenimiento mayor a fondo (Overhaul) para renovar su vida útil',
+      motivoClave: 'Es un activo clave cuya tecnología aún es vigente, por lo que una restauración profunda es la opción más rentable.',
+      explicacionSencilla: `El equipo es sumamente importante para el laboratorio (Criticidad ${ic} pts), pero su tecnología todavía tiene buen soporte de repuestos (Obsolescencia moderada de ${iobs}%). En vez de gastar en comprar uno nuevo, lo más inteligente y económico es hacerle una parada técnica de mantenimiento mayor para dejarlo operativo al 100%.`,
+      beneficioEsperado: 'Extenderás su vida útil entre 3 y 5 años con una fracción del costo de un equipo nuevo y garantizarás máxima confiabilidad operativa.',
       justificacionTecnica: `Activo vital de alta criticidad (IC=${ic}) cuya tecnología aún es viable (Iobs=${iobs}%). La estrategia óptima según ISO 55001 Cl. 8.1 es extender su vida útil mediante un mantenimiento mayor programado (Overhaul), asegurando disponibilidad continua de repuestos críticos.`,
       prioridad: 'Alta (90 días)',
       plazoMeses: 6,
@@ -254,6 +266,10 @@ export function getAsesorInteligenteDecision(activo: any): RecomendacionIAExpert
     return {
       decisionEstrategica: 'Reemplazo a Mediano Plazo (Ciclo 24 Meses)',
       decisionOperativa: 'Inspección Predictiva Frecuente (Control de Deriva FO-018)',
+      tituloAmigable: 'Planificar su reemplazo a mediano plazo (próximos 24 meses) y monitorearlo',
+      motivoClave: 'Tiene tecnología antigua pero su criticidad no es extrema, lo que nos da tiempo para presupuestar su cambio sin urgencias.',
+      explicacionSencilla: `Este instrumento tiene tecnología obsoleta (${iobs}% de obsolescencia), pero no es el más crítico del laboratorio (${ic} pts). Por eso no necesitas correr a comprarlo hoy: la recomendación es presupuestarlo calmadamente en el próximo ciclo de compras y mientras tanto hacerle seguimiento periódico a sus lecturas (control de deriva).`,
+      beneficioEsperado: 'Planificación presupuestaria ordenada sin descapitalizar la gerencia y monitoreo preventivo para evitar fallas sorpresivas.',
       justificacionTecnica: `El equipo presenta alta obsolescencia tecnológica (Iobs=${iobs}%) con bajo soporte de repuestos por fabricante. Dado que su criticidad es moderada (IC=${ic}), se planifica su sustitución en el ciclo presupuestario de 24 meses mientras se controla su deriva metrológica según FO-018.`,
       prioridad: 'Media (180 días)',
       plazoMeses: 12,
@@ -272,6 +288,10 @@ export function getAsesorInteligenteDecision(activo: any): RecomendacionIAExpert
     return {
       decisionEstrategica: 'Modernización / Retrofit Tecnológico',
       decisionOperativa: 'Recalibración / Verificación Metrológica Urgente',
+      tituloAmigable: 'Modernizar sus componentes clave (Retrofit) sin cambiar todo el equipo',
+      motivoClave: 'La estructura física del equipo está en buen estado; actualizar sus tarjetas o software resolverá el problema rápidamente.',
+      explicacionSencilla: `Este equipo tiene una criticidad moderada (${ic} pts) y ciertos componentes desactualizados (${iobs}%). La opción más ágil y económica no es cambiar todo el aparato, sino modernizar sus partes electrónicas, sensores o software (hacerle un Retrofit), dejándolo prácticamente como nuevo.`,
+      beneficioEsperado: 'Aumento inmediato de precisión analítica, menor costo que un reemplazo total y rápida puesta en marcha sin trámites lentos.',
       justificacionTecnica: `Activo semicrítico (IC=${ic}) con obsolescencia moderada (Iobs=${iobs}%). La intervención más rentable es actualizar componentes modulares, tarjetas electrónicas o software de adquisición de datos (Retrofit) sin cambiar la estructura principal del equipo.`,
       prioridad: 'Media (180 días)',
       plazoMeses: 6,
@@ -289,6 +309,10 @@ export function getAsesorInteligenteDecision(activo: any): RecomendacionIAExpert
   return {
     decisionEstrategica: 'Continuar Operación / Plan Mantenimiento Preventivo',
     decisionOperativa: 'Operación Estándar y Monitoreo Rutinario',
+    tituloAmigable: 'Mantener en operación normal con su plan preventivo habitual',
+    motivoClave: 'El equipo está en óptimas condiciones técnicas y no representa riesgo para el laboratorio.',
+    explicacionSencilla: `¡Buenas noticias! Este activo está funcionando en condiciones estables (${ic} pts de criticidad controlada y baja obsolescencia de ${iobs}%). No requiere compras ni reparaciones extraordinarias. Lo único necesario es continuar cumpliendo con su cronograma de mantenimiento preventivo y sus calibraciones regulares.`,
+    beneficioEsperado: 'Aprovechamiento eficiente de los recursos del laboratorio, asegurando máxima disponibilidad analítica a costo operativo mínimo.',
     justificacionTecnica: `El activo opera en condiciones nominales de bajo riesgo (IC=${ic}) y baja obsolescencia (Iobs=${iobs}%). Conforme a ISO 55001 Cl. 8.1, se mantiene la rutina establecida de mantenimiento preventivo planificado (AMB-GEN-SGA-FO-008) e inspección periódica de laboratorio.`,
     prioridad: 'Rutinaria (360 días)',
     plazoMeses: 12,

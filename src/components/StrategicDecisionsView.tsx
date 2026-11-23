@@ -14,18 +14,43 @@ interface StrategicDecisionsViewProps {
   activos: ActivoFisico[];
   onSelectActivo: (activo: ActivoFisico) => void;
   onGoToHojaVida?: (tag: string) => void;
+  onSaveActivo?: (activo: ActivoFisico) => void;
 }
 
 export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
   activos,
   onSelectActivo,
-  onGoToHojaVida
+  onGoToHojaVida,
+  onSaveActivo
 }) => {
   const [filterCruce, setFilterCruce] = useState<string>('ALL');
   const [filterLab, setFilterLab] = useState<string>('ALL');
   const [filterDecision, setFilterDecision] = useState<string>('ALL');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedAIAsset, setSelectedAIAsset] = useState<ActivoFisico | null>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const handleAcceptAIDecision = (asset: ActivoFisico, advice: any) => {
+    const updatedAsset: ActivoFisico = {
+      ...asset,
+      decision: {
+        cruce_resultado: asset.resultado_cruce || 'Evaluado',
+        decision_sugerida_riesgo: advice.decisionEstrategica,
+        decision_estrategica_final: advice.decisionEstrategica,
+        responsable_de: asset.decision?.responsable_de || 'Responsable de Laboratorio',
+        fecha_de: new Date().toISOString().slice(0, 10),
+        decision_operativa: advice.decisionOperativa,
+        responsable_do: asset.decision?.responsable_do || 'Analista de Gestión de Calidad',
+        fecha_do: new Date().toISOString().slice(0, 10)
+      }
+    };
+    if (onSaveActivo) {
+      onSaveActivo(updatedAsset);
+    }
+    setSelectedAIAsset(null);
+    setToastMessage(`✅ ¡Decisión formalizada con éxito! El equipo ${asset.tag_pdvsa} fue actualizado a: "${advice.decisionEstrategica}".`);
+    setTimeout(() => setToastMessage(null), 5000);
+  };
 
   // Available laboratories
   const availableLabs = useMemo(() => {
@@ -122,6 +147,20 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
   return (
     <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-300">
       
+      {/* Toast Notification Banner */}
+      {toastMessage && (
+        <div className="fixed top-5 right-5 z-50 bg-emerald-600 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 border-2 border-emerald-300 animate-in slide-in-from-top-4 duration-300">
+          <CheckCircle className="w-6 h-6 text-white shrink-0" />
+          <p className="text-sm sm:text-base font-bold">{toastMessage}</p>
+          <button 
+            onClick={() => setToastMessage(null)}
+            className="p-1 rounded-full hover:bg-white/20 transition-colors ml-2"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
       {/* Title & Introduction Banner - Light Theme High Contrast */}
       <div className="bg-gradient-to-r from-purple-800 via-indigo-900 to-slate-900 rounded-2xl p-6 sm:p-8 shadow-md text-white relative overflow-hidden">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
@@ -383,11 +422,11 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
                       {/* AI Advisor Button */}
                       <button
                         onClick={() => setSelectedAIAsset(asset)}
-                        className="inline-flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl transition-all font-bold shadow-sm"
-                        title="Ver Diagnóstico y Recomendación de IA Experta"
+                        className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl transition-all font-bold shadow-sm"
+                        title="Abrir Asesor Inteligente para evaluar y aceptar la decisión sugerida"
                       >
                         <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                        <span>Asesor IA</span>
+                        <span>🤖 Asesor IA: Sugerir y Aceptar</span>
                       </button>
 
                       {onGoToHojaVida && (
@@ -491,113 +530,173 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
 
       </div>
 
-      {/* AI Advisor Modal Dialog */}
+      {/* AI Advisor Friendly Modal Dialog */}
       {selectedAIAsset && (() => {
         const aiAdvice = getAsesorInteligenteDecision(selectedAIAsset);
+        const cruce = selectedAIAsset.resultado_cruce || selectedAIAsset.decision?.cruce_resultado || 'Evaluado';
+
         return (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-200">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/70 backdrop-blur-md animate-in fade-in duration-200">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden border border-slate-200 dark:border-slate-800 animate-in zoom-in-95 duration-200 flex flex-col max-h-[92vh]">
               
-              {/* Modal Header */}
-              <div className="bg-gradient-to-r from-purple-800 via-indigo-900 to-slate-900 p-6 text-white relative">
+              {/* Friendly Header with Bot Avatar */}
+              <div className="bg-gradient-to-r from-purple-700 via-indigo-700 to-blue-800 p-5 sm:p-6 text-white relative shrink-0">
                 <button
                   onClick={() => setSelectedAIAsset(null)}
-                  className="absolute top-5 right-5 text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+                  className="absolute top-4 right-4 text-white/80 hover:text-white p-2 rounded-full hover:bg-white/15 transition-colors"
+                  aria-label="Cerrar modal"
                 >
                   <X className="w-5 h-5" />
                 </button>
-                <div className="flex items-center space-x-2 mb-2">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-400 text-purple-950">
-                    <Sparkles className="w-3.5 h-3.5 mr-1" /> Asesor Inteligente IA
-                  </span>
-                  <span className="text-xs text-purple-200 font-medium">{aiAdvice.norma_referencia}</span>
+                
+                <div className="flex items-center space-x-3 mb-2">
+                  <div className="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-2xl shadow-inner border border-white/30">
+                    🤖
+                  </div>
+                  <div>
+                    <div className="flex items-center space-x-2">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-400 text-purple-950">
+                        <Sparkles className="w-3.5 h-3.5 mr-1" /> Asesor Inteligente IA
+                      </span>
+                      <span className="text-xs text-purple-200 font-semibold">{aiAdvice.clausulaISO}</span>
+                    </div>
+                    <h3 className="text-lg sm:text-2xl font-black text-white mt-0.5">
+                      Recomendación Estratégica Personalizada
+                    </h3>
+                  </div>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-black text-white">
-                  Diagnóstico y Recomendación SAMP
-                </h3>
-                <p className="text-xs sm:text-sm text-purple-200 mt-1">
-                  Activo: <strong className="text-white">{selectedAIAsset.nombre}</strong> ({selectedAIAsset.tag_pdvsa})
-                </p>
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl px-3.5 py-2 mt-2 border border-white/15 flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm text-purple-100">
+                  <div>
+                    Equipo: <strong className="text-white">{selectedAIAsset.nombre}</strong> ({selectedAIAsset.tag_pdvsa})
+                  </div>
+                  <div>
+                    Laboratorio: <strong className="text-white">{selectedAIAsset.laboratorio}</strong>
+                  </div>
+                </div>
               </div>
 
-              {/* Modal Body */}
-              <div className="p-6 space-y-5 max-h-[75vh] overflow-y-auto">
+              {/* Modal Body - Conversational & Intuitive */}
+              <div className="p-5 sm:p-6 space-y-5 overflow-y-auto flex-1 text-slate-800 dark:text-slate-200">
                 
-                {/* Multicriteria Scorecards */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-xs">
-                  <div>
-                    <span className="text-slate-500 font-semibold block">Criticidad PDVSA</span>
-                    <span className="font-bold text-slate-900 text-sm mt-0.5 block">{selectedAIAsset.categoria_criticidad || 'Evaluado'}</span>
+                {/* Speech Bubble: Qué decisión tomar */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/40 border-2 border-indigo-200 dark:border-indigo-800 space-y-3">
+                  <div className="flex items-center space-x-2 text-indigo-900 dark:text-indigo-300 font-bold text-xs uppercase tracking-wider">
+                    <span className="text-base">👉</span>
+                    <span>¿Qué decisión deberías tomar según la IA?</span>
                   </div>
-                  <div>
-                    <span className="text-slate-500 font-semibold block">Obsolescencia</span>
-                    <span className="font-bold text-orange-600 text-sm mt-0.5 block">{selectedAIAsset.iobs || '0'}%</span>
-                  </div>
-                  <div>
-                    <span className="text-slate-500 font-semibold block">Nivel de Riesgo</span>
-                    <span className="font-bold text-red-600 text-sm mt-0.5 block">NR {selectedAIAsset.nivel_riesgo || '4'}</span>
-                  </div>
-                  <div>
-                    <span className="text-slate-500 font-semibold block">Cuadrante Cruce</span>
-                    <span className="font-bold text-purple-700 text-sm mt-0.5 block">{aiAdvice.cuadrante}</span>
+
+                  <div className="space-y-2">
+                    <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900 shadow-sm">
+                      <span className="text-xs text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wide block">
+                        Decisión Estratégica (SAMP):
+                      </span>
+                      <p className="text-base sm:text-lg font-black text-slate-900 dark:text-white mt-0.5">
+                        🎯 {aiAdvice.decisionEstrategica}
+                      </p>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 font-medium">
+                        {aiAdvice.tituloAmigable}
+                      </p>
+                    </div>
+
+                    <div className="bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-indigo-100 dark:border-indigo-900 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <div>
+                        <span className="text-xs text-blue-600 dark:text-blue-400 font-extrabold uppercase tracking-wide block">
+                          Acción Operativa Inmediata:
+                        </span>
+                        <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
+                          🔧 {aiAdvice.decisionOperativa}
+                        </p>
+                      </div>
+                      <span className="px-3 py-1 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 rounded-full text-xs font-bold whitespace-nowrap self-start sm:self-auto border border-amber-300 dark:border-amber-700">
+                        ⏱️ {aiAdvice.prioridad}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                {/* AI Decisions Box */}
-                <div className="space-y-3">
-                  <div className="p-4 rounded-2xl bg-purple-50/80 border border-purple-200 space-y-1.5">
-                    <span className="text-xs font-bold text-purple-900 uppercase tracking-wider block">
-                      Decisión Estratégica Recomendada (SAMP)
-                    </span>
-                    <p className="text-base font-extrabold text-slate-900">
-                      {aiAdvice.recomendacion}
-                    </p>
+                {/* Speech Bubble: Por qué tomar esta decisión */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 space-y-2.5">
+                  <div className="flex items-center space-x-2 text-amber-900 dark:text-amber-300 font-bold text-xs uppercase tracking-wider">
+                    <span className="text-base">💡</span>
+                    <span>¿Por qué te recomiendo esta decisión? (En palabras sencillas)</span>
                   </div>
+                  
+                  <p className="text-sm sm:text-base text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
+                    {aiAdvice.explicacionSencilla}
+                  </p>
 
-                  <div className="p-4 rounded-2xl bg-blue-50/80 border border-blue-200 space-y-1.5">
-                    <span className="text-xs font-bold text-blue-900 uppercase tracking-wider block">
-                      Decisión Operativa Inmediata (O&M)
-                    </span>
-                    <p className="text-sm sm:text-base font-bold text-slate-900">
-                      {aiAdvice.decision_operativa_sugerida}
-                    </p>
+                  <div className="p-3 bg-white/80 dark:bg-slate-900/80 rounded-xl border border-amber-200 dark:border-amber-900 text-xs sm:text-sm text-amber-900 dark:text-amber-200">
+                    <strong>Punto clave:</strong> {aiAdvice.motivoClave}
                   </div>
                 </div>
 
-                {/* Technical Justification */}
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                  <div className="flex items-center space-x-2 text-slate-700 font-bold text-xs uppercase tracking-wider">
-                    <Brain className="w-4 h-4 text-purple-600" />
-                    <span>Justificación Técnica y Fundamentación Normativa</span>
+                {/* Speech Bubble: Beneficio esperado */}
+                <div className="p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 space-y-2">
+                  <div className="flex items-center space-x-2 text-emerald-900 dark:text-emerald-300 font-bold text-xs uppercase tracking-wider">
+                    <span className="text-base">🌟</span>
+                    <span>¿Qué beneficio obtendrás en el laboratorio?</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
-                    {aiAdvice.justificacion}
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                    {aiAdvice.beneficioEsperado}
                   </p>
                 </div>
 
+                {/* Scorecards summary */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-50 dark:bg-slate-800/60 p-3 rounded-xl border border-slate-200 dark:border-slate-800 text-xs">
+                  <div>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold block">Criticidad</span>
+                    <span className="font-bold text-slate-900 dark:text-white mt-0.5 block">{selectedAIAsset.categoria_criticidad || 'Evaluado'}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold block">Obsolescencia</span>
+                    <span className="font-bold text-orange-600 dark:text-orange-400 mt-0.5 block">{selectedAIAsset.iobs || '0'}%</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold block">Nivel de Riesgo</span>
+                    <span className="font-bold text-red-600 dark:text-red-400 mt-0.5 block">NR {selectedAIAsset.nivel_riesgo || '4'}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold block">Cuadrante</span>
+                    <span className="font-bold text-purple-700 dark:text-purple-300 mt-0.5 block">{cruce}</span>
+                  </div>
+                </div>
+
               </div>
 
-              {/* Modal Footer */}
-              <div className="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row justify-end gap-2.5">
+              {/* Acceptance Call-to-Action - Intuitive & Direct */}
+              <div className="p-4 sm:p-5 bg-slate-50 dark:bg-slate-800/80 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 shrink-0">
                 <button
                   type="button"
                   onClick={() => setSelectedAIAsset(null)}
-                  className="px-5 py-2.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-xl text-xs sm:text-sm font-bold transition-colors"
+                  className="px-4 py-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 rounded-xl text-xs sm:text-sm font-bold transition-colors order-2 sm:order-1"
                 >
-                  Cerrar
+                  Cancelar
                 </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const assetToEdit = { ...selectedAIAsset };
-                    setSelectedAIAsset(null);
-                    onSelectActivo(assetToEdit);
-                  }}
-                  className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md transition-all flex items-center justify-center space-x-1.5"
-                >
-                  <Sparkles className="w-4 h-4 text-amber-300" />
-                  <span>Aplicar Recomendación en Expediente</span>
-                </button>
+
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 order-1 sm:order-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const assetToEdit = { ...selectedAIAsset };
+                      setSelectedAIAsset(null);
+                      onSelectActivo(assetToEdit);
+                    }}
+                    className="px-3.5 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition-colors border border-slate-300 dark:border-slate-700 text-center"
+                    title="Abrir formulario completo para ajustar campos o fechas"
+                  >
+                    ✏️ Ajustar manualmente
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleAcceptAIDecision(selectedAIAsset, aiAdvice)}
+                    className="px-6 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-2xl text-sm font-black shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2 border border-emerald-400 ring-2 ring-emerald-400/30"
+                  >
+                    <CheckCircle className="w-5 h-5 text-white" />
+                    <span>Aceptar y Aplicar esta Decisión (1 Clic)</span>
+                  </button>
+                </div>
               </div>
 
             </div>
