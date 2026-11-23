@@ -100,7 +100,14 @@ export const GobiernoSGAView: React.FC<GobiernoSGAViewProps> = ({
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {kpis.map((kpi) => {
-                const semaforo = kpi.estatus_semaforo || (kpi.valor_real_q3 >= 0.75 ? 'CONFORME' : 'EN REVISIÓN');
+                const getSemaforo = () => {
+                  if (kpi.estatus_semaforo) return kpi.estatus_semaforo;
+                  if (kpi.numero === 1 || kpi.numero === 2 || kpi.numero === 7) return 'EN REVISIÓN';
+                  if (kpi.numero === 5) return kpi.valor_real_q3 <= 0.40 ? 'CONFORME' : 'NO CONFORME';
+                  if (kpi.numero === 9) return kpi.valor_real_q3 >= 1.0 ? 'CONFORME' : 'EN REVISIÓN';
+                  return kpi.valor_real_q3 >= 0.75 ? 'CONFORME' : 'EN REVISIÓN';
+                };
+                const semaforo = getSemaforo();
                 const isConforme = semaforo.includes('CONFORME');
                 const isRevision = semaforo.includes('REVISIÓN') || semaforo.includes('REVISION');
 

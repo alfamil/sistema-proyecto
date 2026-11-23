@@ -159,12 +159,26 @@ export default function App() {
         const { data: ciData } = await supabase.from('comprobaciones_intermedias').select('*');
         if (ciData && ciData.length > 0) setComprobaciones(ciData);
 
-        let { data: kpiData } = await supabase.from('kpis_sga_fo017').select('*');
+        let { data: kpiData } = await supabase.from('kpis_sga_fo017').select('*').order('numero', { ascending: true });
         if (!kpiData || kpiData.length === 0) {
-          const res = await supabase.from('desempeno_sga_fo017').select('*');
+          const res = await supabase.from('desempeno_sga_fo017').select('*').order('numero', { ascending: true });
           kpiData = res.data;
         }
-        if (kpiData && kpiData.length > 0) setKpisSga(kpiData);
+        if (kpiData && kpiData.length > 0) {
+          // Filtrar cualquier fila que sea encabezado o texto vacío para asegurar siempre KPIs oficiales
+          const validKpis = kpiData.filter(k => 
+            k.numero >= 1 && k.numero <= 9 && 
+            k.indicador && 
+            !k.indicador.startsWith('PDVSA INTEVEP') && 
+            !k.indicador.startsWith('FORMATO AMB')
+          );
+          if (validKpis.length > 0) {
+            setKpisSga(validKpis);
+          }
+        }
+
+        const { data: acuerdosData } = await supabase.from('acuerdos_direccion_fo019').select('*');
+        if (acuerdosData && acuerdosData.length > 0) setAcuerdosDireccion(acuerdosData);
 
         const { data: brechaData } = await supabase.from('cierre_brechas_fo030').select('*');
         if (brechaData && brechaData.length > 0) setBrechasSga(brechaData);

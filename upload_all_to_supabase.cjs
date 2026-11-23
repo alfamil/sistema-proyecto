@@ -346,14 +346,18 @@ async function main() {
   console.log("Sincronizando 'kpis_sga_fo017'...");
   await apiRequest('kpis_sga_fo017?id=gt.00000000-0000-0000-0000-000000000000', 'DELETE').catch(() => {});
   let kpiCount = 0;
-  for (const k of (sgaData.kpis_fo017 || [])) {
+  const kpisList = sgaData.kpis_sga_fo017 || sgaData.kpis_fo017 || [];
+  for (const k of kpisList) {
     await apiRequest('kpis_sga_fo017', 'POST', {
-      codigo_kpi: k.codigo_kpi,
-      nombre_kpi: k.nombre_kpi,
-      valor_meta: k.valor_meta || 95,
-      valor_real: k.valor_real || 0,
-      cumplimiento_pct: k.cumplimiento_pct || 0,
-      evaluacion_kpi: k.evaluacion_kpi || 'Conforme'
+      numero: k.numero,
+      indicador: k.indicador,
+      dimension: k.dimension || 'Operativa',
+      formula: k.formula || 'Registro ponderado',
+      meta: String(k.meta || '100%'),
+      frecuencia: k.frecuencia || 'Trimestral',
+      responsable: k.responsable || 'Coordinación SGA',
+      valor_real_q3: typeof k.valor_real_q3 === 'number' ? k.valor_real_q3 : (k.valor_real || 0),
+      valor_real_texto: k.valor_real_texto || String(k.valor_real || '0%')
     }).catch(e => console.error("Error kpi:", e.message));
     kpiCount++;
   }

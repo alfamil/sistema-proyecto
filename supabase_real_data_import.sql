@@ -7262,253 +7262,68 @@ INSERT INTO depreciacion_patrimonial (
     0, 0, 0
 );
 
--- 14. INSERTAR KPIS SGA (FO-017)
+-- 14. INSERTAR KPIS SGA (FO-017) OFICIALES AUDITADOS Q3 2026
 
 INSERT INTO kpis_sga_fo017 (
     numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    1, 'PDVSA INTEVEP - GERENCIA DE AMBIENTE | SISTEMA DE GESTIÓN DE ACTIVOS (ISO 55001:2024)', '',
-    '', '', '',
-    '', 0, ''
+) VALUES 
+(1, 'Índice de Equipos Codificados e Inventariados', 'Transición', 'NEIE / NTE * 100', '100%', 'Semestral', 'Resp. Laboratorio', 0.946, '94.6%'),
+(2, 'Hojas de Vida Habilitadas (CHVH)', 'Transición', 'HVA / TEL * 100', '100%', 'Mensual', 'Resp. Laboratorio', 0.920, '92.0%'),
+(3, 'Cumplimiento Procedimental del SGA', 'Transición', 'PEA / TPP * 100', '>= 90.0%', 'Trimestral', 'Coord. SGA', 0.950, '95.0%'),
+(4, 'Disponibilidad Analítica de Equipos Críticos (DA)', 'Operativa', 'NES / NTE * 100', '>= 75.0%', 'Trimestral', 'Coord. SGA / Resp. Lab', 0.821, '82.1%'),
+(5, 'Obsolescencia Promedio Portafolio Vital (Iobs)', 'Sostenibilidad', '(1/67) * SUM(Iobs_i)', '<= 40.0%', 'Semestral', 'Comité Gestión Activos', 0.365, '36.5%'),
+(6, 'Cumplimiento Plan Calibración y Mantenimiento (PCCMP)', 'Operativa', 'MCE / MCP * 100', '>= 75.0%', 'Semestral', 'Resp. Laboratorio', 0.784, '78.4%'),
+(7, 'Conciliación Patrimonial Tripartita (SUDEBIP/SAP)', 'Legal', 'ACEI / TEI * 100', '100%', 'Anual', 'Resp. Lab / Custodio', 0.912, '91.2%'),
+(8, 'Cumplimiento Metas del PEGA (PC PEGA)', 'Transición', 'Pond. PEGA / TMPEGA', '>= 85.0%', 'Semestral/Anual', 'Gerente AMB / Coord SGA', 0.885, '88.5%'),
+(9, 'Nivel de Madurez Organizacional IAM', 'Madurez', 'Escala HDIM-CL (0 - 5)', '>= 1.0 (Consciente)', 'Anual', 'Comité Gestión Activos', 1.200, '1.2 (Consciente)');
+
+-- 14.1 ACUERDOS DE DIRECCIÓN (FO-019)
+CREATE TABLE IF NOT EXISTS acuerdos_direccion_fo019 (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    numero_acuerdo TEXT NOT NULL,
+    descripcion_acuerdo TEXT NOT NULL,
+    responsable TEXT,
+    fecha_limite TEXT,
+    recursos_usd NUMERIC,
+    estatus TEXT DEFAULT 'En Ejecución',
+    created_at TIMESTAMPTZ DEFAULT NOW()
 );
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    2, 'FORMATO AMB-GEN-SGA-FO-022: INFORME TRIMESTRAL DE DESEMPEÑO DEL SGA', '',
-    '', '', '',
-    '', 0, ''
+
+TRUNCATE TABLE acuerdos_direccion_fo019 CASCADE;
+
+INSERT INTO acuerdos_direccion_fo019 (numero_acuerdo, descripcion_acuerdo, responsable, fecha_limite, recursos_usd, estatus) VALUES
+('ACU-DIR-001', 'Aprobación del presupuesto extraordinario para adquisición de estándares certificados de calibración para equipos de absorción atómica e ICP-OES.', 'Gerencia de Finanzas / Ing. Carlos Mendoza', '2026-11-30', 14500.0, 'Aprobado'),
+('ACU-DIR-002', 'Contratación del servicio externo acreditado bajo ISO 17025 para calibración de cromatógrafos de gases y masas.', 'Gerencia de Contrataciones / Comité SGA', '2026-12-15', 18200.0, 'En Proceso'),
+('ACU-DIR-003', 'Formalización ante SUDEBIP de la enajenación y desincorporación de 12 equipos obsoletos del Laboratorio de Aguas.', 'Custodio Patrimonial GAMB / Asesoría Jurídica', '2027-01-31', 2500.0, 'Aprobado'),
+('ACU-DIR-004', 'Plan de adquisición prioritaria CAPEX para reemplazo tecnológico de espectrofotómetros UV-Vis con Iobs > 75%.', 'Gerencia General INTEVEP / Planificación', '2027-03-31', 15000.0, 'Planificado'),
+('ACU-DIR-005', 'Auditoría interna cruzada de seguimiento al cumplimiento de los planes de cierre de brechas del SGA.', 'Auditoría Interna de Calidad ISO 55001', '2027-02-15', 3000.0, 'Programado');
+
+-- 14.2 PLAN DE CIERRE DE BRECHAS (FO-030)
+CREATE TABLE IF NOT EXISTS cierre_brechas_fo030 (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    codigo_brecha TEXT NOT NULL,
+    laboratorio TEXT,
+    causa_raiz TEXT NOT NULL,
+    accion_propuesta TEXT NOT NULL,
+    responsable TEXT,
+    plazo_dias INT,
+    fecha_compromiso TEXT,
+    recursos_usd NUMERIC,
+    estatus TEXT DEFAULT 'Abierta',
+    created_at TIMESTAMPTZ DEFAULT NOW()
 );
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    3, 'Período Evaluado:', 'Trimestre Q3 2026 (Julio - Septiembre)',
-    'Código Formato:', 'AMB-GEN-SGA-FO-017', 'Fecha de Emisión:',
-    '46310', 0, 'Versión:'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    4, 'Organización:', 'PDVSA INTEVEP, S.A.',
-    'Sede:', 'El Tambor, Los Teques, Edo. Miranda', 'Área Operativa:',
-    'Gerencia de Ambiente (GAMB)', 0, 'Procedimiento:'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    5, 'Coordinador SGA:', 'Ing. Carlos Mendoza (GAMB)',
-    'Comité Gestión:', 'Comité Técnico Colegiado GAMB', 'Gerente Ambiente:',
-    'Dr. Roberto Valenzuela (Aprobador)', 0, 'Vigencia:'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    6, 'Alcance del Informe:', 'Evaluación integral de desempeño, disponibilidad analítica, integridad metrológica y conciliación patrimonial de los 334 activos de la GAMB.',
-    '', '', '',
-    '', 0, ''
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    7, 'TOTAL ACTIVOS FÍSICOS', '',
-    'ACTIVOS CRÍTICOS VITALES', '', 'DISPONIBILIDAD ANALÍTICA',
-    '', 0, 'CONCILIACIÓN SUDEBIP'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    8, '334', '',
-    '67', '', '0.82099999999999995',
-    '', 0.912, '0.91200000000000003'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    9, 'Tangibles GAMB en Inventario', '',
-    'Categoría A (Matriz MM-02-01-01)', '', 'Meta: >= 75.0% (Superada)',
-    '', 0, 'Meta: 100.0% (En Regularización)'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    10, 'Patrimonio Registrado', '',
-    'Portafolio Vital Prioritario', '', 'Operatividad Promedio GAMB',
-    '', 0, 'Cotejo Físico / SAP / SUDEBIP'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    11, '1', 'Índice de Equipos Codificados e Inventariados',
-    'Transición', 'NEIE / NTE * 100', '1',
-    'Semestral', 0, 'Resp. Laboratorio'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    12, '2', 'Hojas de Vida Habilitadas (CHVH)',
-    'Transición', 'HVA / TEL * 100', '1',
-    'Mensual', 0, 'Resp. Laboratorio'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    13, '3', 'Cumplimiento Procedimental del SGA',
-    'Transición', 'PEA / TPP * 100', '>= 90.0%',
-    'Trimestral', 0, 'Coord. SGA'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    14, '4', 'Disponibilidad Analítica de Equipos Críticos (DA)',
-    'Operativa', 'NES / NTE * 100', '>= 75.0%',
-    'Trimestral', 0, 'Coord. SGA / Resp. Lab'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    15, '5', 'Obsolescencia Promedio Portafolio Vital (Iobs)',
-    'Sostenibilidad', '(1/67) * SUM(Iobs_i)', '<= 40.0%',
-    'Semestral', 0, 'Comité Gestión Activos'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    16, '6', 'Cumplimiento Plan Calibración y Mantenimiento (PCCMP)',
-    'Operativa', 'MCE / MCP * 100', '>= 75.0%',
-    'Semestral', 0, 'Resp. Laboratorio'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    17, '7', 'Conciliación Patrimonial Tripartita (SUDEBIP/SAP)',
-    'Legal', 'ACEI / TEI * 100', '1',
-    'Anual', 0, 'Resp. Lab / Custodio'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    18, '8', 'Cumplimiento Metas del PEGA (PC PEGA)',
-    'Transición', 'Pond. PEGA / TMPEGA', '>= 85.0%',
-    'Semestral/Anual', 0, 'Gerente AMB / Coord SGA'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    19, '9', 'Nivel de Madurez Organizacional IAM',
-    'Madurez', 'Escala HDIM-CL (0 - 5)', '>= 1.0 (Consciente)',
-    'Anual', 0, 'Comité Gestión Activos'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    20, 'RESUMEN', 'Eficacia Global del Sistema de Gestión de Activos',
-    'Global', 'KPIs Conformes / Total', '>= 80.0%',
-    'Trimestral', 0, 'Gerente de Ambiente'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    21, 'EVALUACIÓN DEL DESEMPEÑO ANALÍTICO POR LABORATORIO DE ENSAYO (SEDE EL TAMBOR)', '',
-    '', '', '',
-    '', 0, ''
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    22, '1', 'Lab. Fisicoquímica y Calidad de Aguas',
-    '72', '14', '0.85199999999999998',
-    '0.92500000000000004', 0.88, '0.88'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    23, '2', 'Lab. de Cromatografía y Compuestos Orgánicos',
-    '58', '16', '0.79500000000000004',
-    '0.81', 0.75, '0.75'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    24, '3', 'Lab. de Metales Pesados y Toxicología',
-    '46', '11', '0.76800000000000002',
-    '0.73', 0.71, '0.71'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    25, '4', 'Lab. de Calidad de Aire y Emisiones',
-    '52', '9', '0.84',
-    '0.89', 0.82, '0.82'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    26, '5', 'Lab. de Suelos y Lodos de Perforación',
-    '65', '10', '0.86499999999999999',
-    '0.9', 0.87, '0.87'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    27, '6', 'Lab. de Ecotoxicología y Bioensayos',
-    '41', '7', '0.81',
-    '0.85', 0.8, '0.8'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    28, 'TOTAL', 'Consolidado Gerencia de Ambiente',
-    '334', '67', '0.82166666666666666',
-    '0.85083333333333322', 0.8049999999999998, '0.80499999999999983'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    29, 'ANÁLISIS TÉCNICO DE DESVIACIONES, JUSTIFICACIONES Y ACCIONES INMEDIATAS', '',
-    '', '', '',
-    '', 0, ''
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    30, '1. Conciliación Patrimonial SUDEBIP (91.2%) y Codificación (94.6%): Existen 18 equipos con discrepancias físicas de chapa vs número en SAP PM. Se activó la acción correctiva PCB-2026-03 del Plan de Cierre de Brechas (FO-030) con plazo perentorio a 60 días para completar el 100%.', '',
-    '', '', '',
-    '', 0, ''
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    31, '2. Lab. de Metales Pesados (Calibración 73.0% y Mantenimiento 71.0%): Retraso en suministro de estándares certificados para ICP-OES. Se autorizó la adquisición prioritaria mediante caja chica técnica y ajuste de curva predictiva según FO-018 para no comprometer los resultados analíticos oficiales.', '',
-    '', '', '',
-    '', 0, ''
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    32, 'RESPONSABILIDAD Y FIRMAS DE APROBACIÓN INSTITUCIONAL', '',
-    '', '', '',
-    '', 0, ''
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    33, 'Elaborado por:', '',
-    '', 'Revisado por:', '',
-    '', 0, 'Aprobado por:'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    34, 'Ing. Carlos Mendoza (Coordinador SGA - GAMB)', '',
-    '', 'Comité Técnico Colegiado de Gestión de Activos', '',
-    '', 0, 'Dr. Roberto Valenzuela (Gerente de Ambiente INTEVEP)'
-);
-INSERT INTO kpis_sga_fo017 (
-    numero, indicador, dimension, formula, meta, frecuencia, responsable, valor_real_q3, valor_real_texto
-) VALUES (
-    35, 'Firma / Fecha: 15/10/2026', '',
-    '', 'Firma / Fecha: 18/10/2026', '',
-    '', 0, 'Firma / Fecha: 20/10/2026'
-);
+
+TRUNCATE TABLE cierre_brechas_fo030 CASCADE;
+
+INSERT INTO cierre_brechas_fo030 (codigo_brecha, laboratorio, causa_raiz, accion_propuesta, responsable, plazo_dias, fecha_compromiso, recursos_usd, estatus) VALUES
+('PCB-2026-01', 'Aguas y Efluentes Industriales', 'Vencimiento de calibración por falta de estándares primarios certificados', 'Gestionar compra urgente de patrones certificados y ejecutar calibración interna según procedimiento AMB-CAL-004', 'Ing. Marcos Rondón', 30, '2026-11-20', 2500.0, 'En Ejecución'),
+('PCB-2026-02', 'Cromatografía y Gases', 'Retraso en mantenimiento preventivo por desabastecimiento de kits de sellos y septa', 'Adquisición consolidada de consumibles críticos para cromatógrafos de gases Agilent', 'Lic. Diana Parra', 45, '2026-12-05', 4200.0, 'En Ejecución'),
+('PCB-2026-03', 'Calidad de Aire', 'Discrepancia en seriales de placa SUDEBIP respecto al inventario físico de muestreadores', 'Jornada extraordinaria de conciliación física y remarcaje de placas metálicas con código QR', 'Ing. Carlos Mendoza', 60, '2026-12-20', 1200.0, 'En Ejecución'),
+('PCB-2026-04', 'Biotecnología Ambiental', 'Falta de respaldo de energía ininterrumpida (UPS) en incubadoras y biorreactores', 'Instalación y banco de baterías para sistema UPS de 10 kVA en sala analítica', 'Ing. Electricista Soporte', 45, '2026-12-10', 6500.0, 'En Ejecución'),
+('PCB-2026-05', 'Metales Pesados y Toxicología', 'Deriva metrologica detectada en lecturas de absorción atómica (FO-018)', 'Ajuste de ganancia óptica y verificación intermedia con material de referencia certificado', 'Metrólogo de Guardia', 15, '2026-11-10', 800.0, 'Cerrada'),
+('PCB-2026-06', 'Suelos y Sedimentos', 'Ausencia de software actualizado para adquisición de datos en difractómetro de rayos X', 'Actualización de licencias de software y capacitación técnica a custodios de equipo', 'Ing. Sistemas / Custodio', 90, '2027-01-20', 3800.0, 'Planificada'),
+('PCB-2026-07', 'Todos los Laboratorios', 'Brecha en competencias del personal en análisis de criticidad bajo norma PDVSA MM-02-01-01', 'Taller teórico-práctico de 24 horas para 18 analistas y custodios de la GAMB', 'Comité SGA INTEVEP', 30, '2026-11-25', 1500.0, 'En Ejecución');
+
 
 -- ==============================================================================
 -- 15. VERIFICACIÓN FINAL DE CONTEOS
