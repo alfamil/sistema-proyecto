@@ -1,9 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { 
   GitFork, AlertOctagon, CheckCircle, Clock, ShieldCheck, 
-  FileText, Download, Filter, UserCheck, Calendar, ArrowRight
+  FileText, Download, Filter, UserCheck, Calendar, ArrowRight,
+  Search, Sparkles, Brain, Check, X, RotateCcw
 } from 'lucide-react';
 import { ActivoFisico } from '../types';
+import { 
+  CATALOGO_DECISIONES_ESTRATEGICAS, 
+  getAsesorInteligenteDecision 
+} from '../utils/calculations';
 
 interface StrategicDecisionsViewProps {
   activos: ActivoFisico[];
@@ -17,28 +22,45 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
   onGoToHojaVida
 }) => {
   const [filterCruce, setFilterCruce] = useState<string>('ALL');
+  const [filterLab, setFilterLab] = useState<string>('ALL');
+  const [filterDecision, setFilterDecision] = useState<string>('ALL');
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedAIAsset, setSelectedAIAsset] = useState<ActivoFisico | null>(null);
+
+  // Available laboratories
+  const availableLabs = useMemo(() => {
+    return Array.from(new Set(activos.map(a => a.laboratorio))).filter(Boolean).sort();
+  }, [activos]);
 
   // Evaluated assets with decision data
   const decisionAssets = useMemo(() => {
     return activos.filter(a => a.pareto_20 || a.decision || (a.resultado_cruce && a.resultado_cruce !== 'No Evaluado'));
   }, [activos]);
 
-  // Filtered by quadrant/search
+  // Filtered by quadrant/search/lab/decision
   const filteredDecisions = useMemo(() => {
     return decisionAssets.filter(a => {
-      const matchSearch = !searchTerm || (
-        a.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        a.tag_pdvsa.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (a.codigo_sudebip && a.codigo_sudebip.toLowerCase().includes(searchTerm.toLowerCase()))
+      const term = searchTerm.toLowerCase().trim();
+      const matchSearch = !term || (
+        a.nombre.toLowerCase().includes(term) ||
+        a.tag_pdvsa.toLowerCase().includes(term) ||
+        (a.codigo_sudebip && a.codigo_sudebip.toLowerCase().includes(term)) ||
+        (a.codigo_sap && a.codigo_sap.toLowerCase().includes(term)) ||
+        (a.marca && a.marca.toLowerCase().includes(term)) ||
+        (a.modelo && a.modelo.toLowerCase().includes(term))
       );
 
       const cruce = a.resultado_cruce || a.decision?.cruce_resultado || '';
       const matchCruce = filterCruce === 'ALL' || cruce.toUpperCase().includes(filterCruce.toUpperCase());
 
-      return matchSearch && matchCruce;
+      const matchLab = filterLab === 'ALL' || a.laboratorio === filterLab;
+
+      const decVal = a.decision?.decision_estrategica_final || a.decision?.decision_sugerida_riesgo || '';
+      const matchDecision = filterDecision === 'ALL' || decVal.toUpperCase().includes(filterDecision.toUpperCase());
+
+      return matchSearch && matchCruce && matchLab && matchDecision;
     });
-  }, [decisionAssets, searchTerm, filterCruce]);
+  }, [decisionAssets, searchTerm, filterCruce, filterLab, filterDecision]);
 
   // Counts by Quadrant
   const quadrantCounts = useMemo(() => {
@@ -223,6 +245,78 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
 
       </div>
 
+      {/* Search and Filters Bar */}
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-4">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3">
+          
+          {/* Text Search */}
+          <div className="relative flex-1">
+            <Search className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Buscar por TAG, Nombre, SUDEBIP, SAP, Marca o Modelo..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-4 py-2.5 text-sm sm:text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white font-medium"
+            />
+            {searchTerm && (
+              <button 
+                onClick={() => setSearchTerm('')} 
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+
+          {/* Laboratory Filter */}
+          <div className="w-full lg:w-64">
+            <select
+              value={filterLab}
+              onChange={(e) => setFilterLab(e.target.value)}
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-blue-600 focus:bg-white"
+            >
+              <option value="ALL">🏢 Todos los Laboratorios ({activos.length})</option>
+              {availableLabs.map((lab, i) => (
+                <option key={i} value={lab}>{lab}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Decision Filter */}
+          <div className="w-full lg:w-72">
+            <select
+              value={filterDecision}
+              onChange={(e) => setFilterDecision(e.target.value)}
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-blue-600 focus:bg-white"
+            >
+              <option value="ALL">📋 Todas las Decisiones</option>
+              {CATALOGO_DECISIONES_ESTRATEGICAS.map((dec, i) => (
+                <option key={i} value={dec}>{dec}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Reset Filters */}
+          {(searchTerm || filterCruce !== 'ALL' || filterLab !== 'ALL' || filterDecision !== 'ALL') && (
+            <button
+              onClick={() => {
+                setSearchTerm('');
+                setFilterCruce('ALL');
+                setFilterLab('ALL');
+                setFilterDecision('ALL');
+              }}
+              className="flex items-center justify-center space-x-1.5 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-bold rounded-xl transition-colors whitespace-nowrap"
+              title="Restablecer filtros"
+            >
+              <RotateCcw className="w-4 h-4" />
+              <span>Limpiar Filtros</span>
+            </button>
+          )}
+
+        </div>
+      </div>
+
       {/* Decisions Cards List - High Contrast Light Theme */}
       <div className="space-y-4">
         
@@ -231,14 +325,14 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
             Consolidado de Planes y Decisiones Estratégicas ({filteredDecisions.length})
           </h3>
           <span className="text-xs sm:text-sm text-slate-500 font-medium">
-            {filterCruce !== 'ALL' && `Filtrado por: ${filterCruce}`}
+            {filterCruce !== 'ALL' && `Filtrado por cuadrante: ${filterCruce}`}
           </span>
         </div>
 
         <div className="space-y-4">
           {filteredDecisions.length === 0 ? (
             <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-400 text-base">
-              No hay activos que coincidan con el cuadrante seleccionado.
+              No hay activos que coincidan con los criterios de búsqueda y filtros seleccionados.
             </div>
           ) : (
             filteredDecisions.map((asset, i) => {
@@ -276,7 +370,7 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
                       </p>
                     </div>
 
-                    <div className="flex items-center space-x-3 self-end md:self-auto">
+                    <div className="flex items-center space-x-2 sm:space-x-2.5 self-end md:self-auto flex-wrap">
                       <span className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold ${
                         isCritExt ? 'bg-red-100 text-red-800 border border-red-300' :
                         isAltoRiesgo ? 'bg-orange-100 text-orange-800 border border-orange-300' :
@@ -285,24 +379,34 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
                       }`}>
                         {cruce}
                       </span>
-                      <div className="flex items-center space-x-1.5">
-                        {onGoToHojaVida && (
-                          <button
-                            onClick={() => onGoToHojaVida(asset.tag_pdvsa)}
-                            className="px-3 py-1.5 bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-700 text-xs sm:text-sm rounded-xl transition-colors font-bold border border-indigo-200"
-                            title="Ver Hoja de Vida Completa (AMB-GEN-SGA-PM-002)"
-                          >
-                            Hoja de Vida
-                          </button>
-                        )}
+                      
+                      {/* AI Advisor Button */}
+                      <button
+                        onClick={() => setSelectedAIAsset(asset)}
+                        className="inline-flex items-center space-x-1 px-3 py-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl transition-all font-bold shadow-sm"
+                        title="Ver Diagnóstico y Recomendación de IA Experta"
+                      >
+                        <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                        <span>Asesor IA</span>
+                      </button>
+
+                      {onGoToHojaVida && (
                         <button
-                          onClick={() => onSelectActivo(asset)}
-                          className="px-3 py-1.5 bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 text-xs sm:text-sm rounded-xl transition-colors font-bold border border-slate-200"
-                          title="Editar Evaluación y Decisión SAMP"
+                          onClick={() => onGoToHojaVida(asset.tag_pdvsa)}
+                          className="px-3 py-1.5 bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-700 text-xs sm:text-sm rounded-xl transition-colors font-bold border border-indigo-200"
+                          title="Ver Hoja de Vida Completa (AMB-GEN-SGA-PM-002)"
                         >
-                          Editar
+                          Hoja de Vida
                         </button>
-                      </div>
+                      )}
+                      
+                      <button
+                        onClick={() => onSelectActivo(asset)}
+                        className="px-3 py-1.5 bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 text-xs sm:text-sm rounded-xl transition-colors font-bold border border-slate-200"
+                        title="Editar Evaluación y Decisión SAMP"
+                      >
+                        Editar
+                      </button>
                     </div>
                   </div>
 
@@ -386,6 +490,120 @@ export const StrategicDecisionsView: React.FC<StrategicDecisionsViewProps> = ({
         </div>
 
       </div>
+
+      {/* AI Advisor Modal Dialog */}
+      {selectedAIAsset && (() => {
+        const aiAdvice = getAsesorInteligenteDecision(selectedAIAsset);
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-200">
+              
+              {/* Modal Header */}
+              <div className="bg-gradient-to-r from-purple-800 via-indigo-900 to-slate-900 p-6 text-white relative">
+                <button
+                  onClick={() => setSelectedAIAsset(null)}
+                  className="absolute top-5 right-5 text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                <div className="flex items-center space-x-2 mb-2">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-400 text-purple-950">
+                    <Sparkles className="w-3.5 h-3.5 mr-1" /> Asesor Inteligente IA
+                  </span>
+                  <span className="text-xs text-purple-200 font-medium">{aiAdvice.norma_referencia}</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-white">
+                  Diagnóstico y Recomendación SAMP
+                </h3>
+                <p className="text-xs sm:text-sm text-purple-200 mt-1">
+                  Activo: <strong className="text-white">{selectedAIAsset.nombre}</strong> ({selectedAIAsset.tag_pdvsa})
+                </p>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-6 space-y-5 max-h-[75vh] overflow-y-auto">
+                
+                {/* Multicriteria Scorecards */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-xs">
+                  <div>
+                    <span className="text-slate-500 font-semibold block">Criticidad PDVSA</span>
+                    <span className="font-bold text-slate-900 text-sm mt-0.5 block">{selectedAIAsset.categoria_criticidad || 'Evaluado'}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 font-semibold block">Obsolescencia</span>
+                    <span className="font-bold text-orange-600 text-sm mt-0.5 block">{selectedAIAsset.iobs || '0'}%</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 font-semibold block">Nivel de Riesgo</span>
+                    <span className="font-bold text-red-600 text-sm mt-0.5 block">NR {selectedAIAsset.nivel_riesgo || '4'}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 font-semibold block">Cuadrante Cruce</span>
+                    <span className="font-bold text-purple-700 text-sm mt-0.5 block">{aiAdvice.cuadrante}</span>
+                  </div>
+                </div>
+
+                {/* AI Decisions Box */}
+                <div className="space-y-3">
+                  <div className="p-4 rounded-2xl bg-purple-50/80 border border-purple-200 space-y-1.5">
+                    <span className="text-xs font-bold text-purple-900 uppercase tracking-wider block">
+                      Decisión Estratégica Recomendada (SAMP)
+                    </span>
+                    <p className="text-base font-extrabold text-slate-900">
+                      {aiAdvice.recomendacion}
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-blue-50/80 border border-blue-200 space-y-1.5">
+                    <span className="text-xs font-bold text-blue-900 uppercase tracking-wider block">
+                      Decisión Operativa Inmediata (O&M)
+                    </span>
+                    <p className="text-sm sm:text-base font-bold text-slate-900">
+                      {aiAdvice.decision_operativa_sugerida}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Technical Justification */}
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                  <div className="flex items-center space-x-2 text-slate-700 font-bold text-xs uppercase tracking-wider">
+                    <Brain className="w-4 h-4 text-purple-600" />
+                    <span>Justificación Técnica y Fundamentación Normativa</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+                    {aiAdvice.justificacion}
+                  </p>
+                </div>
+
+              </div>
+
+              {/* Modal Footer */}
+              <div className="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row justify-end gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setSelectedAIAsset(null)}
+                  className="px-5 py-2.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-xl text-xs sm:text-sm font-bold transition-colors"
+                >
+                  Cerrar
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const assetToEdit = { ...selectedAIAsset };
+                    setSelectedAIAsset(null);
+                    onSelectActivo(assetToEdit);
+                  }}
+                  className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md transition-all flex items-center justify-center space-x-1.5"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>Aplicar Recomendación en Expediente</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        );
+      })()}
 
     </div>
   );

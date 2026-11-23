@@ -171,3 +171,134 @@ export function calculateVidaUtil(startupDateStr?: string, lifeYears: number = 1
   };
 }
 
+/**
+ * 7. Catálogo Oficial Estandarizado de Decisiones Estratégicas y Operativas (SAMP / ISO 55001)
+ */
+export const CATALOGO_DECISIONES_ESTRATEGICAS = [
+  'Reemplazo Inmediato (Inversión CAPEX)',
+  'Reemplazo a Mediano Plazo (Ciclo 24 Meses)',
+  'Modernización / Retrofit Tecnológico',
+  'Mantenimiento Mayor Overhaul',
+  'Continuar Operación / Plan Mantenimiento Preventivo',
+  'Desincorporación / Enajenación Patrimonial (SUDEBIP)'
+] as const;
+
+export const CATALOGO_DECISIONES_OPERATIVAS = [
+  'Plan de Mantenimiento Preventivo Riguroso',
+  'Recalibración / Verificación Metrológica Urgente',
+  'Aprovisionamiento Prioritario de Repuestos Críticos',
+  'Inspección Predictiva Frecuente (Control de Deriva FO-018)',
+  'Operación Estándar y Monitoreo Rutinario'
+] as const;
+
+export interface RecomendacionIAExperta {
+  decisionEstrategica: typeof CATALOGO_DECISIONES_ESTRATEGICAS[number];
+  decisionOperativa: typeof CATALOGO_DECISIONES_OPERATIVAS[number];
+  justificacionTecnica: string;
+  prioridad: 'Inmediata (30 días)' | 'Alta (90 días)' | 'Media (180 días)' | 'Rutinaria (360 días)';
+  plazoMeses: number;
+  clausulaISO: string;
+  normaPDVSA: string;
+  accionesRecomendadas: string[];
+}
+
+/**
+ * 8. Motor Asesor Experto e Inteligencia de Decisiones ISO 55001 & PDVSA MM-02-01-01
+ * Evalúa el vector multidimensional del activo (IC, Iobs, Riesgo, Deriva, Operatividad)
+ * y emite una recomendación técnica estandarizada y justificada.
+ */
+export function getAsesorInteligenteDecision(activo: any): RecomendacionIAExperta {
+  const ic = Number(activo.ic || activo.jerarquizacion?.ic || 0);
+  const iobs = Number(activo.iobs || activo.obsolescencia?.iobs || 0);
+  const cruce = (activo.resultado_cruce || activo.decision?.cruce_resultado || '').toUpperCase();
+  const esInoperativo = (activo.estado_operativo || '').toLowerCase().includes('inoperativo');
+
+  // Escenario 1: Crítico Extremo o Inoperativo de Alta Criticidad
+  if (cruce.includes('CRÍTICO EXTREMO') || (ic >= 80 && iobs > 66.7) || (esInoperativo && ic >= 80)) {
+    return {
+      decisionEstrategica: 'Reemplazo Inmediato (Inversión CAPEX)',
+      decisionOperativa: 'Aprovisionamiento Prioritario de Repuestos Críticos',
+      justificacionTecnica: `El activo presenta un Nivel de Criticidad Crítico (IC=${ic}) con Obsolescencia Crítica (Iobs=${iobs}%). Conforme a ISO 55001 Cl. 6.2 y PDVSA MM-02-01-01, este equipo genera un riesgo no tolerable para la continuidad de los ensayos analíticos de la Gerencia de Ambiente, requiriendo sustitución inmediata en el plan CAPEX.`,
+      prioridad: 'Inmediata (30 días)',
+      plazoMeses: 3,
+      clausulaISO: 'ISO 55001:2024 Cl. 6.2 Planificación del Tratamiento de Riesgos',
+      normaPDVSA: 'PDVSA MM-02-01-01 Sección 5.4',
+      accionesRecomendadas: [
+        'Elaborar pliego de especificaciones técnicas para licitación de compra CAPEX',
+        'Declarar stock de contingencia o subcontratar ensayos a laboratorios acreditados de la red INTEVEP',
+        'Iniciar expediente de desincorporación progresiva ante la SUDEBIP'
+      ]
+    };
+  }
+
+  // Escenario 2: Alto Riesgo Operacional (Alta Criticidad pero Obsolescencia Media o Baja)
+  if (cruce.includes('ALTO RIESGO') || (ic >= 80 && iobs <= 66.7)) {
+    return {
+      decisionEstrategica: 'Mantenimiento Mayor Overhaul',
+      decisionOperativa: 'Plan de Mantenimiento Preventivo Riguroso',
+      justificacionTecnica: `Activo vital de alta criticidad (IC=${ic}) cuya tecnología aún es viable (Iobs=${iobs}%). La estrategia óptima según ISO 55001 Cl. 8.1 es extender su vida útil mediante un mantenimiento mayor programado (Overhaul), asegurando disponibilidad continua de repuestos críticos.`,
+      prioridad: 'Alta (90 días)',
+      plazoMeses: 6,
+      clausulaISO: 'ISO 55001:2024 Cl. 8.1 Control Operacional y Planes de Mantenimiento',
+      normaPDVSA: 'PDVSA MM-02-01-01 Sección 6.2',
+      accionesRecomendadas: [
+        'Programar parada técnica para mantenimiento mayor en taller instrumental',
+        'Realizar calibración metrológica acreditada con cálculo de incertidumbre',
+        'Garantizar suministro de consumibles y piezas de desgaste periódico'
+      ]
+    };
+  }
+
+  // Escenario 3: Obsolescencia Alta con Criticidad Media o Baja
+  if (cruce.includes('OBSOLESCENCIA ALTA') || (iobs > 66.7 && ic < 80)) {
+    return {
+      decisionEstrategica: 'Reemplazo a Mediano Plazo (Ciclo 24 Meses)',
+      decisionOperativa: 'Inspección Predictiva Frecuente (Control de Deriva FO-018)',
+      justificacionTecnica: `El equipo presenta alta obsolescencia tecnológica (Iobs=${iobs}%) con bajo soporte de repuestos por fabricante. Dado que su criticidad es moderada (IC=${ic}), se planifica su sustitución en el ciclo presupuestario de 24 meses mientras se controla su deriva metrológica según FO-018.`,
+      prioridad: 'Media (180 días)',
+      plazoMeses: 12,
+      clausulaISO: 'ISO 55001:2024 Cl. 10.3 Acción Predictiva y Gestión de Obsolescencia',
+      normaPDVSA: 'PDVSA MM-01-01-07 Criterios de Obsolescencia Tecnológica',
+      accionesRecomendadas: [
+        'Monitorear quincenalmente la deriva metrológica contra el Límite de Tolerancia Metrológica (LTM)',
+        'Consolidar informe técnico de obsolescencia para el Comité de Gestión de Activos',
+        'Incluir en el Plan de Adquisiciones Estratégicas (PEGA) a mediano plazo'
+      ]
+    };
+  }
+
+  // Escenario 4: Moderado / Modernización
+  if (cruce.includes('MODERADO') || (ic >= 40 && iobs >= 40)) {
+    return {
+      decisionEstrategica: 'Modernización / Retrofit Tecnológico',
+      decisionOperativa: 'Recalibración / Verificación Metrológica Urgente',
+      justificacionTecnica: `Activo semicrítico (IC=${ic}) con obsolescencia moderada (Iobs=${iobs}%). La intervención más rentable es actualizar componentes modulares, tarjetas electrónicas o software de adquisición de datos (Retrofit) sin cambiar la estructura principal del equipo.`,
+      prioridad: 'Media (180 días)',
+      plazoMeses: 6,
+      clausulaISO: 'ISO 55001:2024 Cl. 6.2.2 Objetivos de Gestión de Activos',
+      normaPDVSA: 'PDVSA MM-02-01-01 Prácticas de Modernización Tecnológica',
+      accionesRecomendadas: [
+        'Evaluar compatibilidad de kit de actualización o retrofit con el fabricante',
+        'Ejecutar comprobación intermedia para verificar repetibilidad analítica',
+        'Actualizar la Hoja de Vida Integral con la nueva configuración'
+      ]
+    };
+  }
+
+  // Escenario 5: Aceptable / Rutinario
+  return {
+    decisionEstrategica: 'Continuar Operación / Plan Mantenimiento Preventivo',
+    decisionOperativa: 'Operación Estándar y Monitoreo Rutinario',
+    justificacionTecnica: `El activo opera en condiciones nominales de bajo riesgo (IC=${ic}) y baja obsolescencia (Iobs=${iobs}%). Conforme a ISO 55001 Cl. 8.1, se mantiene la rutina establecida de mantenimiento preventivo planificado (AMB-GEN-SGA-FO-008) e inspección periódica de laboratorio.`,
+    prioridad: 'Rutinaria (360 días)',
+    plazoMeses: 12,
+    clausulaISO: 'ISO 55001:2024 Cl. 8.1 Procesos Operacionales del SGA',
+    normaPDVSA: 'PDVSA MM-02-01-01 Rutinas de Mantenimiento Preventivo',
+    accionesRecomendadas: [
+      'Cumplir con la pauta semestral de mantenimiento preventivo',
+      'Registrar calibraciones rutinarias según frecuencia establecida',
+      'Mantener orden y limpieza bajo lineamientos de laboratorio seguro'
+    ]
+  };
+}
+

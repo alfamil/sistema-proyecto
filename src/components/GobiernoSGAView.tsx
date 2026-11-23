@@ -78,38 +78,54 @@ export const GobiernoSGAView: React.FC<GobiernoSGAViewProps> = ({
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
             <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-6 gap-2">
               <div>
+                <div className="flex items-center space-x-2 mb-1">
+                  <span className="font-mono text-xs font-bold px-2.5 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                    AMB-GEN-SGA-FO-017
+                  </span>
+                  <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                    Procedimiento AMB-GEN-SGA-PG-005
+                  </span>
+                </div>
                 <h3 className="text-xl font-black text-slate-900 dark:text-white">
                   Tablero de Control • 9 Indicadores Clave de Desempeño del SGA
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-                  Evaluación Trimestral Q3 2026 • Gerencia de Ambiente (334 Activos)
+                  Evaluación Trimestral Oficial Q3 2026 • Gerencia de Ambiente INTEVEP (335 Activos)
                 </p>
               </div>
               <span className="px-3 py-1 bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 rounded-full text-xs font-extrabold border border-emerald-200 dark:border-emerald-800 self-start sm:self-auto">
-                Disponibilidad Global: 82.1% (Meta ≥ 75%)
+                Disponibilidad Global: 82.1% (Meta ≥ 75.0%)
               </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {kpis.map((kpi) => {
-                const isSuperado = (kpi.valor_real_q3 || 0) >= 0.75;
+                const semaforo = kpi.estatus_semaforo || (kpi.valor_real_q3 >= 0.75 ? 'CONFORME' : 'EN REVISIÓN');
+                const isConforme = semaforo.includes('CONFORME');
+                const isRevision = semaforo.includes('REVISIÓN') || semaforo.includes('REVISION');
 
                 return (
-                  <div key={kpi.numero} className="border border-slate-200 dark:border-slate-800 rounded-2xl p-5 bg-slate-50/50 dark:bg-slate-800/40 flex flex-col justify-between hover:border-blue-400 transition-all">
+                  <div key={kpi.numero} className="border border-slate-200 dark:border-slate-800 rounded-2xl p-5 bg-slate-50/50 dark:bg-slate-800/40 flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-600 transition-all shadow-sm">
                     <div>
                       <div className="flex justify-between items-start mb-2">
                         <span className="text-xs font-bold text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-2.5 py-0.5 rounded-lg border border-blue-200 dark:border-blue-800">
-                          KPI #{kpi.numero} • {kpi.dimension}
+                          KPI #{kpi.numero} • {kpi.dimension || 'Operativo'}
                         </span>
-                        <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                          {kpi.frecuencia}
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                          isConforme 
+                            ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700' 
+                            : (isRevision 
+                                ? 'bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700'
+                                : 'bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 border border-rose-300 dark:border-rose-700')
+                        }`}>
+                          {semaforo}
                         </span>
                       </div>
                       <h4 className="font-extrabold text-slate-900 dark:text-white text-base leading-snug">
                         {kpi.indicador}
                       </h4>
                       <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1">
-                        Fórmula: {kpi.formula}
+                        Fórmula: {kpi.formula || 'Registro ponderado'}
                       </p>
                     </div>
 
@@ -120,7 +136,11 @@ export const GobiernoSGAView: React.FC<GobiernoSGAViewProps> = ({
                       </div>
                       <div className="text-right">
                         <span className="text-[11px] font-bold uppercase text-slate-500 dark:text-slate-400">Valor Real Q3</span>
-                        <p className={`text-xl font-black ${isSuperado ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
+                        <p className={`text-xl font-black ${
+                          isConforme 
+                            ? 'text-emerald-600 dark:text-emerald-400' 
+                            : (isRevision ? 'text-amber-600 dark:text-amber-400' : 'text-rose-600 dark:text-rose-400')
+                        }`}>
                           {kpi.valor_real_texto || (typeof kpi.valor_real_q3 === 'number' && kpi.valor_real_q3 <= 1 ? `${(kpi.valor_real_q3 * 100).toFixed(1)}%` : kpi.valor_real_q3)}
                         </p>
                       </div>
@@ -211,34 +231,53 @@ export const GobiernoSGAView: React.FC<GobiernoSGAViewProps> = ({
                 <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 font-bold uppercase text-[11px] tracking-wider border-b border-slate-200 dark:border-slate-800">
                   <tr>
                     <th className="py-3 px-4">Cód.</th>
-                    <th className="py-3 px-4">Origen</th>
-                    <th className="py-3 px-4">Cláusula ISO</th>
+                    <th className="py-3 px-4">Cláusula & Origen</th>
                     <th className="py-3 px-4">Laboratorio</th>
-                    <th className="py-3 px-4">Hallazgo / No Conformidad</th>
+                    <th className="py-3 px-4">Hallazgo / Desviación</th>
                     <th className="py-3 px-4">Tipo Acción</th>
-                    <th className="py-3 px-4">Causa Raíz (5 Porqués)</th>
+                    <th className="py-3 px-4">Acción Correctiva / Preventiva</th>
+                    <th className="py-3 px-4">Responsable</th>
+                    <th className="py-3 px-4">Recursos</th>
+                    <th className="py-3 px-4">Estatus</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                   {brechas.map((b) => (
                     <tr key={b.cod_brecha} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-                      <td className="py-3.5 px-4 font-mono font-bold text-indigo-600 dark:text-indigo-400">{b.cod_brecha}</td>
-                      <td className="py-3.5 px-4 text-xs font-medium text-slate-600 dark:text-slate-400">{b.origen_brecha}</td>
-                      <td className="py-3.5 px-4 font-semibold text-slate-800 dark:text-slate-200">{b.clausula_iso}</td>
-                      <td className="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400">{b.laboratorio}</td>
-                      <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white max-w-sm">{b.descripcion}</td>
+                      <td className="py-3.5 px-4 font-mono font-bold text-indigo-600 dark:text-indigo-400 whitespace-nowrap">{b.cod_brecha}</td>
                       <td className="py-3.5 px-4">
-                        <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                        <div className="font-semibold text-slate-800 dark:text-slate-200 text-xs">{b.clausula_iso}</div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400">{b.origen_brecha}</div>
+                      </td>
+                      <td className="py-3.5 px-4 text-xs font-medium text-slate-700 dark:text-slate-300 whitespace-nowrap">{b.laboratorio}</td>
+                      <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white max-w-xs text-xs">{b.descripcion}</td>
+                      <td className="py-3.5 px-4 whitespace-nowrap">
+                        <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
                           b.tipo_accion.includes('Predictiva') 
-                            ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300' 
+                            ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border border-rose-300' 
                             : (b.tipo_accion.includes('Correctiva') 
-                                ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' 
-                                : 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300')
+                                ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-300' 
+                                : 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 border border-blue-300')
                         }`}>
                           {b.tipo_accion}
                         </span>
                       </td>
-                      <td className="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-300 max-w-xs">{b.causa_raiz_5p}</td>
+                      <td className="py-3.5 px-4 text-xs text-slate-700 dark:text-slate-300 max-w-xs">{b.accion_propuesta || b.causa_raiz_5p}</td>
+                      <td className="py-3.5 px-4 text-xs font-medium text-slate-600 dark:text-slate-400 whitespace-nowrap">{b.responsable || 'Comité SGA'}</td>
+                      <td className="py-3.5 px-4 font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+                        {b.recursos_usd ? `$${b.recursos_usd.toLocaleString()} USD` : 'N/A'}
+                      </td>
+                      <td className="py-3.5 px-4 whitespace-nowrap">
+                        <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
+                          b.estatus === 'Cerrado Eficaz' || b.estatus === 'Cerrada'
+                            ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300'
+                            : (b.estatus === 'En Proceso'
+                                ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 border border-blue-300'
+                                : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-300')
+                        }`}>
+                          {b.estatus || 'En Proceso'}
+                        </span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>

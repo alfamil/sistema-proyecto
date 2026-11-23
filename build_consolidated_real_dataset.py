@@ -440,25 +440,36 @@ for r_num, row in hv_wb.get('CONTROL_PATRIMONIAL_SUDEBIP', []):
         })
 
 # 9. Extraer Anexos SGA
+
+# FO-017: 9 KPIs Clave de Desempeño del SGA
 kpis_fo017 = []
 for r_num, row in anexos_wb.get('ANEXO_A_FO-017_DESEMPENO', []):
-    if r_num <= 4:
-        continue
-    ind = clean_str(row.get('B'))
-    if ind and not is_header_or_empty(ind):
-        val_real = row.get('H')
-        kpis_fo017.append({
-            'numero': int(safe_float(row.get('A'), len(kpis_fo017) + 1)),
-            'indicador': ind,
-            'dimension': clean_str(row.get('C')),
-            'formula': clean_str(row.get('D')),
-            'meta': clean_str(row.get('E')),
-            'frecuencia': clean_str(row.get('F')),
-            'responsable': clean_str(row.get('G')),
-            'valor_real_q3': safe_float(val_real, 0),
-            'valor_real_texto': str(val_real) if val_real is not None else ''
-        })
+    if 20 <= r_num <= 28:
+        num = clean_str(row.get('B'))
+        ind = clean_str(row.get('C'))
+        if ind:
+            val_real = row.get('I')
+            val_f = safe_float(val_real, 0)
+            txt = clean_str(val_real)
+            if val_f > 0 and val_f <= 1:
+                txt = f"{val_f * 100:.1f}%"
+            elif val_f > 1:
+                txt = str(val_real)
 
+            kpis_fo017.append({
+                'numero': int(safe_float(num, len(kpis_fo017) + 1)),
+                'indicador': ind,
+                'dimension': clean_str(row.get('D')),
+                'formula': clean_str(row.get('E')),
+                'meta': clean_str(row.get('F')),
+                'frecuencia': clean_str(row.get('G')),
+                'responsable': clean_str(row.get('H')),
+                'valor_real_q3': val_f,
+                'valor_real_texto': txt or str(val_real),
+                'estatus_semaforo': clean_str(row.get('J')) or 'CONFORME'
+            })
+
+# FO-018: Control de Deriva Metrológica
 deriva_fo018 = []
 for r_num, row in anexos_wb.get('ANEXO_B_FO-018_DERIVA_METRO', []):
     if r_num <= 4:
@@ -479,40 +490,48 @@ for r_num, row in anexos_wb.get('ANEXO_B_FO-018_DERIVA_METRO', []):
             'accion_requerida': clean_str(row.get('K')),
         })
 
+# FO-019: Acuerdos y Asignación de Recursos de Revisión por la Dirección
 acuerdos_fo019 = []
 for r_num, row in anexos_wb.get('ANEXO_C_FO-019_ACTA_REV_DIR', []):
-    if r_num <= 4:
-        continue
-    cod = clean_str(row.get('A'))
-    if cod and not is_header_or_empty(cod):
-        acuerdos_fo019.append({
-            'codigo': cod,
-            'requisito_iso': clean_str(row.get('B')),
-            'acuerdo_adoptado': clean_str(row.get('C')),
-            'responsable': clean_str(row.get('D')),
-            'fecha_limite': excel_date_to_str(row.get('E')),
-            'recursos_aprobados': clean_str(row.get('F')),
-            'mecanismo_verificacion': clean_str(row.get('G')),
-            'estatus': clean_str(row.get('H')),
-        })
+    if 34 <= r_num <= 38:
+        cod = clean_str(row.get('B'))
+        req = clean_str(row.get('C'))
+        if cod and req:
+            acuerdos_fo019.append({
+                'codigo': cod,
+                'requisito_iso': req,
+                'acuerdo_adoptado': clean_str(row.get('D')),
+                'responsable': clean_str(row.get('E')),
+                'fecha_limite': excel_date_to_str(row.get('F')),
+                'recursos_aprobados': clean_str(row.get('G')),
+                'mecanismo_verificacion': clean_str(row.get('H')),
+                'estatus': clean_str(row.get('I')) or 'APROBADO'
+            })
 
+# FO-030: Plan de Cierre de Brechas y Mejora Continua
 brechas_fo030 = []
 for r_num, row in anexos_wb.get('ANEXO_D_FO-030_CIERRE_BRECHAS', []):
-    if r_num <= 4:
-        continue
-    cod = clean_str(row.get('B'))
-    if cod and not is_header_or_empty(cod):
-        brechas_fo030.append({
-            'numero': int(safe_float(row.get('A'), len(brechas_fo030) + 1)),
-            'cod_brecha': cod,
-            'origen_brecha': clean_str(row.get('C')),
-            'clausula_iso': clean_str(row.get('D')),
-            'laboratorio': clean_str(row.get('E')),
-            'descripcion': clean_str(row.get('F')),
-            'tipo_accion': clean_str(row.get('G')),
-            'causa_raiz_5p': clean_str(row.get('H')),
-            'estatus': clean_str(row.get('I')) or 'En Proceso'
-        })
+    if 18 <= r_num <= 24:
+        num = clean_str(row.get('B'))
+        cod = clean_str(row.get('C'))
+        if cod:
+            brechas_fo030.append({
+                'numero': int(safe_float(num, len(brechas_fo030) + 1)),
+                'cod_brecha': cod,
+                'origen_brecha': clean_str(row.get('D')),
+                'clausula_iso': clean_str(row.get('E')),
+                'laboratorio': clean_str(row.get('F')),
+                'descripcion': clean_str(row.get('G')),
+                'tipo_accion': clean_str(row.get('H')),
+                'causa_raiz_5p': clean_str(row.get('I')),
+                'accion_propuesta': clean_str(row.get('J')),
+                'responsable': clean_str(row.get('K')),
+                'fecha_inicio': excel_date_to_str(row.get('L')),
+                'fecha_compromiso': excel_date_to_str(row.get('M')),
+                'avance_pct': safe_float(row.get('N'), 0),
+                'estatus': clean_str(row.get('O')) or 'En Proceso',
+                'recursos_usd': safe_float(row.get('P'), 0)
+            })
 
 # Usuarios y Roles estándar para login
 usuarios = [

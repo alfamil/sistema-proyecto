@@ -425,6 +425,7 @@ export default function App() {
           {activeTab === 'mantenimiento' && (
             <MaintenanceView
               activos={activos}
+              usuarios={(initialData as any)?.usuarios || []}
               onUpdateActivoFallas={(tag, fallas) => {
                 const updated = activos.map(a => a.tag_pdvsa === tag ? { ...a, historial_fallas: fallas } : a);
                 setActivos(updated);

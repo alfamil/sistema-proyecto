@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
   X, Save, AlertTriangle, ShieldCheck, Activity, Settings, 
-  FileText, Clock, Plus, Trash2, Calendar, Wrench, CheckCircle2, GitFork
+  FileText, Clock, Plus, Trash2, Calendar, Wrench, CheckCircle2, GitFork, Sparkles, Brain
 } from 'lucide-react';
 import { ActivoFisico, SudebipItem, HistorialFalla } from '../types';
 import { 
   calculateConsecuencia, calculateCriticidad, getCategoriaCriticidad, 
-  calculateIobs, getMatrizCruceDecision 
+  calculateIobs, getMatrizCruceDecision,
+  CATALOGO_DECISIONES_ESTRATEGICAS, CATALOGO_DECISIONES_OPERATIVAS,
+  getAsesorInteligenteDecision
 } from '../utils/calculations';
 
 interface AssetFormModalProps {
@@ -79,6 +81,15 @@ export const AssetFormModal: React.FC<AssetFormModalProps> = ({
     responsableDO: 'Analista de Gestión de Calidad',
     fechaDO: ''
   });
+
+  // AI Recommendation State
+  const [aiSuggestion, setAiSuggestion] = useState<{
+    recomendacion: string;
+    decision_operativa_sugerida: string;
+    justificacion: string;
+    norma_referencia: string;
+    cuadrante: string;
+  } | null>(null);
 
   // Failure logs
   const [fallas, setFallas] = useState<HistorialFalla[]>([]);
@@ -197,6 +208,46 @@ export const AssetFormModal: React.FC<AssetFormModalProps> = ({
 
   const handleRemoveFalla = (index: number) => {
     setFallas(fallas.filter((_, i) => i !== index));
+  };
+
+  const handleApplyAISuggestion = () => {
+    const tempAsset: ActivoFisico = {
+      ...formData,
+      categoria_criticidad: criticidadCalc.categoria,
+      iobs: obsolescenciaCalc.iobs,
+      estatus_obsolescencia: obsolescenciaCalc.estatus,
+      nivel_riesgo: decData.nivelRiesgo,
+      resultado_cruce: cruceCalc.resultadoCruce,
+      jerarquizacion: {
+        ff: critScores.ff,
+        io: critScores.io,
+        fo: critScores.fo,
+        cm: critScores.cm,
+        sha: critScores.sha,
+        consecuencia: consecuenciaCalc,
+        ic: criticidadCalc.ic,
+        categoria_criticidad: criticidadCalc.categoria,
+        estatus_seleccion: criticidadCalc.estatusSeleccion,
+        criterio_accion: criticidadCalc.criterioAccion
+      },
+      obsolescencia: {
+        eol: obsScores.eol,
+        rep: obsScores.rep,
+        met: obsScores.met,
+        ant: obsScores.ant,
+        suma_puntos: obsolescenciaCalc.suma,
+        iobs: obsolescenciaCalc.iobs,
+        estatus_obsolescencia: obsolescenciaCalc.estatus
+      }
+    };
+
+    const ai = getAsesorInteligenteDecision(tempAsset);
+    setAiSuggestion(ai);
+    setDecData(prev => ({
+      ...prev,
+      decisionEstrategicaFinal: ai.recomendacion,
+      decisionOperativa: ai.decision_operativa_sugerida
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -804,9 +855,36 @@ export const AssetFormModal: React.FC<AssetFormModalProps> = ({
           {/* TAB 5: DECISIONES SAMP */}
           {activeTab === 'decisiones' && (
             <div className="space-y-5">
-              <h4 className="text-sm font-bold uppercase tracking-wider text-blue-700 border-b border-slate-200 pb-2">
-                Matriz de Cruce Multicriterio y Plan de Decisiones Estratégicas (SAMP)
-              </h4>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-blue-700">
+                  Matriz de Cruce Multicriterio y Plan de Decisiones Estratégicas (SAMP)
+                </h4>
+
+                <button
+                  type="button"
+                  onClick={handleApplyAISuggestion}
+                  className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-xs sm:text-sm font-bold rounded-xl shadow-sm transition-all"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>Sugerir con Asesor IA (ISO 55001)</span>
+                </button>
+              </div>
+
+              {/* AI Suggestion Alert Card if activated */}
+              {aiSuggestion && (
+                <div className="p-4 sm:p-5 rounded-2xl bg-purple-50 border-2 border-purple-300 text-purple-950 space-y-2 animate-in fade-in duration-300">
+                  <div className="flex items-center space-x-2 text-purple-800 font-bold text-xs sm:text-sm uppercase tracking-wider">
+                    <Brain className="w-4 h-4 text-purple-600" />
+                    <span>Dictamen del Asesor Inteligente • {aiSuggestion.norma_referencia}</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
+                    {aiSuggestion.justificacion}
+                  </p>
+                  <div className="text-xs text-purple-700 font-semibold pt-1 border-t border-purple-200">
+                    Se han preseleccionado automáticamente las decisiones normalizadas recomendadas en los desplegables inferiores.
+                  </div>
+                </div>
+              )}
 
               <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
@@ -843,13 +921,24 @@ export const AssetFormModal: React.FC<AssetFormModalProps> = ({
                   <label className="block text-sm font-bold text-slate-800 mb-1.5">
                     Decisión Estratégica Final (SAMP)
                   </label>
-                  <input
-                    type="text"
+                  <select
                     value={decData.decisionEstrategicaFinal}
                     onChange={(e) => setDecData({ ...decData, decisionEstrategicaFinal: e.target.value })}
-                    placeholder="Ej. Inclusión en Plan de Renovación Tecnológica"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm sm:text-base text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white font-medium"
-                  />
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm sm:text-base text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white font-semibold"
+                  >
+                    <option value="">-- Seleccionar Decisión Estratégica Estandarizada --</option>
+                    {CATALOGO_DECISIONES_ESTRATEGICAS.map((dec, idx) => (
+                      <option key={idx} value={dec}>
+                        {dec}
+                      </option>
+                    ))}
+                    {decData.decisionEstrategicaFinal && !CATALOGO_DECISIONES_ESTRATEGICAS.includes(decData.decisionEstrategicaFinal) && (
+                      <option value={decData.decisionEstrategicaFinal}>
+                        {decData.decisionEstrategicaFinal} (Personalizado)
+                      </option>
+                    )}
+                  </select>
+                  <span className="text-xs text-slate-500 mt-1 block">Catálogo oficial estandarizado ISO 55001 / PDVSA</span>
                 </div>
               </div>
 
@@ -878,13 +967,23 @@ export const AssetFormModal: React.FC<AssetFormModalProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3 border-t border-slate-200">
                 <div className="md:col-span-1">
                   <label className="block text-sm font-bold text-slate-800 mb-1.5">Decisión Operativa (DO)</label>
-                  <input
-                    type="text"
+                  <select
                     value={decData.decisionOperativa}
                     onChange={(e) => setDecData({ ...decData, decisionOperativa: e.target.value })}
-                    placeholder="Ej. Mantenimiento Preventivo Reforzado"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm sm:text-base text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
-                  />
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm sm:text-base text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white font-semibold"
+                  >
+                    <option value="">-- Seleccionar Decisión Operativa Estandarizada --</option>
+                    {CATALOGO_DECISIONES_OPERATIVAS.map((dop, idx) => (
+                      <option key={idx} value={dop}>
+                        {dop}
+                      </option>
+                    ))}
+                    {decData.decisionOperativa && !CATALOGO_DECISIONES_OPERATIVAS.includes(decData.decisionOperativa) && (
+                      <option value={decData.decisionOperativa}>
+                        {decData.decisionOperativa} (Personalizado)
+                      </option>
+                    )}
+                  </select>
                 </div>
 
                 <div>

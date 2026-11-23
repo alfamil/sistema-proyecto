@@ -204,6 +204,7 @@ export interface KpiSGA {
   responsable: string;
   valor_real_q3: number;
   valor_real_texto?: string;
+  estatus_semaforo?: string;
 }
 
 export interface AcuerdoDireccion {
@@ -226,7 +227,13 @@ export interface CierreBrecha {
   descripcion: string;
   tipo_accion: string;
   causa_raiz_5p: string;
-  estatus?: 'No Iniciada' | 'En Proceso' | 'Cerrada';
+  accion_propuesta?: string;
+  responsable?: string;
+  fecha_inicio?: string;
+  fecha_compromiso?: string;
+  avance_pct?: number;
+  estatus?: 'No Iniciado' | 'En Proceso' | 'Cerrada' | 'Cerrado Eficaz' | string;
+  recursos_usd?: number;
 }
 
 export interface ActivoFisico {

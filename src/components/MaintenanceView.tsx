@@ -4,16 +4,18 @@ import {
   CheckCircle2, AlertTriangle, Edit3, Trash2, ShieldCheck, 
   Settings, UserCheck, X, Save, ArrowUpDown, ChevronLeft, ChevronRight, FileSpreadsheet
 } from 'lucide-react';
-import { ActivoFisico, HistorialFalla } from '../types';
+import { ActivoFisico, HistorialFalla, UsuarioSistema } from '../types';
 
 interface MaintenanceViewProps {
   activos: ActivoFisico[];
   onUpdateActivoFallas: (tag_pdvsa: string, fallas: HistorialFalla[]) => void;
+  usuarios?: UsuarioSistema[];
 }
 
 export const MaintenanceView: React.FC<MaintenanceViewProps> = ({
   activos,
-  onUpdateActivoFallas
+  onUpdateActivoFallas,
+  usuarios = []
 }) => {
   // Aggregate all maintenance orders across all assets
   const allOrders = useMemo(() => {
@@ -669,15 +671,36 @@ export const MaintenanceView: React.FC<MaintenanceViewProps> = ({
 
                 <div>
                   <label className="block text-sm font-bold text-slate-800 mb-1.5">
-                    Técnico / Responsable
+                    Técnico / Responsable Encargado <span className="text-red-500">*</span>
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Ej. Ing. Carlos Lugo"
+                  <select
+                    required
                     value={formData.tecnico_responsable || ''}
                     onChange={(e) => setFormData({ ...formData, tecnico_responsable: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm sm:text-base text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
-                  />
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm sm:text-base text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white font-medium"
+                  >
+                    <option value="">Seleccione el Encargado...</option>
+                    
+                    {/* Usuarios registrados en el sistema */}
+                    {usuarios && usuarios.length > 0 && (
+                      <optgroup label="Usuarios y Personal del Sistema">
+                        {usuarios.map(u => (
+                          <option key={u.id || u.email} value={`${u.nombre_completo} (${u.cargo || u.rol})`}>
+                            {u.nombre_completo} — {u.cargo || u.rol}
+                          </option>
+                        ))}
+                      </optgroup>
+                    )}
+
+                    {/* Unidades técnicas y talleres institucionales */}
+                    <optgroup label="Talleres y Proveedores Técnicos">
+                      <option value="Taller Mantenimiento Instrumental INTEVEP">Taller Mantenimiento Instrumental INTEVEP</option>
+                      <option value="Taller Electromecánico INTEVEP">Taller Electromecánico INTEVEP</option>
+                      <option value="Ing. Supervisor Metrológico (ISO 10012)">Ing. Supervisor Metrológico (ISO 10012)</option>
+                      <option value="Proveedor Técnico Autorizado / Fabricante">Proveedor Técnico Autorizado / Fabricante</option>
+                      <option value="Servicio Especializado de Confiabilidad Operacional">Servicio Especializado de Confiabilidad Operacional</option>
+                    </optgroup>
+                  </select>
                 </div>
               </div>
 
